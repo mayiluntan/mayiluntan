@@ -1,0 +1,115 @@
+/**index.wxss**/
+page{
+  background: #f2f3f4;
+  font-size:30rpx;
+}
+.top{
+  width: 100%;
+  height:38vw;
+  position:relative;
+}
+.top image{
+  width: 100%;
+  height:100%;
+}
+.top .title-top{
+  width:100%;
+  display: flex;
+  position:absolute;
+  left:0;
+  top:0;
+  color: #fff;
+}
+.top .title-top .weather{
+  flex: 1;
+  padding:10rpx 0 0 15rpx;
+}
+.top .title-top .exrate{
+  justify-content:flex-end;
+  padding:10rpx 15rpx 0 0 ;
+}
+.top .city{
+  position:absolute;
+  top: 13vw;
+  left: 35vw;
+  display: flex;
+  line-height: 30rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+}
+.top .city image{
+  width: 70rpx;
+  height: 30rpx;
+  padding-right:20rpx;
+}
+.top .search{
+  position:absolute;
+  top: 27vw;
+  left: 0;
+  width: 100%;
+  min-height: 1.4em;
+}
+.top .search input{
+  width: 96%;
+  background: #fff;
+  border-radius:10rpx;
+  margin: 0 auto;
+}
+
+/**broadcast**/
+.broadcast{
+  width:100%;
+  display: flex;
+  line-height:33rpx;
+  padding:25rpx;
+  background: #fff;
+  margin: 20rpx 0 15rpx;
+}
+.broadcast .l{
+  display:flex;
+  flex: 1;
+}
+.broadcast .l image{
+  width: 46rpx;
+  height: 33rpx;
+  margin: 0 20rpx;
+}
+.broadcast .r{
+  display:flex;
+  justify-content: flex-end;
+}
+.broadcast .r .r1{
+  color: #f00;
+}
+.broadcast .r .r2{
+  padding: 0 20rpx;
+}
+
+/**cate**/
+.cate{
+  background: #fff;
+  width: 100%;
+  display: flex;
+  font-size: 14px;
+  color: #808080;
+}
+.cate .cate-detail{
+  width: 20%;
+  text-align: center;
+  padding: 18rpx 0;
+}
+.cate image{
+  width: 80rpx;
+  height: 80rpx;
+}
+
+/**banner**/
+.banner{
+  width: 100%;
+  margin: 15rpx 0;
+}
+.banner image{
+  width: 100%;
+  height: 28vw;
+}

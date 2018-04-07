@@ -1,0 +1,75 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="top">
+    <image src='/images/top.png'/>
+    <view class='title-top'>
+      <view class='weather'>4℃~12℃</view>
+      <view class='exrate'>汇率：3.14</view>
+    </view>
+    <view class='city'>
+      <image src='/images/ants.png'/>
+      <view>堪培拉∨</view>
+    </view>
+    <view class='search'>
+      <input type='text' />
+    </view>
+  </view>
+  <view class="broadcast">
+    <view class='l'>
+      <image src='/images/horn.png'/>
+      <view>求助：车胎破了谁来修?</view>
+    </view>
+    <view class='r'>
+      <view class='r1'>暂无答案</view>
+      <view class='r2'>全部</view>
+    </view>
+  </view>
+  <view class='cate'>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+  </view>
+  <view class='cate'>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+    <view class='cate-detail'>
+     <image src='/images/i1.png' />
+     <view>二手市场</view>
+    </view>
+  </view>
+  <view class='banner'>
+    <image src='/images/banner.png'></image>
+  </view>
+</view>
+

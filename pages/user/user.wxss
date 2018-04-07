@@ -1,0 +1,29 @@
+/* pages/user/user.wxss */
+.top{
+  width: 100%;
+}
+.top image{
+  width: 100%;
+  height: 33.8vw;
+}
+.top .avatar{
+  position: absolute;
+  top: 9.3vw;
+  left: 0;
+  width: 100%;
+}
+.top .avatar view{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 110rpx;
+  background: #fff;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 210rpx;
+}
+.top .avatar image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  vertical-align: middle;
+}
