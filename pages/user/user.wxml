@@ -6,5 +6,52 @@
         <image src='/images/avatar.jpg'></image>
       </view>
     </view>
+    <view class='nickname'>我是卖家</view>
+    <view class='cate'>
+      <view class='cate-all'>
+        <view class='cate-num'>999</view>
+        <view class='cate-name'>留言</view>
+      </view>
+      <view class='cate-all cate-border'>
+        <view class='cate-num'>999</view>
+        <view class='cate-name'>访客</view>
+      </view>
+      <view class='cate-all'>
+        <view class='cate-num'>999</view>
+        <view class='cate-name'>关注</view>
+      </view>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
+    <view class='list-detail'>
+      <image class='left' src='/images/s5.png'></image>
+      <view>个人主页</view>
+      <image class='right' src='/images/s5.png'></image>
+    </view>
   </view>
 </view>
