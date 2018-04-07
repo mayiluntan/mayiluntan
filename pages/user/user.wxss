@@ -69,10 +69,28 @@ page{
   align-items: center;
   border-bottom: 1px solid #e0e0e0;
 }
-.list image{
+.list .left{
+  padding-right: 25rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list .left image{
   width: 30rpx;
   height: 30rpx;
 }
-.list .list-detail view{
+.list .right{
+  width:50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list .right image{
+  width: 17rpx;
+  height: 30rpx;
+}
+.list .list-detail .middle{
   flex: 1;
 }
