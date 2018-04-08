@@ -22,6 +22,7 @@
       </view>
     </view>
   </view>
+  <view class='division'></view>
   <view class='list'>
     <view class='list-detail'>
       <view class='left'><image src='/images/user_l1.png'></image></view>

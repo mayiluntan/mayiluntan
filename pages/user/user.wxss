@@ -1,6 +1,6 @@
 page{
-  background: #f2f3f4;
   font-size:30rpx;
+  background: #fff;
 }
 .top{
   width: 100%;
@@ -54,10 +54,14 @@ page{
   border-left: 1px solid #f0f2f2;
   border-right: 1px solid #f0f2f2;
 }
-
+/*division*/
+.division{
+  width: 100%;
+  height: 20rpx;
+  background: #f2f3f4;
+}
 /**list**/
 .list{
-  margin-top: 20rpx;
   width: 95%;
   background: #fff;
   padding-left:5%;
@@ -74,7 +78,6 @@ page{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
 }
 .list .left image{
   width: 30rpx;
@@ -85,7 +88,6 @@ page{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
 }
 .list .right image{
   width: 17rpx;
