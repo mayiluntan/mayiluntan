@@ -8,7 +8,7 @@
     </view>
     <view class='city'>
       <image src='/images/ants.png'/>
-      <view>周飞云臭傻逼</view>
+      <view>堪培拉</view>
     </view>
     <view class='search'>
       <input type='text' />
