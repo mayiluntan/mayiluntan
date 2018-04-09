@@ -1,6 +1,11 @@
-/* pages/user/user.wxss */
+page{
+  font-size:30rpx;
+  background: #fff;
+}
 .top{
   width: 100%;
+  background: #fff;
+  padding-bottom: 30rpx;
 }
 .top image{
   width: 100%;
@@ -13,17 +18,81 @@
   width: 100%;
 }
 .top .avatar view{
-  width: 220rpx;
-  height: 220rpx;
-  border-radius: 110rpx;
+  width: 164rpx;
+  height: 164rpx;
+  border-radius: 82rpx;
   background: #fff;
   margin: 0 auto;
-  text-align: center;
-  line-height: 210rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center
 }
 .top .avatar image{
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 100rpx;
-  vertical-align: middle;
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 76rpx;
+}
+.top .nickname{
+  text-align: center;
+  padding: 10rpx 0;
+}
+.top .cate{
+  display: flex;
+}
+.top .cate .cate-all{
+  width: 33%;
+  text-align: center;
+}
+.top .cate .cate-num{
+  color: #f1a840;
+}
+.top .cate .cate-name{
+  color: #7f7f7f;
+}
+.top .cate .cate-border{
+  border-left: 1px solid #f0f2f2;
+  border-right: 1px solid #f0f2f2;
+}
+/*division*/
+.division{
+  width: 100%;
+  height: 20rpx;
+  background: #f2f3f4;
+}
+/**list**/
+.list{
+  width: 95%;
+  background: #fff;
+  padding-left:5%;
+}
+.list .list-detail{
+  display: flex;
+  height: 100rpx;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list .left{
+  padding-right: 25rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.list .left image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.list .right{
+  width:50rpx;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.list .right image{
+  width: 17rpx;
+  height: 30rpx;
+}
+.list .list-detail .middle{
+  flex: 1;
 }

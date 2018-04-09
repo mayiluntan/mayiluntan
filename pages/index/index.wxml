@@ -71,5 +71,11 @@
   <view class='banner'>
     <image src='/images/banner.png'></image>
   </view>
+  <view class='content'>
+    <view class='title'>
+      <view class='title-border'>全部分类∨</view>
+      <view>排序∨</view>
+    </view>
+  </view>
 </view>
 

@@ -107,9 +107,28 @@ page{
 /**banner**/
 .banner{
   width: 100%;
-  margin: 15rpx 0;
+  margin: 10rpx 0;
 }
 .banner image{
   width: 100%;
   height: 28vw;
+}
+
+/**content**/
+.content{
+  width: 100%;  
+  background: #fff;
+}
+.content .title{
+  height: 40rpx;
+  display: flex;
+  line-height: 40rpx;
+  padding: 10rpx 0;
+}
+.content .title view{
+  width: 50%;
+  text-align: center;
+}
+.content .title .title-border{
+  border-right: 1px solid #f0f2f2;
 }
