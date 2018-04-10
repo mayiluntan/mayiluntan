@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/pages/pages",
     "pages/index/index",
     "pages/user/user"
   ],
@@ -22,7 +23,7 @@
         "selectedIconPath": "images/s1.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/pages/pages",
         "text": "黄页",
         "iconPath": "images/us2.png",
         "selectedIconPath": "images/s2.png"

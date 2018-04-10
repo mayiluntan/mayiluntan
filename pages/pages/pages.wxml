@@ -1,11 +1,7 @@
-<!--index.wxml-->
+  <!--pages.wxml-->
 <view class="container">
   <view class="top">
     <image src='/images/top.png'/>
-    <view class='title-top'>
-      <view class='weather'>4℃~12℃</view>
-      <view class='exrate'>汇率：3.14</view>
-    </view>
     <view class='city'>
       <view class='logo'>
       <image src='/images/ants.png'/>
@@ -26,59 +22,59 @@
   <view class="broadcast">
     <view class='l'>
       <image src='/images/horn.png'/>
-      <view>求助：车胎破了谁来修?</view>
-    </view>
-    <view class='r'>
-      <view class='r1'>暂无答案</view>
-      <view class='r2'>全部</view>
+      <view>恭喜</view>
+      <view class='company'>万达集团</view>
+      <view>成功入驻本平台</view>
     </view>
   </view>
   <view class='cate'>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_chuzu.png' />
-     <view>房屋出租</view>
+     <image src='/images/icon_logo_food.png' />
+     <view>餐饮美食</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_qiuzu.png' />
-     <view>房屋求租</view>
+     <image src='/images/icon_logo_waimai.png' />
+     <view>外卖送餐</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/i1.png' />
-     <view>二手市场</view>
+     <image src='/images/icon_logo_service.png' />
+     <view>专业服务</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_qiuzhi.png' />
-     <view>求职招聘</view>
+     <image src='/images/icon_logo_car_service.png' />
+     <view>汽车服务</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_buy_car.png' />
-     <view>汽车交易</view>
+     <image src='/images/icon_logo_bianmin.png' />
+     <view>便民家政</view>
     </view>
   </view>
   <view class='cate'>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_ask_help.png' />
-     <view>求助问事</view>
+     <image src='/images/icon_logo_gift.png' />
+     <view>礼品商店</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_share_car.png' />
-     <view>拼车信息</view>
+     <image src='/images/icon_logo_yimin.png' />
+     <view>移民教育</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_minsu.png' />
-     <view>短租民宿</view>
+     <image src='/images/icon_logo_lvyou.png' />
+     <view>旅游机票</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_zhuanrang.png' />
-     <view>生意转让</view>
+     <image src='/images/icon_logo_market.png' />
+     <view>超市商店</view>
     </view>
     <view class='cate-detail'>
-     <image src='/images/icon_logo_jiaoyou.png' />
-     <view>交友项目</view>
+     <image src='/images/icon_logo_doctor.png' />
+     <view>医疗保健</view>
     </view>
   </view>
-  <view class='banner'>
-    <image src='/images/banner.png'></image>
+   <view class="recommend">
+    <image class='recommend_l' src='/images/icon_logo_recommend_l.png'></image>
+    <view>平台推荐认证</view>
+    <image class='recommend_r' src='/images/icon_logo_recommend_r.png'></image>
   </view>
   <view class='content'>
     <view class='title'>
