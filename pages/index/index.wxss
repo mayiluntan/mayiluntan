@@ -48,13 +48,13 @@ page{
   top: 27vw;
   left: 0;
   width: 100%;
-  min-height: 1.4em;
 }
 .top .search input{
-  width: 96%;
+  width: 90%;
   background: #fff;
   border-radius:10rpx;
   margin: 0 auto;
+  height:2em;
 }
 
 /**broadcast**/
@@ -62,9 +62,9 @@ page{
   width:100%;
   display: flex;
   line-height:33rpx;
-  padding:25rpx;
+  padding:25rpx 0px;
   background: #fff;
-  margin: 20rpx 0 15rpx;
+  margin: 15rpx 0;
 }
 .broadcast .l{
   display:flex;
@@ -107,7 +107,7 @@ page{
 /**banner**/
 .banner{
   width: 100%;
-  margin: 10rpx 0;
+  margin: 15rpx 0;
 }
 .banner image{
   width: 100%;
