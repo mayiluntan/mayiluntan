@@ -130,7 +130,7 @@
     </block>
   </view>
   <swiper class='banner' autoplay="true" interval="2000" duration="500">  
-      <block wx:for="{{imgUrls}}">  
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
         <swiper-item>  
            <navigator url="{{item.link}}" hover-class="navigator-hover">  
             <image src="{{item.url}}"/> 
