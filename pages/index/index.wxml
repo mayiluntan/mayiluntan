@@ -33,53 +33,111 @@
       <view class='r2'>全部</view>
     </view>
   </view>
-  <view class='cate'>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_chuzu.png' />
-     <view>房屋出租</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_qiuzu.png' />
-     <view>房屋求租</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/i1.png' />
-     <view>二手市场</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_qiuzhi.png' />
-     <view>求职招聘</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_buy_car.png' />
-     <view>汽车交易</view>
-    </view>
+  <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
+    <swiper-item>
+      <view class='cate'>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_chuzu.png' />
+        <view>房屋出租</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_qiuzu.png' />
+        <view>房屋求租</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/i1.png' />
+        <view>二手市场</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_qiuzhi.png' />
+        <view>求职招聘</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_buy_car.png' />
+        <view>汽车交易</view>
+        </view>
+      </view>
+      <view class='cate'>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_ask_help.png' />
+        <view>求助问事</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_share_car.png' />
+        <view>拼车信息</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_minsu.png' />
+        <view>短租民宿</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_zhuanrang.png' />
+        <view>生意转让</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_jiaoyou.png' />
+        <view>交友项目</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='cate'>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_chuzu.png' />
+        <view>房屋出租</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_qiuzu.png' />
+        <view>房屋求租</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/i1.png' />
+        <view>二手市场</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_qiuzhi.png' />
+        <view>求职招聘</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_buy_car.png' />
+        <view>汽车交易</view>
+        </view>
+      </view>
+      <view class='cate'>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_chuzu.png' />
+        <view>更多</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/icon_logo_qiuzu.png' />
+        <view>更多</view>
+        </view>
+        <view class='cate-detail'>
+        <image src='/images/i1.png' />
+        <view>更多</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='cate-menu'>
+    <block wx:if="{{cateSelected==1}}">
+      <view class='cate-menu1'><view></view></view>
+      <view class='cate-menu2'><view class='cate-select'></view></view>
+    </block>
+    <block wx:else>
+      <view class='cate-menu1'><view class='cate-select'></view></view>
+      <view class='cate-menu2'><view></view></view>
+    </block>
   </view>
-  <view class='cate'>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_ask_help.png' />
-     <view>求助问事</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_share_car.png' />
-     <view>拼车信息</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_minsu.png' />
-     <view>短租民宿</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_zhuanrang.png' />
-     <view>生意转让</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_jiaoyou.png' />
-     <view>交友项目</view>
-    </view>
-  </view>
-  <view class='banner'>
-    <image src='/images/banner.png'></image>
-  </view>
+  <swiper class='banner' autoplay="true" interval="2000" duration="500">  
+      <block wx:for="{{imgUrls}}">  
+        <swiper-item>  
+           <navigator url="{{item.link}}" hover-class="navigator-hover">  
+            <image src="{{item.url}}"/> 
+           </navigator>   
+        </swiper-item>  
+      </block>  
+  </swiper> 
   <view class='content'>
     <view class='title'>
       <view class='title-border'>
