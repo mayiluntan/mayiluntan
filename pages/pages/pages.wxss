@@ -110,11 +110,12 @@ page{
   line-height:33rpx;
   padding:25rpx 0px;
   background: #fff;
-  margin: 15rpx 0;
+  margin-top: 15rpx;
   justify-content:center;
+  border-bottom: 1px solid #f0f2f2;
 }
 
-.recommend .l image{
+/* .recommend .l image{
   width: 20rpx;
   height: 30rpx;
 }
@@ -122,7 +123,7 @@ page{
 .recommend .r image{
   width: 20rpx;
   height: 30rpx;
-}
+} */
 
 /**content**/
 .content{
@@ -165,6 +166,7 @@ page{
 /**list-main**/
 .list{
   padding:20rpx;
+  padding-bottom: 5rpx;
   border-bottom: 1px solid #e0e0e0;
 }
 .list .list-main{
@@ -226,7 +228,23 @@ page{
   color: #4c4c4c;
 }
 .list .list-time{
-  padding-top:10rpx;
+  height: 40rpx;
+  display: flex;
+  line-height: 40rpx;
+  padding-top: 10rpx 0;
   color: #7f7f7f;
-  text-align: right;
+  font-size:25rpx; 
+}
+
+.list .list-time .time{
+  width: 50%;
+  display:flex;
+  border-right: 1px solid #f0f2f2;
+  justify-content: center;
+}
+
+.list .list-time .hot{
+  width: 50%;
+  display:flex;
+  justify-content: center;
 }

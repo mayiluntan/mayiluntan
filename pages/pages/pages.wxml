@@ -72,9 +72,9 @@
     </view>
   </view>
    <view class="recommend">
-    <image class='recommend_l' src='/images/icon_logo_recommend_l.png'></image>
+    <!-- <image class='recommend_l' src='/images/icon_logo_recommend_l.png'></image> -->
     <view>平台推荐认证</view>
-    <image class='recommend_r' src='/images/icon_logo_recommend_r.png'></image>
+    <!-- <image class='recommend_r' src='/images/icon_logo_recommend_r.png'></image> -->
   </view>
   <view class='content'>
     <view class='title'>
@@ -95,12 +95,12 @@
           <view class='list-top'>
             <view>
               <view class='list-title'>
-                <view class='list-cate'>汽车交易</view>
-                <view class='list-nick'>蚂蚁一号</view>
+                <view class='list-cate'>美食餐饮</view>
+                <view class='list-nick'>烧烤</view>
               </view>
               <view class='list-tag'>
-                <view>凯迪拉克</view>
-                <view>两年</view>
+                <view>人均300</view>
+                <view>八折优惠</view>
               </view>
             </view>
             <view class='list-contact'>
@@ -113,7 +113,15 @@
           </view>
         </view>
       </view>
-      <view class='list-time'>发布时间：2018.4.9</view>
+      <!-- <view class='list-time'>发布时间：2018.4.9</view> -->
+      <view class='list-time'>
+      <view class='time'>
+      <view>营业时间：09：00-18：00</view>
+      </view>
+      <view class='hot'>
+      <view>人气：99</view>
+      </view>
+    </view>
     </view>
     </block>
   </view>

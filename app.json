@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/circle/circle",
     "pages/pages/pages",
     "pages/index/index",
     "pages/user/user"
@@ -35,7 +36,7 @@
         "selectedIconPath": "images/s3.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/circle/circle",
         "text": "蚂蚁圈",
         "iconPath": "images/us4.png",
         "selectedIconPath": "images/s4.png"
