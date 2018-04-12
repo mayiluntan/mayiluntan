@@ -1,8 +1,8 @@
 {
   "pages":[
     "pages/circle/circle",
-    "pages/pages/pages",
     "pages/index/index",
+    "pages/pages/pages",
     "pages/user/user"
   ],
   "window":{
