@@ -19,5 +19,11 @@
         <view><image src='/images/c4.png'></image></view>
       </view>
     </view>
+    <view class='circle'>
+      <view class='circle-title'>
+        <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>最新动态</view>
+        <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>今日热点</view>
+      </view>
+    </view>
   </view>
 </view>

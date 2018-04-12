@@ -59,3 +59,20 @@ page{
 .topic .topic3{
   margin-bottom: 2vw;
 }
+.circle{
+  margin-top:20rpx;
+}
+.circle-title{
+  display: flex;
+  border-bottom: 1px solid #efefef;
+}
+.circle-title view{
+  width: 50%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.circle-title .selected-title{
+  color: #f0a232;
+  border-bottom: 2px solid #f0a232;
+}
