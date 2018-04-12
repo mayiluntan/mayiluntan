@@ -1,4 +1,16 @@
 <!--circle.wxml-->
 <view class='container'>
-  
+  <view class='top-search'>
+    <input type='text'/>
+  </view>
+  <view class='banner'>
+      <image src='/images/bg_circle_banner1.png'/>
+  </view>
+  <view class='hot-topic'>
+    <view class='title'>
+      <view class='shu'></view>
+      <view class='text'>热门话题</view>
+      <image class='right_arrow' src='/images/more.png'></image>
+    </view>
+  </view>
 </view>

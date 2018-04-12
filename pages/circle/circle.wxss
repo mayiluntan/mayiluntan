@@ -1,0 +1,59 @@
+/**circle.wxss**/
+page{
+  background: #f2f3f4;
+  font-size:30rpx;
+}
+
+.top-search{
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 15rpx;
+}
+
+.top-search input{
+  width: 90%;
+  background: #fff;
+  border-radius:10rpx;
+  margin: 0 auto;
+  height:2em;
+}
+
+.banner{
+  width: 100%;
+}
+.banner image{
+  width: 100%;
+  height: 58vw;
+}
+
+.hot-topic {
+  margin-top: 20rpx;
+  background: #fff;
+  width: 100%;
+}
+
+.hot-topic .title {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  line-height:33rpx;
+  padding:25rpx 0px;
+}
+
+.hot-topic .title .shu {
+  background: #f0a232;
+  width: 6rpx;
+  height: 26rpx;
+  margin-left: 20rpx;
+  flex-wrap: wrap
+}
+
+.hot-topic .title .text{
+  margin-left: 10rpx;
+}
+
+.hot-topic .title .right_arrow{
+  width: 17rpx;
+  height: 30rpx;
+  align-content: flex-end;
+}
