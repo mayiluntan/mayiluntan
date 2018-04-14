@@ -86,6 +86,10 @@ page{
 }
 
 /**cate**/
+.all-cate{
+  width: 100%;
+  background: #fff;
+}
 .cate{
   background: #fff;
   width: 100%;
@@ -101,6 +105,33 @@ page{
 .cate image{
   width: 80rpx;
   height: 80rpx;
+}
+.cate-menu{
+  width: 100%;
+  background: #fff;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cate-menu view {
+  width: 50%;
+}
+.cate-menu view view{
+  background: #b5bdc0;
+  width: 50rpx;
+  height: 4rpx;
+}
+.cate-menu .cate-menu1{
+  display: flex;
+  justify-content:flex-end;
+  margin-right: 10rpx;
+}
+.cate-menu .cate-menu2 view{
+  margin-left: 10rpx;
+}
+.cate-menu .cate-select{
+  background: #ff9800;
 }
 
 /**recommend**/

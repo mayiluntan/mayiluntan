@@ -1,14 +1,14 @@
-  <!--pages.wxml-->
+<!--pages.wxml-->
 <view class="container">
   <view class="top">
-    <image src='/images/top.png'/>
+    <image src='/images/top.png' />
     <view class='city'>
       <view class='logo'>
-      <image src='/images/ants.png'/>
+        <image src='/images/ants.png' />
       </view>
       <view>堪培拉</view>
       <view class='arrow'>
-      <image src='/images/icon_area_arrow.png'/>
+        <image src='/images/icon_area_arrow.png' />
       </view>
     </view>
     <view class='search'>
@@ -21,57 +21,130 @@
   </view>
   <view class="broadcast">
     <view class='l'>
-      <image src='/images/horn.png'/>
+      <image src='/images/horn.png' />
       <view>恭喜</view>
       <view class='company'>万达集团</view>
       <view>成功入驻本平台</view>
     </view>
   </view>
-  <view class='cate'>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_food.png' />
-     <view>餐饮美食</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_waimai.png' />
-     <view>外卖送餐</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_service.png' />
-     <view>专业服务</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_car_service.png' />
-     <view>汽车服务</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_bianmin.png' />
-     <view>便民家政</view>
-    </view>
+  <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
+    <swiper-item>
+      <view class='cate'>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_food.png' />
+          <view>餐饮美食</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_waimai.png' />
+          <view>外卖送餐</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_service.png' />
+          <view>专业服务</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_car_service.png' />
+          <view>汽车服务</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_bianmin.png' />
+          <view>便民家政</view>
+        </view>
+      </view>
+      <view class='cate'>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_gift.png' />
+          <view>礼品商店</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_yimin.png' />
+          <view>移民教育</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_lvyou.png' />
+          <view>旅游机票</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_market.png' />
+          <view>超市商店</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_doctor.png' />
+          <view>医疗保健</view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='cate'>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_fcjj.png' />
+          <view>房产经济</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_change_money.png' />
+          <view>换汇汇款</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_kuaidi.png' />
+          <view>快递货运</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_meifa.png' />
+          <view>美容美发</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_play.png' />
+          <view>休闲娱乐</view>
+        </view>
+      </view>
+      <view class='cate'>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_hotel.png' />
+          <view>酒店旅馆</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_chongwu_service.png' />
+          <view>宠物服务</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_jiazheng.png' />
+          <view>家政保洁</view>
+        </view>
+        <view class='cate-detail'>
+          <image src='/images/icon_logo_weishang.png' />
+          <view>微商部落</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='cate-menu'>
+    <block wx:if="{{cateSelected==1}}">
+      <view class='cate-menu1'>
+        <view></view>
+      </view>
+      <view class='cate-menu2'>
+        <view class='cate-select'></view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class='cate-menu1'>
+        <view class='cate-select'></view>
+      </view>
+      <view class='cate-menu2'>
+        <view></view>
+      </view>
+    </block>
   </view>
-  <view class='cate'>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_gift.png' />
-     <view>礼品商店</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_yimin.png' />
-     <view>移民教育</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_lvyou.png' />
-     <view>旅游机票</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_market.png' />
-     <view>超市商店</view>
-    </view>
-    <view class='cate-detail'>
-     <image src='/images/icon_logo_doctor.png' />
-     <view>医疗保健</view>
-    </view>
-  </view>
-   <view class="recommend">
+  <swiper class='banner' autoplay="true" interval="2000" duration="500">
+    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+      <swiper-item>
+        <navigator url="{{item.link}}" hover-class="navigator-hover">
+          <image src="{{item.url}}" />
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="recommend">
     <!-- <image class='recommend_l' src='/images/icon_logo_recommend_l.png'></image> -->
     <view>平台推荐认证</view>
     <!-- <image class='recommend_r' src='/images/icon_logo_recommend_r.png'></image> -->
@@ -79,51 +152,52 @@
   <view class='content'>
     <view class='title'>
       <view class='title-border'>
-      <view>全部分类</view>
-      <image src='/images/icon_arrow_down.png' />
+        <view>全部分类</view>
+        <image src='/images/icon_arrow_down.png' />
       </view>
       <view class='title-border2'>
-      <view>排序</view>
-      <image src='/images/icon_arrow_down.png' />
+        <view>排序</view>
+        <image src='/images/icon_arrow_down.png' />
       </view>
     </view>
     <block wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="{{index}}">
-    <view class='list'>
-      <view class='list-main'>
-        <view class='list-pic'><image src='/images/car.png'></image></view>
-        <view>
-          <view class='list-top'>
-            <view>
-              <view class='list-title'>
-                <view class='list-cate'>美食餐饮</view>
-                <view class='list-nick'>烧烤</view>
+      <view class='list'>
+        <view class='list-main'>
+          <view class='list-pic'>
+            <image src='/images/car.png'></image>
+          </view>
+          <view>
+            <view class='list-top'>
+              <view>
+                <view class='list-title'>
+                  <view class='list-cate'>美食餐饮</view>
+                  <view class='list-nick'>烧烤</view>
+                </view>
+                <view class='list-tag'>
+                  <view>人均300</view>
+                  <view>八折优惠</view>
+                </view>
               </view>
-              <view class='list-tag'>
-                <view>人均300</view>
-                <view>八折优惠</view>
+              <view class='list-contact'>
+                <image src='/images/wechat1.png'></image>
+                <image class='list-tel' src='/images/tel1.png'></image>
               </view>
             </view>
-            <view class='list-contact'>
-              <image src='/images/wechat1.png'></image>
-              <image class='list-tel' src='/images/tel1.png'></image>
+            <view class='list-intro'>
+              凯迪拉克 2016款 2.0T 自动档 豪华尊享舒适型,车况良好，五万公里无事故。
             </view>
           </view>
-          <view class='list-intro'>
-          凯迪拉克 2016款 2.0T 自动档 豪华尊享舒适型,车况良好，五万公里无事故。
+        </view>
+        <!-- <view class='list-time'>发布时间：2018.4.9</view> -->
+        <view class='list-time'>
+          <view class='time'>
+            <view>营业时间：09：00-18：00</view>
+          </view>
+          <view class='hot'>
+            <view>人气：99</view>
           </view>
         </view>
       </view>
-      <!-- <view class='list-time'>发布时间：2018.4.9</view> -->
-      <view class='list-time'>
-      <view class='time'>
-      <view>营业时间：09：00-18：00</view>
-      </view>
-      <view class='hot'>
-      <view>人气：99</view>
-      </view>
-    </view>
-    </view>
     </block>
   </view>
 </view>
-

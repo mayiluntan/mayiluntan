@@ -83,38 +83,30 @@
     <swiper-item>
       <view class='cate'>
         <view class='cate-detail'>
-        <image src='/images/icon_logo_chuzu.png' />
-        <view>房屋出租</view>
+        <image src='/images/icon_logo_chongwu.png' />
+        <view>宠物相关</view>
         </view>
         <view class='cate-detail'>
-        <image src='/images/icon_logo_qiuzu.png' />
-        <view>房屋求租</view>
+        <image src='/images/icon_logo_jiaocai.png' />
+        <view>二手教材</view>
         </view>
         <view class='cate-detail'>
-        <image src='/images/i1.png' />
-        <view>二手市场</view>
+        <image src='/images/icon_logo_fangchan.png' />
+        <view>二手房产</view>
         </view>
         <view class='cate-detail'>
-        <image src='/images/icon_logo_qiuzhi.png' />
-        <view>求职招聘</view>
+        <image src='/images/icon_logo_jiaoyou.png' />
+        <view>同城交友</view>
         </view>
         <view class='cate-detail'>
-        <image src='/images/icon_logo_buy_car.png' />
-        <view>汽车交易</view>
+        <image src='/images/icon_logo_jiaju.png' />
+        <view>家居家居</view>
         </view>
       </view>
       <view class='cate'>
         <view class='cate-detail'>
-        <image src='/images/icon_logo_chuzu.png' />
-        <view>更多</view>
-        </view>
-        <view class='cate-detail'>
-        <image src='/images/icon_logo_qiuzu.png' />
-        <view>更多</view>
-        </view>
-        <view class='cate-detail'>
-        <image src='/images/i1.png' />
-        <view>更多</view>
+        <image src='/images/icon_logo_shuma.png' />
+        <view>数码电子</view>
         </view>
       </view>
     </swiper-item>

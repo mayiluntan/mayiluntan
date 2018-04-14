@@ -7,5 +7,11 @@ Page({
   },
   onLoad: function () {
 
+  },
+
+  swiperChange(e) {
+    this.setData({
+      cateSelected: e.detail.current
+    });
   }
 })
