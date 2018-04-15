@@ -1,0 +1,104 @@
+/* pages/publish/publish.wxss */
+page{
+  background: #f0a232;
+}
+.container{
+  height: 100%;
+}
+.top{
+  width: 100%;
+  height: 55vw;
+  background: #fff;
+  text-align: right;
+  padding-right: 5vw;
+}
+.top .title{
+  margin-top: 40rpx;
+  font-size: 25px;
+  font-weight: bold;
+}
+.top .content{
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.top .content .c1{
+  color: #7d4b00;
+}
+.top .content .c2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left:20rpx;
+}
+.top .c3{
+  margin-top: 20rpx;
+  color: #aa7000;
+  font-size: 12px;
+}
+.top .content image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.logo{
+  background: #fff;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 15vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40vw;
+}
+.logo image{
+  width: 22vw;
+  height: 22vw;
+}
+.bottom{
+  width: 100%;
+  padding-top: 24vw;
+}
+.bottom .arrow{
+  margin: 0 auto;
+  width: 25rpx;
+  height: 20rpx;
+}
+.bottom .arrow image{
+  width: 25rpx;
+  height: 14rpx;
+}
+.bottom .button{
+  display: flex;
+  justify-content: center;
+  padding-top: 10vw;
+}
+.bottom .button .img{
+  width: 18vw;
+  height: 18vw;
+  background: #fff;
+  border-radius: 9vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bottom .button image{
+  width: 10vw;
+  height: 10vw;
+}
+.bottom .button .mid{
+  margin: 0 13vw;
+}
+.bottom .button .word{
+  text-align: center;
+  color: #fff;
+  padding-top: 20rpx;
+  font-size: 16px;
+}
+.bottom .tips{
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 12vw;
+}
+
