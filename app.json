@@ -21,8 +21,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/icon_city_normal.png",
-        "selectedIconPath": "images/icon_city.png"
+        "iconPath": "images/us1.png",
+        "selectedIconPath": "images/s1.png"
       },
       {
         "pagePath": "pages/pages/pages",
