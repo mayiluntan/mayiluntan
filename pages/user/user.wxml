@@ -24,34 +24,9 @@
   </view>
   <view class='division'></view>
   <view class='list'>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l1.png'></image></view>
-      <view class='middle'>个人主页</view>
-      <view class='right'><image src='/images/more.png'></image></view>
-    </view>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l2.png'></image></view>
-      <view class='middle'>帖子管理</view>
-      <view class='right'><image src='/images/more.png'></image></view>
-    </view>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l3.png'></image></view>
-      <view class='middle'>动态管理</view>
-      <view class='right'><image src='/images/more.png'></image></view>
-    </view>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l4.png'></image></view>
-      <view class='middle'>关注的人</view>
-      <view class='right'><image src='/images/more.png'></image></view>
-    </view>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l5.png'></image></view>
-      <view class='middle'>我的收藏</view>
-      <view class='right'><image src='/images/more.png'></image></view>
-    </view>
-    <view class='list-detail'>
-      <view class='left'><image src='/images/user_l6.png'></image></view>
-      <view class='middle'>关于我们</view>
+    <view class='list-detail' wx:for="{{list}}" wx:key="index" bindtap='listClick' data-page='{{item.page}}'>
+      <view class='left'><image src='/images/user_l{{index+1}}.png'></image></view>
+      <view class='middle'>{{item.name}}</view>
       <view class='right'><image src='/images/more.png'></image></view>
     </view>
   </view>

@@ -135,15 +135,6 @@
       </view>
     </block>
   </view>
-  <swiper class='banner' autoplay="true" interval="2000" duration="500">
-    <block wx:for="{{imgUrls}}" wx:key="{{index}}">
-      <swiper-item>
-        <navigator url="{{item.link}}" hover-class="navigator-hover">
-          <image src="{{item.url}}" />
-        </navigator>
-      </swiper-item>
-    </block>
-  </swiper>
   <view class="recommend">
     <!-- <image class='recommend_l' src='/images/icon_logo_recommend_l.png'></image> -->
     <view>平台推荐认证</view>

@@ -4,7 +4,8 @@
     "pages/circle/circle",
     "pages/index/index",
     "pages/pages/pages",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/user/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
