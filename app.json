@@ -5,7 +5,11 @@
     "pages/index/index",
     "pages/pages/pages",
     "pages/user/user",
-    "pages/user/about/about"
+    "pages/user/about/about",
+    "pages/user/collect/collect",
+    "pages/user/attentions/attentions",
+    "pages/user/manageActive/manageActive",
+    "pages/user/managePost/managePost"
   ],
   "window": {
     "backgroundTextStyle": "light",

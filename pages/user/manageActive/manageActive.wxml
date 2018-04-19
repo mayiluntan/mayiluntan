@@ -1,0 +1,110 @@
+<!--pages/user/manageActive/manageActive.wxml-->
+<view class='container'>
+  <view class='circle'>
+    <view class='circle-title'>
+      <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>我的</view>
+      <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>回复</view>
+    </view>
+    <view class='circle-list'>
+      <view class='circle-head'>
+        <image src='/images/head.png'></image>
+      </view>
+      <view>
+        <view class='circle-nick'>可爱的桃子
+          <image src='/images/female.png'></image>
+          <view class='cancle-collect'>删除</view>
+        </view>
+        <view class='circle-tags'>
+          <label>18岁</label>
+          <label>北美</label>
+        </view>
+        <view class='circle-content'>倩女幽魂好恐怖，有没有人一起？</view>
+        <view class='circle-pics'>
+          <image src='/images/tmp.png'></image>
+          <image src='/images/tmp.png'></image>
+          <image class='circle-pics-last' src='/images/tmp.png'></image>
+        </view>
+        <view class='circle-btn'>
+          <view>
+            <image src='/images/thumbs_up.png'></image>
+          </view>
+          <view>
+            <image src='/images/comment.png'></image>
+          </view>
+        </view>
+        <view class='circle-replys'>
+          <view class='circle-thumbs-up'>
+            <image src='/images/thumbs_up.png'></image>
+            <view class='num'>12</view>
+            <label>大大小小</label>
+            <view>,</view>
+            <label>我最厉害</label>
+            <view>,</view>
+            <label>嗯嗯</label>
+            <view>,</view>
+            <label>超级棒</label>
+          </view>
+          <view class='circle-reply'>
+            <view>
+              <label>大大小小</label>：世间安得两全法，不负如来不负卿</view>
+            <view>
+              <label>我最厉害</label> 回复
+              <label>大大小小</label>：棒棒哒</view>
+            <view>
+              <label>牛魔王</label>：我就喜欢最后一张图</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='circle-list'>
+      <view class='circle-head'>
+        <image src='/images/head.png'></image>
+      </view>
+      <view>
+        <view class='circle-nick'>可爱的桃子
+          <image src='/images/female.png'></image>
+        </view>
+        <view class='circle-tags'>
+          <label>18岁</label>
+          <label>北美</label>
+        </view>
+        <view class='circle-content'>倩女幽魂好恐怖，有没有人一起？</view>
+        <view class='circle-pics'>
+          <image src='/images/tmp.png'></image>
+          <image src='/images/tmp.png'></image>
+          <image class='circle-pics-last' src='/images/tmp.png'></image>
+        </view>
+        <view class='circle-btn'>
+          <view>
+            <image src='/images/thumbs_up.png'></image>
+          </view>
+          <view>
+            <image src='/images/comment.png'></image>
+          </view>
+        </view>
+        <view class='circle-replys'>
+          <view class='circle-thumbs-up'>
+            <image src='/images/thumbs_up.png'></image>
+            <view class='num'>12</view>
+            <label>大大小小</label>
+            <view>,</view>
+            <label>我最厉害</label>
+            <view>,</view>
+            <label>嗯嗯</label>
+            <view>,</view>
+            <label>超级棒</label>
+          </view>
+          <view class='circle-reply'>
+            <view>
+              <label>大大小小</label>：世间安得两全法，不负如来不负卿</view>
+            <view>
+              <label>我最厉害</label> 回复
+              <label>大大小小</label>：棒棒哒</view>
+            <view>
+              <label>牛魔王</label>：我就喜欢最后一张图</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

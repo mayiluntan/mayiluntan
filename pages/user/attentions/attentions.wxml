@@ -1,0 +1,37 @@
+<view class='container'>
+  <view class='circle'>
+    <view class='circle-title'>
+      <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>我关注的</view>
+      <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>关注我的</view>
+    </view>
+    <view class='circle-list'>
+      <view class='circle-head'>
+        <image src='/images/head.png'></image>
+      </view>
+      <view>
+        <view class='circle-nick'>可爱的桃子
+          <image src='/images/female.png'></image>
+          <view class='cancle-collect'>取消关注</view>
+        </view>
+        <view class='circle-tags'>
+          <label>18岁</label>
+          <label>北美</label>
+        </view>
+      </view>
+    </view>
+    <view class='circle-list'>
+      <view class='circle-head'>
+        <image src='/images/head.png'></image>
+      </view>
+      <view>
+        <view class='circle-nick'>可爱的桃子
+          <image src='/images/female.png'></image>
+        </view>
+        <view class='circle-tags'>
+          <label>18岁</label>
+          <label>北美</label>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
