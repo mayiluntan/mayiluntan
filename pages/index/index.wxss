@@ -121,7 +121,7 @@ page{
 .cate .cate-detail{
   width: 20%;
   text-align: center;
-  padding: 18rpx 0;
+  padding: 16rpx 0;
 }
 .cate image{
   width: 80rpx;
