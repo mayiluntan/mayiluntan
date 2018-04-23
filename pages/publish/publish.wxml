@@ -18,15 +18,15 @@
     <view class='arrow'><image src='/images/publish_arrow.png'></image></view>
     <view class='arrow'><image src='/images/publish_arrow.png'></image></view>
     <view class='button'>
-      <view>
+      <view bindtap='btnClick' data-type='1'>
         <view class='img'><image src='/images/publish_1.png'></image></view>
         <view class='word'>便民信息</view>
       </view>
-      <view class='mid'>
+      <view class='mid' bindtap='btnClick' data-type='2'>
         <view class='img'><image src='/images/publish_2.png'></image></view>
         <view class='word'>店铺入驻</view>
       </view>
-      <view>
+      <view bindtap='btnClick' data-type='3'>
         <view class='img'><image src='/images/publish_3.png'></image></view>
         <view class='word'>交友互动</view>
       </view>

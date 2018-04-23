@@ -1,23 +1,26 @@
 // pages/publish/publish.js
-Component({
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
-  },
+Page({
 
   /**
-   * 组件的初始数据
+   * 页面的初始数据
    */
   data: {
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
   },
-
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  btnClick(e){
+    var t = e.currentTarget.dataset.type;
+    if (t==1){
+      wx.navigateTo({
+        url: '/pages/publish/post/post',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
   }
 })
