@@ -9,7 +9,8 @@
     "pages/user/collect/collect",
     "pages/user/attentions/attentions",
     "pages/user/manageActive/manageActive",
-    "pages/user/managePost/managePost"
+    "pages/user/managePost/managePost",
+    "pages/user/personalPage/personalPage"
   ],
   "window": {
     "backgroundTextStyle": "light",
