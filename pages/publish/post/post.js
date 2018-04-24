@@ -7,7 +7,10 @@ Page({
    */
   data: {
     pics:[],
-    picCount:0
+    picCount:0,
+    index:0,
+    cateArray:['二手车','租房租赁','xxx'],
+    on:1
   },
 
   /**
@@ -36,6 +39,25 @@ Page({
         });
         console.log(that.data.pics);
       }
+    })
+  },
+  cateChange(e){
+    var v=e.detail.value;
+    if(this.data.index!=v){
+      this.setData({
+        index:v
+      })
+    } 
+  },
+  clickSwitch(e){
+    var v=this.data.on;
+    if(v==1){
+      v=0
+    }else{
+      v=1
+    }
+    this.setData({
+      on:v
     })
   }
 })

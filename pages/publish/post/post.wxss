@@ -13,8 +13,10 @@ page {
   height: 300rpx;
   overflow: auto;
 }
+.cate{
+  padding: 20rpx 0;
+}
 .pic{
-  border:1px dashed #b3b3b6;
   width: 200rpx;
   height: 200rpx;
 }
@@ -35,14 +37,42 @@ page {
   margin-left: 5vw;
 }
 .detail .detail-list image{
-  width: 35rpx;
-  height: 35rpx;
+  width: 20rpx;
+  height: 24rpx;
   margin-right: 20rpx;
 }
 .detail .detail-list input{
   flex: 1;
 }
 .detail .detail-list .more{
-  width: 20rpx;
-  height: 35rpx;
+  width: 14rpx;
+  height: 24rpx;
+}
+.division{
+  width: 100%;
+  height: 30rpx;
+  background: #f2f3f4;
+}
+.to-top{
+  display: flex;
+  align-items: center;
+}
+.to-top .switch{
+  width: 80rpx;
+  height: 40rpx;
+  background: #32b16c;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.to-top .off{
+  justify-content:flex-start;
+  background: #d9d9d9;
+}
+.to-top .switch view{
+  background: #fff;
+  width: 39rpx;
+  height: 39rpx;
+  border:2rpx solid #cfcfcf;
+  border-radius:39rpx;
 }

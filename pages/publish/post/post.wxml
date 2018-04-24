@@ -1,24 +1,36 @@
 <!--pages/publish/post/post.wxml-->
 <view class='main'>
-  <view class='content border-bottom'>
+  <view class='content'>
+    <view class='cate'>
+     <picker bindchange="cateChange" value="{{index}}" range="{{cateArray}}">
+      <view>
+       <text>发布分类：{{cateArray[index]}}</text>
+      </view>
+     </picker>
+    </view>
     <textarea bindinput='contentInput' placeholder='请输入想要发布的内容' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
     <view class='pic' bindtap='addPic'>
-      <image></image>
+      <image src='/images/post/add.png'></image>
     </view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><image src='/images/comment.png'></image><input placeholder="江苏省无锡市"></input><image class='more' src='/images/more.png'></image></view>
+    <view class='detail-list'><image src='/images/post/local.png'></image><input placeholder="江苏省无锡市"></input><image class='more' src='/images/post/more.png'></image></view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><image src='/images/comment.png'></image><input placeholder="请输入您的电话号码"></input></view>
+    <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入您的电话号码"></input></view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><image src='/images/comment.png'></image><input placeholder="价格"></input></view>
+    <view class='detail-list'><image src='/images/post/price.png'></image><input placeholder="价格"></input></view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><image src='/images/comment.png'></image><input placeholder="标签1"></input></view>
+    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1"></input></view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><image src='/images/comment.png'></image><input placeholder="标签2"></input></view>
+    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2"></input></view>
+  </view>
+  <view class='division'></view>
+  <view class='to-top'>
+  <text>我要置顶</text>
+  <view class="switch {{on==1?'':' off'}}" bindtap='clickSwitch' data-on='{{on}}'><view></view></view>
   </view>
 </view>
