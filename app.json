@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/pages/pagePost/pagePost",
     "pages/publish/post/post",
     "pages/publish/publish",
     "pages/circle/circle",
@@ -10,8 +11,7 @@
     "pages/user/collect/collect",
     "pages/user/attentions/attentions",
     "pages/user/manageActive/manageActive",
-    "pages/user/managePost/managePost",
-    "pages/user/personalPage/personalPage"
+    "pages/user/managePost/managePost"
   ],
   "window": {
     "backgroundTextStyle": "light",

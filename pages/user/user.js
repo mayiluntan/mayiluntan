@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   data: {
     list: [
-      { name: '个人主页', page: '/pgaes/user/personalPage/personalPage' },
+      { name: '个人主页', page: '' },
       { name: '帖子管理', page: '/pages/user/managePost/managePost' },
       { name: '动态管理', page: '/pages/user/manageActive/manageActive' },
       { name: '关注的人', page: '/pages/user/attentions/attentions' },
