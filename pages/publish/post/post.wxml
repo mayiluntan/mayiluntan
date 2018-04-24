@@ -1,35 +1,36 @@
 <!--pages/publish/post/post.wxml-->
-<view class='container'>
-  <view class='content border-bottom'>
-    <textarea bindinput='contentInput' placeholder='快告诉小伙伴活动有多好吧~' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
-    <view class='tip content-lightcolor'>{{tip}}</view>
+<view class='main'>
+  <view class='content'>
+    <view class='cate'>
+     <picker bindchange="cateChange" value="{{index}}" range="{{cateArray}}">
+      <view>
+       <text>发布分类：{{cateArray[index]}}</text>
+      </view>
+     </picker>
+    </view>
+    <textarea bindinput='contentInput' placeholder='请输入想要发布的内容' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
+    <view class='pic' bindtap='addPic'>
+      <image src='/images/post/add.png'></image>
+    </view>
   </view>
-  <view class='wrap'>
-    <view class='cell' wx:if="{{videoCount > 0}}">
-      <image src='/images/base/logo192.png' class='image' mode='aspectFill' bindtap='videoClicked'>
-          <view class='cover-back'>
-            <image class='cover' src='/images/act/act_videocover.png'></image>
-          </view>
-      </image>
-      <image src='/images/agent/agent_commentdelete.png' class='delete' catchtap='deleteVideoClicked'></image>
-    </view><!-- video -->
-    <block wx:for="{{pics}}" wx:key="url">
-    <view class='cell'>
-      <image src='{{item}}' class='image' mode='aspectFill' data-index='{{index}}' bindtap='imageClicked'></image>
-      <image src='/images/agent/agent_commentdelete.png' class='delete' data-index='{{index}}' catchtap='deletePicClicked'></image><!-- delete -->
-    </view><!-- image -->
-    </block>
-    <view class='cell' wx:if="{{videoCount < MaxVideoCount}}">
-      <image src='/images/agent/agent_commentvideo.png' class='image video-add' bindtap='addVideo'>
-      </image>
-      <text>{{videoCount}}/{{MaxVideoCount}}</text>
-    </view><!-- video add button -->
-    <view class='cell' wx:if="{{picCount < MaxPicCount}}">
-      <image src='/images/agent/agent_commentpic.png' class='image pic-add' bindtap='addPic'>
-        <text>{{picCount}}/{{MaxPicCount}}</text>
-      </image>
-    </view><!-- pic add button -->
-  </view><!-- wrap -->
-  <video id='video' class='video' src='{{video.tempFilePath}}' bindfullscreenchange='fullScreenChange' wx:if="{{video}}"></video>
-  <button class='default-button submit-buttoncolor submit' disabled='{{buttonDisabled}}' bindtap='submitClicked'>提交</button>
+  <view class='detail'>
+    <view class='detail-list'><image src='/images/post/local.png'></image><input placeholder="江苏省无锡市"></input><image class='more' src='/images/post/more.png'></image></view>
+  </view>
+  <view class='detail'>
+    <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入您的电话号码"></input></view>
+  </view>
+  <view class='detail'>
+    <view class='detail-list'><image src='/images/post/price.png'></image><input placeholder="价格"></input></view>
+  </view>
+  <view class='detail'>
+    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1"></input></view>
+  </view>
+  <view class='detail'>
+    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2"></input></view>
+  </view>
+  <view class='division'></view>
+  <view class='to-top'>
+  <text>我要置顶</text>
+  <view class="switch {{on==1?'':' off'}}" bindtap='clickSwitch' data-on='{{on}}'><view></view></view>
+  </view>
 </view>
