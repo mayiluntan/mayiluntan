@@ -53,9 +53,29 @@ page {
   height: 30rpx;
   background: #f2f3f4;
 }
-.to-top{
+.top-list{
+  width: 95vw;
+  padding:30rpx 0;
+  margin-left: 5vw;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #efefef;
+}
+.top-list image{
+  width: 14rpx;
+  height: 24rpx;
+  margin:0 20rpx;
+}
+.top-list .price,.day{
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+.top-list .price{
+ margin-right: 20rpx; 
+}
+.to-top text{
+  flex: 1;
 }
 .to-top .switch{
   width: 80rpx;
@@ -64,6 +84,7 @@ page {
   border-radius: 30rpx;
   display: flex;
   justify-content: flex-end;
+  margin-right:20rpx;
 }
 .to-top .off{
   justify-content:flex-start;

@@ -8,8 +8,8 @@ Page({
   data: {
     pics:[],
     picCount:0,
-    index:0,
-    cateArray: ['房屋出租', '房屋求租', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
+    indexArray:[0,0],
+    cateArray:[['首页','黄页'], ['房屋出租', '房屋求租', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子']],
     on:1
   },
 
@@ -42,12 +42,26 @@ Page({
     })
   },
   cateChange(e){
+    //console.log(e)
     var v=e.detail.value;
     if(this.data.index!=v){
       this.setData({
         index:v
       })
     } 
+  },
+  columnChange: function (e) {
+    if (e.detail.column==1){
+      return;
+    }
+    var cateArray = this.data.cateArray
+    switch (e.detail.value) {
+      case 0: cateArray[1] = ['房屋出租', '房屋求租', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'];break;
+      case 1: cateArray[1] = ['cate1', 'cate2', 'cate3'];break;
+    }
+    this.setData({
+      cateArray:cateArray
+    })
   },
   clickSwitch(e){
     var v=this.data.on;

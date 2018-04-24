@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/pages/pagePost/pagePost",
     "pages/publish/post/post",
+    "pages/pages/pagePost/pagePost",
     "pages/publish/publish",
     "pages/circle/circle",
     "pages/index/index",
