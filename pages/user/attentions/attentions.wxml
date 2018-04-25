@@ -8,9 +8,12 @@
       <view class='circle-head'>
         <image src='/images/head.png'></image>
       </view>
-      <view>
-        <view class='circle-nick'>可爱的桃子
-          <image src='/images/female.png'></image>
+      <view class='circle-detail'>
+        <view class='circle-nick'>
+          <view class='circle-show'>
+            <text>可爱的桃子</text>
+            <image src='/images/female.png'></image>
+          </view>
           <view class='cancle-collect'>取消关注</view>
         </view>
         <view class='circle-tags'>
@@ -23,9 +26,13 @@
       <view class='circle-head'>
         <image src='/images/head.png'></image>
       </view>
-      <view>
-        <view class='circle-nick'>可爱的桃子
-          <image src='/images/female.png'></image>
+      <view class='circle-detail'>
+        <view class='circle-nick'>
+          <view class='circle-show'>
+            <text>可爱的桃子</text>
+            <image src='/images/female.png'></image>
+          </view>
+          <view class='cancle-collect'>取消关注</view>
         </view>
         <view class='circle-tags'>
           <label>18岁</label>

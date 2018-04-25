@@ -1,15 +1,15 @@
 {
   "pages": [
+    "pages/user/attentions/attentions",
+    "pages/publish/publish",
     "pages/publish/post/post",
     "pages/pages/pagePost/pagePost",
-    "pages/publish/publish",
     "pages/circle/circle",
     "pages/index/index",
     "pages/pages/pages",
     "pages/user/user",
     "pages/user/about/about",
     "pages/user/collect/collect",
-    "pages/user/attentions/attentions",
     "pages/user/manageActive/manageActive",
     "pages/user/managePost/managePost"
   ],

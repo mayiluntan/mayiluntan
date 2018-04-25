@@ -97,3 +97,19 @@ page {
   border:2rpx solid #cfcfcf;
   border-radius:39rpx;
 }
+.button{
+  width: 100%;
+  height: 100rpx;
+  background: #f2f3f4;
+  padding-top:100rpx;
+}
+.button view{
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  background: #f0a232;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}

@@ -33,13 +33,16 @@
     <text>我要置顶</text>
     <view class="switch {{on==1?'':' off'}}" bindtap='clickSwitch' data-on='{{on}}'><view></view></view>
   </view>
-  <view class='top-list'>
-    <text>我要置顶</text>
+  <view class='top-list' wx:if='{{on==1}}'>
+    <text>选择置顶时间</text>
     <text  class='day'>1天</text>
     <image src='/images/post/more.png'></image>
   </view>
-  <view class='top-list'>
+  <view class='top-list' wx:if='{{on==1}}'>
     <text>价格</text>
     <text  class='price'>¥10</text>
+  </view>
+  <view class='button'>
+    <view>立即发布</view>
   </view>
 </view>

@@ -32,26 +32,28 @@ page {
 }
 
 .circle .circle-head {
-  width: 15vw;
+  width: 17vw;
 }
 
 .circle .circle-head image {
   width: 12vw;
   height: 12vw;
 }
-
+.circle .circle-detail{
+  width: 100%;
+}
 .circle .circle-nick {
   width: 100%;
   display: flex;
-   align-items: center; 
+  align-items: center; 
   height: 50rpx;
 }
-
+.circle .circle-nick .circle-show{
+  flex: 1;
+}
 .circle .circle-nick image {
   width: 30rpx;
   height: 30rpx;
-  flex: 1;
-  margin-left: 20rpx;
 }
 
 .circle .circle-nick .cancle-collect {
