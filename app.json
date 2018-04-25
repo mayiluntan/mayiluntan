@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/user/attentions/attentions",
-    "pages/publish/publish",
     "pages/publish/post/post",
+    "pages/publish/publish",
+    "pages/user/attentions/attentions",
     "pages/pages/pagePost/pagePost",
     "pages/circle/circle",
     "pages/index/index",
