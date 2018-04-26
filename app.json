@@ -11,7 +11,8 @@
     "pages/user/about/about",
     "pages/user/collect/collect",
     "pages/user/manageActive/manageActive",
-    "pages/user/managePost/managePost"
+    "pages/user/managePost/managePost",
+    "pages/error/error"
   ],
   "window": {
     "backgroundTextStyle": "light",

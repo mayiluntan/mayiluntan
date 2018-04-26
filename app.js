@@ -1,39 +1,96 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+    this.getUserAuth()
+  },
+  getUserAuth() {
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
+        if (res.authSetting['scope.userInfo'] || res.authSetting['scope.userInfo'] == undefined) {
+          this.appGetUserInfo();
+        } else {
+          //console.log(2)
+          wx.navigateTo({
+            url: '/pages/error/error'
           })
+          //this.showAuthTips();
         }
       }
     })
   },
+  appGetUserInfo() {
+    wx.getUserInfo({
+      success: res => {
+        // 可以将 res 发送给后台解码出 unionId
+        this.globalData.userInfo = res.userInfo
+        // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+        // 所以此处加入 callback 以防止这种情况
+        this.wxLogin();
+        if (this.userInfoReadyCallback) {
+          this.userInfoReadyCallback(res)
+        }
+      },
+      fail: res => {
+        wx.navigateTo({
+          url: '/pages/error/error',
+        })
+        //this.showAuthTips();
+      }
+    })
+  },
   globalData: {
-    userInfo: null
+    apiUrl: 'https://www.wingycloud.com/mayi/api/',
+    userInfo: null,
+    uid: null,
+    lon: 0,
+    lat: 0
+  },
+  wxOpneSetting() {
+    wx.openSetting({
+      success: (res) => {
+        if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
+          this.appGetUserInfo()
+        }
+        if (res.authSetting["scope.userLocation"]) {
+          //this.globalData.cityChage = true;
+          //this.globalData.getNewIndex = true;
+        }
+      }, fail: function (res) { }
+    })
+  },
+  wxLogin() {
+    var that = this;
+    wx.login({
+      success: function (loginCode) {
+        let uinfo = that.globalData.userInfo
+        wx.request({
+          url: that.globalData.apiUrl + 'get_openid.php',
+          data: { code: loginCode.code, uinfo: uinfo },
+          method: "POST",
+          success: function (res) {
+            console.log(res)
+            if (res.data.ret == 1) {
+              that.globalData.uid = res.data.data
+              if (that.wxLoginCallback) {
+                that.wxLoginCallback()
+              }
+            } else {
+              that.showTips(res.data.title, res.data.msg, false);
+            }
+          }
+        })
+      }
+    })
+  },
+  showTips(title, content, showCancel) {
+    if (!title || !content) {
+      return;
+    }
+    wx.showModal({
+      title: title,
+      content: content,
+      showCancel: showCancel
+    })
   }
 })
