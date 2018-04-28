@@ -40,7 +40,7 @@ App({
     })
   },
   globalData: {
-    apiUrl: 'https://www.wingycloud.com/mayi/api/',
+    apiUrl: 'https://www.haiwaixiaomayi.com/api/',
     userInfo: null,
     uid: null,
     lon: 0,
@@ -69,7 +69,6 @@ App({
           data: { code: loginCode.code, uinfo: uinfo },
           method: "POST",
           success: function (res) {
-            console.log(res)
             if (res.data.ret == 1) {
               that.globalData.uid = res.data.data
               if (that.wxLoginCallback) {
