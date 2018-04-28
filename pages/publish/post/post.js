@@ -24,7 +24,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.wxPay()
   },
   addPic() {
     var that = this;
@@ -89,10 +88,9 @@ Page({
     })
   },
   wxPay(){
-    var uid ='SGRFWW8yY0tvY2tQWnc4M1lrVVpPczZreCtHK1RiU1BnOWN0UU90K3hZaz0';
     wx.request({
       url: app.globalData.apiUrl+'pay.php',
-      data: { uid: uid},
+      data: { uid: app.globalData.uid},
       method:'POST',
       success:res=>{
         console.log(res)
