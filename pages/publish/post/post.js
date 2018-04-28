@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.wxPay()
   },
   addPic() {
     var that = this;
@@ -86,6 +86,33 @@ Page({
     }
     this.setData({
       on: v
+    })
+  },
+  wxPay(){
+    var uid ='SGRFWW8yY0tvY2tQWnc4M1lrVVpPczZreCtHK1RiU1BnOWN0UU90K3hZaz0';
+    wx.request({
+      url: app.globalData.apiUrl+'pay.php',
+      data: { uid: uid},
+      method:'POST',
+      success:res=>{
+        console.log(res)
+        if (res.data.ret == 1) {
+          wx.requestPayment({
+            'timeStamp': res.data.data.timeStamp,
+            'nonceStr': res.data.data.nonceStr,
+            'package': res.data.data.package,
+            'signType': 'MD5',
+            'paySign': res.data.data.paySign,
+            'success': function (res) {console.log(res) },
+            'fail': function (res) { },
+            'complete': function (res) {
+              console.log('123')
+            }
+          })
+        } else {
+          app.showTips(res.data.title, res.data.msg, false);
+        }
+      }
     })
   }
 })
