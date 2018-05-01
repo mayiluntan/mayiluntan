@@ -92,5 +92,16 @@ App({
       content: content,
       showCancel: showCancel
     })
+  }, 
+  showAuthTips(content) {
+    wx.showModal({
+      title: '提示',
+      content: content == '' ? '您点击了拒绝授权，将无法正常使用，点击确定重新获取授权。' : content,
+      success: res => {
+        if (res.confirm) {
+          this.wxOpneSetting();
+        }
+      }
+    })
   }
 })

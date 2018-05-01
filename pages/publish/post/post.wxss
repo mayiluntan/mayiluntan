@@ -5,7 +5,7 @@ page {
 }
 .content {
   margin: 0 5vw;
-  padding: 50rpx 0;
+  padding-bottom: 50rpx;
   position: relative;
 }
 .content textarea {
@@ -17,12 +17,13 @@ page {
   padding: 20rpx 0;
 }
 .pic{
-  width: 200rpx;
+  display: flex;
   height: 200rpx;
 }
 .pic image{
   width: 200rpx;
   height: 200rpx;
+  margin-right: 20rpx;
 }
 .detail{
   width: 100%;
@@ -78,10 +79,10 @@ page {
   flex: 1;
 }
 .to-top .switch{
-  width: 80rpx;
-  height: 40rpx;
+  width: 90rpx;
+  height: 50rpx;
   background: #32b16c;
-  border-radius: 30rpx;
+  border-radius: 50rpx;
   display: flex;
   justify-content: flex-end;
   margin-right:20rpx;
@@ -92,10 +93,10 @@ page {
 }
 .to-top .switch view{
   background: #fff;
-  width: 39rpx;
-  height: 39rpx;
+  width: 48rpx;
+  height: 48rpx;
   border:2rpx solid #cfcfcf;
-  border-radius:39rpx;
+  border-radius:48rpx;
 }
 .button{
   width: 100%;

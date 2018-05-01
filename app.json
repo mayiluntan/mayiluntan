@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/publish/post/post",
     "pages/publish/publish",
     "pages/user/attentions/attentions",
     "pages/pages/pagePost/pagePost",
     "pages/circle/circle",
-    "pages/index/index",
     "pages/pages/pages",
     "pages/user/user",
     "pages/user/about/about",
