@@ -24,7 +24,7 @@ Page({
     cityIndex:[0,0,0],
     stateNameArray: [
       ['中国', '韩国'],
-      ['美国', '加拿大']
+      ['美国', '加拿大','墨西哥']
     ],
     cityNameArray: [
       [
@@ -33,10 +33,12 @@ Page({
       ],
       [
         ['洛杉矶', '纽约'],
-        ['多伦多', '温哥华']
+        ['多伦多', '温哥华'],
+        ['墨西哥城']
       ]
     ],
-    firstIndex:0
+    orgIndex:[0,0,0],
+    orgCity:[]
   },
   
   onLoad: function () {
@@ -49,6 +51,10 @@ Page({
       }
     })
     this.getIndexList()
+    var cityArray = this.data.cityArray
+    this.setData({
+      orgCity: cityArray
+    })
   },
   getIndexList(){
     wx.request({
@@ -83,9 +89,12 @@ Page({
   },
   cityChange(e){
     var v = e.detail.value;
-    if (this.data.index != v) {
+    var cityArray = this.data.cityArray
+    if (this.data.cityIndex != v) {
       this.setData({
-        cityIndex: v
+        cityIndex: v,
+        orgIndex:v,
+        orgCity: cityArray
       })
     }
   },
@@ -98,17 +107,31 @@ Page({
     var cityArray = this.data.cityArray
     var cityIndex = this.data.cityIndex
     if (column==0){
+      cityIndex = [value,0,0]
       this.setData({
-        firstIndex:value
+        cityIndex: cityIndex
       })
       //选择洲
       cityArray[1] = this.data.stateNameArray[value]
       cityArray[2] = this.data.cityNameArray[value][0]
     }else{
-      cityArray[2] = this.data.cityNameArray[this.data.firstIndex][value]
+      cityIndex[1] = value;
+      cityIndex[2] = 0;
+      this.setData({
+        cityIndex: cityIndex
+      })
+      cityArray[2] = this.data.cityNameArray[cityIndex[0]][value]
     }
     this.setData({
       cityArray: cityArray
+    })
+  },
+  columnCancel(e){
+    var orgIndex = this.data.orgIndex
+    var orgCity = this.data.orgCity
+    this.setData({
+      cityIndex: orgIndex,
+      cityArray: orgCity
     })
   }
 })
