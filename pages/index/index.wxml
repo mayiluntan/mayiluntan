@@ -8,12 +8,16 @@
     </view>
     <view class='city'>
       <view class='logo'>
-      <image src='/images/ants.png'/>
+        <image src='/images/ants.png'/>
       </view>
-      <view>堪培拉</view>
-      <view class='arrow'>
-      <image src='/images/icon_area_arrow.png'/>
-      </view>
+      <picker mode="multiSelector" bindchange="cityChange" bindcolumnchange="columnChange" value="{{cityIndex}}" range="{{cityArray}}">
+        <view class='city-picker'>
+          <view>{{cityArray[2][cityIndex[2]]}}</view>
+          <view class='arrow'>
+            <image src='/images/icon_area_arrow.png'/>
+          </view>
+        </view>
+      </picker>
     </view>
     <view class='search'>
       <input type='text' />

@@ -15,7 +15,28 @@ Page({
     cateIndex:0,
     orderArray:['排序','时间','置顶'],
     orderIndex:0,
-    listData:[]
+    listData:[],
+    cityArray:[
+      ['亚洲','北美'],
+      ['中国','韩国'],
+      ['香港','台湾']
+    ],
+    cityIndex:[0,0,0],
+    stateNameArray: [
+      ['中国', '韩国'],
+      ['美国', '加拿大']
+    ],
+    cityNameArray: [
+      [
+        ['香港', '澳门', '台湾'],
+        ['首尔', '釜山']
+      ],
+      [
+        ['洛杉矶', '纽约'],
+        ['多伦多', '温哥华']
+      ]
+    ],
+    firstIndex:0
   },
   
   onLoad: function () {
@@ -58,6 +79,36 @@ Page({
   callPhone(e){
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phone //仅为示例，并非真实的电话号码
+    })
+  },
+  cityChange(e){
+    var v = e.detail.value;
+    if (this.data.index != v) {
+      this.setData({
+        cityIndex: v
+      })
+    }
+  },
+  columnChange(e){
+    var column = e.detail.column
+    var value = e.detail.value
+    if (column == 2) {
+      return;
+    }
+    var cityArray = this.data.cityArray
+    var cityIndex = this.data.cityIndex
+    if (column==0){
+      this.setData({
+        firstIndex:value
+      })
+      //选择洲
+      cityArray[1] = this.data.stateNameArray[value]
+      cityArray[2] = this.data.cityNameArray[value][0]
+    }else{
+      cityArray[2] = this.data.cityNameArray[this.data.firstIndex][value]
+    }
+    this.setData({
+      cityArray: cityArray
     })
   }
 })
