@@ -1,0 +1,19 @@
+<view class='main'>
+  <view class='content'>
+    <view class='cate'>
+     <picker bindchange="dynamicChange" value="{{}}" range="{{dynamicArray}}">
+      <view>
+       <text>选择话题：{{dynamicArray[dynamicIndex]}}</text>
+      </view>
+     </picker>
+    </view>
+    <textarea bindinput='contentInput' placeholder='分享你的心情......' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
+    <view class='pic'>
+      <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
+      <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic'></image>
+    </view>
+    <view class='button'>
+      <view>立即发布</view>
+    </view>
+  </view>
+</view>

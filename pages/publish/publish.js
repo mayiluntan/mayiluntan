@@ -21,6 +21,14 @@ Page({
         fail: function(res) {},
         complete: function(res) {},
       })
+    }else if(t==2){
+      wx.navigateTo({
+        url: '/pages/publish/business/business'
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/publish/dynamic/dynamic'
+      })
     }
   }
 })

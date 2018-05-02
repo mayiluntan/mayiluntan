@@ -73,10 +73,10 @@ Page({
         ['里约热内卢','圣保罗']
       ],
       [
-      ['开普敦','约翰内斯堡'],
-      ['开罗']
+        ['开普敦','约翰内斯堡'],
+        ['开罗']
       ]
-          ],
+  ],
     orgIndex:[0,0,0],
     orgCity:[]
   },
@@ -172,6 +172,16 @@ Page({
     this.setData({
       cityIndex: orgIndex,
       cityArray: orgCity
+    })
+  },
+  showList(){
+    wx.navigateTo({
+      url: '/pages/view/viewList/viewList',
+    })
+  },
+  viewDetail(){
+    wx.navigateTo({
+      url: '/pages/view/viewDetail/viewDetail',
     })
   }
 })

@@ -1,0 +1,32 @@
+<!--pages/user/managePost/managePost.wxml-->
+<view class='container'>
+  <block wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="{{index}}">
+    <view class='list'>
+      <view class='list-main'>
+        <view class='list-pic'><image src='/images/car.png'></image></view>
+        <view>
+          <view class='list-top'>
+            <view>
+              <view class='list-title'>
+                <view class='list-cate'>汽车交易</view>
+                <view class='list-nick'>蚂蚁一号</view>
+              </view>
+              <view class='list-tag'>
+                <view>凯迪拉克</view>
+                <view>两年</view>
+              </view>
+            </view>
+            <view class='list-contact'>
+              <image src='/images/wechat1.png'></image>
+              <image class='list-tel' src='/images/tel1.png'></image>
+            </view>
+          </view>
+          <view class='list-intro'>
+          凯迪拉克 2016款 2.0T 自动档 豪华尊享舒适型,车况良好，五万公里无事故。
+          </view>
+        </view>
+      </view>
+      <view class='list-time'>发布时间：2018.4.9</view>
+    </view>
+    </block>
+</view>

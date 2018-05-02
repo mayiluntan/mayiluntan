@@ -39,7 +39,7 @@
   </view>
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
     <swiper-item>
-      <view class='cate'>
+      <view class='cate' bindtap='showList'>
         <view class='cate-detail'>
         <image src='/images/icon_logo_chuzu.png' />
         <view>房屋出租</view>
@@ -61,7 +61,7 @@
         <view>汽车交易</view>
         </view>
       </view>
-      <view class='cate'>
+      <view class='cate' bindtap='showList'>
         <view class='cate-detail'>
         <image src='/images/icon_logo_ask_help.png' />
         <view>求助问事</view>
@@ -85,7 +85,7 @@
       </view>
     </swiper-item>
     <swiper-item>
-      <view class='cate'>
+      <view class='cate' bindtap='showList'>
         <view class='cate-detail'>
         <image src='/images/icon_logo_chongwu.png' />
         <view>宠物相关</view>
@@ -107,7 +107,7 @@
         <view>家居家居</view>
         </view>
       </view>
-      <view class='cate'>
+      <view class='cate' bindtap='showList'>
         <view class='cate-detail'>
         <image src='/images/icon_logo_shuma.png' />
         <view>数码电子</view>
@@ -155,7 +155,7 @@
       </picker>
     </view>
     <block wx:for="{{listData}}" wx:key="{{index}}">
-    <view class='list'>
+    <view class='list' bindtap='viewDetail'>
       <view class='list-main'>
         <view class='list-pic'><image src='{{item.pic}}'></image></view>
         <view class='list-content'>

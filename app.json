@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/view/viewDetail/viewDetail",
+    "pages/view/viewList/viewList",
+    "pages/publish/business/business",
+    "pages/publish/dynamic/dynamic",
     "pages/publish/post/post",
     "pages/publish/publish",
     "pages/user/attentions/attentions",

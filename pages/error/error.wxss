@@ -1,1 +1,24 @@
 /* pages/error/error.wxss */
+.main {
+  font-size: 30rpx;
+}
+.logo{
+  width: 90%;
+  height: 40vw;
+  text-align: center;
+  border-bottom: 2rpx solid #efefef;
+  margin: 0 auto;
+}
+.logo image{
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 30rpx;
+}
+.logo view{
+  margin-top:20rpx;
+  font-size: 34rpx;
+}
+.intro{
+  width: 90%;
+  margin: 0 auto;
+}

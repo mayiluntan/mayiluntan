@@ -1,0 +1,70 @@
+/* pages/publish/business/business.wxss */
+page{
+  font-size: 30rpx;
+}
+.division{
+  background: #F2F3F4;
+  height: 20rpx;
+  width: 100%;
+}
+.list{
+  display: flex;
+  margin-left: 5vw;
+  width: 95vw;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.list view{
+  width: 25vw;
+}
+.list text{
+  color: #f00;
+}
+.list .grey{
+  color: #A1A19C
+}
+.list input{
+  flex: 1;
+}
+.list .location{
+  flex: 1;
+  color: #000;
+}
+.list .more{
+  width: 14rpx;
+  height: 24rpx;
+  padding-right: 20rpx;
+}
+.pic{
+  margin-left: 5vw;
+  width: 95vw;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.pic text{
+  color: #f00;
+}
+.pic .grey{
+  color: #A1A19C
+}
+.pic image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: 20rpx;
+}
+.button{
+  width: 100%;
+  height: 100rpx;
+  padding-top:100rpx;
+}
+.button view{
+  width: 90vw;
+  margin: 0 auto;
+  text-align: center;
+  background: #f0a232;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 10rpx;
+}

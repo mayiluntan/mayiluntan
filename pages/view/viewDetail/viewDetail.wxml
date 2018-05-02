@@ -1,0 +1,37 @@
+<view class='main'>
+  <view class='head'>
+    <image src='{{pics}}'></image>
+  </view><!-- head -->
+  <view class='content'>
+    <view class='c'>纯手工设计,纯手工上色，无防腐剂，纯手工设计,纯手工上色，无防腐剂纯手工设计,纯手工上色，无防腐剂纯手工设计,纯手工上色，无防腐剂</view>
+    <view class='nick'>发布人：我是买家</view>
+    <view>发布时间：2018年5月2日</view>
+  </view>
+  <view class='tag'>
+    <view>使用两年</view>
+    <view>凯迪拉克</view>
+  </view>
+  <view class='division'></view>
+  <view class='circle'>
+    <view class='circle-title'>留言</view>
+    <view class='circle-list'>
+      <view class='circle-head'><image src='/images/head.png'></image></view>
+      <view>
+        <view class='circle-nick'>可爱的桃子</view>
+        <view class='circle-content'>价格合适,什么时候交易?</view>
+        <view class='circle-replys'>
+          <view class='circle-reply'>
+            <view>我最厉害 <label>回复：</label>带上钱你约时间</view>
+            <view>可爱的桃子<label>回复：</label>今天晚上？</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom'></view>
+  <view class="float-button">
+      <view class='input'><input placeholder='问题可以在这里留言'></input></view>
+      <view class='tel'>电话</view>
+      <view class='wechat'>微信</view>
+  </view><!-- float-button -->
+</view>

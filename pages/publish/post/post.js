@@ -82,7 +82,7 @@ Page({
   },
   cateChange(e) {
     var v = e.detail.value;
-    if (this.data.index != v) {
+    if (this.data.indexArray != v) {
       this.setData({
         indexArray: v
       })

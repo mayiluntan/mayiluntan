@@ -1,2 +1,14 @@
-<!--pages/error/error.wxml-->
-<text>pages/error/error.wxml</text>
+<view class='main'>
+  <view class='logo'>
+    <image src='/images/logo.png'></image>
+    <view class=''>小蚂蚁|海外华人生活</view>
+  </view>
+  <view class='intro'>
+    <view class='title'>该程序将获取以下授权</view>
+    <view class='content'>· 获得你的公开信息（昵称、头像等）</view>
+  </view>
+  <view>
+    <view>拒绝</view>
+    <view>授权</view>
+  </view>
+</view>

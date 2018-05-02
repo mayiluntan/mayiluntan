@@ -3,7 +3,6 @@ const app = getApp()
 Page({
   data: {
     list: [
-      { name: '个人主页', page: '' },
       { name: '帖子管理', page: '/pages/user/managePost/managePost' },
       { name: '动态管理', page: '/pages/user/manageActive/manageActive' },
       { name: '关注的人', page: '/pages/user/attentions/attentions' },
@@ -14,6 +13,7 @@ Page({
     showData:[0,0,0]
   },
   onLoad: function () {
+    //{ name: '个人主页', page: '' },
       this.setData({
         userInfo: app.globalData.userInfo
       })

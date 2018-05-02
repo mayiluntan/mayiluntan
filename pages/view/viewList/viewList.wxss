@@ -1,0 +1,96 @@
+/* pages/user/managePost/managePost.wxss */
+page {
+  background: #f2f3f4;
+}
+
+.circle {
+  width: 100%;
+  background: #fff;
+}
+
+.circle-title {
+  display: flex;
+  border-bottom: 1px solid #efefef;
+}
+
+.circle-title view {
+  width: 50%;
+  text-align: center;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.circle-title .selected-title {
+  color: #f0a232;
+  border-bottom: 2px solid #f0a232;
+}
+
+/* list */
+.list{
+  background: #fff;
+  padding:20rpx;
+  border-bottom: 1px solid #e0e0e0;
+}
+.list .list-main{
+  display: flex;
+}
+.list .list-pic{
+  padding-right:30rpx;
+}
+.list .list-pic image{
+  width: 176rpx;
+  height: 176rpx;
+}
+.list .list-top{
+  display: flex;
+}
+.list .list-title{
+  display: flex;
+}
+.list .list-title view{
+  height: 44rpx;
+  line-height: 44rpx;
+}
+.list .list-title .list-cate{
+  background: #f0a323;
+  padding:0 10rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  margin-right: 30rpx;
+}
+.list .list-tag{
+  margin-top: 10rpx;
+  display: flex;
+}
+.list .list-tag view{
+  height: 44rpx;
+  line-height: 44rpx;
+  border: 1px solid #4188d2;
+  border-radius: 10rpx;
+  color: #4188d2;
+  padding: 0 10rpx;
+  margin-right: 30rpx;
+}
+.list .list-contact{
+  flex:1;
+  text-align: right;
+}
+.list .list-contact .list-tel{
+  margin-left:30rpx;
+}
+.list .list-contact image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.list .list-intro{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #4c4c4c;
+}
+.list .list-time{
+  padding-top:10rpx;
+  color: #7f7f7f;
+  text-align: right;
+}
