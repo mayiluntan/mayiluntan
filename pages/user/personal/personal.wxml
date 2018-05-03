@@ -1,0 +1,27 @@
+<view class='container'>
+  <view class='top'>
+    <image src='/images/user/bg.png'></image>
+    <view class='avatar'>
+      <view>
+        <view>
+          <view><image src='{{userInfo.avatarUrl}}'></image></view>
+        </view>
+      </view>
+    </view>
+    <view class='nickname'>{{userInfo.nickName}}</view>
+    <view class='cate'>
+      <view class='cate-all'>
+        <view class='cate-name'>留言</view>
+        <view class='cate-num'>{{showData[0]}}</view>
+      </view>
+      <view class='cate-all cate-border'>
+        <view class='cate-name'>访客</view>
+        <view class='cate-num'>{{showData[1]}}</view>
+      </view>
+      <view class='cate-all'>
+        <view class='cate-name'>关注</view>
+        <view class='cate-num'>{{showData[2]}}</view>
+      </view>
+    </view>
+  </view>
+</view>

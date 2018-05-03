@@ -1,0 +1,76 @@
+/* pages/user/personal/personal.wxss */
+page{
+  font-size:30rpx;
+  background: #fff;
+}
+.top{
+  width: 100%;
+  background: #fff;
+  padding-bottom: 30rpx;
+}
+.top image{
+  width: 100%;
+  height: 70vw;
+}
+.top .avatar{
+  position: absolute;
+  top: 9.3vw;
+  left: 0;
+  width: 100%;
+}
+.top .avatar view{
+  width: 164rpx;
+  height: 164rpx;
+  border-radius: 82rpx;
+  margin: 0 auto;
+  background: #cbcbcb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center
+}
+.top .avatar view view{
+  width: 174rpx;
+  height: 174rpx;
+  border-radius: 87rpx;
+  background: #d5d5d5;
+}
+.top .avatar view view view{
+  width: 184rpx;
+  height: 184rpx;
+  border-radius: 92rpx;
+  background: #dedfdf;
+}
+.top .avatar image{
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 76rpx;
+}
+.top .nickname{
+  position: absolute;
+  top: 36vw;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  padding: 10rpx 0;
+  color: #fff;
+  font-size: 36rpx;
+}
+.top .cate{
+  position: absolute;
+  top: 50vw;
+  width: 100%;
+  left: 0;
+  display: flex;
+  color: #fff;
+}
+.top .cate .cate-all{
+  width: 33%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.top .cate .cate-border{
+  border-left: 1px solid #f0f2f2;
+  border-right: 1px solid #f0f2f2;
+}
