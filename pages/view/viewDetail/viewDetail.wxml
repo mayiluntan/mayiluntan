@@ -1,15 +1,15 @@
 <view class='main'>
   <view class='head'>
-    <image src='{{pics}}'></image>
+    <image src='{{content.pics}}'></image>
   </view><!-- head -->
   <view class='content'>
-    <view class='c'>纯手工设计,纯手工上色，无防腐剂，纯手工设计,纯手工上色，无防腐剂纯手工设计,纯手工上色，无防腐剂纯手工设计,纯手工上色，无防腐剂</view>
-    <view class='nick'>发布人：我是买家</view>
-    <view>发布时间：2018年5月2日</view>
+    <view class='c'>{{content.content}}</view>
+    <view class='nick'>{{content.nickname}}</view>
+    <view>发布时间：{{content.dated}}</view>
   </view>
   <view class='tag'>
-    <view>使用两年</view>
-    <view>凯迪拉克</view>
+    <view>{{content.tag1}}</view>
+    <view>{{content.tag2}}</view>
   </view>
   <view class='division'></view>
   <view class='circle'>

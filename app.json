@@ -1,8 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/publish/business/business",
     "pages/user/personal/personal",
+    "pages/user/personal/edit/edit",
+    "pages/publish/business/business",
     "pages/circle/circle",
     "pages/publish/dynamic/dynamic",
     "pages/view/viewDetail/viewDetail",

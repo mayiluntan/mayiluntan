@@ -155,7 +155,7 @@
       </picker>
     </view>
     <block wx:for="{{listData}}" wx:key="{{index}}">
-    <view class='list' bindtap='viewDetail'>
+    <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>
         <view class='list-pic'><image src='{{item.pic}}'></image></view>
         <view class='list-content'>

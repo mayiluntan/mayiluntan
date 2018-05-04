@@ -1,0 +1,58 @@
+/* pages/user/personal/edit/edit.wxss */
+page{
+  background: #f2f3f4;
+}
+.main{
+  background: #fff;
+  font-size:30rpx;
+}
+.list{
+  display: flex;
+  margin-left: 5vw;
+  width: 95vw;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.list image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 75rpx;
+}
+.list view{
+  width: 25vw;
+}
+.list .time{
+  width: 100rpx;
+}
+.list .to{
+  width: 60rpx;
+}
+.list text{
+  color: #f00;
+}
+.list .grey{
+  color: #A1A19C
+}
+.list input{
+  flex: 1;
+}
+.division{
+  height: 20rpx;
+  background: #f2f3f4;
+}
+.btn{
+  background: #f2f3f4;
+  padding-top: 40rpx;
+}
+.btn view{
+  width: 90vw;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin: 0 auto;
+  color: #fff;
+  background: #f0a232;
+  font-size: 32rpx;
+  border-radius: 10rpx;
+}

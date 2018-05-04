@@ -1,0 +1,34 @@
+<view class='main'>
+  <view class='list'>
+    <view>头像</view>
+    <view bindtap='addPic'><image src='{{info.avatar}}'></image></view>
+  </view>
+  <view class='list'>
+    <view>用户名</view>
+    <input value='{{info.nickname}}' bindinput='nicknameInput'></input>
+  </view>
+  <view class='list'>
+    <view>性别</view>
+    <picker value="{{info.gender}}" range="{{sexArray}}" bindchange="genderChange">
+      <view>{{sexArray[info.gender]}}</view>
+    </picker>
+  </view>
+  <view class='list'>
+    <view>手机</view>
+    <input value='{{info.mobile}}' placeholder='请输入手机号' bindinput='mobileInput'></input>
+  </view>
+  <view class='division'></view>
+  <view class='list'>
+    <view>生日</view>
+    <picker mode='date' value="{{date}}" end="{{endDate}}" bindchange="datePickerChange">
+      <view>{{date}}</view>
+    </picker>
+  </view>
+  <view class='list'>
+    <view>个性签名</view>
+    <input value='{{info.remark}}' placeholder='填写您的个性签名' bindinput='remarkInput'></input>
+  </view>
+  <view class='btn' bindtap='editClick'>
+      <view>保存</view>
+  </view>
+</view>

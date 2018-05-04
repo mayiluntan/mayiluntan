@@ -184,12 +184,14 @@ Page({
       url: '/pages/view/viewList/viewList',
     })
   },
-  viewDetail(){
+  viewDetail(e){
     if(lock){
       return
     }
+    console.log(e);
+    var v = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/view/viewDetail/viewDetail',
+      url: '/pages/view/viewDetail/viewDetail?id='+v,
     })
   }
 })
