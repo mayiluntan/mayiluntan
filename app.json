@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/publish/business/business",
     "pages/user/personal/personal",
     "pages/circle/circle",
     "pages/publish/dynamic/dynamic",
-    "pages/publish/business/business",
     "pages/view/viewDetail/viewDetail",
     "pages/view/viewList/viewList",
     "pages/publish/post/post",
