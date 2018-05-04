@@ -25,6 +25,18 @@ page {
   height: 200rpx;
   margin-right: 20rpx;
 }
+.location{
+  margin-top: 20rpx;
+  padding: 10rpx 20rpx;
+  background: #efefef;
+  display: inline-block;
+  border-radius: 40rpx;
+}
+.location image{
+  width: 19rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}
 .button{
   width: 100%;
   height: 100rpx;

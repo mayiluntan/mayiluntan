@@ -18,6 +18,12 @@ page{
 .list view{
   width: 25vw;
 }
+.list .time{
+  width: 100rpx;
+}
+.list .to{
+  width: 60rpx;
+}
 .list text{
   color: #f00;
 }

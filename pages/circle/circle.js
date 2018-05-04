@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    menuSelected:0
+    menuSelected:0,
+    hide:1
   },
   onLoad: function () {
 
@@ -17,5 +18,18 @@ Page({
     this.setData({
       menuSelected: menutype
     })
+  },
+  showInput(){
+    this.setData({
+      hide: 0
+    })
+  },
+  hideInput(){
+    this.setData({
+      hide:1
+    })
+  },
+  replyClick(){
+    console.log(1)
   }
 })

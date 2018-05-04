@@ -2,11 +2,7 @@
   <view class='top'>
     <image src='/images/user/bg.png'></image>
     <view class='avatar'>
-      <view>
-        <view>
-          <view><image src='{{userInfo.avatarUrl}}'></image></view>
-        </view>
-      </view>
+      <view><image src='{{userInfo.avatarUrl}}'></image></view>
     </view>
     <view class='nickname'>{{userInfo.nickName}}</view>
     <view class='cate'>
@@ -24,4 +20,35 @@
       </view>
     </view>
   </view>
+  <view class='circle'>
+    <view class='circle-title'>
+      <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>动态</view>
+      <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>资料</view>
+    </view>
+  </view>
+  <swiper class='all-list' bindchange='swiperChange' current='{{menuSelected}}'>
+    <swiper-item>
+      <view class='list'>
+        <view class='date'><view class='day'>30</view><view class='month'>3月</view></view>
+        <view class='pic'><image src='/images/car.png'></image></view>
+        <view class='content'>
+          <view class='c'>天气好好,长江边上纳兰走起,有没 木有约起来的小伙伴呢~</view>
+          <view class='btn'>
+          <image class='eye' src='/images/user/eye.png'></image><text>999</text>
+          <image class="up" src='/images/user/up.png'></image><text>999</text>
+          </view>
+        </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='info'>
+        <view>基本信息</view>
+        <view class='info-list'><view>性别</view><view>女</view></view>
+        <view class='info-list'><view>年龄</view><view>23岁</view></view>
+        <view class='info-list'><view>x星座</view><view>摩羯座</view></view>
+        <view class='info-list'><view>手机</view><view>12312312311</view></view>
+        <view class='info-list'><view>签名</view><view>天真</view></view>
+      </view>
+    </swiper-item>
+  </swiper>  
 </view>

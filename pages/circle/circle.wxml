@@ -32,7 +32,7 @@
           <view class='circle-pics'><image src='/images/tmp.png'></image><image src='/images/tmp.png'></image><image class='circle-pics-last' src='/images/tmp.png'></image></view>
           <view class='circle-btn'>
             <view><image src='/images/thumbs_up.png'></image></view>
-            <view><image src='/images/comment.png'></image></view>
+            <view bindtap='showInput'><image src='/images/comment.png'></image></view>
           </view>
           <view class='circle-replys'>
             <view class='circle-thumbs-up'>
@@ -86,5 +86,9 @@
         </view>
       </view>
     </view>
+  </view>
+  <view class='reply' wx:if='{{hide==0}}'>
+    <input placeholder='回复' focus='true' confirm-type='回复' bindblur='hideInput' bindconfirm="replyClick"></input>
+    <view>回复</view>
   </view>
 </view>

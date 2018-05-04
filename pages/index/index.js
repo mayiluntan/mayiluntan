@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var lock=false;
 Page({
   data: {
     cateSelected:0,
@@ -123,9 +123,14 @@ Page({
     })
   },
   callPhone(e){
+    lock=true;
     wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone //仅为示例，并非真实的电话号码
+      phoneNumber: e.currentTarget.dataset.phone,
+      complete:res=>{
+        lock = false;
+      }
     })
+    
   },
   cityChange(e){
     var v = e.detail.value;
@@ -180,6 +185,9 @@ Page({
     })
   },
   viewDetail(){
+    if(lock){
+      return
+    }
     wx.navigateTo({
       url: '/pages/view/viewDetail/viewDetail',
     })

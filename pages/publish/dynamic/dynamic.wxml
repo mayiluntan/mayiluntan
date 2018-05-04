@@ -1,7 +1,7 @@
 <view class='main'>
   <view class='content'>
     <view class='cate'>
-     <picker bindchange="dynamicChange" value="{{}}" range="{{dynamicArray}}">
+     <picker bindchange="dynamicChange" value="{{dynamicIndex}}" range="{{dynamicArray}}">
       <view>
        <text>选择话题：{{dynamicArray[dynamicIndex]}}</text>
       </view>
@@ -12,8 +12,12 @@
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
       <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic'></image>
     </view>
+    <view class='location' bindtap='chooseLocation'>
+      <image src='/images/post/local.png'></image>
+      <text>{{address}}</text>
+    </view>
     <view class='button'>
-      <view>立即发布</view>
+      <view bindtap='btnClick'>立即发布</view>
     </view>
   </view>
 </view>
