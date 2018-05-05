@@ -47,6 +47,9 @@ page {
    align-items: center; 
   height: 50rpx;
 }
+.circle .circle-show{
+  flex: 1;
+}
 
 .circle .circle-nick image {
   width: 30rpx;
@@ -58,13 +61,12 @@ page {
 .circle .circle-nick .cancle-collect {
   width: 115rpx;
   height: 44rpx;
-  display: flex;
   line-height: 44rpx;
   border: 1px solid #f0a323;
   border-radius: 10rpx;
   color: #f0a323;
   padding: 0 10rpx;
-  justify-content: flex-end;
+  text-align: center;
   margin-right: 10rpx;
 }
 
