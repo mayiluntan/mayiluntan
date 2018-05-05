@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/citySelect/citySelect",
     "pages/index/index",
     "pages/circle/circle",
     "pages/user/personal/personal",
