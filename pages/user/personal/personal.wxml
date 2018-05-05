@@ -2,9 +2,10 @@
   <view class='top'>
     <image src='/images/user/bg.png'></image>
     <view class='avatar'>
-      <view><image src='{{userInfo.avatarUrl}}'></image></view>
+      <view><image src='{{info.avatar}}'></image></view>
     </view>
-    <view class='nickname'>{{userInfo.nickName}}</view>
+    <view class='nickname'>{{info.nickname}}</view>
+    <view class='remark'>{{info.remark!=''?info.remark:'暂无签名'}}</view>
     <view class='cate'>
       <view class='cate-all'>
         <view class='cate-name'>留言</view>
@@ -23,32 +24,71 @@
   <view class='circle'>
     <view class='circle-title'>
       <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>动态</view>
-      <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>资料</view>
+      <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>留言</view>
+      <view class="{{menuSelected == 2?'selected-title':''}}" data-menutype='2' bindtap='menuClicked'>资料</view>
     </view>
   </view>
-  <swiper class='all-list' bindchange='swiperChange' current='{{menuSelected}}'>
-    <swiper-item>
-      <view class='list'>
-        <view class='date'><view class='day'>30</view><view class='month'>3月</view></view>
-        <view class='pic'><image src='/images/car.png'></image></view>
-        <view class='content'>
-          <view class='c'>天气好好,长江边上纳兰走起,有没 木有约起来的小伙伴呢~</view>
-          <view class='btn'>
-          <image class='eye' src='/images/user/eye.png'></image><text>999</text>
-          <image class="up" src='/images/user/up.png'></image><text>999</text>
+  <view class='circle' wx:if='{{menuSelected == 0}}'>
+    <view class='circle-list'>
+      <view class='circle-head'><image src='/images/head.png'></image></view>
+      <view>
+        <view class='circle-nick'>可爱的桃子<image src='/images/female.png'></image></view>
+        <view class='circle-tags'><label>18岁</label><label>北美</label></view>
+        <view class='circle-content'>倩女幽魂好恐怖，有没有人一起？</view>
+        <view class='circle-pics'><image src='/images/tmp.png'></image><image src='/images/tmp.png'></image><image class='circle-pics-last' src='/images/tmp.png'></image></view>
+        <view class='circle-btn'>
+          <view><image src='/images/thumbs_up.png'></image></view>
+          <view bindtap='showInput'><image src='/images/comment.png'></image></view>
+        </view>
+        <view class='circle-replys'>
+          <view class='circle-thumbs-up'>
+            <image src='/images/thumbs_up.png'></image>
+            <view class='num'>12</view>
+            <label>大大小小</label>
+            <view>,</view>
+            <label>我最厉害</label>
+            <view>,</view>
+            <label>嗯嗯</label>
+            <view>,</view>
+            <label>超级棒</label>
+          </view>
+          <view class='circle-reply'>
+            <view><label>大大小小</label>：世间安得两全法，不负如来不负卿</view>
+            <view><label>我最厉害</label> 回复 <label>大大小小</label>：棒棒哒</view>
+            <view><label>牛魔王</label>：我就喜欢最后一张图</view>
           </view>
         </view>
       </view>
-    </swiper-item>
-    <swiper-item>
-      <view class='info'>
-        <view>基本信息</view>
-        <view class='info-list'><view>性别</view><view>女</view></view>
-        <view class='info-list'><view>年龄</view><view>23岁</view></view>
-        <view class='info-list'><view>x星座</view><view>摩羯座</view></view>
-        <view class='info-list'><view>手机</view><view>12312312311</view></view>
-        <view class='info-list'><view>签名</view><view>天真</view></view>
-      </view>
-    </swiper-item>
-  </swiper>  
+    </view>
+  </view>
+  <view class='all-list'  wx:elif='{{menuSelected == 1}}'>
+    <view class='leave-message' wx:for="{{userMessage}}" wx:key='index'>
+        <view class='head'><image src='{{item.avatar}}'></image></view>
+        <view class='detail'>
+          <view class='nick'>{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
+          <view class='tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
+          <view class='content'>{{item.content}}</view>
+        </view>
+    </view>
+    <view class='message-btn' wx:if='{{hide==1}}' bindtap='showInput'>
+      <view>留言</view>
+    </view>
+    <view class='reply' wx:if='{{hide==0}}'>
+      <input placeholder='回复' focus='true' confirm-type='回复' bindinput='replyInput' bindblur='hideInput' bindconfirm="replyClick"></input>
+      <view bindtap='replyClick'>回复</view>
+    </view>
+  </view>
+  <view class='all-list' wx:else>
+    <view class='info'>
+        <view class='title'><view>|</view>基本信息</view>
+        <view class='info-list'><view>性别</view><view class='detail'>{{info.sex}}</view></view>
+        <view class='info-list'><view>年龄</view><view class='detail'>{{info.age}} 岁</view></view>
+        <view class='info-list'><view>星座</view><view class='detail'>{{info.star}}</view></view>
+        <view class='info-list'><view>手机</view><view class='detail'>{{info.mobile}}</view></view>
+        <view class='info-list'><view>签名</view><view class='detail'>{{info.remark}}</view></view>
+    </view>
+    <view class='btn' bindtap='editClick'>
+      <view>编辑资料</view>
+    </view>
+  </view>
 </view>

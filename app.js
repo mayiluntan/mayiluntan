@@ -11,10 +11,10 @@ App({
           this.appGetUserInfo();
         } else {
           //console.log(2)
-          wx.navigateTo({
-            url: '/pages/error/error'
-          })
-          //this.showAuthTips();
+          // wx.navigateTo({
+          //   url: '/pages/error/error'
+          // })
+          this.showAuthTips('');
         }
       }
     })
@@ -32,10 +32,10 @@ App({
         }
       },
       fail: res => {
-        wx.navigateTo({
-          url: '/pages/error/error',
-        })
-        //this.showAuthTips();
+        // wx.navigateTo({
+        //   url: '/pages/error/error',
+        // })
+        this.showAuthTips('');
       }
     })
   },

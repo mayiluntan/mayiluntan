@@ -27,6 +27,11 @@
       <view>商家logo<text>*</text><text class='grey'>（建议尺寸750*562px）</text></view>
       <image src="{{logo==''?'/images/post/add.png':logo}}" bindtap='addPic' data-type='1'></image>
     </view>
+    <view class='pic pic-detail'>
+      <view>商家详情图<text>*</text><text class='grey'>最多可添加3张图片</text></view>
+      <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
+      <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic2'></image>
+    </view>
   </view>
   <view class='division'></view>
   <view class='detail'>
@@ -56,8 +61,23 @@
       <view>提供服务</view>
       <input placeholder='空格分割,如:WiFi 停车' value='{{postData.service}}' bindinput='serviceInput'></input>
     </view>
+    <view class='top-list to-top'>
+    <text>我要置顶</text>
+    <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>
+  </view>
+  <view class='top-list' wx:if='{{postData.top==1}}'>
+    <text>选择置顶时间</text>
+    <picker  class='day' bindchange="dayChange" value="{{dayIndex}}" range="{{dayArray}}">
+      <text>{{dayArray[dayIndex]}}</text>
+    </picker>
+    <image src='/images/post/more.png'></image>
+  </view>
+  <view class='top-list' wx:if='{{postData.top==1}}'>
+    <text>价格</text>
+    <text  class='price'>¥{{postData.topPrice}}</text>
+  </view>
   </view>
   <view class='button' bindtap='postClick'>
-    <view bindtap='businessPost'>确认支付8.8元</view>
+    <view bindtap='businessPost'>确认</view>
   </view>
 </view>

@@ -46,6 +46,9 @@ page {
    align-items: center; 
   height: 50rpx;
 }
+.circle .circle-show{
+  flex: 1;
+}
 
 .circle .circle-nick image {
   width: 30rpx;

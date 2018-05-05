@@ -110,7 +110,6 @@ page{
   line-height: 50rpx;
 }
 .circle .circle-content{
-  height: 60rpx;
   line-height: 60rpx;
 }
 .circle .circle-pics image{
@@ -149,17 +148,21 @@ page{
 .circle .circle-replys .circle-thumbs-up{
   display: flex;
   border-bottom: 1px solid #e7e7e7;
-  height: 50rpx;
-  align-items: center;
 }
 .circle .circle-replys label{
   color:#6499d7;
 }
-.circle .circle-replys .circle-thumbs-up view{
-  padding: 0 10rpx;
+.circle .circle-replys .circle-thumbs-up .circle-up{
+  padding: 10rpx;
 }
-.circle .circle-replys .num{
-  margin: 0 10rpx 0 5rpx;
+.circle .circle-replys .circle-thumbs-up .circle-up view{
+  padding-left:10rpx;
+}
+.circle .circle-replys .circle-thumbs-up .circle-up text{
+  padding:6rpx;
+}
+.circle .circle-replys .circle-thumbs-up .circle-up .num{
+  padding:0 10rpx 0 20rpx;
 }
 .circle .circle-replys .circle-thumbs-up image{
   width: 30rpx;
@@ -170,7 +173,6 @@ page{
   padding-left: 10rpx;
 }
 .circle .circle-reply view{
-  height: 40rpx;
   line-height: 40rpx;
 }
 .reply{
