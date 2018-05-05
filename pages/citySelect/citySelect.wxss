@@ -14,9 +14,12 @@ page{
   padding: 20rpx 0;
 }
 .select-title .selected-title{
-  font-size: 32rpx;
+  color:#f00;
 }
 .select-swiper view{
   padding: 30rpx 0 30rpx 20rpx;
   border-bottom: 1rpx solid #ccc;
-}/* pages/citySelect/citySelect.wxss */
+}
+.select-swiper .on{
+  color: #f00;
+}

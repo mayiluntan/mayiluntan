@@ -1,7 +1,4 @@
-//index.js
-//获取应用实例
 const app = getApp()
-
 Page({
   data: {
     current: 0,
@@ -145,8 +142,11 @@ Page({
     if (this.data.current == menutype) {
       return;
     }
+    var num = this.data.array[menutype].length;
+    var height = num * 51 + 51;
     this.setData({
-      current: menutype
+      current: menutype,
+      minHeight: height
     })
   },
   swiperChange(e) {
@@ -169,9 +169,6 @@ Page({
     if (currentShow <= index && currentShow < this.data.maxCurrent) {
       currentShow = parseInt(index) + 1;
     }
-    console.log(current)
-    console.log(value)
-    console.log(selectIndex)
     //改变后面的值
     for (var i = current + 1; i <= this.data.maxCurrent; i++) {
       if (current == 0) {
@@ -204,7 +201,15 @@ Page({
       selectIndex: selectIndex,
       array: array
     })
-    console.log(this.data)
+    if (current > this.data.maxCurrent){
+      app.globalData.cityIndex = selectIndex
+      app.globalData.cityArray = selected
+      app.globalData.cityChange = true
+      app.globalData.pageChange = true
+      wx.navigateBack({
+        
+      })
+    }
   },
   isArray(arg) {
     if (typeof arg === 'object') {

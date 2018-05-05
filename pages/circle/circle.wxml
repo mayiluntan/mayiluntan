@@ -35,8 +35,13 @@
           </block>
           </view>
           <view class='circle-btn'>
-            <view><image src='/images/thumbs_up2.png'></image></view>
-            <view bindtap='showInput'><image src='/images/comment.png'></image></view>
+            <block wx:if='{{item.is_up==1}}'>
+            <view><image src='/images/thumbs_up.png'></image></view>
+            </block>
+            <block wx:else>
+            <view bindtap='thumbsUp' data-id='{{item.id}}'><image src='/images/thumbs_up2.png'></image></view>
+            </block>            
+            <view bindtap='showInput' data-id='{{item.id}}'><image src='/images/comment.png'></image></view>
           </view>
           <view class='circle-replys'>
             <view class='circle-thumbs-up' wx:if='{{item.up_num>0}}' >
@@ -51,9 +56,9 @@
             </view>
             <view class='circle-reply'>
               <view wx:for="{{item.replys}}" wx:for-item='reply' wx:key='index'>
-              <label>{{reply.reply_nick}}</label>
+              <label bindtap='replyUser' data-userid='{{reply.reply_uid}}' data-nick='{{reply.reply_nick}}' data-id='{{item.id}}'>{{reply.reply_nick}}</label>
               <block wx:if="{{reply.to_nick!=''}}">
-              回复 <label>{{reply.to_nick}}</label>
+              回复 <label bindtap='replyUser' data-userid='{{reply.to_uid}}' data-nick='{{reply.to_nick}}' data-id='{{item.id}}'>{{reply.to_nick}}</label>
               </block>
               <text>：{{reply.content}}</text>
               </view>
@@ -64,7 +69,7 @@
     </view>
   </view>
   <view class='reply' wx:if='{{hide==0}}'>
-    <input placeholder='回复' focus='true' confirm-type='回复' bindblur='hideInput' bindconfirm="replyClick"></input>
-    <view>回复</view>
+    <input placeholder='回复{{nick}}' focus='true' confirm-type='回复' bindblur='hideInput' bindconfirm="replyClick" bindinput='replyInput' value='{{content}}'></input>
+    <view bindtap='replyClick'>回复</view>
   </view>
 </view>

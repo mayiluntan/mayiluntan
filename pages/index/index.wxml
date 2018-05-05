@@ -10,14 +10,12 @@
       <view class='logo'>
         <image src='/images/ants.png'/>
       </view>
-      <picker mode="multiSelector" bindchange="cityChange" bindcolumnchange="columnChange" bindcancel="columnCancel" value="{{cityIndex}}" range="{{cityArray}}">
-        <view class='city-picker'>
-          <view>{{cityArray[2][cityIndex[2]]}}</view>
-          <view class='arrow'>
-            <image src='/images/icon_area_arrow.png'/>
-          </view>
+      <view class='city-picker' bindtap='selectCity'>
+        <view>{{selectArray[2]}}</view>
+        <view class='arrow'>
+          <image src='/images/icon_area_arrow.png'/>
         </view>
-      </picker>
+      </view>
     </view>
     <view class='search'>
       <input type='text' />

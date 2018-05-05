@@ -79,13 +79,15 @@ Page({
         ['开罗']
       ]
   ],
-    orgIndex:[0,0,0],
+    orgIndex:[],
     orgCity:[],
     broadcast:{
       'title':'暂无求助',
       'num':0,
       'id':0
-    }
+    },
+    selectArray:['','',''],
+    selectIndex: [0, 0, 0]
   },
   
   onLoad: function () {
@@ -111,11 +113,20 @@ Page({
       orgCity: cityArray
     })
   },
+  onShow(){
+    if (app.globalData.cityChange){
+      app.globalData.cityChange=false;
+      this.setData({
+        selectArray: app.globalData.cityArray,
+        selectIndex: app.globalData.cityIndex
+      })
+    }
+  },
   getIndexList(){
     wx.request({
       url: app.globalData.apiUrl + 'get_list.php?cate='+cate+'&order='+order,
       success: res => {
-        console.log(res)
+        //console.log(res)
         this.setData({
           listData:res.data.data
         })
@@ -228,10 +239,15 @@ Page({
     if(lock){
       return
     }
-    console.log(e);
+    //console.log(e);
     var v = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/view/viewDetail/viewDetail?id='+v,
+    })
+  },
+  selectCity(){
+    wx.navigateTo({
+      url: '/pages/citySelect/citySelect',
     })
   }
 })
