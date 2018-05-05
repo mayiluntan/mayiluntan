@@ -2,6 +2,8 @@
 //获取应用实例
 const app = getApp()
 var lock=false;
+var cate=0;
+var order=0;
 Page({
   data: {
     cateSelected:0,
@@ -78,7 +80,12 @@ Page({
       ]
   ],
     orgIndex:[0,0,0],
-    orgCity:[]
+    orgCity:[],
+    broadcast:{
+      'title':'暂无求助',
+      'num':0,
+      'id':0
+    }
   },
   
   onLoad: function () {
@@ -90,6 +97,14 @@ Page({
         })
       }
     })
+    wx.request({
+      url: app.globalData.apiUrl + 'get_broadcast.php',
+      success: res => {
+        this.setData({
+          broadcast: res.data.data
+        })
+      }
+    })
     this.getIndexList()
     var cityArray = this.data.cityArray
     this.setData({
@@ -98,7 +113,7 @@ Page({
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php',
+      url: app.globalData.apiUrl + 'get_list.php?cate='+cate+'&order='+order,
       success: res => {
         console.log(res)
         this.setData({
@@ -113,14 +128,38 @@ Page({
     });
   },
   cateChange(e) {
+    cate = e.detail.value
     this.setData({
       cateIndex: e.detail.value
     })
+    this.getIndexList()
   },
   orderChange(e) {
+    order = e.detail.value
     this.setData({
       orderIndex: e.detail.value
     })
+    this.getIndexList()
+  },
+  copyText(e){
+    lock = true;
+    var v=e.currentTarget.dataset.wechat
+    if(v==''){
+      wx.showToast({
+        title: '未填写微信号',
+        icon:'none'
+      })
+    }else{
+      wx.setClipboardData({
+        data: v,
+        success: function (res) {
+          wx.showToast({
+            title: '已复制',
+            icon: 'success'
+          })
+        }
+      })
+    }
   },
   callPhone(e){
     lock=true;
@@ -179,9 +218,10 @@ Page({
       cityArray: orgCity
     })
   },
-  showList(){
+  showList(e){
+    var cate = e.currentTarget.dataset.cate;
     wx.navigateTo({
-      url: '/pages/view/viewList/viewList',
+      url: '/pages/view/viewList/viewList?cate=' + cate,
     })
   },
   viewDetail(e){

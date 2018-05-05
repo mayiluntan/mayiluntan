@@ -149,14 +149,16 @@ page{
 .circle .circle-replys .circle-thumbs-up{
   display: flex;
   border-bottom: 1px solid #e7e7e7;
-  height: 50rpx;
-  align-items: center;
 }
 .circle .circle-replys label{
   color:#6499d7;
 }
-.circle .circle-replys .circle-thumbs-up view{
-  padding: 0 10rpx;
+.circle .circle-replys .circle-thumbs-up .circle-up{
+  display: flex;
+  padding: 5rpx;
+}
+.circle .circle-replys .circle-thumbs-up .circle-up view{
+  padding-left:10rpx;
 }
 .circle .circle-replys .num{
   margin: 0 10rpx 0 5rpx;

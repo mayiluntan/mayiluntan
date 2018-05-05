@@ -25,9 +25,10 @@ Page({
     })
     wx.request({
       url: app.globalData.apiUrl + 'get_personal.php',
+      data: { uid: app.globalData.uid},
+      method:'POST',
       success: res => {
         if (res.data.ret == 1) {
-          console.log(res)
           this.setData({
             info: res.data.data.info,
             showData: res.data.data.show_data,

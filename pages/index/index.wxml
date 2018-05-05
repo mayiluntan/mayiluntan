@@ -30,85 +30,85 @@
   <view class="broadcast">
     <view class='l'>
       <image src='/images/horn.png'/>
-      <view>求助：车胎破了谁来修?</view>
+      <view>{{broadcast.title}}</view>
     </view>
-    <view class='r'>
-      <view class='r1'>暂无答案</view>
+    <view class='r' wx:if="{{broadcast.id>0}}">
+      <view class='r1'>{{broadcast.num==0?'暂无答案':'查看答案'}}</view>
       <view class='r2'>全部</view>
     </view>
   </view>
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
     <swiper-item>
-      <view class='cate' bindtap='showList'>
-        <view class='cate-detail'>
+      <view class='cate'>
+        <view class='cate-detail'  bindtap='showList' data-cate='0'>
         <image src='/images/icon_logo_chuzu.png' />
         <view>房屋出租</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='1'>
         <image src='/images/icon_logo_qiuzu.png' />
         <view>房屋求租</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='2'>
         <image src='/images/i1.png' />
         <view>二手市场</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='3'>
         <image src='/images/icon_logo_qiuzhi.png' />
         <view>求职招聘</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='4'>
         <image src='/images/icon_logo_buy_car.png' />
         <view>汽车交易</view>
         </view>
       </view>
-      <view class='cate' bindtap='showList'>
-        <view class='cate-detail'>
+      <view class='cate'>
+        <view class='cate-detail' bindtap='showList' data-cate='5'>
         <image src='/images/icon_logo_ask_help.png' />
         <view>求助问事</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='6'>
         <image src='/images/icon_logo_share_car.png' />
         <view>拼车信息</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='7'>
         <image src='/images/icon_logo_minsu.png' />
         <view>短租民宿</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='8'>
         <image src='/images/icon_logo_zhuanrang.png' />
         <view>生意转让</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='9'>
         <image src='/images/icon_logo_jiaoyou.png' />
         <view>交友项目</view>
         </view>
       </view>
     </swiper-item>
     <swiper-item>
-      <view class='cate' bindtap='showList'>
-        <view class='cate-detail'>
+      <view class='cate'>
+        <view class='cate-detail' bindtap='showList' data-cate='10'>
         <image src='/images/icon_logo_chongwu.png' />
         <view>宠物相关</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='11'>
         <image src='/images/icon_logo_jiaocai.png' />
         <view>二手教材</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='12'>
         <image src='/images/icon_logo_fangchan.png' />
         <view>二手房产</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='13'>
         <image src='/images/icon_logo_jiaoyou.png' />
         <view>同城交友</view>
         </view>
-        <view class='cate-detail'>
+        <view class='cate-detail' bindtap='showList' data-cate='14'>
         <image src='/images/icon_logo_jiaju.png' />
         <view>家居家居</view>
         </view>
       </view>
-      <view class='cate' bindtap='showList'>
-        <view class='cate-detail'>
+      <view class='cate'>
+        <view class='cate-detail' bindtap='showList' data-cate='15'>
         <image src='/images/icon_logo_shuma.png' />
         <view>数码电子</view>
         </view>
@@ -171,7 +171,7 @@
               </view>
             </view>
             <view class='list-contact'>
-              <image src='/images/wechat1.png'></image>
+              <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
               <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
             </view>
           </view>
