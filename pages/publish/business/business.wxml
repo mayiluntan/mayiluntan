@@ -3,58 +3,61 @@
   <view class='info'>
     <view class='list'>
       <view>商家名称<text>*</text></view>
-      <input placeholder='请输入商家名称'></input>
+      <input placeholder='请输入商家名称' value='{{postData.name}}' bindinput='nameInput'></input>
     </view>
     <view class='list'>
       <view>商家电话<text>*</text></view>
-      <input placeholder='请输入商家手机号'></input>
+      <input placeholder='请输入商家手机号' value='{{postData.tel}}' bindinput='telInput'></input>
     </view>
     <view class='list'>
       <view>商家QQ</view>
-      <input placeholder='请输入商家QQ号'></input>
+      <input placeholder='请输入商家QQ号' value='{{postData.qq}}' bindinput='qqInput'></input>
     </view>
     <view class='list'>
       <view>商家微信<text>*</text></view>
-      <input placeholder='请输入商家微信号'></input>
+      <input placeholder='请输入商家微信号' value='{{postData.wechat}}' bindinput='wechatInput'></input>
     </view>
     <view class='list'>
       <view>商家分类<text>*</text></view>
-      <input placeholder='餐饮'></input>
+      <picker value='{{cateIndex}}' range='{{cateArray}}' bindchange='cateChange'>
+        <view>{{cateArray[cateIndex]}}</view>
+      </picker>
     </view>
     <view class='pic'>
       <view>商家logo<text>*</text><text class='grey'>（建议尺寸750*562px）</text></view>
-      <image src='/images/post/add.png'></image>
+      <image src="{{logo==''?'/images/post/add.png':logo}}" bindtap='addPic' data-type='1'></image>
     </view>
   </view>
   <view class='division'></view>
   <view class='detail'>
     <view class='list'>
       <view>所在区域<text>*</text></view>
-      <input placeholder='请输入商家所在区域'></input>
+      <input placeholder='请输入商家所在区域' value='{{postData.area}}' bindinput='areaInput'></input>
     </view>
     <view class='list'>
       <view>商家地址<text>*</text></view>
-      <input placeholder='请输入商家地址'></input>
-    </view>
-    <view class='list'>
-      <view>商家坐标<text>*</text></view>
-      <text class='location'></text>
-      <image class='more' src='/images/post/more.png'></image>
+      <input placeholder='请输入商家地址' value='{{postData.address}}' bindinput='addressInput'></input>
     </view>
     <view class='list'>
       <view>营业时间<text>*</text></view>
-      <input placeholder='00：00至23：59'></input>
+      <picker mode='time' bindchange="timeChange" data-type='1' value='{{postData.stratTime}}'>
+        <view class='time'>{{postData.stratTime}}</view>
+      </picker>
+      <view class='to'>至</view>
+      <picker mode='time' bindchange="timeChange" data-type='2' value='{{postData.endTime}}'>
+        <view class='time'>{{postData.endTime}}</view>
+      </picker>
     </view>
     <view class='pic'>
       <view>资质证书</view>
-      <image src='/images/post/add.png'></image>
+      <image src="{{cert==''?'/images/post/add.png':cert}}" bindtap='addPic' data-type='2'></image>
     </view>
     <view class='list'>
       <view>提供服务</view>
-      <input placeholder='空格分割,如:WiFi 停车'></input>
+      <input placeholder='空格分割,如:WiFi 停车' value='{{postData.service}}' bindinput='serviceInput'></input>
     </view>
   </view>
   <view class='button' bindtap='postClick'>
-    <view>确认支付8.8元</view>
+    <view bindtap='businessPost'>确认支付8.8元</view>
   </view>
 </view>

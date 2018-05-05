@@ -6,7 +6,7 @@ page{
 .top{
   width: 100%;
   background: #fff;
-  padding-bottom: 30rpx;
+  height: 70vw;
 }
 .top image{
   width: 100%;
@@ -19,27 +19,15 @@ page{
   width: 100%;
 }
 .top .avatar view{
-  width: 164rpx;
-  height: 164rpx;
-  border-radius: 82rpx;
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 76rpx;
   margin: 0 auto;
   background: #cbcbcb;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center
-}
-.top .avatar view view{
-  width: 174rpx;
-  height: 174rpx;
-  border-radius: 87rpx;
-  background: #d5d5d5;
-}
-.top .avatar view view view{
-  width: 184rpx;
-  height: 184rpx;
-  border-radius: 92rpx;
-  background: #dedfdf;
 }
 .top .avatar image{
   width: 152rpx;
@@ -73,4 +61,72 @@ page{
 .top .cate .cate-border{
   border-left: 1px solid #f0f2f2;
   border-right: 1px solid #f0f2f2;
+}
+.circle {
+  width: 100%;
+  background: #f2f3f4;
+}
+
+.circle-title {
+  display: flex;
+  border-bottom: 1px solid #efefef;
+}
+
+.circle-title view {
+  width: 50%;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.circle-title .selected-title {
+  color: #f0a232;
+  border-bottom: 2px solid #f0a232;
+}
+.all-list{
+  width: 100%;
+}
+.all-list .list{
+  width: 90%;
+  display: flex;
+  padding: 20rpx 5vw;
+}
+.all-list .list .date{
+  display:flex;
+}
+.all-list .list .day{
+  font-size: 42rpx;
+}
+.all-list .list .month{
+  width: 60rpx;
+  padding-top: 15rpx;
+}
+.all-list .list .pic image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.all-list .list .content{
+  flex: 1;
+  padding-left: 5vw;
+}
+.all-list .list .content .c{
+  line-height: 50rpx;
+  height: 119rpx;
+}
+.all-list .list .btn{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.all-list .list .btn .eye{
+  width: 40rpx;
+  height: 26rpx;
+}
+.all-list .list .btn .up{
+  width: 30rpx;
+  height: 32rpx;
+}
+.all-list .info .info-list{
+  display: flex;
 }
