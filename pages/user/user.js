@@ -22,7 +22,7 @@ Page({
     var page = e.currentTarget.dataset.page
     if (page != '') {
       wx.navigateTo({
-        url: page,
+        url: page + '?user_id=' + app.globalData.userId,
       })
     }
   }

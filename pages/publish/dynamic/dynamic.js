@@ -8,9 +8,6 @@ Page({
    */
   data: {
     pics:[],
-    dynamicArray: ['不选择'],
-    dynamicId: [0],
-    dynamicIndex:0,
     pics: [],
     picIds: [],
     picCount: 0,
@@ -18,29 +15,35 @@ Page({
     address:'显示位置',
     lon:'',
     lat:'',
+    topic_id:0,
+    topic_name:'未选择'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.request({
-      url: app.globalData.apiUrl +'get_topic.php',
-      success:res=>{
-        this.setData({
-          dynamicArray:res.data.data,
-          dynamicId: res.data.id
-        })
-      }
+    var topic_name = options.name ? options.name :'未选择'
+    var topic_id = options.id ? options.id : ''
+    this.setData({
+      topic_id: topic_id,
+      topic_name: topic_name
     })
   },
-  dynamicChange(e){
-    var v = e.detail.value;
-    if (this.data.dynamicIndex != v) {
+  onShow(){
+    if (app.globalData.topicId > 0 && app.globalData.topicId != this.data.topic_id){
       this.setData({
-        dynamicIndex: v
+        topic_id: app.globalData.topicId,
+        topic_name: app.globalData.topicName
       })
+      app.globalData.topicId = 0;
+      app.globalData.topicName = '';
     }
+  },
+  chooseTopic(){
+    wx.navigateTo({
+      url: '/pages/circle/topic/topic?orgin=0',
+    })
   }, 
   addPic() {
     var that = this;
@@ -96,7 +99,7 @@ Page({
     lock=true;
     var data={
       uid:app.globalData.uid,
-      topic_id: this.data.dynamicId[this.data.dynamicIndex],
+      topic_id: this.data.topic_id,
       content: this.data.content,
       pics: this.data.picIds,
     }

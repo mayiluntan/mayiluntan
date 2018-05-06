@@ -62,6 +62,20 @@ page{
 .pic-detail image{
   margin-right: 20rpx;
 }
+.intro{
+  margin-left: 5vw;
+  width: 95vw;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.intro text{
+  color: #f00;
+}
+.intro textarea{
+  width: 90%;
+  height: 150rpx;
+  overflow: auto;
+}
 .top-list{
   width: 95vw;
   padding:30rpx 0;

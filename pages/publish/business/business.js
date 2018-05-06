@@ -21,6 +21,7 @@ Page({
       tel: '',
       qq: '',
       wechat: '',
+      intro:'',
       cate: '',
       logo: '',
       area: '',
@@ -158,7 +159,14 @@ Page({
     this.setData({
       postData: postData
     })
-  }, 
+  },
+  introInput(e){
+    var postData = this.data.postData
+    postData.intro = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
   addressInput(e) {
     var postData = this.data.postData
     postData.address = e.detail.value
@@ -198,6 +206,10 @@ Page({
     }
     if (this.data.pics.length == 0) {
       app.showTips('提示', '请上传详情图', false)
+      return
+    }
+    if (postData.intro == '') {
+      app.showTips('提示', '请填写商户介绍', false)
       return
     }
     if (postData.address == '') {

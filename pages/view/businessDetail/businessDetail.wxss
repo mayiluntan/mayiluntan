@@ -144,7 +144,6 @@
   line-height: 50rpx;
 }
 .circle .circle-content{
-  height: 60rpx;
   line-height: 60rpx;
 }
 .circle .circle-pics image{

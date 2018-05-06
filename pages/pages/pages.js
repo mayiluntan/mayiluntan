@@ -37,7 +37,7 @@ Page({
     wx.request({
       url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order,
       success: res => {
-        console.log(res.data.data)
+        console.log(res)
         this.setData({
           data: res.data.data
         })
@@ -63,6 +63,10 @@ Page({
         }
       })
     }
+    setTimeout(function(){
+      lock = false;
+    },1000)
+    
   },
   callPhone(e) {
     lock = true;
@@ -80,5 +84,14 @@ Page({
       }
     })
 
+  },
+  businessDetail(e) {
+    if (lock) {
+      return
+    }
+    var v = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/view/businessDetail/businessDetail?id=' + v,
+    })
   }
 })

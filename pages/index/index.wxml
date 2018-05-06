@@ -145,6 +145,12 @@
         <image src='/images/icon_arrow_down.png' />
       </view>
       </picker>
+      <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
+      <view class='title-border'>
+        <view>{{areaArray[areaIndex]}}</view>
+        <image src='/images/icon_arrow_down.png' />
+      </view>
+      </picker>
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>
