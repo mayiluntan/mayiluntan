@@ -44,7 +44,11 @@ App({
     userInfo: null,
     uid: null,
     lon: 0,
-    lat: 0
+    lat: 0,
+    cityIndex:[0,0,0],
+    cityArray: ['亚洲', '中国','香港'],
+    cityChange: true,
+    pageChange: true
   },
   wxOpneSetting() {
     wx.openSetting({
@@ -71,7 +75,7 @@ App({
           success: function (res) {
             if (res.data.ret == 1) {
               that.globalData.uid = res.data.data
-              console.log(that.globalData.uid)
+              //console.log(that.globalData.uid)
               if (that.wxLoginCallback) {
                 that.wxLoginCallback()
               }

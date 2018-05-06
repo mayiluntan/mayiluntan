@@ -1,0 +1,22 @@
+<view>
+  <view class='select-title'>
+    <view class="{{current == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>{{selected[0]}}</view>
+    <view class="{{current == 1?'selected-title':''}}" wx:if="{{currentShow>=1}}" data-menutype='1' bindtap='menuClicked'>{{selected[1]}}</view>
+    <view class="{{current == 2?'selected-title':''}}" wx:if="{{currentShow>=2}}" data-menutype='2' bindtap='menuClicked'>{{selected[2]}}</view>
+    <view class="{{current == 3?'selected-title':''}}" wx:if="{{currentShow>=3}}" data-menutype='3' bindtap='menuClicked'>{{selected[3]}}</view>
+  </view>
+  <swiper bindchange='swiperChange' current='{{current}}' class='select-swiper' style='height:{{minHeight}}px;'>
+    <swiper-item>
+      <view wx:for="{{array[0]}}" wx:key="index" bindtap='selectItem' data-value='{{index}}' data-index='0'>{{item}}</view>
+    </swiper-item>
+    <swiper-item wx:if="{{currentShow>=1}}">
+      <view wx:for="{{array[1]}}" wx:key="index" bindtap='selectItem' data-value='{{index}}' data-index='1'>{{item}}</view>
+    </swiper-item>
+    <swiper-item wx:if="{{currentShow>=2}}">
+      <view wx:for="{{array[2]}}" wx:key="index" bindtap='selectItem' data-value='{{index}}' data-index='2'>{{item}}</view>
+    </swiper-item>
+    <swiper-item wx:if="{{currentShow>=3}}">
+      <view wx:for="{{array[3]}}" wx:key="index" bindtap='selectItem' data-value='{{index}}' data-index='3'>{{item}}</view>
+    </swiper-item>
+  </swiper>
+</view>
