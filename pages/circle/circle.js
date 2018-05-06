@@ -13,8 +13,6 @@ Page({
     nick:''
   },
   onLoad: function () {
-
-    app.globalData.uid = 'SGRFWW8yY0tvY2tQWnc4M1lrVVpPczZreCtHK1RiU1BnOWN0UU90K3hZaz0';
     this.getList();
   },
   getList(){
