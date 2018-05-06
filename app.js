@@ -75,7 +75,7 @@ App({
           success: function (res) {
             if (res.data.ret == 1) {
               that.globalData.uid = res.data.data
-              //console.log(that.globalData.uid)
+              console.log(that.globalData.uid)
               if (that.wxLoginCallback) {
                 that.wxLoginCallback()
               }

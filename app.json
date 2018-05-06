@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/pages/pages",
+    "pages/circle/circle",
+    "pages/circle/circleList/circleList",
     "pages/index/index",
     "pages/citySelect/citySelect",
-    "pages/circle/circle",
     "pages/user/personal/personal",
     "pages/user/personal/edit/edit",
     "pages/publish/business/business",
@@ -13,7 +15,6 @@
     "pages/publish/publish",
     "pages/user/attentions/attentions",
     "pages/pages/pagePost/pagePost",
-    "pages/pages/pages",
     "pages/user/user",
     "pages/user/about/about",
     "pages/user/collect/collect",
