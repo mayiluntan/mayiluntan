@@ -1,74 +1,61 @@
-//circle.js
-//获取应用实例
-const app = getApp()
-var istoday=0;
-var id=0;
-var userid=0;
+// pages/circle/circleList/circleList.js
+const app=getApp()
+var topic_id = 0;
+var id = 0;
+var userid = 0;
 Page({
-  data: {
-    menuSelected:0,
-    hide:1,
-    data:{},
-    content:'',
-    nick:''
-  },
-  onLoad: function () {
 
-    app.globalData.uid = 'SGRFWW8yY0tvY2tQWnc4M1lrVVpPczZreCtHK1RiU1BnOWN0UU90K3hZaz0';
-    this.getList();
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    hide:1,
+    data:{}
   },
-  getList(){
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    topic_id = options.id ? options.id:0
+    this.getList()
+  },
+  getList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_dynamic.php',
-      data: { uid: app.globalData.uid,istoday: istoday},
-      method:"POST",
-      success:res=>{
-        if(res.data.ret==1){
+      data: { uid: app.globalData.uid, topic_id: topic_id },
+      method: "POST",
+      success: res => {
+        if (res.data.ret == 1) {
           this.setData({
-            data:res.data.data
+            data: res.data.data
           })
           console.log(res)
-        }else{
+        } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
       }
     })
   },
-  menuClicked: function (event) {
-    var menutype = event.currentTarget.dataset.menutype;
-    if (this.data.menuSelected == menutype) {
-      return;
-    }
-    this.setData({
-      menuSelected: menutype
-    })
-    if (menutype==1){
-      istoday=1
-    }else{
-      istoday = 0
-    }
-    this.getList()
-  },
-  showInput(e){
+  showInput(e) {
     id = e.currentTarget.dataset.id
-    userid=0
+    userid = 0
     this.setData({
       hide: 0,
-      nick:''
+      nick: ''
     })
-    
   },
-  hideInput(){
+  hideInput() {
     this.setData({
-      hide:1
+      hide: 1
     })
   },
-  replyInput(e){
+  replyInput(e) {
     this.setData({
-      content:e.detail.value
+      content: e.detail.value
     })
   },
-  replyUser(e){
+  replyUser(e) {
     id = e.currentTarget.dataset.id
     var nick = e.currentTarget.dataset.nick
     userid = e.currentTarget.dataset.userid
@@ -78,14 +65,14 @@ Page({
     })
     console.log(this.data)
   },
-  replyClick(){
-    if(this.data.content==''){
+  replyClick() {
+    if (this.data.content == '') {
       app.showTips('提示', '请输入内容', false)
       return
     }
     wx.request({
       url: app.globalData.apiUrl + 'dynamic_message.php',
-      data: { id: id, uid: app.globalData.uid, content: this.data.content, to_user_id: userid},
+      data: { id: id, uid: app.globalData.uid, content: this.data.content, to_user_id: userid },
       method: 'POST',
       success: res => {
         if (res.data.ret == 1) {
@@ -98,14 +85,14 @@ Page({
           })
           this.hideInput();
           this.getList();
-          id=0;
+          id = 0;
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
       }
     })
   },
-  thumbsUp(e){
+  thumbsUp(e) {
     id = e.currentTarget.dataset.id
     wx.request({
       url: app.globalData.apiUrl + 'dynamic_up.php',
@@ -120,11 +107,6 @@ Page({
           app.showTips(res.data.title, res.data.msg, false);
         }
       }
-    })
-  },
-  circleList(){
-    wx.navigateTo({
-      url: '/pages/circle/circleList/circleList',
     })
   }
 })

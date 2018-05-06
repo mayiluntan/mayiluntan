@@ -1,0 +1,53 @@
+<view class='container'>
+  <view class='circle-list' wx:for="{{data}}" wx:key='index'>
+    <view class='circle-head'><image src='{{item.avatar}}'></image></view>
+    <view class='circle-detail'>
+      <view class='circle-nick'>{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
+      <view class='circle-tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
+      <view class='circle-content'>{{item.content}}</view>
+      <view class='circle-pics'>
+      <block wx:for="{{item.pics}}" wx:for-item='pic' wx:key='index'>
+      <image class="{{index==2?'circle-pics-last':''}}" src='{{pic}}'></image>
+      </block>
+      </view>
+      <view class='circle-btn'>
+        <block wx:if='{{item.is_up==1}}'>
+        <view><image src='/images/thumbs_up.png'></image></view>
+        </block>
+        <block wx:else>
+        <view bindtap='thumbsUp' data-id='{{item.id}}'><image src='/images/thumbs_up2.png'></image></view>
+        </block>            
+        <view bindtap='showInput' data-id='{{item.id}}'><image src='/images/comment.png'></image></view>
+      </view>
+      <view class='circle-replys'>
+        <view class='circle-thumbs-up' wx:if='{{item.up_num>0}}' >
+          <view class='circle-up'>
+          <image src='/images/thumbs_up.png'></image>
+          <text class='num'>{{item.up_num}}</text>  
+          <block wx:for="{{item.up_user}}" wx:for-item='up_user' wx:key='index'>
+            <text wx:if="{{index>0 && index%2==1}}">,</text>
+            <label>{{up_user}}</label>
+          </block>
+          </view>
+        </view>
+        <view class='circle-reply'>
+          <view wx:for="{{item.replys}}" wx:for-item='reply' wx:key='index'>
+          <label bindtap='replyUser' data-userid='{{reply.reply_uid}}' data-nick='{{reply.reply_nick}}' data-id='{{item.id}}'>{{reply.reply_nick}}</label>
+          <block wx:if="{{reply.to_nick!=''}}">
+          回复 <label bindtap='replyUser' data-userid='{{reply.to_uid}}' data-nick='{{reply.to_nick}}' data-id='{{item.id}}'>{{reply.to_nick}}</label>
+          </block>
+          <text>：{{reply.content}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='bottom' wx:if='{{hide==0}}'></view>
+  <view class='reply' wx:if='{{hide==0}}'>
+    <view class='bg' bindtap='hideInput'></view>
+    <view class='input'>
+      <input placeholder='回复{{nick}}' focus='true' confirm-type='回复' bindconfirm="replyClick" bindinput='replyInput' value='{{content}}'></input>
+      <view bindtap='replyClick'>回复</view>
+    </view>
+  </view>
+</view>
