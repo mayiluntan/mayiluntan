@@ -25,6 +25,8 @@ Page({
     })
     wx.request({
       url: app.globalData.apiUrl +'get_uinfo.php',
+      data:{uid:app.globalData.uid},
+      method:'POST',
       success:res=>{
         if(res.data.ret==1){
           this.setData({
