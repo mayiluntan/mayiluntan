@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='search'>
-      <input type='text' />
+      <input type='text' placeholder='搜索'/>
       <!-- <view class='search_tip'>
         <image src='/images/icon_search.png'/>
         <view>搜索</view>
@@ -154,7 +154,7 @@
       </view>
     </view>
     <block wx:for="{{data}}" wx:key="{{index}}">
-      <view class='list'>
+      <view class='list' bindtap='businessDetail' data-id='{{item.id}}'>
         <view class='list-main'>
           <view class='list-pic'>
             <image src='{{item.logo}}'></image>
@@ -163,7 +163,7 @@
             <view class='list-top'>
               <view>
                 <view class='list-title'>
-                  <view class='list-cate'>{{cateArray[item.cate]}}</view>
+                  <view class='list-cate'>{{item.cate}}</view>
                   <view class='list-nick'>{{item.name}}</view>
                 </view>
                 <view class='list-tag'>

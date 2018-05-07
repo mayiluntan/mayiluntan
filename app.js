@@ -43,12 +43,15 @@ App({
     apiUrl: 'https://www.haiwaixiaomayi.com/api/',
     userInfo: null,
     uid: null,
+    userId:0,
     lon: 0,
     lat: 0,
     cityIndex:[0,0,0],
     cityArray: ['亚洲', '中国','香港'],
     cityChange: true,
-    pageChange: true
+    pageChange: true,
+    topicId:0,
+    topicName:''
   },
   wxOpneSetting() {
     wx.openSetting({
@@ -75,6 +78,7 @@ App({
           success: function (res) {
             if (res.data.ret == 1) {
               that.globalData.uid = res.data.data
+              that.globalData.userId = res.data.user_id
               console.log(that.globalData.uid)
               if (that.wxLoginCallback) {
                 that.wxLoginCallback()

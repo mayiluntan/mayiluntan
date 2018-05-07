@@ -1,0 +1,50 @@
+/* pages/circle/topic/topic.wxss */
+.main{
+  font-size: 30rpx;
+}
+.list{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #efefef;
+  padding: 30rpx 0;
+}
+.list .list-main{
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.list .img{
+  width: 200rpx;
+  text-align: center;
+}
+.list .img image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 10rpx;
+}
+.list .content{
+  flex: 1;
+}
+.list .content .title{
+  font-size: 34rpx;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+.list .content .num{
+  color: #999;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.list .btn{
+  width: 200rpx;
+}
+.list .btn view{
+ width: 150rpx;
+ height: 60rpx;
+ line-height: 60rpx;
+ background: #42c1f4;
+ text-align: center;
+ color: #fff;
+ border-radius: 10rpx;
+ margin: 0 auto;
+}

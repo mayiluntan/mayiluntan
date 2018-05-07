@@ -4,6 +4,7 @@ const app = getApp()
 var lock=false;
 var cate=0;
 var order=0;
+var area=0;
 Page({
   data: {
     cateSelected:0,
@@ -15,8 +16,10 @@ Page({
     ],
     cateArray: ['全部分类','房屋出租', '房屋求租', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
     cateIndex:0,
-    orderArray:['排序','时间','置顶'],
-    orderIndex:0,
+    orderArray: ['排序', '发布时间', '刷新时间'],
+    orderIndex: 0,
+    areaArray: ['区域', '地区1', '地区2'],
+    areaIndex: 0,
     listData:[],
     cityArray:[
       ['亚洲','北美',"大洋洲","欧洲","南美洲","非洲"],
@@ -142,6 +145,13 @@ Page({
     cate = e.detail.value
     this.setData({
       cateIndex: e.detail.value
+    })
+    this.getIndexList()
+  },
+  areaChange(e) {
+    area = e.detail.value
+    this.setData({
+      areaIndex: e.detail.value
     })
     this.getIndexList()
   },

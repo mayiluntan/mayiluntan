@@ -124,5 +124,10 @@ Page({
     wx.navigateTo({
       url: '/pages/circle/circleList/circleList',
     })
+  },
+  chooseTopic() {
+    wx.navigateTo({
+      url: '/pages/circle/topic/topic?orgin=0',
+    })
   }
 })

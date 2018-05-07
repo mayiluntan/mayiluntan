@@ -1,0 +1,14 @@
+<view class='main'>
+  <view class='list' wx:for="{{data}}" wx:key='index'>
+    <view class='list-main' bindtap='topicSelect' data-id='{{item.id}}' data-name='{{item.name}}'>
+      <view class='img'><image src='{{item.pic}}'></image></view>
+      <view class='content'>
+        <view class='title'>{{item.name}}</view>
+        <view class='num'>{{item.num}}人参与</view>
+      </view>
+    </view>
+    <view class='btn' wx:if='{{orgin==1}}' bindtap='topicJoin' data-id='{{item.id}}' data-name='{{item.name}}'> 
+      <view>参与</view>
+    </view>
+  </view>
+</view>

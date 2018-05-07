@@ -5,13 +5,12 @@ page{
 .circle-list{
   width: 100%;
   display: flex;
-  margin: 3vw 0 0 3vw;
+  padding: 3vw 0;
   border-bottom: 1px solid #efefef;
-  padding-bottom: 3vw;
   word-break:break-all;
 }
 .circle-head{
-  width: 12vw;
+  width: 14vw;
 }
 .circle-detail{
   flex: 1;

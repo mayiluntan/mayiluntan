@@ -32,6 +32,10 @@
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
       <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic2'></image>
     </view>
+    <view class='intro'>
+      <view>商户介绍<text>*</text></view>
+      <textarea placeholder='请简单介绍下商户' bindinput='introInput' value='{{postData.intro}}'></textarea>
+    </view>
   </view>
   <view class='division'></view>
   <view class='detail'>

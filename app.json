@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/circle/topic/topic",
     "pages/pages/pages",
     "pages/circle/circle",
     "pages/circle/circleList/circleList",
-    "pages/index/index",
     "pages/citySelect/citySelect",
     "pages/user/personal/personal",
     "pages/user/personal/edit/edit",
@@ -20,7 +21,8 @@
     "pages/user/collect/collect",
     "pages/user/manageActive/manageActive",
     "pages/user/managePost/managePost",
-    "pages/error/error"
+    "pages/error/error",
+    "pages/view/businessDetail/businessDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -185,7 +185,7 @@ page{
   padding: 10rpx 0;
 }
 .content .title .title-picker{
-    width: 50%;
+    width: 33%;
 }
 .content .title .title-border{
   width: 100%;
