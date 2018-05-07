@@ -213,6 +213,9 @@ page{
   width: 176rpx;
   height: 176rpx;
 }
+.list .list-detail{
+  width: 100%;
+}
 .list .list-top{
   display: flex;
 }
