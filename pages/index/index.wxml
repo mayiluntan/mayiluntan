@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class='search'>
-      <input type='text' />
+      <input type='text' placeholder='搜索' />
       <!-- <view class='search_tip'>
         <image src='/images/icon_search.png'/>
         <view>搜索</view>
@@ -38,13 +38,9 @@
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
     <swiper-item>
       <view class='cate'>
-        <view class='cate-detail'  bindtap='showList' data-cate='0'>
+        <view class='cate-detail'  bindtap='showList' data-cate='1'>
         <image src='/images/icon_logo_chuzu.png' />
         <view>房屋信息</view>
-        </view>
-        <view class='cate-detail' bindtap='showList' data-cate='1'>
-        <image src='/images/icon_logo_qiuzu.png' />
-        <view>房屋求租这个要去掉</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='2'>
         <image src='/images/i1.png' />
@@ -58,12 +54,12 @@
         <image src='/images/icon_logo_buy_car.png' />
         <view>汽车交易</view>
         </view>
-      </view>
-      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='5'>
         <image src='/images/icon_logo_ask_help.png' />
         <view>求助问事</view>
         </view>
+      </view>
+      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='6'>
         <image src='/images/icon_logo_share_car.png' />
         <view>拼车信息</view>
@@ -80,14 +76,14 @@
         <image src='/images/icon_logo_jiaoyou.png' />
         <view>交友项目</view>
         </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='10'>
         <image src='/images/icon_logo_chongwu.png' />
         <view>宠物相关</view>
         </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='11'>
         <image src='/images/icon_logo_jiaocai.png' />
         <view>二手教材</view>
@@ -104,12 +100,12 @@
         <image src='/images/icon_logo_jiaju.png' />
         <view>家居家居</view>
         </view>
-      </view>
-      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='15'>
         <image src='/images/icon_logo_shuma.png' />
         <view>数码电子</view>
         </view>
+      </view>
+      <view class='cate'>
       </view>
     </swiper-item>
   </swiper>
@@ -166,7 +162,7 @@
           <view class='list-top'>
             <view>
               <view class='list-title'>
-                <view class='list-cate'>{{cateArray[item.cate1]}}</view>
+                <view class='list-cate'>{{item.cate}}</view>
                 <view class='list-nick'>{{item.nickname}}</view>
               </view>
               <view class='list-tag' >

@@ -5,112 +5,59 @@
       <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>我的</view>
       <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>回复</view>
     </view>
-    <view class='circle-list'>
-      <view class='circle-head'>
-        <image src='/images/head.png'></image>
+  </view>
+  <view class='circle-list' wx:for="{{data}}" wx:key='index'>
+    <view class='circle-head'><image src='{{item.avatar}}'></image></view>
+    <view class='circle-detail'>
+      <view class='circle-nick'>
+        <view class="circle-show">{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
+        <view class="cancle-collect" wx:if='{{menuSelected == 0}}' bindtap='delete' data-id='{{item.id}}'>删除</view>
       </view>
-      <view>
-        <view class='circle-nick'>
-          <view class='circle-show'>
-          可爱的桃子
-          <image src='/images/female.png'></image>
+      <view class='circle-tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
+      <view class='circle-content'>{{item.content}}</view>
+      <view class='circle-pics'>
+      <block wx:for="{{item.pics}}" wx:for-item='pic' wx:key='index'>
+      <image class="{{index==2?'circle-pics-last':''}}" src='{{pic}}'></image>
+      </block>
+      </view>
+      <view class='circle-btn'>
+        <block wx:if='{{item.is_up==1}}'>
+        <view><image src='/images/thumbs_up.png'></image></view>
+        </block>
+        <block wx:else>
+        <view bindtap='thumbsUp' data-id='{{item.id}}'><image src='/images/thumbs_up2.png'></image></view>
+        </block>            
+        <view bindtap='showInput' data-id='{{item.id}}'><image src='/images/comment.png'></image></view>
+      </view>
+      <view class='circle-replys'>
+        <view class='circle-thumbs-up' wx:if='{{item.up_num>0}}' >
+          <view class='circle-up'>
+          <image src='/images/thumbs_up.png'></image>
+          <text class='num'>{{item.up_num}}</text>  
+          <block wx:for="{{item.up_user}}" wx:for-item='up_user' wx:key='index'>
+            <text wx:if="{{index>0 && index%2==1}}">,</text>
+            <label>{{up_user}}</label>
+          </block>
           </view>
-          <view class='cancle-collect'>删除</view>
         </view>
-        <view class='circle-tags'>
-          <label>18岁</label>
-          <label>北美</label>
-        </view>
-        <view class='circle-content'>倩女幽魂好恐怖，有没有人一起？</view>
-        <view class='circle-pics'>
-          <image src='/images/tmp.png'></image>
-          <image src='/images/tmp.png'></image>
-          <image class='circle-pics-last' src='/images/tmp.png'></image>
-        </view>
-        <view class='circle-btn'>
-          <view>
-            <image src='/images/thumbs_up.png'></image>
-          </view>
-          <view>
-            <image src='/images/comment.png'></image>
-          </view>
-        </view>
-        <view class='circle-replys'>
-          <view class='circle-thumbs-up'>
-            <image src='/images/thumbs_up.png'></image>
-            <view class='num'>12</view>
-            <label>大大小小</label>
-            <view>,</view>
-            <label>我最厉害</label>
-            <view>,</view>
-            <label>嗯嗯</label>
-            <view>,</view>
-            <label>超级棒</label>
-          </view>
-          <view class='circle-reply'>
-            <view>
-              <label>大大小小</label>：世间安得两全法，不负如来不负卿</view>
-            <view>
-              <label>我最厉害</label> 回复
-              <label>大大小小</label>：棒棒哒</view>
-            <view>
-              <label>牛魔王</label>：我就喜欢最后一张图</view>
+        <view class='circle-reply'>
+          <view wx:for="{{item.replys}}" wx:for-item='reply' wx:key='index'>
+          <label bindtap='replyUser' data-userid='{{reply.reply_uid}}' data-nick='{{reply.reply_nick}}' data-id='{{item.id}}'>{{reply.reply_nick}}</label>
+          <block wx:if="{{reply.to_nick!=''}}">
+          回复 <label bindtap='replyUser' data-userid='{{reply.to_uid}}' data-nick='{{reply.to_nick}}' data-id='{{item.id}}'>{{reply.to_nick}}</label>
+          </block>
+          <text>：{{reply.content}}</text>
           </view>
         </view>
       </view>
     </view>
-    <view class='circle-list'>
-      <view class='circle-head'>
-        <image src='/images/head.png'></image>
-      </view>
-      <view>
-        <view class='circle-nick'>
-          <view class='circle-show'>
-          可爱的桃子
-          <image src='/images/female.png'></image>
-          </view>
-        </view>
-        <view class='circle-tags'>
-          <label>18岁</label>
-          <label>北美</label>
-        </view>
-        <view class='circle-content'>倩女幽魂好恐怖，有没有人一起？</view>
-        <view class='circle-pics'>
-          <image src='/images/tmp.png'></image>
-          <image src='/images/tmp.png'></image>
-          <image class='circle-pics-last' src='/images/tmp.png'></image>
-        </view>
-        <view class='circle-btn'>
-          <view>
-            <image src='/images/thumbs_up.png'></image>
-          </view>
-          <view>
-            <image src='/images/comment.png'></image>
-          </view>
-        </view>
-        <view class='circle-replys'>
-          <view class='circle-thumbs-up'>
-            <image src='/images/thumbs_up.png'></image>
-            <view class='num'>12</view>
-            <label>大大小小</label>
-            <view>,</view>
-            <label>我最厉害</label>
-            <view>,</view>
-            <label>嗯嗯</label>
-            <view>,</view>
-            <label>超级棒</label>
-          </view>
-          <view class='circle-reply'>
-            <view>
-              <label>大大小小</label>：世间安得两全法，不负如来不负卿</view>
-            <view>
-              <label>我最厉害</label> 回复
-              <label>大大小小</label>：棒棒哒</view>
-            <view>
-              <label>牛魔王</label>：我就喜欢最后一张图</view>
-          </view>
-        </view>
-      </view>
+  </view>
+  <view class='bottom' wx:if='{{hide==0}}'></view>
+  <view class='reply' wx:if='{{hide==0}}'>
+    <view class='bg' bindtap='hideInput'></view>
+    <view class='input'>
+      <input placeholder='回复{{nick}}' focus='true' confirm-type='回复' bindconfirm="replyClick" bindinput='replyInput' value='{{content}}'></input>
+      <view bindtap='replyClick'>回复</view>
     </view>
   </view>
 </view>

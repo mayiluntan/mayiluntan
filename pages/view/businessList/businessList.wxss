@@ -32,7 +32,6 @@
   padding-left: 10rpx;
   align-self: center
 }
-
 .content .title .title-border2 image{
   width: 30rpx;
   height: 20rpx;
@@ -43,6 +42,7 @@
 /**list-main**/
 .list{
   padding:20rpx;
+  padding-bottom: 5rpx;
   border-bottom: 1px solid #e0e0e0;
 }
 .list .list-main{
@@ -55,8 +55,8 @@
   width: 176rpx;
   height: 176rpx;
 }
-.list .list-content{
-  flex: 1;
+.list .list-detail{
+  width: 100%;
 }
 .list .list-top{
   display: flex;
@@ -107,7 +107,23 @@
   color: #4c4c4c;
 }
 .list .list-time{
-  padding-top:10rpx;
+  height: 40rpx;
+  display: flex;
+  line-height: 40rpx;
+  padding-top: 10rpx 0;
   color: #7f7f7f;
-  text-align: right;
+  font-size:25rpx; 
+}
+
+.list .list-time .time{
+  width: 50%;
+  display:flex;
+  border-right: 1px solid #f0f2f2;
+  justify-content: center;
+}
+
+.list .list-time .hot{
+  width: 50%;
+  display:flex;
+  justify-content: center;
 }

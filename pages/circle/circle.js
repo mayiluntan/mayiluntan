@@ -129,5 +129,10 @@ Page({
     wx.navigateTo({
       url: '/pages/circle/topic/topic?orgin=0',
     })
+  },
+  topicList(){
+    wx.navigateTo({
+      url: '/pages/circle/topic/topic',
+    })
   }
 })

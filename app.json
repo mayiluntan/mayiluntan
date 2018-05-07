@@ -22,7 +22,9 @@
     "pages/user/manageActive/manageActive",
     "pages/user/managePost/managePost",
     "pages/error/error",
-    "pages/view/businessDetail/businessDetail"
+    "pages/view/businessDetail/businessDetail",
+    "pages/areaSelect/areaSelect",
+    "pages/view/businessList/businessList"
   ],
   "window": {
     "backgroundTextStyle": "light",

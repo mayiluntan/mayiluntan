@@ -4,7 +4,7 @@ const app = getApp()
 var lock=false;
 var cate=0;
 var order=0;
-var area=0;
+var area='';
 Page({
   data: {
     cateSelected:0,
@@ -14,7 +14,7 @@ Page({
         url: '/images/banner.png'
       }
     ],
-    cateArray: ['全部分类','房屋出租', '房屋求租', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
+    cateArray: ['全部分类','房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
     cateIndex:0,
     orderArray: ['排序', '发布时间', '刷新时间'],
     orderIndex: 0,
@@ -127,7 +127,7 @@ Page({
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate='+cate+'&order='+order,
+      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + area,
       success: res => {
         //console.log(res)
         this.setData({
@@ -240,9 +240,9 @@ Page({
     })
   },
   showList(e){
-    var cate = e.currentTarget.dataset.cate;
+    var c = e.currentTarget.dataset.cate;
     wx.navigateTo({
-      url: '/pages/view/viewList/viewList?cate=' + cate,
+      url: '/pages/view/viewList/viewList?cate=' + c,
     })
   },
   viewDetail(e){

@@ -17,7 +17,8 @@ Page({
     userMessage:{},
     hide:1,
     nick:'',
-    content:''
+    content:'',
+    isFollow:0
   },
 
   /**
@@ -31,7 +32,7 @@ Page({
     })
     wx.request({
       url: app.globalData.apiUrl + 'get_personal.php',
-      data: { uid: app.globalData.uid},
+      data: { uid: app.globalData.uid, user_id: this.data.user_id},
       method:'POST',
       success: res => {
         console.log(res)
@@ -193,6 +194,22 @@ Page({
         if (res.data.ret == 1) {
           this.getList();
           id = 0;
+        } else {
+          app.showTips(res.data.title, res.data.msg, false);
+        }
+      }
+    })
+  },
+  addFollow(){
+    wx.request({
+      url: app.globalData.apiUrl + 'add_follow.php',
+      data: { user_id: this.data.user_id, uid: app.globalData.uid },
+      method: 'POST',
+      success: res => {
+        if (res.data.ret == 1) {
+          this.setData({
+            isFollow:1
+          })
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }

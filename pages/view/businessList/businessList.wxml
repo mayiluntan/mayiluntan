@@ -1,0 +1,51 @@
+<view class='content'>
+  <view class='title'>
+    <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
+    <view class='title-border'>
+      <view>{{areaArray[areaIndex]}}</view>
+      <image src='/images/icon_arrow_down.png' />
+    </view>
+    </picker>
+    <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
+    <view class='title-border2'>
+    <view>{{orderArray[orderIndex]}}</view>
+    <image src='/images/icon_arrow_down.png' />
+    </view>
+    </picker>
+  </view>
+  <block wx:for="{{data}}" wx:key="{{index}}">
+    <view class='list' bindtap='businessDetail' data-id='{{item.id}}'>
+      <view class='list-main'>
+        <view class='list-pic'>
+          <image src='{{item.logo}}'></image>
+        </view>
+        <view  class='list-detail'>
+          <view class='list-top'>
+            <view>
+              <view class='list-title'>
+                <view class='list-cate'>{{item.cate}}</view>
+                <view class='list-nick'>{{item.name}}</view>
+              </view>
+              <view class='list-tag'>
+                <view wx:for="{{item.service}}" wx:for-item='tag' wx:key="index">{{tag}}</view>
+              </view>
+            </view>
+            <view class='list-contact'>
+              <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
+            <image class='list-tel' bindtap='callPhone' data-phone='{{item.tel}}' src="{{item.tel==''?'/images/tel2.png':'/images/tel1.png'}}"></image>
+            </view>
+          </view>
+          <view class='list-intro'>{{item.intro}}</view>
+        </view>
+      </view>
+      <view class='list-time'>
+        <view class='time'>
+          <view>营业时间：{{item.start_time}}-{{item.end_time}}</view>
+        </view>
+        <view class='hot'>
+          <view>人气：{{item.popularity}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

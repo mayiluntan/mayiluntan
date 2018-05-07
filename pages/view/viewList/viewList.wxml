@@ -1,32 +1,46 @@
 <!--pages/user/managePost/managePost.wxml-->
-<view class='container'>
-  <block wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="{{index}}">
-    <view class='list'>
+<view class='content'>
+    <view class='title'>
+      <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
+      <view class='title-border'>
+        <view>{{areaArray[areaIndex]}}</view>
+        <image src='/images/icon_arrow_down.png' />
+      </view>
+      </picker>
+      <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
+      <view class='title-border2'>
+      <view>{{orderArray[orderIndex]}}</view>
+      <image src='/images/icon_arrow_down.png' />
+      </view>
+      </picker>
+    </view>
+    <block wx:for="{{listData}}" wx:key="{{index}}">
+    <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>
-        <view class='list-pic'><image src='/images/car.png'></image></view>
-        <view>
+        <view class='list-pic'><image src='{{item.pic}}'></image></view>
+        <view class='list-content'>
           <view class='list-top'>
             <view>
               <view class='list-title'>
-                <view class='list-cate'>汽车交易</view>
-                <view class='list-nick'>蚂蚁一号</view>
+                <view class='list-cate'>{{item.cate}}</view>
+                <view class='list-nick'>{{item.nickname}}</view>
               </view>
-              <view class='list-tag'>
-                <view>凯迪拉克</view>
-                <view>两年</view>
+              <view class='list-tag' >
+                <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
+                <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
               </view>
             </view>
             <view class='list-contact'>
-              <image src='/images/wechat1.png'></image>
-              <image class='list-tel' src='/images/tel1.png'></image>
+              <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
+              <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
             </view>
           </view>
           <view class='list-intro'>
-          凯迪拉克 2016款 2.0T 自动档 豪华尊享舒适型,车况良好，五万公里无事故。
+          {{item.content}}
           </view>
         </view>
       </view>
-      <view class='list-time'>发布时间：2018.4.9</view>
+      <view class='list-time'>发布时间：{{item.dated}}</view>
     </view>
-    </block>
+  </block>
 </view>

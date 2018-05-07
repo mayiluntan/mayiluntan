@@ -1,6 +1,8 @@
 <view class='container'>
   <view class='top'>
     <image src='/images/user/bg.png'></image>
+    <view class='att' bindtap='addFollow' wx:if="{{isFollow==0}}">+关注</view>
+    <view class='att grey' wx:else>已关注</view>
     <view class='avatar'>
       <view><image src='{{info.avatar}}'></image></view>
     </view>

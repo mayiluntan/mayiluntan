@@ -8,7 +8,7 @@
   <view class='main'>
     <view class='title'>
       <view class='title-w'></view>
-      <view class='title-name'>热门话题</view>
+      <view class='title-name' bindtap='topicList'>热门话题</view>
       <view class='title-more'><image src='/images/more.png'></image></view>
     </view>
     <view class='topic' bindtap='circleList'>
