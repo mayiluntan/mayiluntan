@@ -1,0 +1,25 @@
+page{
+  font-size: 30rpx;
+}
+.select-title{
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #ccc;
+}
+.select-title view{
+  margin-right: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 20rpx 0;
+}
+.select-title .selected-title{
+  color:#f00;
+}
+.select-swiper view{
+  padding: 30rpx 0 30rpx 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.select-swiper .on{
+  color: #f00;
+}

@@ -40,11 +40,11 @@
       <view class='cate'>
         <view class='cate-detail'  bindtap='showList' data-cate='0'>
         <image src='/images/icon_logo_chuzu.png' />
-        <view>房屋出租</view>
+        <view>房屋信息</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='1'>
         <image src='/images/icon_logo_qiuzu.png' />
-        <view>房屋求租</view>
+        <view>房屋求租这个要去掉</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='2'>
         <image src='/images/i1.png' />
@@ -94,7 +94,7 @@
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='12'>
         <image src='/images/icon_logo_fangchan.png' />
-        <view>二手房产</view>
+        <view>房产信息</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='13'>
         <image src='/images/icon_logo_jiaoyou.png' />
