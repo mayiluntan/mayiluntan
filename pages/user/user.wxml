@@ -3,21 +3,21 @@
     <image src='/images/user_bg.png'></image>
     <view class='avatar'>
       <view>
-        <image src='{{userInfo.avatarUrl}}'></image>
+        <image src='{{userInfo.avatar}}'></image>
       </view>
     </view>
-    <view class='nickname'>{{userInfo.nickName}}</view>
+    <view class='nickname'>{{userInfo.nickname}}</view>
     <view class='cate'>
       <view class='cate-all'>
-        <view class='cate-num'>{{showData[0]}}</view>
+        <view class='cate-num'>{{userInfo.messageNum}}</view>
         <view class='cate-name'>留言</view>
       </view>
       <view class='cate-all cate-border'>
-        <view class='cate-num'>{{showData[1]}}</view>
+        <view class='cate-num'>{{userInfo.viewNum}}</view>
         <view class='cate-name'>访客</view>
       </view>
       <view class='cate-all'>
-        <view class='cate-num'>{{showData[2]}}</view>
+        <view class='cate-num'>{{userInfo.followNum}}</view>
         <view class='cate-name'>关注</view>
       </view>
     </view>

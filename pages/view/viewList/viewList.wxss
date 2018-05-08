@@ -32,7 +32,9 @@
   padding-left: 10rpx;
   align-self: center
 }
-
+.content .title .title-area{
+  width: 50%;
+}
 .content .title .title-border2 image{
   width: 30rpx;
   height: 20rpx;

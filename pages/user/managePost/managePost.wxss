@@ -206,6 +206,9 @@ page {
   color: #f00;
   margin-right: 0;
 }
+.list .list-contact .list-btn .list-hastop{
+  margin-right: 0;
+}
 .list .list-contact .list-tel{
   margin-left:30rpx;
 }

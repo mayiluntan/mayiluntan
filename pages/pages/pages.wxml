@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='search'>
-      <input type='text' placeholder='搜索'/>
+      <input type='text' placeholder='搜索' placeholder-style='text-align:center;' bindconfirm='searchClick'/>
       <!-- <view class='search_tip'>
         <image src='/images/icon_search.png'/>
         <view>搜索</view>
@@ -22,12 +22,26 @@
     </view>
   </view>
   <view class="broadcast">
-    <view class='l'>
+    <block  wx:if='{{broadcast.id>0}}'>
+    <view class='l' bindtap='businessDetail' data-id='{{broadcast.id}}' >
       <image src='/images/horn.png' />
+      <block wx:if='{{broadcast.name!=""}}'>
       <view>恭喜</view>
-      <view class='company'>万达集团</view>
-      <view>成功入驻本平台</view>
+      <view class='company'>{{broadcast.name}}</view>
+      </block>
+      <view>{{broadcast.title}}</view>
     </view>
+    </block>
+    <block wx:else>
+    <view class='l' bindtap='businessPost'>
+      <image src='/images/horn.png' />
+      <block wx:if='{{broadcast.name!=""}}'>
+      <view>恭喜</view>
+      <view class='company'>{{broadcast.name}}</view>
+      </block>
+      <view>{{broadcast.title}}</view>
+    </view>
+    </block>
   </view>
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
     <swiper-item>
@@ -150,12 +164,10 @@
         <image src='/images/icon_arrow_down.png' />
       </view>
       </picker>
-      <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
-      <view class='title-border'>
-        <view>{{areaArray[areaIndex]}}</view>
+      <view class='title-area title-border' bindtap='selectArea'>
+        <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
-      </picker>
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>

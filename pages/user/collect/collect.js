@@ -10,7 +10,7 @@ Page({
   },
   getIndexList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&type=' + this.data.menuSelected,
+      url: app.globalData.apiUrl + 'get_collect.php?uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           listData: res.data.data
@@ -35,7 +35,20 @@ Page({
       title: '提示',
       content: '是否取消收藏',
       success: res => {
-        console.log(res.confirm)
+        if(res.confirm){
+          wx.request({
+            url: app.globalData.apiUrl + 'del_collect.php',
+            data: { post_id: id, uid: app.globalData.uid},
+            method: 'POST',
+            success: res => {
+              if (res.data.ret == 1) {
+                this.getIndexList();
+              } else {
+                app.showTips(res.data.title, res.data.msg, false);
+              }
+            }
+          })
+        }
       },
       complete: res => {
         lock = false;

@@ -24,6 +24,7 @@ Page({
       tag1:'',
       tag2:'',
       wechat:'',
+      area:'',
       top:1,
       topDay:1,
       topPrice:10
@@ -36,11 +37,17 @@ Page({
   onLoad: function (options) {
     
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onShow() {
+    if (app.globalData.areaChange) {
+      var postData = this.data.postData;
+      postData.area = app.globalData.area
+      this.setData({
+        area: app.globalData.area,
+        postData: postData
+      })
+      app.globalData.area = '';
+      app.globalData.areaChange = false;
+    }
   },
   addPic() {
     var that = this;
@@ -204,6 +211,10 @@ Page({
     if (/.*[\u4e00-\u9fa5]+.*$/.test(this.data.postData.wechat)) {
       app.showTips('提示', '请输入正确的微信号', false)
       return;
+    }
+    if (this.data.postData.area == '') {
+      app.showTips('提示', '请选择区域', false)
+      return
     }
     if (lock) {
       return

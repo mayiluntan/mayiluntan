@@ -14,7 +14,9 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
-    listData: []
+    listData: [],
+    area:'',
+    keyword:''
   },
 
   /**
@@ -22,14 +24,26 @@ Page({
    */
   onLoad: function (options) {
     cate = options.cate ? options.cate:0;
+    var keyword = options.keyword ? options.keyword :'';
+    this.setData({
+      keyword: keyword
+    })
     this.getIndexList()
+  },
+  onShow(){
+    if (app.globalData.areaChange) {
+      this.setData({
+        area: app.globalData.area
+      })
+      app.globalData.area = '';
+      app.globalData.areaChange = false;
+      this.getIndexList()
+    }
   },
   getIndexList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area='+area,
+      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
       success: res => {
-        console.log(app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + area)
-        console.log(res)
         this.setData({
           listData: res.data.data
         })
@@ -69,6 +83,9 @@ Page({
         }
       })
     }
+    setTimeout(function () {
+      lock = false;
+    }, 1000)
   },
   callPhone(e) {
     lock = true;
@@ -84,10 +101,14 @@ Page({
     if (lock) {
       return
     }
-    //console.log(e);
     var v = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/view/viewDetail/viewDetail?id=' + v,
+    })
+  },
+  selectArea() {
+    wx.navigateTo({
+      url: '/pages/areaSelect/areaSelect',
     })
   }
 })

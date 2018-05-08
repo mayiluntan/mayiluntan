@@ -38,7 +38,9 @@
   padding-left: 10rpx;
   align-self: center
 }
-
+.content .title .title-area{
+  width: 50%;
+}
 /**list-main**/
 .list{
   padding:20rpx;

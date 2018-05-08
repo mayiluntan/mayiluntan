@@ -27,7 +27,8 @@
               <block wx:if="{{menuSelected==0}}">
                 <view class='list-btn'>
                   <view bindtap='deletePost' data-id='{{item.id}}'>删除</view>
-                  <view class='list-totop' bindtap='toTop' data-id='{{item.id}}'>置顶</view>
+                  <view class='list-hastop' wx:if='{{item.is_top==1}}'>已置顶</view>
+                  <view wx:else class='list-totop' bindtap='toTop' data-id='{{item.id}}'>置顶</view>
                 </view>
               </block>
               <block wx:else>

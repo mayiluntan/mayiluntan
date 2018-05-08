@@ -1,12 +1,10 @@
 <!--pages/user/managePost/managePost.wxml-->
 <view class='content'>
-    <view class='title'>
-      <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
-      <view class='title-border'>
-        <view>{{areaArray[areaIndex]}}</view>
+    <view class='title' wx:if='{{keyword==""}}'>
+      <view class='title-area title-border' bindtap='selectArea'>
+        <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
-      </picker>
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>

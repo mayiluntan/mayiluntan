@@ -15,10 +15,12 @@ Page({
     hide: 1,
     replyContent:'',
     userMessage:{},
+    dynamicInfo:{},
     hide:1,
     nick:'',
     content:'',
-    isFollow:0
+    isFollow:0,
+    isSelf:0
   },
 
   /**
@@ -30,27 +32,32 @@ Page({
     this.setData({
       user_id: user_id
     })
+    this.getPersonal();
+    this.getList();
+  },
+  onShow(){
+    
+  }, 
+  getPersonal(){
     wx.request({
       url: app.globalData.apiUrl + 'get_personal.php',
-      data: { uid: app.globalData.uid, user_id: this.data.user_id},
-      method:'POST',
+      data: { uid: app.globalData.uid, user_id: this.data.user_id },
+      method: 'POST',
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.setData({
             info: res.data.data.info,
-            showData: res.data.data.show_data
+            showData: res.data.data.show_data,
+            userMessage: res.data.data.user_message,
+            isFollow: res.data.data.is_follow,
+            isSelf: res.data.data.is_self
           })
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
       }
     })
-    this.getList();
   },
-  onShow(){
-    
-  }, 
   getList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_dynamic.php',
@@ -59,7 +66,7 @@ Page({
       success: res => {
         if (res.data.ret == 1) {
           this.setData({
-            userMessage: res.data.data
+            dynamicInfo: res.data.data
           })
           console.log(res)
         } else {
@@ -122,6 +129,7 @@ Page({
             title: '留言成功',
             icon:'success'
           })
+          this.getPersonal();
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
@@ -190,7 +198,6 @@ Page({
       data: { id: id, uid: app.globalData.uid },
       method: 'POST',
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.getList();
           id = 0;

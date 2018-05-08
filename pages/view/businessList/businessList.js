@@ -14,7 +14,9 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
-    data: {}
+    data: {},
+    area: '',
+    keyword: ''
   },
 
   /**
@@ -22,12 +24,25 @@ Page({
    */
   onLoad: function (options) {
     cate = options.cate ? options.cate : 0;
+    var keyword = options.keyword ? options.keyword : '';
+    this.setData({
+      keyword: keyword
+    })
     this.getBusinessList()
   },
-
+  onShow() {
+    if (app.globalData.areaChange) {
+      this.setData({
+        area: app.globalData.area
+      })
+      app.globalData.area = '';
+      app.globalData.areaChange = false;
+      this.getBusinessList()
+    }
+  },
   getBusinessList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + area,
+      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           data: res.data.data
@@ -78,25 +93,34 @@ Page({
     if (e.currentTarget.dataset.phone == '') {
       wx.showToast({
         title: '未填写手机号',
-        icon: 'none'
+        icon: 'none',
+        duration:1000
       })
-      return;
+    }else{
+      wx.makePhoneCall({
+        phoneNumber: e.currentTarget.dataset.phone,
+        complete: res => {
+          lock = false;
+        }
+      })
     }
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone,
-      complete: res => {
-        lock = false;
-      }
-    })
+    setTimeout(function () {
+      lock = false;
+    }, 1000)
 
   },
-  businessDetail(e) {
+  viewDetail(e) {
     if (lock) {
       return
     }
     var v = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/view/businessDetail/businessDetail?id=' + v,
+    })
+  },
+  selectArea() {
+    wx.navigateTo({
+      url: '/pages/areaSelect/areaSelect',
     })
   }
 })

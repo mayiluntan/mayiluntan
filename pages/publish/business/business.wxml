@@ -41,7 +41,7 @@
   <view class='detail'>
     <view class='list'>
       <view>所在区域<text>*</text></view>
-      <input placeholder='请输入商家所在区域' value='{{postData.area}}' bindinput='areaInput'></input>
+      <input placeholder='请输入商家所在区域' value='{{postData.area}}' bindtap='selectArea' disabled='true'></input>
     </view>
     <view class='list'>
       <view>商家地址<text>*</text></view>

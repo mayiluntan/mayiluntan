@@ -17,7 +17,7 @@ page{
   top:2vw;
   right:2vw;
   padding:10rpx 20rpx;
-  background:#42c1f4;
+  background:#f0a232;
   color:#fff;
   border-radius:10rpx;
 }
@@ -401,6 +401,10 @@ page{
   font-size: 32rpx;
   border-radius: 10rpx;
 }
+.message-view{
+  width: 100%;
+  height:12vw;
+}
 .message-btn{
   width: 100%;
   height:12vw;
@@ -419,7 +423,7 @@ page{
   margin: 0 auto;
   border-radius: 10rpx;
 }
-.all-list .reply{
+.all-list .message-reply{
   width: 100%;
   height:10vw;
   position: fixed;
@@ -431,13 +435,13 @@ page{
   border-top: 2rpx solid #ccc;
   align-items: center;
 }
-.all-list .reply input{
+.all-list .message-reply input{
   flex: 1;
   background: #fff;
   margin:2vw 5vw;
   height:6vw;
 }
-.all-list .reply view{
+.all-list .message-reply view{
   width: 100rpx;
   height: 60rpx;
   background: #f0a323;

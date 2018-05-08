@@ -1,8 +1,10 @@
 <view class='container'>
   <view class='top'>
     <image src='/images/user/bg.png'></image>
+    <block wx:if="{{isSelf==0}}">
     <view class='att' bindtap='addFollow' wx:if="{{isFollow==0}}">+关注</view>
     <view class='att grey' wx:else>已关注</view>
+    </block>
     <view class='avatar'>
       <view><image src='{{info.avatar}}'></image></view>
     </view>
@@ -31,7 +33,7 @@
     </view>
   </view>
   <view class='main' wx:if='{{menuSelected == 0}}'>
-    <view class='circle-list' wx:for="{{userMessage}}" wx:key='index'>
+    <view class='circle-list' wx:for="{{dynamicInfo}}" wx:key='index'>
       <view class='circle-head'><image src='{{item.avatar}}'></image></view>
       <view class='circle-detail'>
         <view class='circle-nick'>{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
@@ -92,10 +94,11 @@
           <view class='content'>{{item.content}}</view>
         </view>
     </view>
+    <view class='message-view'></view>
     <view class='message-btn' wx:if='{{hide==1}}' bindtap='showInput'>
       <view>留言</view>
     </view>
-    <view class='reply' wx:if='{{hide==0}}'>
+    <view class='message-reply' wx:if='{{hide==0}}'>
       <input placeholder='回复' focus='true' confirm-type='回复' bindinput='replyInput' bindblur='hideInput' bindconfirm="replyClick"></input>
       <view bindtap='replyClick'>回复</view>
     </view>
@@ -109,7 +112,7 @@
         <view class='info-list'><view>手机</view><view class='detail'>{{info.mobile}}</view></view>
         <view class='info-list'><view>签名</view><view class='detail'>{{info.remark}}</view></view>
     </view>
-    <view class='btn' bindtap='editClick'>
+    <view class='btn' bindtap='editClick' wx:if='{{isSelf==1}}'>
       <view>编辑资料</view>
     </view>
   </view>

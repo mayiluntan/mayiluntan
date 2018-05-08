@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/publish/business/business",
+    "pages/areaSelect/areaSelect",
     "pages/circle/topic/topic",
     "pages/pages/pages",
     "pages/circle/circle",
@@ -8,7 +10,6 @@
     "pages/citySelect/citySelect",
     "pages/user/personal/personal",
     "pages/user/personal/edit/edit",
-    "pages/publish/business/business",
     "pages/publish/dynamic/dynamic",
     "pages/view/viewDetail/viewDetail",
     "pages/view/viewList/viewList",
@@ -23,7 +24,6 @@
     "pages/user/managePost/managePost",
     "pages/error/error",
     "pages/view/businessDetail/businessDetail",
-    "pages/areaSelect/areaSelect",
     "pages/view/businessList/businessList"
   ],
   "window": {

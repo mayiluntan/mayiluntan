@@ -41,6 +41,18 @@ Page({
    */
   onLoad: function (options) {
   },
+  onShow(){
+    if (app.globalData.areaChange){
+      var postData = this.data.postData;
+      postData.area = app.globalData.area
+      this.setData({
+        area:app.globalData.area,
+        postData: postData
+      })
+      app.globalData.area='';
+      app.globalData.areaChange=false;
+    }
+  },
   addPic(e) {
     var type = e.currentTarget.dataset.type
     var that = this;
@@ -212,6 +224,10 @@ Page({
       app.showTips('提示', '请填写商户介绍', false)
       return
     }
+    if (postData.area == '') {
+      app.showTips('提示', '请选择区域', false)
+      return
+    }
     if (postData.address == '') {
       app.showTips('提示', '请输入商家地址', false)
       return
@@ -316,8 +332,12 @@ Page({
       dayIndex: v,
       postData: postData
     })
-    console.log(this.data)
     //var money = parseFloat(this.data.price) * this.data.totalCount;
     //money = Math.round(money * 100) / 100;
+  },
+  selectArea() {
+    wx.navigateTo({
+      url: '/pages/areaSelect/areaSelect',
+    })
   }
 })

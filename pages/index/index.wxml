@@ -3,8 +3,8 @@
   <view class="top">
     <image src='/images/top.png'/>
     <view class='title-top'>
-      <view class='weather'>4℃~12℃</view>
-      <view class='exrate'>汇率：3.14</view>
+      <view class='weather'>{{temperature}}</view>
+      <view class='exrate'>{{exchangeRate}}</view>
     </view>
     <view class='city'>
       <view class='logo'>
@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class='search'>
-      <input type='text' placeholder='搜索' />
+      <input type='text' placeholder='搜索' placeholder-style='text-align:center;' bindconfirm='searchClick' />
       <!-- <view class='search_tip'>
         <image src='/images/icon_search.png'/>
         <view>搜索</view>
@@ -30,9 +30,9 @@
       <image src='/images/horn.png'/>
       <view>{{broadcast.title}}</view>
     </view>
-    <view class='r' wx:if="{{broadcast.id>0}}">
-      <view class='r1'>{{broadcast.num==0?'暂无答案':'查看答案'}}</view>
-      <view class='r2'>全部</view>
+    <view class='r' wx:if="{{broadcast.id>0}}"  >
+      <view class='r1' bindtap='viewDetail' data-id='{{broadcast.id}}'>{{broadcast.num==0?'暂无答案':'查看答案'}}</view>
+      <view  class='r2' bindtap='showList' data-cate='5'>全部</view>
     </view>
   </view>
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
@@ -119,7 +119,7 @@
       <view class='cate-menu2'><view></view></view>
     </block>
   </view>
-  <swiper class='banner' autoplay="true" interval="2000" duration="500">  
+  <swiper class='banner' autoplay="true" interval="5000" duration="500">  
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
         <swiper-item> 
            <block wx:if="{{item.link==''}}">
@@ -141,12 +141,10 @@
         <image src='/images/icon_arrow_down.png' />
       </view>
       </picker>
-      <picker class='title-picker' bindchange="areaChange" value="{{areaIndex}}" range="{{areaArray}}">
-      <view class='title-border'>
-        <view>{{areaArray[areaIndex]}}</view>
+      <view class='title-area title-border' bindtap='selectArea'>
+        <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
-      </picker>
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>

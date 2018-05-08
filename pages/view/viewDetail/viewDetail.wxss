@@ -8,6 +8,19 @@
   height: 20rpx;
   width: 100%;
 }
+.att{
+  position:absolute;
+  top:2vw;
+  right:2vw;
+  padding:10rpx 20rpx;
+  background:#f0a232;
+  color:#fff;
+  border-radius:10rpx;
+  z-index: 999;
+}
+.grey{
+  background:#ccc;
+}
 .head {
   position: relative;
   width: 100vw;
@@ -50,6 +63,15 @@
   color: #4188d2;
   padding: 0 10rpx;
   margin-right: 30rpx;
+}
+.address{
+  padding:10rpx 20rpx;
+  color: #999;
+}
+.address image{
+  width: 19rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
 }
 
 /************ float-button **********/

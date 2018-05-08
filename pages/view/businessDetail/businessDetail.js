@@ -16,12 +16,10 @@ Page({
    */
   onLoad: function (options) {
     id = options.id ? options.id : 0
-    console.log(id)
     wx.request({
       url: app.globalData.apiUrl + 'get_business_content.php',
       data: { id: id, uid: app.globalData.uid },
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.setData({
             content: res.data.data
@@ -60,5 +58,39 @@ Page({
         }
       }
     })
+  },
+  copyText(e) {
+    var v = e.currentTarget.dataset.wechat
+    if (v == '') {
+      wx.showToast({
+        title: '未填写微信号',
+        icon: 'none'
+      })
+    } else {
+      wx.setClipboardData({
+        data: v,
+        success: function (res) {
+          wx.showToast({
+            title: '已复制',
+            icon: 'success'
+          })
+        }
+      })
+    }
+  },
+  callPhone(e) {
+    var v = e.currentTarget.dataset.phone
+    if (v == '') {
+      wx.showToast({
+        title: '未填写手机号',
+        icon: 'none'
+      })
+    }else{
+      wx.makePhoneCall({
+        phoneNumber: e.currentTarget.dataset.phone,
+        complete: res => {
+        }
+      })
+    }
   }
 })

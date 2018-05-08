@@ -8,7 +8,8 @@ Page({
    */
   data: {
     content:{},
-    message:''
+    message:'',
+    isCollect:0
   },
 
   /**
@@ -20,10 +21,10 @@ Page({
       url: app.globalData.apiUrl+'get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
-        console.log(res)
         if(res.data.ret==1){
           this.setData({
-            content: res.data.data
+            content: res.data.data,
+            isCollect: res.data.data.is_collect
           })
         }else{
           app.showTips(res.data.title, res.data.msg, false);
@@ -59,5 +60,48 @@ Page({
         }
       }
     })
+  },
+  addCollect(e){
+    wx.request({
+      url: app.globalData.apiUrl + 'add_collect.php',
+      data: { id: id, uid: app.globalData.uid },
+      method: 'POST',
+      success: res => {
+        if (res.data.ret == 1) {
+          this.setData({
+            isCollect: 1
+          })
+        } else {
+          app.showTips(res.data.title, res.data.msg, false);
+        }
+      }
+    })
+  },
+  copyText(e) {
+    var v = e.currentTarget.dataset.wechat
+    if (v == '') {
+      wx.showToast({
+        title: '未填写微信号',
+        icon: 'none'
+      })
+    } else {
+      wx.setClipboardData({
+        data: v,
+        success: function (res) {
+          wx.showToast({
+            title: '已复制',
+            icon: 'success'
+          })
+        }
+      })
+    }
+  },
+  callPhone(e) {
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone,
+      complete: res => {
+      }
+    })
+
   }
 })

@@ -10,10 +10,26 @@ Page({
     hide:1,
     data:{},
     content:'',
-    nick:''
+    nick:'',
+    imgUrls: [
+      {
+        link: '',
+        url: '/images/c1.png'
+      }
+    ],
+    topicUrls:[]
   },
   onLoad: function () {
     this.getList();
+    wx.request({
+      url: app.globalData.apiUrl + 'get_topic_banner.php',
+      success: res => {
+        this.setData({
+          imgUrls: res.data.data,
+          topicUrls: res.data.topic
+        })
+      }
+    })
   },
   getList(){
     wx.request({
@@ -25,7 +41,6 @@ Page({
           this.setData({
             data:res.data.data
           })
-          console.log(res)
         }else{
           app.showTips(res.data.title, res.data.msg, false);
         }
@@ -74,7 +89,6 @@ Page({
       hide: 0,
       nick: nick
     })
-    console.log(this.data)
   },
   replyClick(){
     if(this.data.content==''){
@@ -110,7 +124,6 @@ Page({
       data: { id: id, uid: app.globalData.uid },
       method: 'POST',
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.getList();
           id = 0;
@@ -120,9 +133,13 @@ Page({
       }
     })
   },
-  circleList(){
+  circleList(e){
+    var id=e.currentTarget.dataset.id;
+    if(id==0){
+      return;
+    }
     wx.navigateTo({
-      url: '/pages/circle/circleList/circleList',
+      url: '/pages/circle/circleList/circleList?id=' + id,
     })
   },
   chooseTopic() {
@@ -133,6 +150,15 @@ Page({
   topicList(){
     wx.navigateTo({
       url: '/pages/circle/topic/topic',
+    })
+  },
+  searchClick(e) {
+    var v = e.detail.value;
+    if (v == '') {
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/circle/circleList/circleList?keyword=' + v,
     })
   }
 })

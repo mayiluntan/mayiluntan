@@ -14,17 +14,23 @@ Page({
       return;
     }
     this.setData({
-      menuSelected: menutype
+      menuSelected: menutype,
+      listData:{}
     })
     this.getIndexList();
   },
   getIndexList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&type=' + this.data.menuSelected,
+      url: app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected,
       success: res => {
-        this.setData({
-          listData: res.data.data
-        })
+        console.log(res.data)
+        if (res.data.ret == 1) {
+          this.setData({
+            listData: res.data.data
+          })
+        } else {
+          app.showTips(res.data.title, res.data.msg, false);
+        }
       }
     })
   }, 
@@ -75,7 +81,20 @@ Page({
       title: '提示',
       content: '是否删除帖⼦',
       success:res=>{
-        console.log(res.confirm)
+        if(res.confirm){
+          wx.request({
+            url: app.globalData.apiUrl + 'del_post.php',
+            data: { id: id, uid: app.globalData.uid },
+            method: 'POST',
+            success: res => {
+              if (res.data.ret == 1) {
+                this.getIndexList();
+              } else {
+                app.showTips(res.data.title, res.data.msg, false);
+              }
+            }
+          })
+        }
       },
       complete: res => {
         lock = false;
@@ -85,12 +104,48 @@ Page({
   toTop(e){
     lock = true;
     var id = e.currentTarget.dataset.id
-    console.log(id)
     wx.showModal({
       title: '提示',
       content: '是否花费10元置顶',
       success: res => {
-        console.log(res)
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.apiUrl + 'retop.php',
+            data: { id: id, uid: app.globalData.uid, source:3},
+            method: 'POST',
+            success: res => {
+              if (res.data.ret == 1) {
+                wx.requestPayment({
+                  'timeStamp': res.data.pay_info.timeStamp,
+                  'nonceStr': res.data.pay_info.nonceStr,
+                  'package': res.data.pay_info.package,
+                  'signType': 'MD5',
+                  'paySign': res.data.pay_info.paySign,
+                  'success': function (res) {
+                    wx.showToast({
+                      title: '置顶成功',
+                      icon: 'success'
+                    })
+                  },
+                  'fail': function (res) {
+                    wx.showToast({
+                      title: '取消置顶',
+                      icon: 'none'
+                    })
+                  },
+                  'complete': function (res) {
+                  }
+                })
+                
+              } else {
+                app.showTips(res.data.title, res.data.msg, false);
+              }
+            },
+            complete: res => {
+              lock = false;
+            }
+          })
+        }
       },
       complete: res => {
         lock = false;

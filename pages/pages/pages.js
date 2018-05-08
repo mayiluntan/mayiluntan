@@ -15,6 +15,7 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
+    area:'',
     data:{},
     broadcast: {
       'title': '赶快来入驻吧',
@@ -24,6 +25,14 @@ Page({
   },
   onLoad: function () {
     this.getBusinessList()
+    wx.request({
+      url: app.globalData.apiUrl + 'get_other_info.php?type=2',
+      success: res => {
+        this.setData({
+          broadcast: res.data.data.broadcast
+        })
+      }
+    })
   },
   onShow() {
     if (app.globalData.pageChange) {
@@ -32,6 +41,14 @@ Page({
         selectArray: app.globalData.cityArray,
         selectIndex: app.globalData.cityIndex
       })
+    }
+    if (app.globalData.areaChange) {
+      this.setData({
+        area: app.globalData.area
+      })
+      app.globalData.area = '';
+      app.globalData.areaChange = false;
+      this.getBusinessList()
     }
   },
   swiperChange(e) {
@@ -46,7 +63,7 @@ Page({
   },
   getBusinessList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + area,
+      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           data: res.data.data
@@ -129,6 +146,25 @@ Page({
     var c = e.currentTarget.dataset.cate;
     wx.navigateTo({
       url: '/pages/view/businessList/businessList?cate=' + c,
+    })
+  },
+  selectArea() {
+    wx.navigateTo({
+      url: '/pages/areaSelect/areaSelect',
+    })
+  },
+  searchClick(e) {
+    var v = e.detail.value;
+    if (v == '') {
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/view/businessList/businessList?keyword=' + v,
+    })
+  },
+  businessPost(){
+    wx.navigateTo({
+      url: '/pages/publish/business/business'
     })
   }
 })

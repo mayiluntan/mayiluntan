@@ -186,7 +186,9 @@ page{
   display:flex;
   justify-content: center;
 }
-
+.content .title .title-area{
+  width: 33%;
+}
 .content .title .title-border image{
   width: 30rpx;
   height: 20rpx;

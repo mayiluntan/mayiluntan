@@ -4,39 +4,27 @@
       <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>我关注的</view>
       <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>关注我的</view>
     </view>
-    <view class='circle-list'>
+    <view class='circle-list' wx:for='{{data}}' wx:key='{{index}}'>
       <view class='circle-head'>
-        <image src='/images/head.png'></image>
+        <image src='{{item.avatar}}'></image>
       </view>
       <view class='circle-detail'>
         <view class='circle-nick'>
           <view class='circle-show'>
-            <text>可爱的桃子</text>
-            <image src='/images/female.png'></image>
+            <text>{{item.nickname}}</text>
+            <image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image>
           </view>
-          <view class='cancle-collect'>取消关注</view>
+          <block wx:if='{{menuSelected == 0}}'>
+          <view class='cancle-collect' bindtap='addFollow' data-id='{{item.user_id}}' data-type='0'>取消关注</view>
+          </block>
+          <block wx:else>
+          <view class='circle-follow' bindtap='addFollow' data-id='{{item.user_id}}' wx:if='{{item.is_follow==0}}' data-type='1'>关注</view>
+          <view class='circle-follow grey' wx:else>已关注</view>
+          </block>
         </view>
         <view class='circle-tags'>
-          <label>18岁</label>
-          <label>北美</label>
-        </view>
-      </view>
-    </view>
-    <view class='circle-list'>
-      <view class='circle-head'>
-        <image src='/images/head.png'></image>
-      </view>
-      <view class='circle-detail'>
-        <view class='circle-nick'>
-          <view class='circle-show'>
-            <text>可爱的桃子</text>
-            <image src='/images/female.png'></image>
-          </view>
-          <view class='cancle-collect'>取消关注</view>
-        </view>
-        <view class='circle-tags'>
-          <label>18岁</label>
-          <label>北美</label>
+          <label>{{item.age}}</label>
+          <label>{{item.city}}</label>
         </view>
       </view>
     </view>

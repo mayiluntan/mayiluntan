@@ -109,14 +109,27 @@ Page({
       }
     })
   },
-  delete(e) {
+  deleteOne(e) {
     var id = e.currentTarget.dataset.id
     console.log(id)
     wx.showModal({
       title: '提示',
       content: '确定删除？',
       success: res => {
-        console.log(res)
+        if (res.confirm) {
+          wx.request({
+            url: app.globalData.apiUrl + 'del_dynamic.php',
+            data: { id: id, uid: app.globalData.uid },
+            method: 'POST',
+            success: res => {
+              if (res.data.ret == 1) {
+                this.getList();
+              } else {
+                app.showTips(res.data.title, res.data.msg, false);
+              }
+            }
+          })
+        }
       }
     })
   }

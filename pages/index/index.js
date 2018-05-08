@@ -20,6 +20,7 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
+    area:'',
     listData:[],
     cityArray:[
       ['亚洲','北美',"大洋洲","欧洲","南美洲","非洲"],
@@ -89,6 +90,8 @@ Page({
       'num':0,
       'id':0
     },
+    temperature:'',
+    exchangeRate:'',
     selectArray:['','',''],
     selectIndex: [0, 0, 0]
   },
@@ -102,21 +105,34 @@ Page({
         })
       }
     })
-    wx.request({
-      url: app.globalData.apiUrl + 'get_broadcast.php',
-      success: res => {
-        this.setData({
-          broadcast: res.data.data
-        })
-      }
-    })
     this.getIndexList()
     var cityArray = this.data.cityArray
     this.setData({
       orgCity: cityArray
     })
+    var that=this
+    app.wxLoginCallback=function(){
+      that.setData({
+        selectArray: app.globalData.cityArray
+      })
+    }
+    wx.request({
+      url: app.globalData.apiUrl + 'get_other_info.php?type=1',
+      success: res => {
+        this.setData({
+          broadcast: res.data.data.broadcast,
+          exchangeRate: res.data.data.exchange_rate,
+          temperature: res.data.data.temperature,
+        })
+      }
+    })
   },
   onShow(){
+    if (this.data.selectArray[2]==''){
+      this.setData({
+        selectArray: app.globalData.cityArray
+      })
+    }
     if (app.globalData.cityChange){
       app.globalData.cityChange=false;
       this.setData({
@@ -124,12 +140,19 @@ Page({
         selectIndex: app.globalData.cityIndex
       })
     }
+    if (app.globalData.areaChange) {
+      this.setData({
+        area: app.globalData.area
+      })
+      app.globalData.area = '';
+      app.globalData.areaChange = false;
+      this.getIndexList()
+    }
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + area,
+      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
-        //console.log(res)
         this.setData({
           listData:res.data.data
         })
@@ -178,9 +201,13 @@ Page({
             title: '已复制',
             icon: 'success'
           })
+          lock = false;
         }
       })
     }
+    setTimeout(function () {
+      lock = false;
+    }, 1000)
   },
   callPhone(e){
     lock=true;
@@ -258,6 +285,20 @@ Page({
   selectCity(){
     wx.navigateTo({
       url: '/pages/citySelect/citySelect',
+    })
+  },
+  searchClick(e){
+    var v=e.detail.value;
+    if(v==''){
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/view/viewList/viewList?keyword='+v,
+    })
+  },
+  selectArea() {
+    wx.navigateTo({
+      url: '/pages/areaSelect/areaSelect',
     })
   }
 })

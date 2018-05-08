@@ -1,21 +1,32 @@
 <view class='container'>
   <view class='search'>
-      <input type='text' />
+      <input type='text' placeholder='搜索' placeholder-style='text-align:center;' bindconfirm='searchClick' />
   </view>
-  <view class='pics'>
-    <image src='/images/c1.png'></image>
-  </view>
+  <swiper class='pics' autoplay="true" interval="5000" duration="500">  
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
+        <swiper-item> 
+           <block wx:if="{{item.link==''}}">
+            <image src="{{item.url}}"/> 
+           </block> 
+           <block wx:else>
+            <navigator url="{{item.link}}" hover-class="navigator-hover">  
+              <image src="{{item.url}}"/> 
+            </navigator>  
+           </block> 
+        </swiper-item>  
+      </block>  
+  </swiper>
   <view class='main'>
     <view class='title'>
       <view class='title-w'></view>
       <view class='title-name' bindtap='topicList'>热门话题</view>
       <view class='title-more'><image src='/images/more.png'></image></view>
     </view>
-    <view class='topic' bindtap='circleList'>
-      <view class='topic1'><image src='/images/c2.png'></image></view>
+    <view class='topic' wx:if='{{topicUrls.length>0}}'>
+      <view class='topic1' bindtap='circleList' data-id='{{topicUrls[0].id}}'><image src='{{topicUrls[0].url}}'></image></view>
       <view class='topic2'>
-        <view class='topic3'><image src='/images/c3.png'></image></view>
-        <view><image src='/images/c4.png'></image></view>
+        <view class='topic3' bindtap='circleList' data-id='{{topicUrls[1].id}}'><image src='{{topicUrls[1].url}}'></image></view>
+        <view bindtap='circleList' data-id='{{topicUrls[2].id}}'><image src='{{topicUrls[2].url}}'></image></view>
       </view>
     </view>
     <view class='circle'>

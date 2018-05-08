@@ -11,7 +11,7 @@
     <view class='circle-detail'>
       <view class='circle-nick'>
         <view class="circle-show">{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
-        <view class="cancle-collect" wx:if='{{menuSelected == 0}}' bindtap='delete' data-id='{{item.id}}'>删除</view>
+        <view class="cancle-collect" wx:if='{{menuSelected == 0}}' bindtap='deleteOne' data-id='{{item.id}}'>删除</view>
       </view>
       <view class='circle-tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
       <view class='circle-content'>{{item.content}}</view>

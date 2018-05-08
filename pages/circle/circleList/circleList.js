@@ -10,7 +10,8 @@ Page({
    */
   data: {
     hide:1,
-    data:{}
+    data:{},
+    keyword:''
   },
 
   /**
@@ -18,19 +19,22 @@ Page({
    */
   onLoad: function (options) {
     topic_id = options.id ? options.id:0
+    var keyword = options.keyword ? options.keyword : '';
+    this.setData({
+      keyword: keyword
+    })
     this.getList()
   },
   getList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_dynamic.php',
-      data: { uid: app.globalData.uid, topic_id: topic_id },
+      data: { uid: app.globalData.uid, topic_id: topic_id, keyword:this.data.keyword },
       method: "POST",
       success: res => {
         if (res.data.ret == 1) {
           this.setData({
             data: res.data.data
           })
-          console.log(res)
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
@@ -63,7 +67,6 @@ Page({
       hide: 0,
       nick: nick
     })
-    console.log(this.data)
   },
   replyClick() {
     if (this.data.content == '') {
@@ -99,7 +102,6 @@ Page({
       data: { id: id, uid: app.globalData.uid },
       method: 'POST',
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.getList();
           id = 0;

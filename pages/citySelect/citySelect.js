@@ -14,52 +14,7 @@ Page({
     this.initData()
   },
   initData() {
-    var arr = {
-      '亚洲': {
-        '中国': ['香港', '澳门', '台湾'],
-        '韩国': ['首尔', '釜山', '济州岛', '京畿道', '仁川'],
-        '日本': ['东京', '大阪', '名古屋', '横滨'],
-        '新加坡': ['新加坡'],
-        '马来西亚': ['吉隆坡', '槟城'],
-        '泰国': ['曼谷', '清迈', '芭提雅', '普吉岛'],
-        '越南': ['河内', '胡志明'],
-        '菲律宾': ['马尼拉'],
-        '印度尼西亚': ['雅加达'],
-        '阿联酋': ['迪拜'],
-        '土耳其': ['伊斯坦布尔']
-      },
-      '北美': {
-        '美国': ['洛杉矶', '纽约', '旧金山', '圣地亚哥', '圣何塞', '伯克利', '芝加哥', '华盛顿', '西雅图', '休斯顿', '达拉斯', '费城', '波士顿', '夏威夷', '奥兰多', '拉斯维加斯', '波特兰', '丹佛', '亚特兰大', '佛罗里达'],
-        '加拿大': ['多伦多', '温哥华', '蒙特利尔', '卡尔加里', '渥太华', '伦敦', '滑铁卢', '温尼伯'],
-        '墨西哥': ['墨西哥城']
-      },
-      '大洋洲': {
-        '澳大利亚': ['悉尼', '墨尔本', '布里斯班', '珀斯', '阿德莱德', '堪培拉', '霍巴特', '卧龙岗', '纽卡斯尔', '黄金海岸', '凯恩斯'],
-        '新西兰': ['奥克兰', '惠灵顿', '基督城']
-      },
-      '欧洲': {
-        '英国': ['伦敦', '伯明翰', '曼彻斯特', '爱丁堡'],
-        '法国': ['巴黎'],
-        '德国': ['柏林', '慕尼黑', '法兰克福', '汉堡', '科隆'],
-        '西班牙': ['马德里', '巴塞罗那'],
-        '意大利': ['罗马', '米兰', '佛伦伦萨'],
-        '荷兰': ['阿姆斯特丹'],
-        '捷克': ['布拉格'],
-        '葡萄牙': ['波尔图', '里斯本'],
-        '瑞士': ['苏黎世'],
-        '瑞典': ['斯德哥尔摩'],
-        '希腊': ['雅典'],
-        '俄罗斯': ['莫斯科', '圣彼得堡']
-      },
-      '南美洲': {
-        '阿根廷': ['布宜诺斯艾利斯'],
-        '巴西': ['里约热内卢', '圣保罗']
-      },
-      '非洲': {
-        '南非': ['开普敦', '约翰内斯堡'],
-        '埃及': ['开罗']
-      }
-    }
+    var arr = app.globalArray.cityArray
 
     var selectArray = this.data.selectArray;
     var maxCurrent = this.data.maxCurrent;
@@ -135,7 +90,6 @@ Page({
       array: array,
       minHeight: height
     })
-    console.log(this.data)
   },
   menuClicked: function (event) {
     var menutype = event.currentTarget.dataset.menutype;
@@ -206,6 +160,7 @@ Page({
       app.globalData.cityArray = selected
       app.globalData.cityChange = true
       app.globalData.pageChange = true
+      this.updateCity()
       wx.navigateBack({
         
       })
@@ -222,5 +177,14 @@ Page({
       return Object.prototype.toString.call(arg) === '[object Object]';
     }
     return false;
+  },
+  updateCity(){
+    wx.request({
+      url: app.globalData.apiUrl + 'update_city.php',
+      data: { uid: app.globalData.uid, city: app.globalData.cityArray, cityIndex:app.globalData.cityIndex},
+      method:'POST',
+      success: res => {
+      }
+    })
   }
 })
