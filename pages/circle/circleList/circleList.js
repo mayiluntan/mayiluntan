@@ -25,6 +25,10 @@ Page({
     })
     this.getList()
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.getList();
+  },
   getList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_dynamic.php',
@@ -38,6 +42,10 @@ Page({
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
+      },
+      complete: res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },

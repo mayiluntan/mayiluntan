@@ -43,6 +43,10 @@ Page({
       this.getIndexList()
     }
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.getIndexList();
+  },
   getIndexList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
@@ -50,6 +54,10 @@ Page({
         this.setData({
           listData: res.data.data
         })
+      },
+      complete: res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },

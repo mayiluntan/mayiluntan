@@ -43,6 +43,10 @@ Page({
       this.getBusinessList()
     }
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.getBusinessList();
+  },
   getBusinessList() {
     wx.request({
       url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
@@ -50,6 +54,10 @@ Page({
         this.setData({
           data: res.data.data
         })
+      },
+      complete: res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },
