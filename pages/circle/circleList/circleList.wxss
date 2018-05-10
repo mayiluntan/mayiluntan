@@ -10,7 +10,8 @@ page{
   word-break:break-all;
 }
 .circle-head{
-  width: 14vw;
+  width: 16vw;
+  text-align: center;
 }
 .circle-detail{
   flex: 1;
@@ -71,7 +72,6 @@ page{
 }
 .circle-replys{
   background: #f6f6f6;
-  padding-bottom: 10rpx;
 }
 
 .circle-replys .circle-thumbs-up{

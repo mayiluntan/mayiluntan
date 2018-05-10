@@ -14,6 +14,8 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
+    cateArray: ['全部分类', '房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
+    cateIndex: 0,
     listData: [],
     area:'',
     keyword:''
@@ -26,7 +28,8 @@ Page({
     cate = options.cate ? options.cate:0;
     var keyword = options.keyword ? options.keyword :'';
     this.setData({
-      keyword: keyword
+      keyword: keyword,
+      cateIndex: cate
     })
     this.getIndexList()
   },
@@ -49,6 +52,13 @@ Page({
         })
       }
     })
+  },
+  cateChange(e) {
+    cate = e.detail.value
+    this.setData({
+      cateIndex: e.detail.value
+    })
+    this.getIndexList()
   },
   areaChange(e) {
     area = e.detail.value

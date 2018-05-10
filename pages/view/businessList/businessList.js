@@ -14,6 +14,8 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
+    cateArray: ['全部分类', '餐饮美食', '外卖送餐', '专业服务', '汽车服务', '便民家政', '礼品商店', '移民教育', '旅游机票', '超市商店', '医疗保健', '房产经济', '换汇汇款', '快递货运', '美容美发', '休闲娱乐', '酒店旅馆', '宠物服务', '家政保洁', '微商部落'],
+    cateIndex: 0,
     data: {},
     area: '',
     keyword: ''
@@ -26,7 +28,8 @@ Page({
     cate = options.cate ? options.cate : 0;
     var keyword = options.keyword ? options.keyword : '';
     this.setData({
-      keyword: keyword
+      keyword: keyword,
+      cateIndex: cate
     })
     this.getBusinessList()
   },
@@ -49,6 +52,13 @@ Page({
         })
       }
     })
+  },
+  cateChange(e) {
+    cate = e.detail.value
+    this.setData({
+      cateIndex: e.detail.value
+    })
+    this.getBusinessList()
   },
   areaChange(e) {
     area = e.detail.value

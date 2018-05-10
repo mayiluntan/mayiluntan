@@ -132,6 +132,12 @@ Page({
         }
       }
     })
+  },
+  viewIndex(e){
+    var v=e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/user/personal/personal?user_id='+v,
+    })
   }
 })
 

@@ -160,5 +160,11 @@ Page({
     wx.navigateTo({
       url: '/pages/circle/circleList/circleList?keyword=' + v,
     })
+  },
+  viewIndex(e) {
+    var v = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/user/personal/personal?user_id=' + v,
+    })
   }
 })

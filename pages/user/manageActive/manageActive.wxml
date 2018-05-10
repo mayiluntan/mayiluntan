@@ -7,7 +7,7 @@
     </view>
   </view>
   <view class='circle-list' wx:for="{{data}}" wx:key='index'>
-    <view class='circle-head'><image src='{{item.avatar}}'></image></view>
+    <view class='circle-head' bindtap='viewIndex' data-id='{{item.user_id}}'><image src='{{item.avatar}}'></image></view>
     <view class='circle-detail'>
       <view class='circle-nick'>
         <view class="circle-show">{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
