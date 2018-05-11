@@ -11,7 +11,7 @@
   padding: 10rpx 0;
 }
 .content .title .title-picker{
-    width: 50%;
+  width: 33%;
 }
 .content .title .title-border{
   width: 100%;
@@ -33,7 +33,7 @@
   align-self: center
 }
 .content .title .title-area{
-  width: 50%;
+  width: 33%;
 }
 .content .title .title-border2 image{
   width: 30rpx;
@@ -112,4 +112,10 @@
   padding-top:10rpx;
   color: #7f7f7f;
   text-align: right;
+}
+.none{
+  text-align: center;
+  color: #ccc;
+  height: 200rpx;
+  line-height: 200rpx;
 }

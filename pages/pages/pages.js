@@ -51,6 +51,10 @@ Page({
       this.getBusinessList()
     }
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.getBusinessList();
+  },
   swiperChange(e) {
     this.setData({
       cateSelected: e.detail.current
@@ -68,6 +72,10 @@ Page({
         this.setData({
           data: res.data.data
         })
+      },
+      complete: res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },

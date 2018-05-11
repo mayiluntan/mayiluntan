@@ -11,7 +11,7 @@
   padding: 10rpx 0;
 }
 .content .title .title-picker{
-    width: 50%;
+  width: 33%;
 }
 .content .title .title-border{
   width: 100%;
@@ -39,7 +39,7 @@
   align-self: center
 }
 .content .title .title-area{
-  width: 50%;
+  width: 33%;
 }
 /**list-main**/
 .list{
@@ -128,4 +128,10 @@
   width: 50%;
   display:flex;
   justify-content: center;
+}
+.none{
+  text-align: center;
+  color: #ccc;
+  height: 200rpx;
+  line-height: 200rpx;
 }

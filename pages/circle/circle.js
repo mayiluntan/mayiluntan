@@ -31,6 +31,10 @@ Page({
       }
     })
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.getList();
+  },
   getList(){
     wx.request({
       url: app.globalData.apiUrl + 'get_dynamic.php',
@@ -44,6 +48,10 @@ Page({
         }else{
           app.showTips(res.data.title, res.data.msg, false);
         }
+      },
+      complete: res => {
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
       }
     })
   },
@@ -159,6 +167,12 @@ Page({
     }
     wx.navigateTo({
       url: '/pages/circle/circleList/circleList?keyword=' + v,
+    })
+  },
+  viewIndex(e) {
+    var v = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/user/personal/personal?user_id=' + v,
     })
   }
 })

@@ -1,6 +1,12 @@
 <!--pages/user/managePost/managePost.wxml-->
 <view class='content'>
     <view class='title' wx:if='{{keyword==""}}'>
+      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}">
+      <view class='title-border'>
+        <view>{{cateArray[cateIndex]}}</view>
+        <image src='/images/icon_arrow_down.png' />
+      </view>
+      </picker>
       <view class='title-area title-border' bindtap='selectArea'>
         <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
@@ -41,4 +47,5 @@
       <view class='list-time'>发布时间：{{item.dated}}</view>
     </view>
   </block>
+  <view wx:if="{{listData.length==0}}" class='none'>没有更多内容了哦~</view>
 </view>

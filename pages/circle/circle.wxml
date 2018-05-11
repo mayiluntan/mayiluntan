@@ -35,7 +35,7 @@
         <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>今日热点</view>
       </view>
       <view class='circle-list' wx:for="{{data}}" wx:key='index'>
-        <view class='circle-head'><image src='{{item.avatar}}'></image></view>
+        <view class='circle-head' bindtap='viewIndex' data-id='{{item.user_id}}'><image src='{{item.avatar}}'></image></view>
         <view>
           <view class='circle-nick'>{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
           <view class='circle-tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
