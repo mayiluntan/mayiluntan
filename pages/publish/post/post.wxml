@@ -20,14 +20,54 @@
   <view class='detail'>
     <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入您的电话号码"  bindinput='mobileInput'></input></view>
   </view>
-  <view class='detail'>
-    <view class='detail-list'><image src='/images/post/price.png'></image><input placeholder="价格" bindinput='priceInput'></input></view>
+  <view class='detail' wx:if='{{indexArray[0]!=4}}'>
+    <view class='detail-list detail-money'>
+    <image src='/images/post/price.png'></image>
+    <text class='detail-sign'>{{moneySign}}</text>
+    <input placeholder="不填为⾯议" bindinput='priceInput'>
+    </input>
+    </view>
   </view>
-  <view class='detail'>
+  <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1"bindinput='tag1Input'></input></view>
   </view>
-  <view class='detail'>
+  <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2" bindinput='tag2Input'></input></view>
+  </view>
+  <view class='detail' wx:if='{{indexArray[0]==0}}'>
+    <view class='tags'>
+      <view>
+        <label class="{{(tagIndex1==0 || tagIndex2==0)?'on':''}}" bindtap='selectTag' data-index='0'>近火车站</label>
+        <label class="{{(tagIndex1==1 || tagIndex2==1)?'on':''}}" bindtap='selectTag' data-index='1'>近电车站</label>
+        <label class="{{(tagIndex1==2 || tagIndex2==2)?'on':''}}" bindtap='selectTag' data-index='2'>近公车站</label>
+        <label class="{{(tagIndex1==3 || tagIndex2==3)?'on':''}}" bindtap='selectTag' data-index='3'>近超市</label>
+      </view>
+      <view>
+        <label class="{{(tagIndex1==4 || tagIndex2==4)?'on':''}}" bindtap='selectTag' data-index='4'>近学校</label>
+        <label class="{{(tagIndex1==5 || tagIndex2==5)?'on':''}}" bindtap='selectTag' data-index='5'>带车位</label>
+        <label class="{{(tagIndex1==6 || tagIndex2==6)?'on':''}}" bindtap='selectTag' data-index='6'>包家具</label>
+        <label class="{{(tagIndex1==7 || tagIndex2==7)?'on':''}}" bindtap='selectTag' data-index='7'>包水电</label>
+        <label class="{{(tagIndex1==8 || tagIndex2==8)?'on':''}}" bindtap='selectTag' data-index='8'>可议价</label>
+      </view>
+      <view>
+        <label class="{{(tagIndex1==9 || tagIndex2==9)?'on':''}}" bindtap='selectTag' data-index='9'>主卧</label>
+        <label class="{{(tagIndex1==10 || tagIndex2==10)?'on':''}}" bindtap='selectTag' data-index='10'>房子新</label>
+        <label class="{{(tagIndex1==11 || tagIndex2==11)?'on':''}}" bindtap='selectTag' data-index='11'>房间大</label>
+        <label class="{{(tagIndex1==12 || tagIndex2==12)?'on':''}}" bindtap='selectTag' data-index='12'>房间大</label>
+        <label class="{{(tagIndex1==13 || tagIndex2==13)?'on':''}}" bindtap='selectTag' data-index='13'>富人区</label>
+        </view>
+        <view>
+        <label class="{{(tagIndex1==14 || tagIndex2==14)?'on':''}}" bindtap='selectTag' data-index='14'>限女生</label>
+        <label class="{{(tagIndex1==15 || tagIndex2==15)?'on':''}}" bindtap='selectTag' data-index='15'>限男生</label>
+        <label class="{{(tagIndex1==16 || tagIndex2==16)?'on':''}}" bindtap='selectTag' data-index='16'>可养宠物</label>
+        <label class="{{(tagIndex1==17 || tagIndex2==17)?'on':''}}" bindtap='selectTag' data-index='17'>风水好</label>
+      </view>
+      <view>
+        <label class="{{(tagIndex1==18 || tagIndex2==18)?'on':''}}" bindtap='selectTag' data-index='18'>高层公寓</label>
+        <label class="{{(tagIndex1==19 || tagIndex2==19)?'on':''}}" bindtap='selectTag' data-index='19'>环境优</label>
+        <label class="{{(tagIndex1==20 || tagIndex2==20)?'on':''}}" bindtap='selectTag' data-index='20'>网速好</label>
+      </view>
+    </view>
   </view>
   <view class='detail'>
     <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="微信号" bindinput='wechatInput'></input></view>

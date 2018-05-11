@@ -49,6 +49,33 @@ page {
   width: 14rpx;
   height: 24rpx;
 }
+.detail .detail-money input{
+  padding-left: 10rpx;
+}
+.detail .tags{
+  width: 95vw;
+  border-bottom: 1px solid #efefef;
+  padding-bottom:30rpx;
+  margin-left: 5vw;
+  
+  overflow-wrap: break-word;
+}
+.detail .tags view{
+  margin-top: 20rpx;
+}
+.detail .tags label{
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+  margin-right: 20rpx;
+  color: #666;
+  border: 1px solid #ccc;
+}
+.detail .tags .on{
+  color: #4188d2;
+  border: 1px solid #4188d2;
+}
 .division{
   width: 100%;
   height: 30rpx;

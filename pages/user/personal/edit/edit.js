@@ -37,7 +37,6 @@ Page({
         }
       }
     })
-    console.log(this.data)
   },
 
   datePickerChange: function (e) {

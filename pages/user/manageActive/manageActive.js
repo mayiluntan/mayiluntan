@@ -30,7 +30,6 @@ Page({
           this.setData({
             data: res.data.data
           })
-          console.log(res)
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
@@ -63,7 +62,6 @@ Page({
       hide: 0,
       nick: nick
     })
-    console.log(this.data)
   },
   replyClick() {
     if (this.data.content == '') {
@@ -99,7 +97,6 @@ Page({
       data: { id: id, uid: app.globalData.uid },
       method: 'POST',
       success: res => {
-        console.log(res)
         if (res.data.ret == 1) {
           this.getList();
           id = 0;
@@ -111,7 +108,6 @@ Page({
   },
   deleteOne(e) {
     var id = e.currentTarget.dataset.id
-    console.log(id)
     wx.showModal({
       title: '提示',
       content: '确定删除？',

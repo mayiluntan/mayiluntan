@@ -225,3 +225,9 @@ page {
   color: #7f7f7f;
   text-align: right;
 }
+.none{
+  text-align: center;
+  color: #ccc;
+  height: 200rpx;
+  line-height: 200rpx;
+}

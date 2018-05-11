@@ -97,6 +97,12 @@ page{
   display:flex;
   flex: 1;
 }
+.broadcast .l .c{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-width:50vw;
+}
 .broadcast .l image{
   width: 46rpx;
   height: 33rpx;

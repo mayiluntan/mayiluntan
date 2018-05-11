@@ -60,4 +60,5 @@
       <view bindtap='replyClick'>回复</view>
     </view>
   </view>
+  <view wx:if="{{data.length==0}}" class='none'>没有更多内容了哦~</view>
 </view>

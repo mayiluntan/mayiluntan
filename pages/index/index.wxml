@@ -28,7 +28,7 @@
   <view class="broadcast">
     <view class='l'>
       <image src='/images/horn.png'/>
-      <view>{{broadcast.title}}</view>
+      <view class='c'>{{broadcast.title}}</view>
     </view>
     <view class='r' wx:if="{{broadcast.id>0}}"  >
       <view class='r1' bindtap='viewDetail' data-id='{{broadcast.id}}'>{{broadcast.num==0?'暂无答案':'查看答案'}}</view>

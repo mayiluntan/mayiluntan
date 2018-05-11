@@ -117,7 +117,7 @@ Page({
       })
     }
     wx.request({
-      url: app.globalData.apiUrl + 'get_other_info.php?type=1',
+      url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid='+app.globalData.uid,
       success: res => {
         this.setData({
           broadcast: res.data.data.broadcast,
@@ -152,6 +152,8 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.getIndexList();
+  },
+  onReachBottom: function () {
   },
   getIndexList(){
     wx.request({

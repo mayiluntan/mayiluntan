@@ -28,14 +28,30 @@ Page({
       top:1,
       topDay:1,
       topPrice:10
-    }
+    },
+    moneyType: 1,
+    moneySign: '$',
+    tagArr: [{ 'view': 1, 'name': '近火车站' }, { 'view': 0, 'name': '近电车站' }, { 'view': 0, 'name': '近公车站' }, { 'view': 2, 'name': '近超市' }, { 'view': 1, 'name': '近学校' }, { 'view': 0, 'name': '带车位' }, { 'view': 0, 'name': '包家具' }, { 'view': 0, 'name': '包水电' }, { 'view': 2, 'name': '可议价' }, { 'view': 1, 'name': '主卧' }, { 'view': 0, 'name': '房子新' }, { 'view': 0, 'name': '房间大' }, { 'view': 0, 'name': '富人区' }, { 'view': 2, 'name': '限女生' }, { 'view': 1, 'name': '限男生' }, { 'view': 0, 'name': '可养宠物' }, { 'view': 0, 'name': '风水好' }, { 'view': 0, 'name': '高层公寓' }, { 'view': 2, 'name': '环境优' }, { 'view': 3, 'name': '网速好' }],
+    tagIndex1:-1,
+    tagIndex2:-1,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var cityArray = app.globalData.cityArray
+    if (cityArray[0]=='欧洲'){
+      this.setData({
+        moneySign: '€',
+        moneyType: 2
+      })
+    } else if (cityArray[1] == '韩国'){
+      this.setData({
+        moneySign: '₩',
+        moneyType: 3
+      })
+    }
   },
   onShow() {
     if (app.globalData.areaChange) {
@@ -80,7 +96,6 @@ Page({
                   picCount: picCount
                 });
               }
-              console.log(that.data)
             }
           })
         }
@@ -96,7 +111,6 @@ Page({
     }
   },
   dayChange(e){
-    console.log(e)
     var v=e.detail.value;
     var day=1;
     if(v==1){
@@ -111,7 +125,6 @@ Page({
       dayIndex:v,
       postData: postData
     })
-    console.log(this.data)
     //var money = parseFloat(this.data.price) * this.data.totalCount;
     //money = Math.round(money * 100) / 100;
   },
@@ -160,7 +173,6 @@ Page({
       data: { uid: app.globalData.uid},
       method:'POST',
       success:res=>{
-        console.log(res)
         if (res.data.ret == 1) {
           wx.requestPayment({
             'timeStamp': res.data.data.timeStamp,
@@ -168,10 +180,10 @@ Page({
             'package': res.data.data.package,
             'signType': 'MD5',
             'paySign': res.data.data.paySign,
-            'success': function (res) {console.log(res) },
+            'success': function (res) { },
             'fail': function (res) { },
             'complete': function (res) {
-              console.log('123')
+              
             }
           })
         } else {
@@ -181,6 +193,7 @@ Page({
     })
   },
   postClick(){
+
     if (this.data.postData.content == '') {
       app.showTips('提示', '请输入内容', false)
       return
@@ -192,7 +205,6 @@ Page({
     if (this.data.postData.address == '') {
       wx.getSetting({
         success: res => {
-          console.log(res)
           if (res.authSetting['scope.userLocation'] || res.authSetting['scope.userLocation'] == undefined) {
             app.showTips('提示', '请选择位置', false)
           } else {
@@ -219,16 +231,31 @@ Page({
       return
     }
     var postData=this.data.postData
+
+    if (this.data.indexArray[0] == 0) {
+      postData.tag1 = '';
+      postData.tag2 = '';
+      var tagIndex1 = this.data.tagIndex1;
+      var tagIndex2 = this.data.tagIndex2;
+      if (tagIndex1 == -1 && tagIndex2!=-1){
+        postData.tag1 = this.data.tagArr[this.data.tagIndex2]['name'];
+      } else if (tagIndex1 != -1 && tagIndex2 == -1){
+        postData.tag1 = this.data.tagArr[this.data.tagIndex1]['name'];
+      } else if (tagIndex1 != -1 && tagIndex2 != -1){
+        postData.tag1 = this.data.tagArr[this.data.tagIndex1]['name'];
+        postData.tag2 = this.data.tagArr[this.data.tagIndex2]['name'];
+      }
+    }
     //lock=true;
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
+    postData.moneyType = this.data.moneyType
     wx.request({
       url: app.globalData.apiUrl+'post.php',
       data: postData,
       method:'POST',
       success:res=>{
-        console.log(res)
         if(res.data.ret==1){
           if (res.data.top==1){
             wx.requestPayment({
@@ -263,7 +290,6 @@ Page({
                 }, 2000)
                },
               'complete': function (res) {
-                console.log('123')
               }
             })
           }else{
@@ -297,12 +323,10 @@ Page({
         this.setData({
           postData: postData
         })
-        console.log(res)
       },
       fail:res=>{
         wx.getSetting({
           success: res => {
-            console.log(res)
             if (!res.authSetting['scope.userLocation'] || res.authSetting['scope.userLocation'] == undefined) {
               app.showAuthTips('请先授权获取位置');
             }
@@ -357,5 +381,27 @@ Page({
     wx.navigateTo({
       url: '/pages/areaSelect/areaSelect',
     })
+  },
+  selectTag(e){
+    var v=e.currentTarget.dataset.index
+    if (this.data.tagIndex1 == v){
+      this.setData({
+        tagIndex1:-1
+      })
+    } else if (this.data.tagIndex2 == v){
+      this.setData({
+        tagIndex2: -1
+      })
+    } else if (this.data.tagIndex1 == -1) {
+      this.setData({
+        tagIndex1: v
+      })
+    } else if (this.data.tagIndex2 == -1) {
+      this.setData({
+        tagIndex2: v
+      })
+    }else{
+      app.showTips('提示','最多选择2个标签', false);
+    }
   }
 })

@@ -27,7 +27,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     var user_id = options.user_id ? options.user_id:0
     this.setData({
       user_id: user_id
@@ -68,7 +67,6 @@ Page({
           this.setData({
             dynamicInfo: res.data.data
           })
-          console.log(res)
         } else {
           app.showTips(res.data.title, res.data.msg, false);
         }
@@ -162,7 +160,6 @@ Page({
       hide: 0,
       nick: nick
     })
-    console.log(this.data)
   },
   replyClick2() {
     if (this.data.content == '') {

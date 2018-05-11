@@ -32,4 +32,5 @@
     </view>
     </block>
   </view>
+  <view wx:if="{{listData.length==0}}" class='none'>没有更多内容了哦~</view>
 </view>

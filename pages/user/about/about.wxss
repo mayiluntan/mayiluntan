@@ -6,7 +6,7 @@ page{
   height: 100%;
 }
 .top{
-  width: 100%;
+  width: 95vw;
   height: 55vw;
   background: #fff;
   text-align: right;

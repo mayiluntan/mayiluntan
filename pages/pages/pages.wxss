@@ -87,6 +87,7 @@ page{
 
 .broadcast .l .company{
   color: #f00;
+  padding: 0 10rpx;
 }
 
 /**cate**/

@@ -23,7 +23,6 @@ Page({
     wx.request({
       url: app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected,
       success: res => {
-        console.log(res.data)
         if (res.data.ret == 1) {
           this.setData({
             listData: res.data.data
@@ -68,7 +67,6 @@ Page({
     if (lock) {
       return
     }
-    //console.log(e);
     var v = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '/pages/view/viewDetail/viewDetail?id=' + v,

@@ -179,3 +179,9 @@ page{
   line-height: 60rpx;
   margin-right: 20rpx;
 }
+.none{
+  text-align: center;
+  color: #ccc;
+  height: 200rpx;
+  line-height: 200rpx;
+}
