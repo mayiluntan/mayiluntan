@@ -33,7 +33,7 @@
     <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="微信号" bindinput='wechatInput'></input></view>
   </view>
   <view class='detail'>
-    <view class='detail-list'><input placeholder="请选择区域" bindtap='selectArea' value='{{postData.area}}'></input></view>
+    <view class='detail-list'><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
   </view>
   <view class='division'></view>
   <view class='top-list to-top'>
