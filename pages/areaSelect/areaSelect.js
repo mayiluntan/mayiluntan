@@ -16,12 +16,15 @@ Page({
   initData() {
     var arr = app.globalArray.areaArray[app.globalData.cityArray[2]]
     if (arr === undefined) {
+      arr = { '全部地区': []}
+      /*
       app.globalData.area = '全部地区'
       app.globalData.areaChange = true
       wx.navigateBack({
         
       })
       return;
+      */
     }
     var selectArray = this.data.selectArray;
     var maxCurrent = this.data.maxCurrent;
@@ -97,7 +100,6 @@ Page({
       array: array,
       minHeight: height
     })
-    console.log(this.data)
   },
   menuClicked: function (event) {
     var menutype = event.currentTarget.dataset.menutype;
