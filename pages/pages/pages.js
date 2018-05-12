@@ -28,9 +28,12 @@ Page({
     wx.request({
       url: app.globalData.apiUrl + 'get_other_info.php?type=2&uid='+app.globalData.uid,
       success: res => {
-        this.setData({
-          broadcast: res.data.data.broadcast
-        })
+        if(res.data.ret==1){
+          this.setData({
+            broadcast: res.data.data.broadcast
+          })
+        }
+        
       }
     })
   },

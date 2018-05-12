@@ -53,19 +53,18 @@
         <label class="{{(tagIndex1==9 || tagIndex2==9)?'on':''}}" bindtap='selectTag' data-index='9'>主卧</label>
         <label class="{{(tagIndex1==10 || tagIndex2==10)?'on':''}}" bindtap='selectTag' data-index='10'>房子新</label>
         <label class="{{(tagIndex1==11 || tagIndex2==11)?'on':''}}" bindtap='selectTag' data-index='11'>房间大</label>
-        <label class="{{(tagIndex1==12 || tagIndex2==12)?'on':''}}" bindtap='selectTag' data-index='12'>房间大</label>
-        <label class="{{(tagIndex1==13 || tagIndex2==13)?'on':''}}" bindtap='selectTag' data-index='13'>富人区</label>
+        <label class="{{(tagIndex1==12 || tagIndex2==12)?'on':''}}" bindtap='selectTag' data-index='12'>富人区</label>
+        <label class="{{(tagIndex1==13 || tagIndex2==13)?'on':''}}" bindtap='selectTag' data-index='13'>限女生</label>
         </view>
         <view>
-        <label class="{{(tagIndex1==14 || tagIndex2==14)?'on':''}}" bindtap='selectTag' data-index='14'>限女生</label>
-        <label class="{{(tagIndex1==15 || tagIndex2==15)?'on':''}}" bindtap='selectTag' data-index='15'>限男生</label>
-        <label class="{{(tagIndex1==16 || tagIndex2==16)?'on':''}}" bindtap='selectTag' data-index='16'>可养宠物</label>
-        <label class="{{(tagIndex1==17 || tagIndex2==17)?'on':''}}" bindtap='selectTag' data-index='17'>风水好</label>
+        <label class="{{(tagIndex1==14 || tagIndex2==14)?'on':''}}" bindtap='selectTag' data-index='14'>限男生</label>
+        <label class="{{(tagIndex1==15 || tagIndex2==15)?'on':''}}" bindtap='selectTag' data-index='15'>可养宠物</label>
+        <label class="{{(tagIndex1==16 || tagIndex2==16)?'on':''}}" bindtap='selectTag' data-index='16'>风水好</label>
+        <label class="{{(tagIndex1==17 || tagIndex2==17)?'on':''}}" bindtap='selectTag' data-index='17'>高层公寓</label>
       </view>
       <view>
-        <label class="{{(tagIndex1==18 || tagIndex2==18)?'on':''}}" bindtap='selectTag' data-index='18'>高层公寓</label>
-        <label class="{{(tagIndex1==19 || tagIndex2==19)?'on':''}}" bindtap='selectTag' data-index='19'>环境优</label>
-        <label class="{{(tagIndex1==20 || tagIndex2==20)?'on':''}}" bindtap='selectTag' data-index='20'>网速好</label>
+        <label class="{{(tagIndex1==18 || tagIndex2==18)?'on':''}}" bindtap='selectTag' data-index='18'>环境优</label>
+        <label class="{{(tagIndex1==19 || tagIndex2==19)?'on':''}}" bindtap='selectTag' data-index='19'>网速好</label>
       </view>
     </view>
   </view>

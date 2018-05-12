@@ -115,17 +115,19 @@ Page({
       that.setData({
         selectArray: app.globalData.cityArray
       })
+      wx.request({
+        url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid=' + app.globalData.uid,
+        success: res => {
+          if (res.data.ret == 1) {
+            that.setData({
+              broadcast: res.data.data.broadcast,
+              exchangeRate: res.data.data.exchange_rate,
+              temperature: res.data.data.temperature,
+            })
+          }
+        }
+      })
     }
-    wx.request({
-      url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid='+app.globalData.uid,
-      success: res => {
-        this.setData({
-          broadcast: res.data.data.broadcast,
-          exchangeRate: res.data.data.exchange_rate,
-          temperature: res.data.data.temperature,
-        })
-      }
-    })
   },
   onShow(){
     if (this.data.selectArray[2]==''){
