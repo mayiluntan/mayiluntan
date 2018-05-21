@@ -15,6 +15,7 @@ Page({
     dayArray:['1天','7天','30天'],
     dayIndex:0,
     postData:{
+      id: 0,
       content:'',
       address:'',
       lon:'',
@@ -25,13 +26,13 @@ Page({
       tag2:'',
       wechat:'',
       area:'',
-      top:1,
+      top:0,
       topDay:1,
       topPrice:10
     },
     moneyType: 1,
     moneySign: '$',
-    tagArr: [{ 'view': 1, 'name': '近火车站' }, { 'view': 0, 'name': '近电车站' }, { 'view': 0, 'name': '近公车站' }, { 'view': 2, 'name': '近超市' }, { 'view': 1, 'name': '近学校' }, { 'view': 0, 'name': '带车位' }, { 'view': 0, 'name': '包家具' }, { 'view': 0, 'name': '包水电' }, { 'view': 2, 'name': '可议价' }, { 'view': 1, 'name': '主卧' }, { 'view': 0, 'name': '房子新' }, { 'view': 0, 'name': '房间大' }, { 'view': 0, 'name': '富人区' }, { 'view': 2, 'name': '限女生' }, { 'view': 1, 'name': '限男生' }, { 'view': 0, 'name': '可养宠物' }, { 'view': 0, 'name': '风水好' }, { 'view': 0, 'name': '高层公寓' }, { 'view': 2, 'name': '环境优' }, { 'view': 3, 'name': '网速好' }],
+    tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
     tagIndex1:-1,
     tagIndex2:-1,
   },
@@ -40,6 +41,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var id = options.id ? options.id:0
+    if(id){
+      wx.request({
+        url: app.globalData.apiUrl + 'get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        success: res => {
+          if (res.data.ret == 1) {
+            this.setData({
+              pics: res.data.data.pics,
+              picIds: res.data.data.picIds,
+              picCount: res.data.data.picCount,
+              indexArray: res.data.data.indexArray,
+              postData: res.data.data.postData,
+              moneyType: res.data.data.moneyType,
+              moneySign: res.data.data.moneySign,
+              tagIndex1: res.data.data.tagIndex1,
+              tagIndex2: res.data.data.tagIndex2,
+            })
+            this.allCateChange(res.data.data.indexArray[0])
+          } else {
+            app.showTips(res.data.title, res.data.msg, false);
+          }
+        }
+      })
+    }
     var cityArray = app.globalData.cityArray
     if (cityArray[0]=='欧洲'){
       this.setData({
@@ -132,9 +157,12 @@ Page({
     if (e.detail.column == 1) {
       return;
     }
+    this.allCateChange(e.detail.value)
+  },
+  allCateChange(v){
     var cateArray = this.data.cateArray
-    switch (e.detail.value) {
-      case 0: cateArray[1] = ['出租/合租', '短租民宿', '办公/商铺', '仓库/车位', 'Homestay',"求租"]; break;
+    switch (v) {
+      case 0: cateArray[1] = ['出租/合租', '短租民宿', '办公/商铺', '仓库/车位', 'Homestay', "求租"]; break;
       case 1: cateArray[1] = ['家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; break;
       case 2: cateArray[1] = ['求职招聘']; break;
       case 3: cateArray[1] = ['汽车交易']; break;
@@ -238,12 +266,12 @@ Page({
       var tagIndex1 = this.data.tagIndex1;
       var tagIndex2 = this.data.tagIndex2;
       if (tagIndex1 == -1 && tagIndex2!=-1){
-        postData.tag1 = this.data.tagArr[this.data.tagIndex2]['name'];
+        postData.tag1 = this.data.tagArr[this.data.tagIndex2];
       } else if (tagIndex1 != -1 && tagIndex2 == -1){
-        postData.tag1 = this.data.tagArr[this.data.tagIndex1]['name'];
+        postData.tag1 = this.data.tagArr[this.data.tagIndex1];
       } else if (tagIndex1 != -1 && tagIndex2 != -1){
-        postData.tag1 = this.data.tagArr[this.data.tagIndex1]['name'];
-        postData.tag2 = this.data.tagArr[this.data.tagIndex2]['name'];
+        postData.tag1 = this.data.tagArr[this.data.tagIndex1];
+        postData.tag2 = this.data.tagArr[this.data.tagIndex2];
       }
     }
     //lock=true;

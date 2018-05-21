@@ -57,18 +57,16 @@ page {
   border-bottom: 1px solid #efefef;
   padding-bottom:30rpx;
   margin-left: 5vw;
-  
+  display:flex;
+  flex-wrap:wrap;
   overflow-wrap: break-word;
 }
 .detail .tags view{
-  margin-top: 20rpx;
-}
-.detail .tags label{
   height: 44rpx;
   line-height: 44rpx;
   border-radius: 10rpx;
   padding: 0 10rpx;
-  margin-right: 20rpx;
+  margin:20rpx 20rpx 0 0;
   color: #666;
   border: 1px solid #ccc;
 }

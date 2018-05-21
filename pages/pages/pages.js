@@ -33,7 +33,6 @@ Page({
             broadcast: res.data.data.broadcast
           })
         }
-        
       }
     })
   },

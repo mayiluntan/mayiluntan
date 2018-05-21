@@ -99,6 +99,16 @@ Page({
       }
     })
   },
+  editPost(e){
+    lock = true;
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/publish/post/post?id=' + id,
+      complete:res=>{
+        lock = false;
+      }
+    })
+  },
   toTop(e){
     lock = true;
     var id = e.currentTarget.dataset.id

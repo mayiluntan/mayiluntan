@@ -4,6 +4,7 @@
     <view class='circle-title'>
       <view class="{{menuSelected == 0?'selected-title':''}}" data-menutype='0' bindtap='menuClicked'>发帖</view>
       <view class="{{menuSelected == 1?'selected-title':''}}" data-menutype='1' bindtap='menuClicked'>回帖</view>
+      <view class="{{menuSelected == 2?'selected-title':''}}" data-menutype='2' bindtap='menuClicked'>商户</view>
     </view>
   </view>
   <view class='content'>
@@ -13,29 +14,31 @@
         <view class='list-pic'><image src='{{item.pic}}'></image></view>
         <view class='list-content'>
           <view class='list-top'>
-            <view>
+            <view class=''>
               <view class='list-title'>
                 <view class='list-cate'>{{item.cate}}</view>
-                <view class='list-nick'>{{item.nickname}}</view>
+                <view class='list-nick' wx:if="{{menuSelected==1}}">{{item.nickname}}</view>
+                <view class='list-contact'>
+                  <block wx:if="{{menuSelected==0}}">
+                    <view class='list-btn'>
+                      <view bindtap='deletePost' data-id='{{item.id}}'>删除</view>
+                      <view bindtap='editPost' data-id='{{item.id}}'>编辑</view>
+                      <view class='list-hastop' wx:if='{{item.is_top==1}}'>已置顶</view>
+                      <view wx:else class='list-totop' bindtap='toTop' data-id='{{item.id}}'>置顶</view>
+                    </view>
+                  </block>
+                  <block wx:else>
+                  <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
+                  <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
+                  </block>
+                </view>
               </view>
               <view class='list-tag' >
                 <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
                 <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
               </view>
             </view>
-            <view class='list-contact'>
-              <block wx:if="{{menuSelected==0}}">
-                <view class='list-btn'>
-                  <view bindtap='deletePost' data-id='{{item.id}}'>删除</view>
-                  <view class='list-hastop' wx:if='{{item.is_top==1}}'>已置顶</view>
-                  <view wx:else class='list-totop' bindtap='toTop' data-id='{{item.id}}'>置顶</view>
-                </view>
-              </block>
-              <block wx:else>
-              <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
-              <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
-              </block>
-            </view>
+            
           </view>
           <view class='list-intro'>
           {{item.content}}

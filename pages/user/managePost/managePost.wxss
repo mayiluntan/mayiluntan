@@ -14,7 +14,7 @@ page {
 }
 
 .circle-title view {
-  width: 50%;
+  width: 33%;
   text-align: center;
   height: 60rpx;
   line-height: 60rpx;
@@ -40,9 +40,6 @@ page {
 .list .list-pic image{
   width: 176rpx;
   height: 176rpx;
-}
-.list .list-top{
-  display: flex;
 }
 .list .list-title{
   display: flex;
@@ -153,9 +150,6 @@ page {
 }
 .list .list-content{
   flex: 1;
-}
-.list .list-top{
-  display: flex;
 }
 .list .list-title{
   display: flex;
