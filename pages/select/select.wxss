@@ -1,0 +1,27 @@
+/* pages/select/select.wxss */
+.main{
+  font-size: 30rpx;
+  width: 100%;
+}
+.state{
+  font-size: 36rpx;
+  border-bottom: 1px dashed #666;
+  padding: 60rpx 0 20rpx 5vw;
+}
+.country{
+  font-size: 36rpx;
+  color: #999;
+  padding: 40rpx 0 0 5vw;
+}
+.city{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left:5vw;
+}
+.city view{
+  border:1px solid #666;
+  padding: 10rpx 30rpx;
+  border-radius: 10rpx;
+  margin:20rpx  30rpx 0 0;
+  color: #666;
+}

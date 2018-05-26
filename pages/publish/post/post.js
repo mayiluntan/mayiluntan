@@ -242,11 +242,15 @@ Page({
       })
       return
     }    
-    var mobileReg = /^[1][0-9]{10}$/;
-    if (!mobileReg.test(this.data.postData.mobile)) {
-      app.showTips('提示', '手机号有误', false);
+    if (this.data.postData.mobile=='') {
+      app.showTips('提示', '请填写电话号码', false);
       return;
     }
+    // var mobileReg = /^[1][0-9]{10}$/;
+    // if (!mobileReg.test(this.data.postData.mobile)) {
+    //   app.showTips('提示', '手机号有误', false);
+    //   return;
+    // }
     if (/.*[\u4e00-\u9fa5]+.*$/.test(this.data.postData.wechat)) {
       app.showTips('提示', '请输入正确的微信号', false)
       return;

@@ -1,0 +1,13 @@
+<view class='main'>
+  <block  wx:for='{{cityArray}}' wx:key='index'>
+  <view class='state'>{{index}}</view>
+    <block  wx:for='{{item}}' wx:key='index' wx:for-item='country'>
+    <view class='country' >{{index}}</view>
+    <view class='city'>
+      <block wx:for='{{country}}' wx:for-item='city' wx:key='index'>
+      <view>{{city}}</view>
+      </block>
+    </view>
+    </block>
+  </block>
+</view>

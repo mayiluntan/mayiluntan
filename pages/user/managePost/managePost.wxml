@@ -1,4 +1,4 @@
-<!--pages/user/managePost/managePost.wxml-->
+ <!--pages/user/managePost/managePost.wxml-->
 <view class='container'>
   <view class='circle'>
     <view class='circle-title'>
@@ -19,7 +19,7 @@
                 <view class='list-cate'>{{item.cate}}</view>
                 <view class='list-nick' wx:if="{{menuSelected==1}}">{{item.nickname}}</view>
                 <view class='list-contact'>
-                  <block wx:if="{{menuSelected==0}}">
+                  <block wx:if="{{menuSelected!=1}}">
                     <view class='list-btn'>
                       <view bindtap='deletePost' data-id='{{item.id}}'>删除</view>
                       <view bindtap='editPost' data-id='{{item.id}}'>编辑</view>

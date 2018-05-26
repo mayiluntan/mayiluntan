@@ -20,8 +20,13 @@ Page({
     this.getIndexList();
   },
   getIndexList() {
+    if (this.data.menuSelected==2){
+      var url = app.globalData.apiUrl + 'get_my_business.php?uid=' + app.globalData.uid;
+    }else{
+      var url = app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected;
+    }
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected,
+      url: url,
       success: res => {
         if (res.data.ret == 1) {
           this.setData({
@@ -75,39 +80,75 @@ Page({
   deletePost(e){
     lock = true;
     var id = e.currentTarget.dataset.id
-    wx.showModal({
-      title: '提示',
-      content: '是否删除帖⼦',
-      success:res=>{
-        if(res.confirm){
-          wx.request({
-            url: app.globalData.apiUrl + 'del_post.php',
-            data: { id: id, uid: app.globalData.uid },
-            method: 'POST',
-            success: res => {
-              if (res.data.ret == 1) {
-                this.getIndexList();
-              } else {
-                app.showTips(res.data.title, res.data.msg, false);
+    if (this.data.menuSelected==2){
+      wx.showModal({
+        title: '提示',
+        content: '是否删除商户',
+        success: res => {
+          if (res.confirm) {
+            wx.request({
+              url: app.globalData.apiUrl + 'del_business.php',
+              data: { id: id, uid: app.globalData.uid },
+              method: 'POST',
+              success: res => {
+                if (res.data.ret == 1) {
+                  this.getIndexList();
+                } else {
+                  app.showTips(res.data.title, res.data.msg, false);
+                }
               }
-            }
-          })
+            })
+          }
+        },
+        complete: res => {
+          lock = false;
         }
-      },
-      complete: res => {
-        lock = false;
-      }
-    })
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '是否删除帖⼦',
+        success:res=>{
+          if(res.confirm){
+            wx.request({
+              url: app.globalData.apiUrl + 'del_post.php',
+              data: { id: id, uid: app.globalData.uid },
+              method: 'POST',
+              success: res => {
+                if (res.data.ret == 1) {
+                  this.getIndexList();
+                } else {
+                  app.showTips(res.data.title, res.data.msg, false);
+                }
+              }
+            })
+          }
+        },
+        complete: res => {
+          lock = false;
+        }
+      })
+    }
   },
   editPost(e){
     lock = true;
     var id = e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: '/pages/publish/post/post?id=' + id,
-      complete:res=>{
-        lock = false;
-      }
-    })
+    if (this.data.menuSelected == 2) {
+      wx.navigateTo({
+        url: '/pages/publish/business/business?id=' + id,
+        complete: res => {
+          lock = false;
+        }
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/publish/post/post?id=' + id,
+        complete: res => {
+          lock = false;
+        }
+      })
+    }
+    
   },
   toTop(e){
     lock = true;
@@ -117,9 +158,14 @@ Page({
       content: '是否花费10元置顶',
       success: res => {
         if (res.confirm) {
+          if (this.data.menuSelected == 2) {
+            var source=4;
+          }else{
+            var source=3;
+          }
           wx.request({
             url: app.globalData.apiUrl + 'retop.php',
-            data: { id: id, uid: app.globalData.uid, source:3},
+            data: { id: id, uid: app.globalData.uid, source:source},
             method: 'POST',
             success: res => {
               if (res.data.ret == 1) {

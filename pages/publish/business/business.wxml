@@ -19,9 +19,14 @@
     </view>
     <view class='list'>
       <view>商家分类<text>*</text></view>
+      <block wx:if='{{postData.id==0}}'>
       <picker value='{{cateIndex}}' range='{{cateArray}}' bindchange='cateChange'>
         <view>{{cateArray[cateIndex]}}</view>
       </picker>
+      </block>
+      <block wx:else>
+      <view>{{cateArray[cateIndex]}}</view>
+      </block>
     </view>
     <view class='pic'>
       <view>商家logo<text>*</text><text class='grey'>（建议尺寸750*562px）</text></view>

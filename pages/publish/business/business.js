@@ -17,6 +17,7 @@ Page({
     dayArray: ['1天', '7天', '30天'],
     dayIndex: 0,
     postData:{
+      id:0,
       name:'',
       tel: '',
       qq: '',
@@ -40,6 +41,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var id = options.id ? options.id : 0
+    if (id) {
+      wx.request({
+        url: app.globalData.apiUrl + 'get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        success: res => {
+          if (res.data.ret == 1) {
+
+            console.log(res.data)
+            this.setData({
+              pics: res.data.data.pics,
+              picIds: res.data.data.picIds,
+              picCount: res.data.data.picCount,
+              cateIndex: res.data.data.cateIndex,
+              postData: res.data.data.postData,
+              logo: res.data.data.logo,
+              cert: res.data.data.cert
+            })
+          } else {
+            app.showTips(res.data.title, res.data.msg, false);
+          }
+        }
+      })
+    }
   },
   onShow(){
     if (app.globalData.areaChange){
@@ -212,10 +236,10 @@ Page({
       app.showTips('提示', '请输入商家微信号', false)
       return
     }
-    if (postData.logo == '') {
-      app.showTips('提示', '请上传logo', false)
-      return
-    }
+    // if (postData.logo == '') {
+    //   app.showTips('提示', '请上传logo', false)
+    //   return
+    // }
     if (this.data.pics.length == 0) {
       app.showTips('提示', '请上传详情图', false)
       return

@@ -193,7 +193,7 @@ page {
   border-radius: 10rpx;
   color: #ccc;
   padding: 0 10rpx;
-  margin-right: 30rpx;
+  margin-right: 20rpx;
 }
 .list .list-contact .list-btn .list-totop{
   border: 1px solid #f00;
