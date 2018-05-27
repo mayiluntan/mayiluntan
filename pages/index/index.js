@@ -98,7 +98,7 @@ Page({
   },
   
   onLoad: function (options) {
-    postId = options.act_id ? options.act_id : 0;
+    postId = options.id ? options.id : 0;
     wx.request({
       url: app.globalData.apiUrl + 'get_banner.php',
       success: res => {
@@ -132,6 +132,9 @@ Page({
           if (postId>0){
             wx.navigateTo({
               url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+              complete:res=>{
+                postId=0;
+              }
             })
           }
         }
@@ -158,6 +161,14 @@ Page({
       app.globalData.area = '';
       app.globalData.areaChange = false;
       this.getIndexList()
+    }
+    if (postId > 0 && app.globalData.uid!=null) {
+      wx.navigateTo({
+        url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+        complete: res => {
+          postId = 0;
+        }
+      })
     }
   },
   onPullDownRefresh: function () {
