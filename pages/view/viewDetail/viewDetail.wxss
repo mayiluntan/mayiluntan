@@ -100,6 +100,29 @@
   border-radius: 10rpx;
   padding:0 10rpx;
 }
+.float-button .share{
+  padding: 0 20rpx;
+  font-size: 26rpx;
+}
+.float-button .share image{
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.float-button .share .btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #36ab60;
+  background: #fff;
+  font-size: 26rpx;
+  line-height: normal;
+  padding: 0;
+}
+.float-button .share button::after{
+  border:none;
+}
 .float-button .tel{
   width: 20vw;
   display: flex;

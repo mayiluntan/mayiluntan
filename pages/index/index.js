@@ -5,6 +5,7 @@ var lock=false;
 var cate=0;
 var order=0;
 var area='';
+var postId=0;
 Page({
   data: {
     cateSelected:0,
@@ -96,7 +97,8 @@ Page({
     selectIndex: [0, 0, 0]
   },
   
-  onLoad: function () {
+  onLoad: function (options) {
+    postId = options.act_id ? options.act_id : 0;
     wx.request({
       url: app.globalData.apiUrl + 'get_banner.php',
       success: res => {
@@ -123,6 +125,13 @@ Page({
               broadcast: res.data.data.broadcast,
               exchangeRate: res.data.data.exchange_rate,
               temperature: res.data.data.temperature,
+            })
+          }
+        },
+        complete:res=>{
+          if (postId>0){
+            wx.navigateTo({
+              url: '/pages/view/viewDetail/viewDetail?id=' + postId,
             })
           }
         }
@@ -296,7 +305,7 @@ Page({
   },
   selectCity(){
     wx.navigateTo({
-      url: '/pages/citySelect/citySelect',
+      url: '/pages/select/select',
     })
   },
   searchClick(e){

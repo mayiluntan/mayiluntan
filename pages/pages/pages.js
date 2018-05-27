@@ -64,7 +64,7 @@ Page({
   },
   selectCity() {
     wx.navigateTo({
-      url: '/pages/citySelect/citySelect',
+      url: '/pages/select/select',
     })
   },
   getBusinessList() {

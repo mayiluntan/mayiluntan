@@ -16,7 +16,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     id = options.id ? options.id:0
     wx.request({
       url: app.globalData.apiUrl+'get_content.php',
@@ -103,6 +102,33 @@ Page({
       complete: res => {
       }
     })
-
+  },
+  shareClick(){
+    wx.showShareMenu({
+      withShareTicket:true
+    })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '小蚂蚁',
+      path: '/pages/index/index?id=' + id,
+      success: function (res) {
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success'
+        });
+        wx.request({
+          url: app.globalData.apiUrl + 'post_share.php',
+          data: { id: id, uid: app.globalData.uid },
+          method:'POST',
+          complete:res=>{
+          }
+        })
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

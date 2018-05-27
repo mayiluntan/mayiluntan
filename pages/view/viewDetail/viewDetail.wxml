@@ -42,6 +42,12 @@
   <view class='bottom'></view>
   <view class="float-button">
       <view class='input'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
+      <view class='share'>
+        <button class='btn' open-type="share">
+        <image src='/images/share.png'></image>
+        <view>分享</view>
+        </button>
+      </view>
       <view class='tel' bindtap='callPhone' data-phone='{{content.mobile}}'>电话</view>
       <view class='wechat' bindtap='copyText' data-wechat='{{content.wechat}}'>微信</view>
   </view><!-- float-button -->
