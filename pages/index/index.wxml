@@ -1,7 +1,12 @@
 <!--index.wxml-->
 <view class="container">
   <view class="top">
-    <image src='/images/top.png'/>
+    <block wx:if="{{indexPic==''}}">
+    <image src='/images/top.png'></image>
+    </block>
+    <block wx:else>
+    <image src='{{indexPic}}'></image>
+    </block>
     <view class='title-top'>
       <view class='weather'>{{temperature}}</view>
       <view class='exrate'>{{exchangeRate}}</view>

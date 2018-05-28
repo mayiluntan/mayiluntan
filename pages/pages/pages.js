@@ -21,7 +21,8 @@ Page({
       'title': '赶快来入驻吧',
       'name': '',
       'id': 0
-    }
+    },
+    indexPic:''
   },
   onLoad: function () {
     this.getBusinessList()
@@ -41,7 +42,8 @@ Page({
       app.globalData.pageChange = false;
       this.setData({
         selectArray: app.globalData.cityArray,
-        selectIndex: app.globalData.cityIndex
+        selectIndex: app.globalData.cityIndex,
+        indexPic: app.globalData.indexPic
       })
     }
     if (app.globalData.areaChange) {

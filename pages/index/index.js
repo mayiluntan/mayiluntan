@@ -83,7 +83,7 @@ Page({
         ['开普敦','约翰内斯堡'],
         ['开罗']
       ]
-  ],
+    ],
     orgIndex:[],
     orgCity:[],
     broadcast:{
@@ -94,7 +94,8 @@ Page({
     temperature:'',
     exchangeRate:'',
     selectArray:['','',''],
-    selectIndex: [0, 0, 0]
+    selectIndex: [0, 0, 0],
+    indexPic:''
   },
   
   onLoad: function (options) {
@@ -125,7 +126,9 @@ Page({
               broadcast: res.data.data.broadcast,
               exchangeRate: res.data.data.exchange_rate,
               temperature: res.data.data.temperature,
+              indexPic: res.data.data.pic
             })
+            app.globalData.indexPic = res.data.data.pic
           }
         },
         complete:res=>{
@@ -151,7 +154,8 @@ Page({
       app.globalData.cityChange=false;
       this.setData({
         selectArray: app.globalData.cityArray,
-        selectIndex: app.globalData.cityIndex
+        selectIndex: app.globalData.cityIndex,
+        indexPic: app.globalData.indexPic
       })
     }
     if (app.globalData.areaChange) {

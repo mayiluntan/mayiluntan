@@ -16,6 +16,14 @@ page {
 .cate{
   padding: 20rpx 0;
 }
+.title{
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.title input{
+  flex: 1;
+}
 .pic{
   display: flex;
   height: 200rpx;

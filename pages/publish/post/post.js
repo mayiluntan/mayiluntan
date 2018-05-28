@@ -16,6 +16,7 @@ Page({
     dayIndex:0,
     postData:{
       id: 0,
+      title:'',
       content:'',
       address:'',
       lon:'',
@@ -30,7 +31,6 @@ Page({
       topDay:1,
       topPrice:10
     },
-    moneyType: 1,
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
     tagIndex1:-1,
@@ -53,7 +53,6 @@ Page({
               picCount: res.data.data.picCount,
               indexArray: res.data.data.indexArray,
               postData: res.data.data.postData,
-              moneyType: res.data.data.moneyType,
               moneySign: res.data.data.moneySign,
               tagIndex1: res.data.data.tagIndex1,
               tagIndex2: res.data.data.tagIndex2,
@@ -66,17 +65,10 @@ Page({
       })
     }
     var cityArray = app.globalData.cityArray
-    if (cityArray[0]=='欧洲'){
-      this.setData({
-        moneySign: '€',
-        moneyType: 2
-      })
-    } else if (cityArray[1] == '韩国'){
-      this.setData({
-        moneySign: '₩',
-        moneyType: 3
-      })
-    }
+    var sign = app.globalArray.moneyArray[cityArray[1]]
+    this.setData({
+      moneySign: sign,
+    })
   },
   onShow() {
     if (app.globalData.areaChange) {
@@ -221,7 +213,10 @@ Page({
     })
   },
   postClick(){
-
+    if (this.data.postData.title == '') {
+      app.showTips('提示', '请输入标题', false)
+      return
+    }
     if (this.data.postData.content == '') {
       app.showTips('提示', '请输入内容', false)
       return
@@ -282,7 +277,7 @@ Page({
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
-    postData.moneyType = this.data.moneyType
+    postData.moneySign = this.data.moneySign
     wx.request({
       url: app.globalData.apiUrl+'post.php',
       data: postData,
@@ -365,6 +360,13 @@ Page({
           }
         })
       }
+    })
+  },
+  titleInput(e) {
+    var postData = this.data.postData
+    postData.title = e.detail.value;
+    this.setData({
+      postData: postData
     })
   },
   contentInput(e) {

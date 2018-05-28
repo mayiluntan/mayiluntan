@@ -1,7 +1,12 @@
 <!--pages.wxml-->
 <view class="container">
   <view class="top">
-    <image src='/images/top.png' />
+    <block wx:if="{{indexPic==''}}">
+    <image src='/images/top.png'></image>
+    </block>
+    <block wx:else>
+    <image src='{{indexPic}}'></image>
+    </block>
     <view class='city'>
       <view class='logo'>
         <image src='/images/ants.png' />

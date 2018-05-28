@@ -13,6 +13,9 @@
        <text>发布分类：{{cateArray[0][indexArray[0]]}},{{cateArray[1][indexArray[1]]}}</text>
       </view>
     </view>
+    <view class='title'>
+        <text>标题：</text><input placeholder="请输入标题" bindinput='titleInput' value='{{postData.title}}'></input>
+    </view>
     <textarea bindinput='contentInput' placeholder='请输入想要发布的内容' placeholder-style='color:#afafaf;' maxlength='-1' value='{{postData.content}}'></textarea>
     <view class='pic'>
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
@@ -29,7 +32,7 @@
     <view class='detail-list detail-money'>
     <image src='/images/post/price.png'></image>
     <text class='detail-sign'>{{moneySign}}</text>
-    <input placeholder="不填为⾯议" bindinput='priceInput' value='{{postData.price}}'>
+    <input placeholder="请输入价格，不填为⾯议" bindinput='priceInput' value='{{postData.price}}'>
     </input>
     </view>
   </view>

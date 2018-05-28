@@ -24,6 +24,9 @@ Page({
       data: { uid: app.globalData.uid, city: city},
       method: 'POST',
       success: res => {
+        if(res.data.ret==1){
+          app.globalData.indexPic = res.data.pic
+        }
       }
     })
     app.globalData.cityArray = city
