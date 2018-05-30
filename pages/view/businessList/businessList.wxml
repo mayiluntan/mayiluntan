@@ -17,6 +17,7 @@
     </view>
     </picker>
   </view>
+  <view class='division'></view>
   <block wx:for="{{data}}" wx:key="{{index}}">
     <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>

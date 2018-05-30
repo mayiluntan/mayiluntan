@@ -9,6 +9,57 @@
   display: flex;
   line-height: 40rpx;
   padding: 10rpx 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  background:#fff;
+}
+.content .screen{
+  position:fixed;
+  width:100%;
+  top:60rpx;
+  left:0;
+  height: 100%;
+}
+.content .screen-content{
+  background:#fff;
+  border-top: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
+  padding: 10rpx 0 10rpx 10rpx;
+}
+.content .screen-content .screen-cate{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+} 
+.content .screen-content .screen-title{
+  padding-right: 40rpx;
+}
+.content .screen-content .screen-select{
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+}
+.content .screen-content .screen-select view{
+  border: 1px solid #ccc;
+  padding: 15rpx 30rpx;
+  margin-right: 20rpx;
+  
+}
+.content .screen-content .screen-select .on{
+  color:#4188d2;
+  border:1rpx solid #4188d2;
+}
+.content .screen-content .screen-house view{
+  margin-bottom: 20rpx;
+}
+.content .screen .screen-bg{
+  width: 100%;
+  height: 100%;
+}
+.content .division{
+  height: 60rpx;
 }
 .content .title .title-picker{
   width: 33%;
@@ -69,6 +120,8 @@
 .list .list-title view{
   height: 44rpx;
   line-height: 44rpx;
+  overflow:hidden;
+  max-width:200rpx;
 }
 .list .list-title .list-cate{
   background: #f0a323;
@@ -100,6 +153,9 @@
 .list .list-contact image{
   width: 50rpx;
   height: 50rpx;
+}
+.list .list-contact .money{
+  color: #666;
 }
 .list .list-intro{
   display: -webkit-box;

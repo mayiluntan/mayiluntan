@@ -250,6 +250,8 @@ page{
 .list .list-title view{
   height: 44rpx;
   line-height: 44rpx;
+  overflow:hidden;
+  max-width:200rpx;
 }
 .list .list-title .list-cate{
   background: #f0a323;
@@ -281,6 +283,9 @@ page{
 .list .list-contact image{
   width: 50rpx;
   height: 50rpx;
+}
+.list .list-contact .money{
+  color: #666;
 }
 .list .list-intro{
   display: -webkit-box;

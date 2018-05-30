@@ -1,7 +1,7 @@
 <!--pages/user/managePost/managePost.wxml-->
 <view class='content'>
     <view class='title' wx:if='{{keyword==""}}'>
-      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}">
+      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}" wx:if='{{cateIndex!=1}}'>
       <view class='title-border'>
         <view>{{cateArray[cateIndex]}}</view>
         <image src='/images/icon_arrow_down.png' />
@@ -11,6 +11,10 @@
         <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
+      <view class='title-area title-border' bindtap='showScreen' wx:if='{{cateIndex==1}}'>
+        <view>筛选</view>
+        <image src='/images/icon_arrow_down.png' />
+      </view>
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>
@@ -18,6 +22,34 @@
       </view>
       </picker>
     </view>
+    <view class='screen' wx:if='{{screenShow==1}}'>
+      <view class='screen-content'>
+        <view class='screen-cate'>
+          <view class='screen-title'>类别：</view>
+          <view class='screen-select'>
+            <view class='{{screenCate==1?"on":""}}' bindtap='cateSelect' data-value='1'>招租</view>
+            <view class='{{screenCate==2?"on":""}}' bindtap='cateSelect' data-value='2'>找房</view>
+          </view>
+        </view>
+        <view class='screen-cate'>
+          <view class='screen-title'>来源：</view>
+          <view class='screen-select'>
+            <view class='{{screenPersonal==1?"on":""}}' bindtap='sourceSelect' data-value='1'>个人</view>
+            <view class='{{screenPersonal==2?"on":""}}' bindtap='sourceSelect' data-value='2'>中介</view>
+          </view>
+        </view>
+        <view class='screen-cate'>
+          <view class='screen-title'>房型：</view>
+          <view class='screen-select screen-house'>
+            <block wx:for='{{houseArray}}' wx:key='index'>
+            <view class='{{screenHouse==(index+1)?"on":""}}' bindtap='houseSelect' data-value='{{index+1}}'>{{item}}</view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <view class='screen-bg' bindtap='showScreen'></view>
+    </view>    
+    <view class='division'></view>
     <block wx:for="{{listData}}" wx:key="{{index}}">
     <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>
@@ -37,6 +69,7 @@
             <view class='list-contact'>
               <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
               <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
+              <view class='money'>{{item.money}}</view>
             </view>
           </view>
           <view class='list-intro'>

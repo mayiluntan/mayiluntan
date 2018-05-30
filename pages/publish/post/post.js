@@ -277,7 +277,7 @@ Page({
         app.showTips('提示', '请选择房型', false)
         return
       }
-      postData.house = this.data.houseArray[this.data.houseIndex];
+      postData.house = this.data.houseIndex;
       postData.tag1 = '';
       postData.tag2 = '';
       var tagIndex1 = this.data.tagIndex1;

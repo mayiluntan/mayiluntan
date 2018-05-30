@@ -42,7 +42,7 @@
   <block wx:if='{{indexArray[0]==0}}'>
   <view class='detail'>
    <view class='detail-list'><text></text>
-   <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}">
+   <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
       <view>
        <text>房型：{{houseArray[houseIndex]}}</text>
       </view>
@@ -65,7 +65,7 @@
    </view>
   </view>
   <view class='detail'>
-   <view class='detail-list'><text>租金：</text><input placeholder="{{moneySign}}100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
+   <view class='detail-list'><text>租金：{{moneySign}}</text><input placeholder="100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
   </view>
   <view class='detail' >
     <view class='tags'>

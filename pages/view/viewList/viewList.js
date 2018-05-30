@@ -18,7 +18,12 @@ Page({
     cateIndex: 0,
     listData: [],
     area:'',
-    keyword:''
+    keyword:'',
+    houseArray: ['公寓', '别墅', '联排别墅', '小区', '办公室', '商铺', '车库', '其他'],
+    screenCate:0,
+    screenPersonal:0,
+    screenHouse:0,
+    screenShow:0,
   },
 
   /**
@@ -49,7 +54,7 @@ Page({
   },
   getIndexList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
+      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse,
       success: res => {
         this.setData({
           listData: res.data.data
@@ -127,6 +132,43 @@ Page({
   selectArea() {
     wx.navigateTo({
       url: '/pages/areaSelect/areaSelect',
+    })
+  },
+  cateSelect(e) {
+    var v = e.currentTarget.dataset.value
+    this.setData({
+      screenCate: v
+    })
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0) {
+      this.showScreen()
+      this.getIndexList()
+    }
+  },
+  sourceSelect(e) {
+    var v = e.currentTarget.dataset.value
+    this.setData({
+      screenPersonal: v
+    })
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse>0){
+      this.showScreen()
+      this.getIndexList()
+    }
+  },
+  houseSelect(e) {
+    var v = e.currentTarget.dataset.value
+    this.setData({
+      screenHouse: v
+    })
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0) {
+      this.showScreen()
+      this.getIndexList()
+    }
+  },
+  showScreen(){
+    var v = this.data.screenShow;
+    v=v==1?0:1;
+    this.setData({
+      screenShow: v
     })
   }
 })

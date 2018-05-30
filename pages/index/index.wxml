@@ -172,6 +172,7 @@
             <view class='list-contact'>
               <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
               <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
+              <view class='money'>{{item.money}}</view>
             </view>
           </view>
           <view class='list-intro'>
