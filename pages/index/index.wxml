@@ -77,22 +77,18 @@
         <image src='/images/icon_logo_zhuanrang.png' />
         <view>生意转让</view>
         </view>
-        <view class='cate-detail' bindtap='showList' data-cate='9'>
-        <image src='/images/icon_logo_jiaoyou.png' />
-        <view>交友项目</view>
-        </view>
         <view class='cate-detail' bindtap='showList' data-cate='10'>
         <image src='/images/icon_logo_chongwu.png' />
         <view>宠物相关</view>
+        </view>
+        <view class='cate-detail' bindtap='showList' data-cate='11'>
+        <image src='/images/icon_logo_jiaocai.png' />
+        <view>二手教材</view>
         </view>
       </view>
     </swiper-item>
     <swiper-item>
       <view class='cate'>
-        <view class='cate-detail' bindtap='showList' data-cate='11'>
-        <image src='/images/icon_logo_jiaocai.png' />
-        <view>二手教材</view>
-        </view>
         <view class='cate-detail' bindtap='showList' data-cate='12'>
         <image src='/images/icon_logo_fangchan.png' />
         <view>房产信息</view>

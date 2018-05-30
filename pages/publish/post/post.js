@@ -14,6 +14,8 @@ Page({
     cateArray: [['房屋信息',  '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '房产信息', '同城交友', '家居家具', '数码电子'], ['出租/合租', '短租民宿', '办公/商铺', '仓库/车位', 'Homestay']],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
+    houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
+    houseIndex:0,
     postData:{
       id: 0,
       title:'',
@@ -29,7 +31,9 @@ Page({
       area:'',
       top:0,
       topDay:1,
-      topPrice:10
+      topPrice:10,
+      personal:1,
+      school:''
     },
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
@@ -56,6 +60,7 @@ Page({
               moneySign: res.data.data.moneySign,
               tagIndex1: res.data.data.tagIndex1,
               tagIndex2: res.data.data.tagIndex2,
+              houseIndex: res.data.data.houseIndex,
             })
             this.allCateChange(res.data.data.indexArray[0])
           } else {
@@ -124,6 +129,14 @@ Page({
     if (this.data.indexArray != v) {
       this.setData({
         indexArray: v
+      })
+    }
+  },
+  houseChange(e) {
+    var v = e.detail.value;
+    if (this.data.houseIndex != v) {
+      this.setData({
+        houseIndex: v
       })
     }
   },
@@ -260,6 +273,11 @@ Page({
     var postData=this.data.postData
 
     if (this.data.indexArray[0] == 0) {
+      if (this.data.houseIndex==0){
+        app.showTips('提示', '请选择房型', false)
+        return
+      }
+      postData.house = this.data.houseArray[this.data.houseIndex];
       postData.tag1 = '';
       postData.tag2 = '';
       var tagIndex1 = this.data.tagIndex1;
@@ -369,6 +387,13 @@ Page({
       postData: postData
     })
   },
+  schoolInput(e) {
+    var postData = this.data.postData
+    postData.school = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
   contentInput(e) {
     var postData = this.data.postData
     postData.content = e.detail.value;
@@ -437,5 +462,12 @@ Page({
     }else{
       app.showTips('提示','最多选择2个标签', false);
     }
+  },
+  radioChange(e) {
+    var postData = this.data.postData
+    postData.personal = e.detail.value;
+    this.setData({
+      postData: postData
+    })
   }
 })
