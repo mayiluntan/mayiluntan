@@ -20,12 +20,12 @@
     <view class='list'>
       <view>商家分类<text>*</text></view>
       <block wx:if='{{postData.id==0}}'>
-      <picker value='{{cateIndex}}' range='{{cateArray}}' bindchange='cateChange'>
-        <view>{{cateArray[cateIndex]}}</view>
+      <picker value='{{cateIndex}}' range='{{cateArray}}' bindchange='cateChange' mode="multiSelector" bindcolumnchange="columnChange" >
+        <view>{{cateArray[0][cateIndex[0]]}},{{cateArray[1][cateIndex[1]]}}</view>
       </picker>
       </block>
       <block wx:else>
-      <view>{{cateArray[cateIndex]}}</view>
+      <view class='list-cate'>{{cateArray[0][cateIndex[0]]}},{{cateArray[1][cateIndex[1]]}}</view>
       </block>
     </view>
     <view class='pic'>

@@ -73,9 +73,16 @@ Page({
       return
     }
     var v = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/view/viewDetail/viewDetail?id=' + v,
-    })
+    if (this.data.menuSelected==2){
+      wx.navigateTo({
+        url: '/pages/view/businessDetail/businessDetail?id=' + v,
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/view/viewDetail/viewDetail?id=' + v,
+      })
+    }
+    
   },
   deletePost(e){
     lock = true;
@@ -205,5 +212,38 @@ Page({
         lock = false;
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    lock = true;
+    var id=res.target.dataset.id;
+    return {
+      title: '小蚂蚁',
+      path: '/pages/index/index?id=' + id,
+      success: function (res) {
+        wx.request({
+          url: app.globalData.apiUrl + 'post_share.php',
+          data: { id: id, uid: app.globalData.uid },
+          method: 'POST',
+          success: res => {
+            if(res.data.ret==0){
+              app.showTips(res.data.title, res.data.msg, false);
+            }else{
+              wx.showToast({
+                title: '刷新成功',
+                icon: 'success'
+              });
+              this.getIndexList();
+            }
+          }
+        })
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      },
+      complete:res=>{
+        lock = false;
+      }
+    }
   }
 })

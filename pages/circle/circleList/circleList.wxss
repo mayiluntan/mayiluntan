@@ -43,6 +43,15 @@ page{
 .circle-content{
   line-height: 60rpx;
 }
+.circle-address{
+  padding:10rpx 0;
+  color: #999;
+}
+.circle-address image{
+  width: 19rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}
 .circle-pics image{
   width: 24vw;
   height: 24vw;

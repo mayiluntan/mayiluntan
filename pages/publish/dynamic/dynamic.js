@@ -136,6 +136,7 @@ Page({
   chooseLocation() {
     wx.chooseLocation({
       success: res => {
+        console.log(res)
         this.setData({
           address: res.address,
           lon: res.longitude,

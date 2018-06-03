@@ -1,4 +1,6 @@
 // pages/error/error.js
+const app=getApp();
+var time=0;
 Page({
 
   /**
@@ -14,53 +16,43 @@ Page({
   onLoad: function (options) {
   
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  bindGetUserInfo: function (e) {
+    if (e.detail.userInfo){
+      app.globalData.userInfo = e.detail.userInfo
+      app.wxLogin();
+      wx.showLoading({
+        title: '授权中',
+      })
+      this.getGlobalInfo();
+    }else{
+      app.showAuthTips('');
+      app.wxErrorCallback = function () {
+        wx.navigateBack({
+        })
+      }
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  getGlobalInfo(){
+    if (time>=10){
+      wx.hideLoading();
+      app.showTips('提示', '获取超时，重新打开再试', false);
+      time=0;
+      return;
+    }
+    this.getGlobalAuth()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  getGlobalAuth(){
+    time++;
+    if (app.globalData.uid == null) {
+      var that = this;
+      setTimeout(function () {
+        that.getGlobalInfo()
+      }, 1000)
+    } else {
+      wx.hideLoading();
+      time = 0;
+      wx.navigateBack({
+      })
+    }
   }
 })

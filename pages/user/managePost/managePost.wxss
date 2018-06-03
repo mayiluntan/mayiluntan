@@ -68,6 +68,25 @@ page {
   padding: 0 10rpx;
   margin-right: 30rpx;
 }
+.list .list-tag .refresh{
+  flex: 1;
+  border:none;
+  margin:0;
+  padding: 0;
+  display:flex;
+  justify-content:flex-end;
+
+}
+.list .list-tag .refresh button{
+  padding: 0 10rpx;
+  background: #fff;
+  height: 44rpx;
+  line-height: 44rpx;
+  color: green;
+  font-size: 30rpx;
+  margin: 0;
+  border: 1px solid green;
+}
 .list .list-contact{
   flex:1;
   text-align: right;

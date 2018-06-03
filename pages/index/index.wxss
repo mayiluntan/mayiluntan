@@ -87,11 +87,14 @@ page{
 /**broadcast**/
 .broadcast{
   width:100%;
-  display: flex;
   line-height:33rpx;
   padding:25rpx 0px;
   background: #fff;
   margin: 15rpx 0;
+  display: flex;
+}
+.broadcast swiper{
+  height: auto;
 }
 .broadcast .l{
   display:flex;
@@ -273,8 +276,10 @@ page{
   padding: 0 10rpx;
   margin-right: 30rpx;
 }
+.list .list-left{
+   flex:1;
+}
 .list .list-contact{
-  flex:1;
   text-align: right;
 }
 .list .list-contact .list-tel{

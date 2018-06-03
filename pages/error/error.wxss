@@ -3,11 +3,14 @@
   font-size: 30rpx;
 }
 .logo{
-  width: 90%;
+  width: 100%;
   height: 40vw;
-  text-align: center;
   border-bottom: 2rpx solid #efefef;
-  margin: 0 auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
 }
 .logo image{
   width: 144rpx;
@@ -21,4 +24,38 @@
 .intro{
   width: 90%;
   margin: 0 auto;
+}
+.intro .title{
+  font-size:30rpx;
+  margin-top:50rpx;
+}
+.intro .content{
+  color:#afafaf;
+  font-size:28rpx;
+  margin:30rpx 0;
+}
+.button{
+  display: flex;
+  justify-content:center;
+}
+.button view{
+  width:80%;
+  height:80rpx;
+  text-align:center;
+  line-height:80rpx;
+  color:#fff;
+  font-size:34rpx;
+  border-radius:10rpx;
+  margin-top:80rpx;
+}
+.button .no{
+  margin-right:6vw;
+  background: #ccc;
+}
+.button .yes{
+  background: #f0a323;
+}
+.button button{
+  background: #f0a323;
+  color: #fff;
 }

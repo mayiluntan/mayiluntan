@@ -45,6 +45,9 @@ page {
   padding:30rpx 0;
   margin-left: 5vw;
 }
+.detail .no-border{
+  border: 0;
+}
 .detail .detail-list .house-picker{
   width: 100%;
 }

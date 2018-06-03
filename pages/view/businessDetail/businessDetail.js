@@ -92,5 +92,31 @@ Page({
         }
       })
     }
+  },
+  imageClicked(e){
+    var section = e.currentTarget.dataset.index;
+    var urls = this.data.content.pics_org
+    if (section >= urls.length || section < 0 || !urls) return;
+    wx.previewImage({
+      urls: urls,
+      current: urls[section]
+    })
+  },
+  openAddress() {
+    var lon = parseFloat(this.data.content.lon)
+    var lat = parseFloat(this.data.content.lat)
+    wx.openLocation({
+      latitude: lat,
+      longitude: lon,
+      fail: res => {
+        wx.getSetting({
+          success: res => {
+            if (!res.authSetting['scope.userLocation'] || res.authSetting['scope.userLocation'] == undefined) {
+              app.showAuthTips('请先授权获取位置');
+            }
+          }
+        })
+      }
+    })
   }
 })

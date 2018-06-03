@@ -73,9 +73,11 @@ Page({
     wx.request({
       url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid,
       success: res => {
-        this.setData({
-          data: res.data.data
-        })
+        if(res.data.ret==1){
+          this.setData({
+            data: res.data.data
+          })
+        }
       },
       complete: res => {
         wx.hideNavigationBarLoading() //完成停止加载

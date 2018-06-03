@@ -40,6 +40,7 @@
           <view class='circle-nick'>{{item.nickname}}<image src="{{item.gender==1?'/images/male.png':'/images/female.png'}}"></image></view>
           <view class='circle-tags'><label>{{item.age}}</label><label>{{item.city}}</label></view>
           <view class='circle-content'>{{item.content}}</view>
+          <view class='circle-address' wx:if='{{item.address!=""}}'><image src='/images/post/local.png'></image><text>{{item.address}}</text></view>
           <view class='circle-pics'>
           <block wx:for="{{item.pics}}" wx:for-item='pic' wx:key='index'>
           <image class="{{index==2?'circle-pics-last':''}}" src='{{pic}}'></image>

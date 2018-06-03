@@ -36,6 +36,9 @@
   <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
   </view>
+  <view class='detail'>
+    <view class='detail-list'><text>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
+  </view>
   <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>
   </view>
@@ -50,7 +53,21 @@
    </view>
   </view>
   <view class='detail'>
-   <view class='detail-list'><text>附近学校：</text><input placeholder="可填写多个(选填)" bindinput='schoolInput' value='{{postData.school}}'></input></view>
+   <view class='detail-list'><text></text>
+   <picker bindchange="typeChange" value="{{typeIndex}}" range="{{houseType}}" class='house-picker'>
+      <view>
+       <text>方式：{{houseType[typeIndex]}}</text>
+      </view>
+    </picker>
+   </view>
+  </view>
+  <view class='detail'>
+   <view class='detail-list no-border'><text>附近学校：</text></view>
+   <view class='tags'>
+      <block wx:for='{{schoolArr}}' wx:key='index'>
+      <view class="{{(schoolIndex1==index || schoolIndex2==index)?'on':''}}" bindtap='selectSchool' data-index='{{index}}'>{{item}}</view>
+      </block>
+    </view>
   </view>
   <view class='detail'>
    <view class='detail-list'><text>来源：</text>
@@ -80,9 +97,6 @@
   </view>
   <view class='detail'>
     <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
-  </view>
-  <view class='detail'>
-    <view class='detail-list'><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
   </view>
   <view class='division'></view>
   <view class='top-list to-top'>

@@ -6,6 +6,7 @@ var cate=0;
 var order=0;
 var area='';
 var postId=0;
+var first=0;
 Page({
   data: {
     cateSelected:0,
@@ -86,10 +87,10 @@ Page({
     ],
     orgIndex:[],
     orgCity:[],
-    broadcast:{
-      'title':'暂无求助',
-      'num':0,
-      'id':0
+    broadcast: {
+      'title': '暂无求助',
+      'num': 0,
+      'id': 0
     },
     temperature:'',
     exchangeRate:'',
@@ -108,43 +109,56 @@ Page({
         })
       }
     })
-    this.getIndexList()
+    //this.getIndexList()
     var cityArray = this.data.cityArray
     this.setData({
       orgCity: cityArray
     })
-    var that=this
-    app.wxLoginCallback=function(){
-      that.setData({
-        selectArray: app.globalData.cityArray
-      })
-      wx.request({
-        url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid=' + app.globalData.uid,
-        success: res => {
-          if (res.data.ret == 1) {
-            that.setData({
-              broadcast: res.data.data.broadcast,
-              exchangeRate: res.data.data.exchange_rate,
-              temperature: res.data.data.temperature,
-              indexPic: res.data.data.pic
-            })
-            app.globalData.indexPic = res.data.data.pic
+    
+    if (app.wxLoginCallback) {
+      app.wxLoginCallback
+    }else{
+      var that = this
+      app.wxLoginCallback=function(){
+        that.getIndexList();
+        that.setData({
+          selectArray: app.globalData.cityArray
+        })
+        wx.request({
+          url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid=' + app.globalData.uid,
+          success: res => {
+            if (res.data.ret == 1) {
+              that.setData({
+                broadcast: res.data.data.broadcast,
+                exchangeRate: res.data.data.exchange_rate,
+                temperature: res.data.data.temperature,
+                indexPic: res.data.data.pic
+              })
+              app.globalData.indexPic = res.data.data.pic
+            }
+          },
+          complete:res=>{
+            if (postId>0){
+              wx.navigateTo({
+                url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+                complete:res=>{
+                  postId=0;
+                }
+              })
+            }
           }
-        },
-        complete:res=>{
-          if (postId>0){
-            wx.navigateTo({
-              url: '/pages/view/viewDetail/viewDetail?id=' + postId,
-              complete:res=>{
-                postId=0;
-              }
-            })
-          }
-        }
-      })
+        })
+      }
     }
   },
   onShow(){
+    if (first > 0 && app.globalData.uid==null){
+      wx.navigateTo({
+        url: '/pages/error/error'
+      })
+      return;
+    }
+    first++
     if (this.data.selectArray[2]==''){
       this.setData({
         selectArray: app.globalData.cityArray

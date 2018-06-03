@@ -5,7 +5,7 @@
     <swiper class='pics' indicator-dots='true' indicator-active-color='#EEA240'>
       <block wx:for="{{content.pics}}" wx:key="{{index}}">  
         <swiper-item> 
-           <image src="{{item}}"/> 
+           <image src="{{item}}" bindtap='imageClicked' data-index='{{index}}' /> 
         </swiper-item>  
       </block>  
     </swiper>
@@ -16,10 +16,9 @@
     <view>发布时间：{{content.dated}}</view>
   </view>
   <view class='tag'>
-    <view wx:if="{{content.tag1!=''}}">{{content.tag1}}</view>
-    <view wx:if="{{content.tag2!=''}}">{{content.tag2}}</view>
+    <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
-  <view class='address'><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
+  <view class='address' bindtap='openAddress'><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
   <view class='division'></view>
   <view class='circle'>
     <view class='circle-title'>留言</view>

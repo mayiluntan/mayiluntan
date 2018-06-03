@@ -11,11 +11,13 @@ Page({
     picIds:[],
     picCount:0,
     indexArray: [0, 0],
-    cateArray: [['房屋信息',  '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '房产信息', '同城交友', '家居家具', '数码电子'], ['出租/合租', '短租民宿', '办公/商铺', '仓库/车位', 'Homestay']],
+    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '房产信息', '同城交友', '家居家具', '数码电子'], ['求购', '出租']],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
     houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
     houseIndex:0,
+    houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
+    typeIndex:0,
     postData:{
       id: 0,
       title:'',
@@ -27,6 +29,8 @@ Page({
       price:'',
       tag1:'',
       tag2:'',
+      school1:'',
+      school2:'',
       wechat:'',
       area:'',
       top:0,
@@ -37,8 +41,11 @@ Page({
     },
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
-    tagIndex1:-1,
-    tagIndex2:-1,
+    tagIndex1: -1,
+    tagIndex2: -1,
+    schoolArr:[],
+    schoolIndex1: -1,
+    schoolIndex2: -1,
   },
 
   /**
@@ -61,6 +68,7 @@ Page({
               tagIndex1: res.data.data.tagIndex1,
               tagIndex2: res.data.data.tagIndex2,
               houseIndex: res.data.data.houseIndex,
+              typeIndex: res.data.data.typeIndex,
             })
             this.allCateChange(res.data.data.indexArray[0])
           } else {
@@ -71,9 +79,15 @@ Page({
     }
     var cityArray = app.globalData.cityArray
     var sign = app.globalArray.moneyArray[cityArray[1]]
+    var arr = app.globalArray.schoolArray[app.globalData.cityArray[2]]
+    if (arr === undefined) {
+      arr = ['其他学校周边']
+    }
     this.setData({
       moneySign: sign,
+      schoolArr: arr
     })
+    
   },
   onShow() {
     if (app.globalData.areaChange) {
@@ -140,6 +154,14 @@ Page({
       })
     }
   },
+  typeChange(e) {
+    var v = e.detail.value;
+    if (this.data.typeIndex != v) {
+      this.setData({
+        typeIndex: v
+      })
+    }
+  },
   dayChange(e){
     var v=e.detail.value;
     var day=1;
@@ -167,10 +189,10 @@ Page({
   allCateChange(v){
     var cateArray = this.data.cateArray
     switch (v) {
-      case 0: cateArray[1] = ['出租/合租', '短租民宿', '办公/商铺', '仓库/车位', 'Homestay', "求租"]; break;
+      case 0: cateArray[1] = ['求购','出租']; break;
       case 1: cateArray[1] = ['家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; break;
-      case 2: cateArray[1] = ['求职招聘']; break;
-      case 3: cateArray[1] = ['汽车交易']; break;
+      case 2: cateArray[1] = ['求职','招聘']; break;
+      case 3: cateArray[1] = ['求购','出售']; break;
       case 4: cateArray[1] = ['求助问事']; break;
       case 5: cateArray[1] = ['人找车', '车找人']; break;
       case 6: cateArray[1] = ['短租民宿']; break;
@@ -178,7 +200,7 @@ Page({
       case 8: cateArray[1] = ['交友项目']; break;
       case 9: cateArray[1] = ['宠物相关']; break;
       case 10: cateArray[1] = ['二手教材']; break;
-      case 11: cateArray[1] = ['二手房产']; break;
+      case 11: cateArray[1] = ['学生寄宿','Homestay','行李寄存','仓库','车位']; break;
       case 12: cateArray[1] = ['同城交友']; break;
       case 13: cateArray[1] = ['家居家具']; break;
       case 14: cateArray[1] = ['数码电子']; break;
@@ -238,7 +260,7 @@ Page({
       app.showTips('提示', '请选择图片', false)
       return
     }
-    if (this.data.postData.address == '') {
+    if (this.data.postData.address == '' && 1==2) {
       wx.getSetting({
         success: res => {
           if (res.authSetting['scope.userLocation'] || res.authSetting['scope.userLocation'] == undefined) {
@@ -273,22 +295,39 @@ Page({
     var postData=this.data.postData
 
     if (this.data.indexArray[0] == 0) {
-      if (this.data.houseIndex==0){
+      if (this.data.houseIndex == 0) {
         app.showTips('提示', '请选择房型', false)
         return
       }
+      if (this.data.typeIndex == 0) {
+        app.showTips('提示', '请选择方式', false)
+        return
+      }
       postData.house = this.data.houseIndex;
+      postData.type = this.data.typeIndex;
       postData.tag1 = '';
       postData.tag2 = '';
       var tagIndex1 = this.data.tagIndex1;
       var tagIndex2 = this.data.tagIndex2;
-      if (tagIndex1 == -1 && tagIndex2!=-1){
+      if (tagIndex1 == -1 && tagIndex2 != -1) {
         postData.tag1 = this.data.tagArr[this.data.tagIndex2];
-      } else if (tagIndex1 != -1 && tagIndex2 == -1){
+      } else if (tagIndex1 != -1 && tagIndex2 == -1) {
         postData.tag1 = this.data.tagArr[this.data.tagIndex1];
-      } else if (tagIndex1 != -1 && tagIndex2 != -1){
+      } else if (tagIndex1 != -1 && tagIndex2 != -1) {
         postData.tag1 = this.data.tagArr[this.data.tagIndex1];
         postData.tag2 = this.data.tagArr[this.data.tagIndex2];
+      }
+      postData.school1 = '';
+      postData.school2 = '';
+      var schoolIndex1 = this.data.schoolIndex1;
+      var schoolIndex2 = this.data.schoolIndex2;
+      if (schoolIndex1 == -1 && schoolIndex2 != -1) {
+        postData.school1 = this.data.schoolArr[this.data.schoolIndex2];
+      } else if (schoolIndex1 != -1 && schoolIndex2 == -1) {
+        postData.school1 = this.data.schoolArr[this.data.schoolIndex1];
+      } else if (schoolIndex1 != -1 && schoolIndex2 != -1) {
+        postData.school1 = this.data.schoolArr[this.data.schoolIndex1];
+        postData.school2 = this.data.schoolArr[this.data.schoolIndex2];
       }
     }
     //lock=true;
@@ -441,13 +480,13 @@ Page({
       url: '/pages/areaSelect/areaSelect',
     })
   },
-  selectTag(e){
-    var v=e.currentTarget.dataset.index
-    if (this.data.tagIndex1 == v){
+  selectTag(e) {
+    var v = e.currentTarget.dataset.index
+    if (this.data.tagIndex1 == v) {
       this.setData({
-        tagIndex1:-1
+        tagIndex1: -1
       })
-    } else if (this.data.tagIndex2 == v){
+    } else if (this.data.tagIndex2 == v) {
       this.setData({
         tagIndex2: -1
       })
@@ -459,8 +498,30 @@ Page({
       this.setData({
         tagIndex2: v
       })
-    }else{
-      app.showTips('提示','最多选择2个标签', false);
+    } else {
+      app.showTips('提示', '最多选择2个标签', false);
+    }
+  },
+  selectSchool(e) {
+    var v = e.currentTarget.dataset.index
+    if (this.data.schoolIndex1 == v) {
+      this.setData({
+        schoolIndex1: -1
+      })
+    } else if (this.data.schoolIndex2 == v) {
+      this.setData({
+        schoolIndex2: -1
+      })
+    } else if (this.data.schoolIndex1 == -1) {
+      this.setData({
+        schoolIndex1: v
+      })
+    } else if (this.data.schoolIndex2 == -1) {
+      this.setData({
+        schoolIndex2: v
+      })
+    } else {
+      app.showTips('提示', '最多选择2个学校', false);
     }
   },
   radioChange(e) {

@@ -8,14 +8,13 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        if (res.authSetting['scope.userInfo'] || res.authSetting['scope.userInfo'] == undefined) {
+        if (res.authSetting['scope.userInfo'] || res.authSetting['scope.userInfo']== undefined) {
           this.appGetUserInfo();
         } else {
-          //console.log(2)
-          // wx.navigateTo({
-          //   url: '/pages/error/error'
-          // })
-          this.showAuthTips('');
+          wx.navigateTo({
+            url: '/pages/error/error'
+          })
+          //this.showAuthTips('');
         }
       }
     })
@@ -33,10 +32,11 @@ App({
         }
       },
       fail: res => {
-        // wx.navigateTo({
-        //   url: '/pages/error/error',
-        // })
-        this.showAuthTips('');
+        //console.log(4)
+        wx.navigateTo({
+          url: '/pages/error/error',
+        })
+        //this.showAuthTips('');
       }
     })
   },
@@ -94,6 +94,10 @@ App({
               if (that.wxLoginCallback) {
                 that.wxLoginCallback()
               }
+              if (that.wxErrorCallback) {
+                that.wxErrorCallback()
+              }
+
             } else {
               that.showTips(res.data.title, res.data.msg, false);
             }
@@ -399,6 +403,23 @@ App({
       '南非': 'ZAR',
       '埃及': 'EGP'
       
+    },
+    schoolArray: {
+      '悉尼': ['悉尼大学USYD', '悉尼科技大学UTS', '新南威尔士大学UNSW','麦考瑞大学MQ','西悉尼大学UWS'],
+      '墨尔本': ['墨尔本大学', '莫纳什大学', '墨尔本理工大学', '迪肯大学', '拉筹伯大学', '斯威本国立科技大学','维多利亚大学'],
+      '布里斯班': ['昆士兰大学', '昆士兰科技大学', '格里菲斯大学', '中央昆士兰大学', '阳光海岸大学', '邦德大学 ','南昆士兰大学','詹姆斯库克大学'],
+      '阿德莱德': ['阿德莱德大学', '南澳大学','弗林德斯大学'],
+      '珀斯': ['西澳大学', '莫多克大学', '科廷科技大学','埃迪斯科文大学'],
+      '堪培拉': ['堪培拉大学','澳洲国立大学'],
+      '奥克兰': ['奥克兰大学', '梅西大学','奥克兰理工大学'],
+      '洛杉矶': ['加利福尼亚大学洛杉矶分校UCLA', '北岭加州州立大学CSUN', '洛杉矶加州州立大学CSULA', '南加州大学USC', '学校周边'],
+      '旧金山': ['旧金山大学USF', '旧金山州立大学SFSU','加州大学旧金山分校UCSF'],
+      '纽约': ['哥伦比亚大学', '纽约大学', '纽约州立大学 ', '纽约市立大学'],
+      '多伦多': ['多大DT校区周边', '多大Mississauga校区周边', '多大Scarborough校区周边', '约克大学周边', '怀雅逊大学周边', '滑铁卢大学周边', '麦克马斯特大学周边', '莫哈克学院周边', '哥伦比亚国际学院周边', '学校周边'],
+      '蒙特利尔': ['蒙特利尔大学周边', '魁北克大学周边', '麦吉尔大学周边', '康考迪亚大学周边', '学校周边'],
+      '温哥华': ['英属哥伦比亚大学ubc', '西蒙菲沙大学sfu', '维多利亚大学','其他学校周边'],
+      '巴黎': ['巴黎第一大学', '巴黎第二大学', '巴黎第三大学', '巴黎第四大学', '巴黎第五大学', '巴黎第六大学', '巴黎第七大学', '巴黎第八大学', '巴黎第九大学', '巴黎第十大学', '巴黎第十一大学', '巴黎第十二大学', '巴黎第十三大学'],
+      '伦敦': ['牛津大学', '剑桥大学', '伦敦大学', '帝国理工学院','其他学校周边']
     }
   }
 })
