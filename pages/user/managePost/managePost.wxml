@@ -36,7 +36,7 @@
               <view class='list-tag' >
                 <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
                 <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
-                <view class='refresh' wx:if='{{menuSelected==0}}'><button open-type="share" data-id='{{item.id}}'>刷新</button></view>
+                <view class='refresh' wx:if='{{menuSelected==0}}'><button open-type="share" data-id='{{item.id}}'>分享刷新</button></view>
               </view>
             </view>
             

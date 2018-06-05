@@ -220,12 +220,12 @@ App({
       '悉尼': {
         '全部地区': [],
         '市区': ['Ultimo', 'Haymarket', 'Chippendale', 'Darlington', 'Pyrmont', 'Glebe', 'Redfern', 'Newtown', '市区周边'],
-        '东区': ['Kingsford', 'Randwick', 'Kensington', 'Maroubra', 'Waterloo', 'Zetland', 'Rosebery', 'Mascot 东区周边'],
+        '东区': ['Kingsford', 'Randwick', 'Kensington', 'Maroubra', 'Waterloo', 'Zetland', 'Rosebery', 'Mascot','东区周边'],
         '内西区': ['Burwood', 'Ashifield', 'Strathfield', 'Rhodes', 'Homebush', 'Campsie', '内西区周边'],
-        '南区': ['Hurstville', 'Wolli', 'Creek', 'Arncliffe', 'Rockdale', 'Kogarah', 'Allawah', 'Penshurst', 'BeverlyHills', 'Riverwood', '南区周边'],
+        '南区': ['Hurstville', 'Wolli Creek', 'Arncliffe', 'Rockdale', 'Kogarah', 'Allawah', 'Penshurst', 'BeverlyHills', 'Riverwood', '南区周边'],
         '西北区': ['Epping', 'Eastwood', 'Carlingford', 'Castle Hill ', 'Rouse Hill', 'Kellyville', 'Baulkham Hills', 'Schofields', '西北区周边'],
-        '北区': ['Chatswood', 'Marsfield', 'Macquarie Park', 'Ryde', 'Killara', 'Gordon', 'Hornsby', 'Turramurra', 'Lane Cove', 'Lindfield北区周边'],
-        '西区': ['Parramatta', 'Auburn', 'Lidcombe', 'Bankstown', 'Liverpool', 'Merrylands西区周边'],
+        '北区': ['Chatswood', 'Marsfield', 'Macquarie Park', 'Ryde', 'Killara', 'Gordon', 'Hornsby', 'Turramurra', 'Lane Cove', 'Lindfield','北区周边'],
+        '西区': ['Parramatta', 'Auburn', 'Lidcombe', 'Bankstown', 'Liverpool', 'Merrylands','西区周边'],
       },
       '卧龙岗': {
         '全部地区': [],
@@ -254,7 +254,7 @@ App({
       '首尔': {
         '全部地区': [],
         '首尔': ['中区', '东大门区', '西大门区', '城东区', '城北区', '龙山区', '钟路区', '麻浦区', '广津区', '中浪区', '江北区', '九老区', '道峰区', '芦原区', '江西区', '阳川区', '永登浦区', '冠岳区', '铜雀区', '瑞草区', '衿川区', '江南区', '恩平区', '江东区', '松坡区'],
-        '学校附近': ['成均馆大学', '庆熙大学', '建国大学', '东国大学', '檀国大学', '中央大学', '延世大学', '梨花女大', '高丽大学', '汉阳大学', '学校附近'],
+        '学校附近': ['成均馆大学', '建国大学', '世宗大学', '中央大学', '东国大学', '崇实大学', '庆熙大学', '高丽大学', '檀国大学', '延世大学', '梨花女大', '汉阳大学', '汉城大学', '弘益大学', '祥明大学', '西江大学', '西京大学', '学校附近'],
       },
       '新加坡': {
         '全部地区': [],
@@ -268,6 +268,7 @@ App({
         '罗兰岗周边': ['罗兰岗（Rowland Heights）', '哈岗（Hacienda Heights）', '核桃市（Walnut）', '钻石吧（Diamond Bar）', '奇诺岗（Chino Hills）', 'Rowland Heights周边地区'],
         '橘郡周边': ['尔湾（Irvine）', 'Orange County周边'],
         '帕罗斯沃地PVJOBS': [],
+        '东谷Eastvale周边': ['东谷(Eastvale)周边'],
         '大学周边': [],
         '其他': [],
       },
@@ -405,14 +406,14 @@ App({
       
     },
     schoolArray: {
-      '悉尼': ['悉尼大学USYD', '悉尼科技大学UTS', '新南威尔士大学UNSW','麦考瑞大学MQ','西悉尼大学UWS'],
+      '悉尼': ['悉尼大学USYD', '悉尼科技大学UTS', '新南威尔士大学UNSW', '麦考瑞大学MQ', '西悉尼大学UWS', "卧龙岗大学","纽卡斯尔大学"],
       '墨尔本': ['墨尔本大学', '莫纳什大学', '墨尔本理工大学', '迪肯大学', '拉筹伯大学', '斯威本国立科技大学','维多利亚大学'],
       '布里斯班': ['昆士兰大学', '昆士兰科技大学', '格里菲斯大学', '中央昆士兰大学', '阳光海岸大学', '邦德大学 ','南昆士兰大学','詹姆斯库克大学'],
       '阿德莱德': ['阿德莱德大学', '南澳大学','弗林德斯大学'],
       '珀斯': ['西澳大学', '莫多克大学', '科廷科技大学','埃迪斯科文大学'],
       '堪培拉': ['堪培拉大学','澳洲国立大学'],
       '奥克兰': ['奥克兰大学', '梅西大学','奥克兰理工大学'],
-      '洛杉矶': ['加利福尼亚大学洛杉矶分校UCLA', '北岭加州州立大学CSUN', '洛杉矶加州州立大学CSULA', '南加州大学USC', '学校周边'],
+      '洛杉矶': ['拉文大学ULV','加利福尼亚大学洛杉矶分校UCLA', '北岭加州州立大学CSUN', '洛杉矶加州州立大学CSULA', '南加州大学USC', '学校周边'],
       '旧金山': ['旧金山大学USF', '旧金山州立大学SFSU','加州大学旧金山分校UCSF'],
       '纽约': ['哥伦比亚大学', '纽约大学', '纽约州立大学 ', '纽约市立大学'],
       '多伦多': ['多大DT校区周边', '多大Mississauga校区周边', '多大Scarborough校区周边', '约克大学周边', '怀雅逊大学周边', '滑铁卢大学周边', '麦克马斯特大学周边', '莫哈克学院周边', '哥伦比亚国际学院周边', '学校周边'],
