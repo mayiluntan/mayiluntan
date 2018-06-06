@@ -1,5 +1,5 @@
 //app.js
-var first=1;
+var first = 1;
 App({
   onLaunch: function () {
     this.getUserAuth()
@@ -8,7 +8,7 @@ App({
     // 获取用户信息
     wx.getSetting({
       success: res => {
-        if (res.authSetting['scope.userInfo'] || res.authSetting['scope.userInfo']== undefined) {
+        if (res.authSetting['scope.userInfo'] || res.authSetting['scope.userInfo'] == undefined) {
           this.appGetUserInfo();
         } else {
           wx.navigateTo({
@@ -44,23 +44,23 @@ App({
     apiUrl: 'https://www.haiwaixiaomayi.com/api/',
     userInfo: null,
     uid: null,
-    userId:0,
+    userId: 0,
     lon: 0,
     lat: 0,
-    cityIndex:[0,0,0],
-    cityArray: ['亚洲', '中国','香港'],
+    cityIndex: [0, 0, 0],
+    cityArray: ['亚洲', '中国', '香港'],
     cityChange: true,
     pageChange: true,
-    topicId:0,
-    topicName:'',
-    indexPic:''
+    topicId: 0,
+    topicName: '',
+    indexPic: ''
   },
   wxOpneSetting() {
     wx.openSetting({
       success: (res) => {
         if (res.authSetting["scope.userInfo"]) {////如果用户重新同意了授权登录
           this.appGetUserInfo()
-        }else{
+        } else {
           this.showAuthTips('');
         }
         if (res.authSetting["scope.userLocation"]) {
@@ -76,7 +76,7 @@ App({
       success: function (loginCode) {
         wx.showLoading({
           title: '加载中',
-          mask:true
+          mask: true
         })
         let uinfo = that.globalData.userInfo
         wx.request({
@@ -88,7 +88,7 @@ App({
               that.globalData.uid = res.data.data
               that.globalData.userId = res.data.user_id
               that.globalData.userInfo = res.data.uinfo
-              if (res.data.uinfo.city!=''){
+              if (res.data.uinfo.city != '') {
                 that.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
               }
               if (that.wxLoginCallback) {
@@ -102,7 +102,7 @@ App({
               that.showTips(res.data.title, res.data.msg, false);
             }
           },
-          complete:res=>{
+          complete: res => {
             wx.hideLoading()
           }
         })
@@ -118,7 +118,7 @@ App({
       content: content,
       showCancel: showCancel
     })
-  }, 
+  },
   showAuthTips(content) {
     wx.showModal({
       title: '提示',
@@ -126,7 +126,7 @@ App({
       success: res => {
         if (res.confirm) {
           this.wxOpneSetting();
-        }else{
+        } else {
           this.showAuthTips('');
         }
       }
@@ -153,7 +153,7 @@ App({
         '墨西哥': ['墨西哥城']
       },
       '大洋洲': {
-        '澳大利亚': ['悉尼', '墨尔本', '布里斯班', '珀斯', '阿德莱德', '堪培拉', '霍巴特', '卧龙岗', '纽卡斯尔', '黄金海岸', '凯恩斯'],
+        '澳大利亚': ['悉尼', '墨尔本', '布里斯班', '珀斯', '阿德莱德', '堪培拉', '霍巴特'],
         '新西兰': ['奥克兰', '惠灵顿', '基督城']
       },
       '欧洲': {
@@ -220,34 +220,37 @@ App({
       '悉尼': {
         '全部地区': [],
         '市区': ['Ultimo', 'Haymarket', 'Chippendale', 'Darlington', 'Pyrmont', 'Glebe', 'Redfern', 'Newtown', '市区周边'],
-        '东区': ['Kingsford', 'Randwick', 'Kensington', 'Maroubra', 'Waterloo', 'Zetland', 'Rosebery', 'Mascot','东区周边'],
+        '东区': ['Kingsford', 'Randwick', 'Kensington', 'Maroubra', 'Waterloo', 'Zetland', 'Rosebery', 'Mascot', '东区周边'],
         '内西区': ['Burwood', 'Ashifield', 'Strathfield', 'Rhodes', 'Homebush', 'Campsie', '内西区周边'],
         '南区': ['Hurstville', 'Wolli Creek', 'Arncliffe', 'Rockdale', 'Kogarah', 'Allawah', 'Penshurst', 'BeverlyHills', 'Riverwood', '南区周边'],
         '西北区': ['Epping', 'Eastwood', 'Carlingford', 'Castle Hill ', 'Rouse Hill', 'Kellyville', 'Baulkham Hills', 'Schofields', '西北区周边'],
-        '北区': ['Chatswood', 'Marsfield', 'Macquarie Park', 'Ryde', 'Killara', 'Gordon', 'Hornsby', 'Turramurra', 'Lane Cove', 'Lindfield','北区周边'],
-        '西区': ['Parramatta', 'Auburn', 'Lidcombe', 'Bankstown', 'Liverpool', 'Merrylands','西区周边'],
+        '北区': ['Chatswood', 'Marsfield', 'Macquarie Park', 'Ryde', 'Killara', 'Gordon', 'Hornsby', 'Turramurra', 'Lane Cove', 'Lindfield', '北区周边'],
+        '西区': ['Parramatta', 'Auburn', 'Lidcombe', 'Bankstown', 'Liverpool', 'Merrylands', '西区周边'],
+        '卧龙岗': ['Fairy Meadow', 'Gwynneville', 'Mount Ousley', 'North Wollongong', 'Shellharbour', '卧龙岗周边'],
+        '纽卡斯尔': ['纽卡斯尔周边'],
+        '中央海岸': ['Berkeley Vale', 'Killarney Vale', 'The Entrance', '中央海岸周边'],
       },
-      '卧龙岗': {
-        '全部地区': [],
-        '卧龙岗周边': [],
-      },
-      '纽卡斯尔': {
-        '全部地区': [],
-        '纽卡斯尔周边': [],
-      },
-      '中央海岸': {
-        '全部地区': [],
-        '中央海岸周边': ['Berkeley Vale', 'Killarney Vale', 'The Entrance', '中央海岸周边'],
-      },
+      // '卧龙岗': {
+      //   '全部地区': [],
+      //   '卧龙岗周边': [],
+      // },
+      // '纽卡斯尔': {
+      //   '全部地区': [],
+      //   '纽卡斯尔周边': [],
+      // },
+      // '中央海岸': {
+      //   '全部地区': [],
+      //   '中央海岸周边': ['Berkeley Vale', 'Killarney Vale', 'The Entrance', '中央海岸周边'],
+      // },
       '墨尔本': {
         '全部地区': [],
         '市区': ['Melbourne City', 'East Melbourne ', 'West Melbourne', 'North Melbourne ', 'Parkville', 'Carlton ', 'South Yarra ', 'St Kilda Road', 'South Bank ', 'Docklands ', '市区周边'],
-        '内城区': ['Albert Park', 'Footscray ', 'Caulfield', 'Hawthorn', 'Malvern', 'Malvern East Preston', '内城区周边'],
+        '内城区': ['Albert Park', 'Footscray ', 'Caulfield', 'Hawthorn', 'Malvern', 'Malvern East', 'Preston', '内城区周边'],
         '东区': ['Box Hill', 'Burwood ', 'Burwood East ', 'Doncaster ', 'Ringwood', 'Ringwood East', 'Vermont', 'Vermont South', '东区周边'],
         '东南区': ['Bentleigh', 'Bentleigh East', 'Clayton', 'Carnegie', 'Camberwell', 'Glen Waverley', 'Oakleigh', 'Oakleigh East', 'Ormon', 'Mount Waverley', '东南区周边'],
         '南区': ['Brighton', 'McKinnon', ' 南区周边'],
         '北区': ['Bundoora', 'Reservoir', '北区周边'],
-        '西南区': ['Point Cook', '西区周边'],
+        '西区': ['Point Cook', '西区周边'],
         '吉朗': ['East Geelong', 'Geelong city centre', 'Geelong West', 'Newtown', 'South Geelon', 'Whittington', '吉朗周边'],
         '巴拉瑞特': ['Alfredton', 'Ballarat Central', 'Redan'],
       },
@@ -267,7 +270,6 @@ App({
         '圣盖博周边': ['蒙特利公园（Monterey park）', '阿罕布拉（Alhambra）', '柔似密市（Rosemead）', '天普市（Temple）', '阿凯迪亚（Arcadia）', '圣马力诺（San Mario）', '帕萨迪纳（Pasadena）', '希阿瑞玛最（sierra madre）', '西科维纳（west covina）', 'San Gabriel周边地区'],
         '罗兰岗周边': ['罗兰岗（Rowland Heights）', '哈岗（Hacienda Heights）', '核桃市（Walnut）', '钻石吧（Diamond Bar）', '奇诺岗（Chino Hills）', 'Rowland Heights周边地区'],
         '橘郡周边': ['尔湾（Irvine）', 'Orange County周边'],
-        '帕罗斯沃地PVJOBS': [],
         '东谷Eastvale周边': ['东谷(Eastvale)周边'],
         '大学周边': [],
         '其他': [],
@@ -291,6 +293,16 @@ App({
         '大学周边': [],
         '其他': [],
       },
+      '多伦多': {
+        '多伦多市中心': [],
+        '北约克': [],
+        '士嘉堡': [],
+        '密西沙加': [],
+        '列治文山': [],
+        '万锦': [],
+        '旺市': [],
+        '其他地区': [],
+      },
       '温哥华': {
         '全部地区': [],
         'Burnaby': [],
@@ -312,32 +324,45 @@ App({
         'Victoria': [],
         '大学周边': [],
       },
+      '蒙特利尔': {
+        '市中心/中国城': [],
+        'NDG/CDN周边': [],
+        'Verdun/Lasalle': [],
+        'St-michel周边': [],
+        'St-laurent': [],
+        '西岛/ 南岸周边': [],
+        '其他地区': [],
+      },
       '布里斯班': {
         '全部地区': [],
-        '市区': ['Brisbane City', 'South Brisbane ', 'Spring Hill', 'West End', 'Cordelia', '', 'Woolloongabba市区周边'],
-        '南区': ['Annerley', 'Greenslopes', 'Sunnybank', 'Macgregor', 'Sunnybank Hills', 'Runcorn', 'Calamvale', 'Eight Mile Plains', 'Robertson', 'Parkinson', 'Coopers Plains', 'Upper Mount Gravatt', 'Algester', 'Nathan', 'Underwood', 'Stretton', 'Salisbury南区周边'],
+        '市区': ['Brisbane City', 'South Brisbane ', 'Spring Hill', 'West End', 'Cordelia', '', 'Woolloongabba', '市区周边'],
+        '南区': ['Annerley', 'Greenslopes', 'Sunnybank', 'Macgregor', 'Sunnybank Hills', 'Runcorn', 'Calamvale', 'Eight Mile Plains', 'Robertson', 'Parkinson', 'Coopers Plains', 'Upper Mount Gravatt', 'Algester', 'Nathan', 'Underwood', 'Stretton', 'Salisbury', '南区周边'],
         '北区': ['Kelvin Grove', 'Herston', 'Fortitude Valley', '北区周边'],
         '西区': ['St Lucia', 'Indooroopilly ', 'Toowong', 'Auchenflower ', 'Bardon ', 'Taringa', 'Milton', '西区周边'],
         '东区': ['Carina', ' Belmont', '  Morningside', ' Carindale', ' Cannon Hill', ' East Brisbane', '东区周边'],
+        '黄金海岸': ['Broadbeach Waters', 'Bundall', 'Clear Island Waters', 'Mermaid Waters', 'Sufers Paradise', '黄金海岸周边'],
+        '凯恩斯': ['凯恩斯周边'],
+        '图文巴': ['图文巴周边'],
+        '阳光海岸': ['阳光海岸周边'],
       },
-      '黄金海岸': {
-        '全部地区': [],
-        'Broadbeach Waters': [],
-        'Bundall': [],
-        'Clear Island Waters': [],
-        'Mermaid Waters': [],
-        'Sufers Paradise': [],
-        '黄金海岸周边': [],
-      },
-      '凯恩斯': {
-        '全部地区': [],
-        '凯恩斯周边': [],
-      },
+      // '黄金海岸': {
+      //   '全部地区': [],
+      //   'Broadbeach Waters': [],
+      //   'Bundall': [],
+      //   'Clear Island Waters': [],
+      //   'Mermaid Waters': [],
+      //   'Sufers Paradise': [],
+      //   '黄金海岸周边': [],
+      // },
+      // '凯恩斯': {
+      //   '全部地区': [],
+      //   '凯恩斯周边': [],
+      // },
       '阿德莱德': {
         '全部地区': [],
         '市区': ['Adelaide City', '市区'],
         '东区': ['Cambelltown', '东区'],
-        '西区': ['西区', '周边'],
+        '西区': ['西区周边'],
         '南区': ['Marion', 'MelrosePark', 'Oaklands Park', '南区周边'],
         '北区': ['Klemzig', 'Mawson Lakes', '北区周边'],
         '袋鼠岛': [],
@@ -377,14 +402,14 @@ App({
       '菲律宾': 'PHP',
       '印度尼西亚': 'Rp',
       '阿联酋': 'Dhs',
-      '土耳其': 'YTL',    
+      '土耳其': 'YTL',
       '美国': '$',
       '加拿大': 'C$',
       '墨西哥': '$',
-    
+
       '澳大利亚': '$',
       '新西兰': 'NZ$',
-    
+
       '英国': '€',
       '法国': '€',
       '德国': '€',
@@ -397,30 +422,30 @@ App({
       '瑞典': '€',
       '希腊': '€',
       '俄罗斯': '₽',
-    
+
       '阿根廷': 'ARS$',
       '巴西': 'R$',
-    
+
       '南非': 'ZAR',
       '埃及': 'EGP'
-      
+
     },
     schoolArray: {
-      '悉尼': ['悉尼大学USYD', '悉尼科技大学UTS', '新南威尔士大学UNSW', '麦考瑞大学MQ', '西悉尼大学UWS', "卧龙岗大学","纽卡斯尔大学"],
-      '墨尔本': ['墨尔本大学', '莫纳什大学', '墨尔本理工大学', '迪肯大学', '拉筹伯大学', '斯威本国立科技大学','维多利亚大学'],
-      '布里斯班': ['昆士兰大学', '昆士兰科技大学', '格里菲斯大学', '中央昆士兰大学', '阳光海岸大学', '邦德大学 ','南昆士兰大学','詹姆斯库克大学'],
-      '阿德莱德': ['阿德莱德大学', '南澳大学','弗林德斯大学'],
-      '珀斯': ['西澳大学', '莫多克大学', '科廷科技大学','埃迪斯科文大学'],
-      '堪培拉': ['堪培拉大学','澳洲国立大学'],
-      '奥克兰': ['奥克兰大学', '梅西大学','奥克兰理工大学'],
-      '洛杉矶': ['拉文大学ULV','加利福尼亚大学洛杉矶分校UCLA', '北岭加州州立大学CSUN', '洛杉矶加州州立大学CSULA', '南加州大学USC', '学校周边'],
-      '旧金山': ['旧金山大学USF', '旧金山州立大学SFSU','加州大学旧金山分校UCSF'],
+      '悉尼': ['悉尼大学USYD', '悉尼科技大学UTS', '新南威尔士大学UNSW', '麦考瑞大学MQ', '西悉尼大学UWS', "卧龙岗大学", "纽卡斯尔大学"],
+      '墨尔本': ['墨尔本大学', '莫纳什大学', '墨尔本理工大学', '迪肯大学', '拉筹伯大学', '斯威本国立科技大学', '维多利亚大学'],
+      '布里斯班': ['昆士兰大学', '昆士兰科技大学', '格里菲斯大学', '中央昆士兰大学', '阳光海岸大学', '邦德大学 ', '南昆士兰大学', '詹姆斯库克大学'],
+      '阿德莱德': ['阿德莱德大学', '南澳大学', '弗林德斯大学'],
+      '珀斯': ['西澳大学', '莫多克大学', '科廷科技大学', '埃迪斯科文大学'],
+      '堪培拉': ['堪培拉大学', '澳洲国立大学'],
+      '奥克兰': ['奥克兰大学', '梅西大学', '奥克兰理工大学'],
+      '洛杉矶': ['拉文大学ULV', '加利福尼亚大学洛杉矶分校UCLA', '北岭加州州立大学CSUN', '洛杉矶加州州立大学CSULA', '南加州大学USC', '学校周边'],
+      '旧金山': ['旧金山大学USF', '旧金山州立大学SFSU', '加州大学旧金山分校UCSF'],
       '纽约': ['哥伦比亚大学', '纽约大学', '纽约州立大学 ', '纽约市立大学'],
       '多伦多': ['多大DT校区周边', '多大Mississauga校区周边', '多大Scarborough校区周边', '约克大学周边', '怀雅逊大学周边', '滑铁卢大学周边', '麦克马斯特大学周边', '莫哈克学院周边', '哥伦比亚国际学院周边', '学校周边'],
       '蒙特利尔': ['蒙特利尔大学周边', '魁北克大学周边', '麦吉尔大学周边', '康考迪亚大学周边', '学校周边'],
-      '温哥华': ['英属哥伦比亚大学ubc', '西蒙菲沙大学sfu', '维多利亚大学','其他学校周边'],
+      '温哥华': ['英属哥伦比亚大学ubc', '西蒙菲沙大学sfu', '维多利亚大学', '其他学校周边'],
       '巴黎': ['巴黎第一大学', '巴黎第二大学', '巴黎第三大学', '巴黎第四大学', '巴黎第五大学', '巴黎第六大学', '巴黎第七大学', '巴黎第八大学', '巴黎第九大学', '巴黎第十大学', '巴黎第十一大学', '巴黎第十二大学', '巴黎第十三大学'],
-      '伦敦': ['牛津大学', '剑桥大学', '伦敦大学', '帝国理工学院','其他学校周边']
+      '伦敦': ['牛津大学', '剑桥大学', '伦敦大学', '帝国理工学院', '其他学校周边']
     }
   }
 })
