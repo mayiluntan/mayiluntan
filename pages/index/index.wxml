@@ -30,16 +30,20 @@
       </view> -->
     </view>
   </view>
-  <view class="broadcast">
-    <view class='l'>
-      <image src='/images/horn.png'/>
-      <view class='c'>{{broadcast.title}}</view>
-    </view>
-    <view class='r' wx:if="{{broadcast.id>0}}"  >
-      <view class='r1' bindtap='viewDetail' data-id='{{broadcast.id}}'>{{broadcast.num==0?'暂无答案':'查看答案'}}</view>
-      <view  class='r2' bindtap='showList' data-cate='5'>全部</view>
-    </view>
-  </view>
+  <swiper class='broadcast' autoplay="true" interval="3000" duration="500" vertical='true'>
+    <block wx:for='{{broadcast}}' wx:key='index'>
+      <swiper-item>
+        <view class='l'>
+          <image src='/images/horn.png'/>
+          <view class='c'>{{item.title}}</view>
+        </view>
+        <view class='r' wx:if="{{item.id>0}}"  >
+          <view class='r1' bindtap='viewDetail' data-id='{{item.id}}'>{{item.num==0?'暂无答案':'查看答案'}}</view>
+          <view  class='r2' bindtap='showList' data-cate='5'>全部</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
   <swiper class='all-cate' bindchange='swiperChange' current='{{cateSelected}}'>
     <swiper-item>
       <view class='cate'>

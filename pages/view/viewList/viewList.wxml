@@ -46,6 +46,14 @@
             </block>
           </view>
         </view>
+        <view class='screen-cate'>
+          <view class='screen-title'>方式：</view>
+          <view class='screen-select screen-house'>
+            <block wx:for='{{houseType}}' wx:key='index'>
+            <view class='{{screenType==(index+1)?"on":""}}' bindtap='typeSelect' data-value='{{index+1}}'>{{item}}</view>
+            </block>
+          </view>
+        </view>
       </view>
       <view class='screen-bg' bindtap='showScreen'></view>
     </view>    

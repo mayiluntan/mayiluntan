@@ -41,7 +41,6 @@ Page({
       data: { uid: app.globalData.uid,istoday: istoday},
       method:"POST",
       success:res=>{
-        console.log(res.data)
         if(res.data.ret==1){
           this.setData({
             data:res.data.data

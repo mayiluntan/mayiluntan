@@ -18,6 +18,9 @@ Page({
     })    
   },
   citySelect(e){
+    wx.showLoading({
+      title: '切换中',
+    })
     var city = [e.currentTarget.dataset.state, e.currentTarget.dataset.country, e.currentTarget.dataset.city]
     wx.request({
       url: app.globalData.apiUrl + 'update_city.php',
@@ -27,13 +30,16 @@ Page({
         if(res.data.ret==1){
           app.globalData.indexPic = res.data.pic
         }
-      }
-    })
-    app.globalData.cityArray = city
-    app.globalData.cityChange = true
-    app.globalData.pageChange = true
-    wx.navigateBack({
+      },
+      complete:res=>{
+        wx.hideLoading()
+        app.globalData.cityArray = city
+        app.globalData.cityChange = true
+        app.globalData.pageChange = true
+        wx.navigateBack({
 
+        })
+      }
     })
   }
 })

@@ -20,9 +20,11 @@ Page({
     area:'',
     keyword:'',
     houseArray: ['公寓', '别墅', '联排别墅', '小区', '办公室', '商铺', '车库', '其他'],
+    houseType: ['床位', '客厅', '双人床', '主卧', '单间', '整租'],
     screenCate:0,
     screenPersonal:0,
     screenHouse:0,
+    screenType:0,
     screenShow:0,
   },
 
@@ -54,7 +56,7 @@ Page({
   },
   getIndexList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse,
+      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
         this.setData({
           listData: res.data.data
@@ -139,7 +141,7 @@ Page({
     this.setData({
       screenCate: v
     })
-    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0) {
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0 && this.data.screenType > 0) {
       this.showScreen()
       this.getIndexList()
     }
@@ -149,7 +151,7 @@ Page({
     this.setData({
       screenPersonal: v
     })
-    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse>0){
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0 && this.data.screenType > 0){
       this.showScreen()
       this.getIndexList()
     }
@@ -159,7 +161,17 @@ Page({
     this.setData({
       screenHouse: v
     })
-    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0) {
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0 && this.data.screenType > 0) {
+      this.showScreen()
+      this.getIndexList()
+    }
+  },
+  typeSelect(e) {
+    var v = e.currentTarget.dataset.value
+    this.setData({
+      screenType: v
+    })
+    if (this.data.screenCate > 0 && this.data.screenPersonal > 0 && this.data.screenHouse > 0 && this.data.screenType>0) {
       this.showScreen()
       this.getIndexList()
     }

@@ -87,11 +87,11 @@ Page({
     ],
     orgIndex:[],
     orgCity:[],
-    broadcast: {
+    broadcast: [{
       'title': '暂无求助',
       'num': 0,
       'id': 0
-    },
+    }],
     temperature:'',
     exchangeRate:'',
     selectArray:['','',''],
@@ -121,32 +121,9 @@ Page({
       var that = this
       app.wxLoginCallback=function(){
         that.getIndexList();
+        that.getOtherInfo()
         that.setData({
           selectArray: app.globalData.cityArray
-        })
-        wx.request({
-          url: app.globalData.apiUrl + 'get_other_info.php?type=1&uid=' + app.globalData.uid,
-          success: res => {
-            if (res.data.ret == 1) {
-              that.setData({
-                broadcast: res.data.data.broadcast,
-                exchangeRate: res.data.data.exchange_rate,
-                temperature: res.data.data.temperature,
-                indexPic: res.data.data.pic
-              })
-              app.globalData.indexPic = res.data.data.pic
-            }
-          },
-          complete:res=>{
-            if (postId>0){
-              wx.navigateTo({
-                url: '/pages/view/viewDetail/viewDetail?id=' + postId,
-                complete:res=>{
-                  postId=0;
-                }
-              })
-            }
-          }
         })
       }
     }
@@ -171,6 +148,10 @@ Page({
         selectIndex: app.globalData.cityIndex,
         indexPic: app.globalData.indexPic
       })
+      if (first > 1){
+        this.getIndexList()
+        this.getOtherInfo()
+      }
     }
     if (app.globalData.areaChange) {
       this.setData({
@@ -206,6 +187,32 @@ Page({
       complete: res => {
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
+      }
+    })
+  },
+  getOtherInfo() {
+    wx.request({
+      url: app.globalData.apiUrl + 'get_other_info_v2.php?type=1&uid=' + app.globalData.uid,
+      success: res => {
+        if (res.data.ret == 1) {
+          this.setData({
+            broadcast: res.data.data.broadcast,
+            exchangeRate: res.data.data.exchange_rate,
+            temperature: res.data.data.temperature,
+            indexPic: res.data.data.pic
+          })
+          app.globalData.indexPic = res.data.data.pic
+        }
+      },
+      complete: res => {
+        if (postId > 0) {
+          wx.navigateTo({
+            url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+            complete: res => {
+              postId = 0;
+            }
+          })
+        }
       }
     })
   },

@@ -2,7 +2,7 @@
 <view class='main'>
   <view class='content'>
     <view class='cate' wx:if='{{postData.id==0}}'>
-     <picker mode="multiSelector" bindchange="cateChange" bindcolumnchange="columnChange" value="{{indexArray}}" range="{{cateArray}}">fenxiang fex
+     <picker mode="multiSelector" bindchange="cateChange" bindcolumnchange="columnChange" value="{{indexArray}}" range="{{cateArray}}">
       <view>
        <text>发布分类：{{cateArray[0][indexArray[0]]}},{{cateArray[1][indexArray[1]]}}</text>
       </view>

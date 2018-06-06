@@ -86,15 +86,15 @@ page{
 
 /**broadcast**/
 .broadcast{
-  width:100%;
-  line-height:33rpx;
-  padding:25rpx 0px;
   background: #fff;
+  width: 100%;
+  height: 80rpx;
   margin: 15rpx 0;
   display: flex;
 }
-.broadcast swiper{
-  height: auto;
+.broadcast swiper-item{  
+  display: flex;
+  align-items: center;
 }
 .broadcast .l{
   display:flex;
@@ -121,7 +121,6 @@ page{
 .broadcast .r .r2{
   padding: 0 20rpx;
 }
-
 /**cate**/
 .all-cate{
   width: 100%;
