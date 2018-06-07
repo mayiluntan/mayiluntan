@@ -13,7 +13,7 @@ Page({
     cateIndex: 0,
     orderArray: ['排序', '发布时间', '刷新时间'],
     orderIndex: 0,
-    areaArray: ['区域', '地区1', '地区2'],
+    areaArray: ['区域'],
     areaIndex: 0,
     area:'',
     data:{},
@@ -43,7 +43,10 @@ Page({
       this.setData({
         selectArray: app.globalData.cityArray,
         selectIndex: app.globalData.cityIndex,
-        indexPic: app.globalData.indexPic
+        indexPic: app.globalData.indexPic,
+        areaArray: ['区域'],
+        areaIndex: 0,
+        area: '',
       })
     }
     if (app.globalData.areaChange) {
