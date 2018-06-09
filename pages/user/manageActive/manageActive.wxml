@@ -35,7 +35,7 @@
           <image src='/images/thumbs_up.png'></image>
           <text class='num'>{{item.up_num}}</text>  
           <block wx:for="{{item.up_user}}" wx:for-item='up_user' wx:key='index'>
-            <text wx:if="{{index>0 && index%2==1}}">,</text>
+            <text wx:if="{{index>0 && index<item.up_num}}">,</text>
             <label>{{up_user}}</label>
           </block>
           </view>
