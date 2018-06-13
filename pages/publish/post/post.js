@@ -105,7 +105,7 @@ Page({
     var that = this;
     var picCount = that.data.picCount
     wx.chooseImage({
-      count: 3 - picCount,
+      count: 9 - picCount,
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         var pics = that.data.pics;
@@ -256,10 +256,10 @@ Page({
       app.showTips('提示', '请输入内容', false)
       return
     }
-    if (this.data.pics.length == 0) {
-      app.showTips('提示', '请选择图片', false)
-      return
-    }
+    // if (this.data.pics.length == 0) {
+    //   app.showTips('提示', '请选择图片', false)
+    //   return
+    // }
     if (this.data.postData.address == '' && 1==2) {
       wx.getSetting({
         success: res => {
@@ -355,6 +355,7 @@ Page({
                 })
                 setTimeout(function(){
                   wx.hideToast()
+                  app.globalData.cityChange = true
                   wx.reLaunch({
                     url: '/pages/index/index',
                   })
@@ -368,6 +369,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  app.globalData.cityChange = true
                   wx.reLaunch({
                     url: '/pages/index/index',
                   })
@@ -383,6 +385,7 @@ Page({
             })
             setTimeout(function () {
               wx.hideToast()
+              app.globalData.cityChange = true
               wx.reLaunch({
                 url: '/pages/index/index',
               })

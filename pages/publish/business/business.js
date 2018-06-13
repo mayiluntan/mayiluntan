@@ -129,7 +129,7 @@ Page({
     var that = this;
     var picCount = that.data.picCount
     wx.chooseImage({
-      count: 3 - picCount,
+      count: 9 - picCount,
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         var pics = that.data.pics;
@@ -243,10 +243,10 @@ Page({
     //   app.showTips('提示', '请上传logo', false)
     //   return
     // }
-    if (this.data.pics.length == 0) {
-      app.showTips('提示', '请上传详情图', false)
-      return
-    }
+    // if (this.data.pics.length == 0) {
+    //   app.showTips('提示', '请上传详情图', false)
+    //   return
+    // }
     if (postData.intro == '') {
       app.showTips('提示', '请填写商户介绍', false)
       return
@@ -287,6 +287,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  app.globalData.pageChange = true
                   wx.reLaunch({
                     url: '/pages/pages/pages',
                   })
@@ -300,6 +301,7 @@ Page({
                 })
                 setTimeout(function () {
                   wx.hideToast()
+                  app.globalData.pageChange = true
                   wx.reLaunch({
                     url: '/pages/pages/pages',
                   })
@@ -316,6 +318,7 @@ Page({
             })
             setTimeout(function () {
               wx.hideToast()
+              app.globalData.pageChange = true
               wx.reLaunch({
                 url: '/pages/pages/pages',
               })

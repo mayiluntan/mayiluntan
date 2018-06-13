@@ -29,13 +29,13 @@
       </block>
     </view>
     <view class='pic'>
-      <view>商家logo<text>*</text><text class='grey'>（建议尺寸750*562px）</text></view>
+      <view>商家logo<text class='grey'>（建议尺寸750*562px）</text></view>
       <image src="{{logo==''?'/images/post/add.png':logo}}" bindtap='addPic' data-type='1'></image>
     </view>
     <view class='pic pic-detail'>
-      <view>商家详情图<text>*</text><text class='grey'>最多可添加3张图片</text></view>
+      <view>商家详情图<text class='grey'>最多可添加9张图片</text></view>
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
-      <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic2'></image>
+      <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic2'></image>
     </view>
     <view class='intro'>
       <view>商户介绍<text>*</text></view>

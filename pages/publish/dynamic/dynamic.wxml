@@ -8,7 +8,7 @@
     <textarea bindinput='contentInput' placeholder='分享你的心情......' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
     <view class='pic'>
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
-      <image wx:if="{{pics.length<3}}" src="/images/post/add.png"  bindtap='addPic'></image>
+      <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic'></image>
     </view>
     <view class='location' bindtap='chooseLocation'>
       <image src='/images/post/local.png'></image>

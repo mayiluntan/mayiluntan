@@ -49,7 +49,7 @@ Page({
     var that = this;
     var picCount = that.data.picCount
     wx.chooseImage({
-      count: 3 - picCount,
+      count: 9 - picCount,
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         var pics = that.data.pics;
@@ -76,7 +76,6 @@ Page({
                   picCount: picCount
                 });
               }
-              console.log(that.data)
             }
           })
         }

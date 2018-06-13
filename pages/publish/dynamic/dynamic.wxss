@@ -18,12 +18,13 @@ page {
 }
 .pic{
   display: flex;
-  height: 200rpx;
+  min-height: 200rpx;
+  flex-wrap: wrap;
 }
 .pic image{
   width: 200rpx;
   height: 200rpx;
-  margin-right: 20rpx;
+  margin:0 20rpx 20rpx 0;
 }
 .location{
   margin-top: 20rpx;

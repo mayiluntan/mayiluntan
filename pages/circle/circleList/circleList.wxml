@@ -8,7 +8,7 @@
       <view class='circle-address' wx:if='{{item.address!=""}}'><image src='/images/post/local.png'></image><text>{{item.address}}</text></view>
       <view class='circle-pics'>
       <block wx:for="{{item.pics}}" wx:for-item='pic' wx:key='index'>
-      <image class="{{index==2?'circle-pics-last':''}}" src='{{pic}}'></image>
+      <image class="{{(index+1)%3==0?'circle-pics-last':''}}" src='{{pic}}'></image>
       </block>
       </view>
       <view class='circle-btn'>
