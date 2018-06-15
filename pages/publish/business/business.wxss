@@ -64,10 +64,29 @@ page{
 .pic .grey{
   color: #A1A19C
 }
+.pic .pic-one{
+  position: relative;
+  display: inline-block;
+}
+.pic .pic-all{
+  display: flex;
+  flex-wrap: wrap;
+}
+.pic .pic-all view{
+  position: relative;
+}
 .pic image{
   width: 150rpx;
   height: 150rpx;
   margin-top: 20rpx;
+}
+.pic .del{
+  position:absolute;
+  width: 40rpx;
+  height: 40rpx;
+  top: 0;
+  right: 0;
+  z-index: 1;
 }
 .pic-detail image{
   margin-right: 20rpx;

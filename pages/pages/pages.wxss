@@ -70,18 +70,19 @@ page{
 .broadcast{
   width:100%;
   display: flex;
-  line-height:33rpx;
-  padding:25rpx 0px;
+  height: 70rpx;
   background: #fff;
   margin: 15rpx 0;
+  font-size: 26rpx;
 }
 .broadcast .l{
   display:flex;
   flex: 1;
+  align-items: center;
 }
 .broadcast .l image{
-  width: 46rpx;
-  height: 33rpx;
+  width: 40rpx;
+  height: 30rpx;
   margin: 0 20rpx;
 }
 

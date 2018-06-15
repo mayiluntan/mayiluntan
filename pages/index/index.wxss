@@ -88,9 +88,10 @@ page{
 .broadcast{
   background: #fff;
   width: 100%;
-  height: 80rpx;
+  height: 70rpx;
   margin: 15rpx 0;
   display: flex;
+  font-size: 26rpx;
 }
 .broadcast swiper-item{  
   display: flex;
@@ -99,6 +100,7 @@ page{
 .broadcast .l{
   display:flex;
   flex: 1;
+  align-items: center;
 }
 .broadcast .l .c{
   overflow:hidden;
@@ -107,8 +109,8 @@ page{
   max-width:50vw;
 }
 .broadcast .l image{
-  width: 46rpx;
-  height: 33rpx;
+  width: 40rpx;
+  height: 30rpx;
   margin: 0 20rpx;
 }
 .broadcast .r{

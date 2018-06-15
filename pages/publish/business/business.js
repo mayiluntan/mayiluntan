@@ -49,8 +49,6 @@ Page({
         url: app.globalData.apiUrl + 'get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
-
-            console.log(res.data)
             this.setData({
               pics: res.data.data.pics,
               picIds: res.data.data.picIds,
@@ -156,12 +154,41 @@ Page({
                   picCount: picCount
                 });
               }
-              console.log(that.data)
             }
           })
         }
       }
     })
+  },
+  delPic(e) {
+    var del_type = e.currentTarget.dataset.type;
+    var postData = this.data.postData;
+    var logo = this.data.logo;
+    var cert = this.data.cert;
+    if (del_type == 1) {
+      postData.logo = ''
+      logo=''
+    } else {
+      postData.cert = ''
+      cert=''
+    }
+    this.setData({
+      postData: postData,
+      logo: logo,
+      cert: cert
+    });
+  },
+  delPic2(e) {
+    var index = e.currentTarget.dataset.index;
+    var pics = this.data.pics;
+    var picIds = this.data.picIds;
+    pics.splice(index, 1);
+    picIds.splice(index, 1);
+    this.setData({
+      pics: pics,
+      picIds: picIds,
+      picCount: picIds.length
+    });
   },
   cateChange(e){
     var postData = this.data.postData
@@ -265,13 +292,13 @@ Page({
     lock=true;
     postData.uid = app.globalData.uid
     postData.pics = this.data.picIds
-    console.log(postData)
+    //console.log(postData)
     wx.request({
       url: app.globalData.apiUrl + 'business_post.php',
       data: postData,
       method: 'POST',
       success: res => {
-        console.log(res)
+        //console.log(res)
         if (res.data.ret == 1) {
           if (res.data.top == 1) {
             wx.requestPayment({
@@ -308,7 +335,7 @@ Page({
                 }, 2000)
               },
               'complete': function (res) {
-                console.log('123')
+                //console.log('123')
               }
             })
           } else {
@@ -347,7 +374,6 @@ Page({
     })
   },
   dayChange(e) {
-    console.log(e)
     var v = e.detail.value;
     var day = 1;
     if (v == 1) {

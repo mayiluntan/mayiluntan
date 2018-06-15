@@ -138,6 +138,18 @@ Page({
       }
     })
   },
+  delPic(e){
+    var index = e.currentTarget.dataset.index;
+    var pics = this.data.pics;
+    var picIds = this.data.picIds;
+    pics.splice(index,1); 
+    picIds.splice(index,1); 
+    this.setData({
+      pics: pics,
+      picIds: picIds,
+      picCount: picIds.length
+    });
+  },
   cateChange(e) {
     var v = e.detail.value;
     if (this.data.indexArray != v) {

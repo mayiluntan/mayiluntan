@@ -30,12 +30,20 @@
     </view>
     <view class='pic'>
       <view>商家logo<text class='grey'>（建议尺寸750*562px）</text></view>
-      <image src="{{logo==''?'/images/post/add.png':logo}}" bindtap='addPic' data-type='1'></image>
+      <view class='pic-one'>
+        <image src="{{logo==''?'/images/post/add.png':logo}}" bindtap='addPic' data-type='1'></image>
+        <image wx:if='{{logo!=""}}' src="/images/del.png" bindtap='delPic' data-type='1' class='del'></image>
+      </view>
     </view>
     <view class='pic pic-detail'>
       <view>商家详情图<text class='grey'>最多可添加9张图片</text></view>
-      <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
-      <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic2'></image>
+      <view class='pic-all'>
+        <view wx:for="{{pics}}" wx:key='index'>
+          <image  src="{{item}}"></image>
+          <image src="/images/del.png" bindtap='delPic2' data-index='{{index}}' class='del'></image>
+        </view> 
+        <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic2'></image>
+      </view>      
     </view>
     <view class='intro'>
       <view>商户介绍<text>*</text></view>
@@ -64,7 +72,11 @@
     </view>
     <view class='pic'>
       <view>资质证书</view>
-      <image src="{{cert==''?'/images/post/add.png':cert}}" bindtap='addPic' data-type='2'></image>
+      <view class='pic-one'>
+        <image src="{{cert==''?'/images/post/add.png':cert}}" bindtap='addPic' data-type='2'></image>
+        <image wx:if='{{cert!=""}}' src="/images/del.png" bindtap='delPic' data-type='2' class='del'></image>
+      </view>
+      
     </view>
     <view class='list'>
       <view>提供服务</view>
@@ -86,7 +98,7 @@
     <text  class='price'>¥{{postData.topPrice}}</text>
   </view>
   </view>
-  <view class='button' bindtap='postClick'>
+  <view class='button'>
     <view bindtap='businessPost'>确认</view>
   </view>
 </view>

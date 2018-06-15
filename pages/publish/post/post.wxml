@@ -18,9 +18,12 @@
     </view>
     <textarea bindinput='contentInput' placeholder='请输入想要发布的内容' placeholder-style='color:#afafaf;' maxlength='-1' value='{{postData.content}}'></textarea>
     <view class='pic'>
-      <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
+      <view wx:for="{{pics}}" wx:key='index'>
+        <image  src="{{item}}"></image>
+        <image src="/images/del.png" bindtap='delPic' data-index='{{index}}' class='del'></image>
+      </view>      
       <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic'></image>
-      <image src="/images/del.png" class='del'></image>
+      
     </view>
   </view>
   <view class='detail'>
