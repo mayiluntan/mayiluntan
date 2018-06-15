@@ -30,7 +30,8 @@ Page({
       success:res=>{
         if(res.data.ret==1){
           this.setData({
-            info:res.data.data
+            info:res.data.data,
+            date: res.data.data.birth
           })
         }else{
           app.showTips(res.data.title, res.data.msg, false);

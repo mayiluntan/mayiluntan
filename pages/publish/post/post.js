@@ -330,7 +330,7 @@ Page({
         postData.school2 = this.data.schoolArr[this.data.schoolIndex2];
       }
     }
-    //lock=true;
+    lock=true;
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
