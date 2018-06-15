@@ -20,6 +20,7 @@
     <view class='pic'>
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
       <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic'></image>
+      <image src="/images/del.png" class='del'></image>
     </view>
   </view>
   <view class='detail'>

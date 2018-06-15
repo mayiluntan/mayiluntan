@@ -34,6 +34,14 @@ page {
   height: 200rpx;
   margin:0 20rpx 20rpx 0;
 }
+.pic .del{
+  position: relative;
+  width: 16rpx;
+  height: 16rpx;
+}
+.pic .del image{
+  
+}
 .detail{
   width: 100%;
 }

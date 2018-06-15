@@ -21,7 +21,6 @@ Page({
       url: app.globalData.apiUrl+'get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
-        console.log(res.data)
         if(res.data.ret==1){
           this.setData({
             content: res.data.data,
