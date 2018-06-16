@@ -97,10 +97,10 @@
         <image src='/images/icon_logo_fangchan.png' />
         <view>房产信息</view>
         </view>
-         <view class='cate-detail' bindtap='showList' data-cate='13'>
+         <!-- <view class='cate-detail' bindtap='showList' data-cate='13'>
         <image src='/images/icon_logo_jiaoyou.png' />
         <view>同城交友</view>
-        </view> 
+        </view>  -->
         <view class='cate-detail' bindtap='showList' data-cate='14'>
         <image src='/images/icon_logo_jiaju.png' />
         <view>家居家居</view>

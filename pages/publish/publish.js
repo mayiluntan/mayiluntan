@@ -25,9 +25,9 @@ Page({
         url: '/pages/publish/business/business'
       })
     }else{
-      wx.navigateTo({
-        url: '/pages/publish/dynamic/dynamic'
-      })
+      // wx.navigateTo({
+      //   url: '/pages/publish/dynamic/dynamic'
+      // })
     }
   }
 })
