@@ -57,12 +57,6 @@
         "iconPath": "images/us3.png",
         "selectedIconPath": "images/s3.png"
       },
-      // {
-      //   "pagePath": "pages/circle/circle",
-      //     "text": "蚂蚁圈",
-      //       "iconPath": "images/us4.png",
-      //         "selectedIconPath": "images/s4.png"
-      // },
       {
         "pagePath": "pages/user/user",
         "text": "我的",

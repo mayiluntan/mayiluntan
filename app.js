@@ -1,4 +1,9 @@
-
+// {
+//   "pagePath": "pages/circle/circle",
+//     "text": "蚂蚁圈",
+//       "iconPath": "images/us4.png",
+//         "selectedIconPath": "images/s4.png"
+// },
 //app.js
 var first = 1;
 App({
