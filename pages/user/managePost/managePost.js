@@ -87,6 +87,8 @@ Page({
   deletePost(e){
     lock = true;
     var id = e.currentTarget.dataset.id
+    var title = e.currentTarget.dataset.title
+    title = title == '' ? '小蚂蚁':title;
     if (this.data.menuSelected==2){
       wx.showModal({
         title: '提示',
@@ -215,10 +217,13 @@ Page({
   },
   onShareAppMessage: function (res) {
     lock = true;
-    var id=res.target.dataset.id;
+    var id = res.target.dataset.id;
+    var title = res.target.dataset.title;
+    title = title == '' ? '小蚂蚁' : title;
     return {
-      title: '小蚂蚁',
+      title: title,
       path: '/pages/index/index?id=' + id,
+      imageUrl:"/images/default.jpg",
       success: function (res) {
         wx.request({
           url: app.globalData.apiUrl + 'post_share.php',

@@ -165,6 +165,7 @@ Page({
       this.getIndexList()
     }
     if (postId > 0 && app.globalData.uid!=null) {
+      app.globalData.cityChange=true;
       wx.navigateTo({
         url: '/pages/view/viewDetail/viewDetail?id=' + postId,
         complete: res => {
