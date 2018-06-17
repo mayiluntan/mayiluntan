@@ -18,7 +18,7 @@
   <view class='tag'>
     <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
-  <view class='address' bindtap='openAddress'><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
+  <view class='address' bindtap='openAddress' wx:if='{{content.address!=""}}' ><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
   <view class='division'></view>
   <view class='circle'>
     <view class='circle-title'>留言</view>
