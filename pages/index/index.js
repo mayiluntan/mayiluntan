@@ -182,7 +182,7 @@ Page({
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
+      url: app.globalData.apiUrl + 'get_list_v2.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
         this.setData({
           listData:res.data.data

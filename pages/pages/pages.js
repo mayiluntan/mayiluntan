@@ -74,7 +74,7 @@ Page({
   },
   getBusinessList() {
     wx.request({
-      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid,
+      url: app.globalData.apiUrl + 'get_business_v2.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid,
       success: res => {
         if(res.data.ret==1){
           this.setData({
