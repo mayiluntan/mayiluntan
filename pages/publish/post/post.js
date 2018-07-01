@@ -11,7 +11,8 @@ Page({
     picIds:[],
     picCount:0,
     indexArray: [0, 0],
-    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '房产信息', '同城交友', '家居家具', '数码电子'], ['找房', '招租']],
+    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让','房产信息'], ['找房', '招租']],
+    cateId: [ 1, 2, 3, 4, 5, 6, 7, 8, 12],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
     houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
@@ -200,6 +201,8 @@ Page({
   },
   allCateChange(v){
     var cateArray = this.data.cateArray
+    v = this.data.cateId[v]
+    v=v-1;
     switch (v) {
       case 0: cateArray[1] = ['找房','招租']; break;
       case 1: cateArray[1] = ['家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; break;
@@ -346,6 +349,7 @@ Page({
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
+    postData.cate[0] = this.data.cateId[postData.cate[0]]
     postData.moneySign = this.data.moneySign
     wx.request({
       url: app.globalData.apiUrl+'post.php',

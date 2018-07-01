@@ -16,7 +16,9 @@ Page({
         url: '/images/banner.png'
       }
     ],
-    cateArray: ['全部分类','房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
+    // cateArray: [{ 'id': 0, 'name': '全部分类' }, { 'id': 1, 'name': '房屋信息' }, { 'id': 2, 'name': '二手市场' }, { 'id': 3, 'name': '求职招聘' }, { 'id': 4, 'name': '汽车交易' }, { 'id': 5, 'name': '求助问事' }, { 'id': 6, 'name': '拼车信息' }, { 'id': 7, 'name':'短租民宿'}, { 'id': 8, 'name': '生意转让' }, { 'id': 12, 'name': '房产信息' }],
+    cateArray: ['全部分类','房屋信息','二手市场','求职招聘','汽车交易','求助问事','拼车信息' ,'短租民宿','生意转让' ,'房产信息'],
+    cateId:[0,1,2,3,4,5,6,7,8,12],
     cateIndex:0,
     orderArray: ['排序', '发布时间', '刷新时间'],
     orderIndex: 0,
@@ -129,6 +131,12 @@ Page({
     }
   },
   onShow(){
+    if (app.globalData.userInfo != null && app.globalData.userInfo.city == ''){
+      wx.navigateTo({
+        url: '/pages/select/select',
+      })
+      return;
+    }
     if (first > 0 && app.globalData.uid==null){
       wx.navigateTo({
         url: '/pages/error/error'
@@ -226,7 +234,7 @@ Page({
     });
   },
   cateChange(e) {
-    cate = e.detail.value
+    cate = this.data.cateId[e.detail.value]
     this.setData({
       cateIndex: e.detail.value
     })

@@ -5,6 +5,7 @@ var cate = 0;
 var order = 0;
 var area='';
 var lock=false;
+var first = 0;
 Page({
   data: {
     selectArray: ['', '', ''],
@@ -26,18 +27,10 @@ Page({
   },
   onLoad: function () {
     this.getBusinessList()
-    wx.request({
-      url: app.globalData.apiUrl + 'get_other_info.php?type=2&uid='+app.globalData.uid,
-      success: res => {
-        if(res.data.ret==1){
-          this.setData({
-            broadcast: res.data.data.broadcast
-          })
-        }
-      }
-    })
+    this.getOtherInfo()
   },
   onShow() {
+    first++
     if (app.globalData.pageChange) {
       app.globalData.pageChange = false;
       this.setData({
@@ -48,6 +41,10 @@ Page({
         areaIndex: 0,
         area: '',
       })
+      if (first > 1) {
+        this.getBusinessList()
+        this.getOtherInfo()
+      }
     }
     if (app.globalData.areaChange) {
       this.setData({
@@ -85,6 +82,18 @@ Page({
       complete: res => {
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
+      }
+    })
+  },
+  getOtherInfo(){
+    wx.request({
+      url: app.globalData.apiUrl + 'get_other_info.php?type=2&uid=' + app.globalData.uid,
+      success: res => {
+        if (res.data.ret == 1) {
+          this.setData({
+            broadcast: res.data.data.broadcast
+          })
+        }
       }
     })
   },

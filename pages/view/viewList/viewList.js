@@ -10,11 +10,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    cate:0,
     orderArray: ['排序', '发布时间', '刷新时间'],
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
-    cateArray: ['全部分类', '房屋信息', '二手市场', '求职招聘', '汽车交易', '求助问事', '拼车信息', '短租民宿', '生意转让', '交友项目', '宠物相关', '二手教材', '二手房产', '同城交友', '家居家具', '数码电子'],
+    cateArray: ['全部分类'],
     cateIndex: 0,
     listData: [],
     area:'',
@@ -36,9 +37,32 @@ Page({
     var keyword = options.keyword ? options.keyword :'';
     this.setData({
       keyword: keyword,
-      cateIndex: cate
+      cate: cate
     })
     this.getIndexList()
+
+    var v = cate-1;
+    var cateArray = ['全部分类']
+    switch (v) {
+      case 0: cateArray = ['全部分类','找房', '招租']; break;
+      case 1: cateArray = ['全部分类','家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; break;
+      case 2: cateArray = ['全部分类','求职', '招聘']; break;
+      case 3: cateArray = ['全部分类','求购', '出售']; break;
+      case 4: cateArray = ['全部分类','求助问事']; break;
+      case 5: cateArray = ['全部分类','人找车', '车找人']; break;
+      case 6: cateArray = ['全部分类','短租民宿']; break;
+      case 7: cateArray = ['全部分类','生意转让']; break;
+      case 8: cateArray = ['全部分类','交友项目']; break;
+      case 9: cateArray = ['全部分类','宠物相关']; break;
+      case 10: cateArray = ['全部分类','二手教材']; break;
+      case 11: cateArray = ['全部分类','学生寄宿', 'Homestay', '行李寄存', '仓库', '车位']; break;
+      case 12: cateArray = ['全部分类','同城交友']; break;
+      case 13: cateArray = ['全部分类','家居家具']; break;
+      case 14: cateArray = ['全部分类','数码电子']; break;
+    }
+    this.setData({
+      cateArray: cateArray
+    })
   },
   onShow(){
     if (app.globalData.areaChange) {
@@ -55,8 +79,9 @@ Page({
     this.getIndexList();
   },
   getIndexList() {
+    var cate2 = this.data.cateIndex-1;
     wx.request({
-      url: app.globalData.apiUrl + 'get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
+      url: app.globalData.apiUrl + 'v3/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
         this.setData({
           listData: res.data.data
@@ -69,7 +94,7 @@ Page({
     })
   },
   cateChange(e) {
-    cate = e.detail.value
+    //cate = e.detail.value
     this.setData({
       cateIndex: e.detail.value
     })
@@ -138,6 +163,9 @@ Page({
   },
   cateSelect(e) {
     var v = e.currentTarget.dataset.value
+    if (this.data.screenCate==v){
+      v=0
+    }
     this.setData({
       screenCate: v
     })
@@ -148,6 +176,9 @@ Page({
   },
   sourceSelect(e) {
     var v = e.currentTarget.dataset.value
+    if (this.data.screenPersonal == v) {
+      v = 0
+    }
     this.setData({
       screenPersonal: v
     })
@@ -158,6 +189,9 @@ Page({
   },
   houseSelect(e) {
     var v = e.currentTarget.dataset.value
+    if (this.data.screenHouse == v) {
+      v = 0
+    }
     this.setData({
       screenHouse: v
     })
@@ -168,6 +202,9 @@ Page({
   },
   typeSelect(e) {
     var v = e.currentTarget.dataset.value
+    if (this.data.screenType == v) {
+      v = 0
+    }
     this.setData({
       screenType: v
     })
@@ -182,5 +219,11 @@ Page({
     this.setData({
       screenShow: v
     })
+  },
+  screenConfirm(){
+    this.showScreen()
+    if (this.data.screenCate > 0 || this.data.screenPersonal > 0 || this.data.screenHouse > 0 || this.data.screenType > 0) {
+      this.getIndexList()
+    }
   }
 })

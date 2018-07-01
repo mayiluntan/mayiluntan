@@ -1,7 +1,7 @@
 <!--pages/user/managePost/managePost.wxml-->
 <view class='content'>
     <view class='title' wx:if='{{keyword==""}}'>
-      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}" wx:if='{{cateIndex!=1}}'>
+      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}" wx:if='{{cate!=1}}'>
       <view class='title-border'>
         <view>{{cateArray[cateIndex]}}</view>
         <image src='/images/icon_arrow_down.png' />
@@ -11,7 +11,7 @@
         <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
-      <view class='title-area title-border' bindtap='showScreen' wx:if='{{cateIndex==1}}'>
+      <view class='title-area title-border' bindtap='showScreen' wx:if='{{cate==1}}'>
         <view>筛选</view>
         <image src='/images/icon_arrow_down.png' />
       </view>
@@ -53,6 +53,9 @@
             <view class='{{screenType==(index+1)?"on":""}}' bindtap='typeSelect' data-value='{{index+1}}'>{{item}}</view>
             </block>
           </view>
+        </view>
+        <view class='screen-cate screen-mid'>
+          <view class='screen-btn' bindtap='screenConfirm'>确认</view>
         </view>
       </view>
       <view class='screen-bg' bindtap='showScreen'></view>

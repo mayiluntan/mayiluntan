@@ -81,40 +81,14 @@
         <image src='/images/icon_logo_zhuanrang.png' />
         <view>生意转让</view>
         </view>
-        <view class='cate-detail' bindtap='showList' data-cate='10'>
-        <image src='/images/icon_logo_chongwu.png' />
-        <view>宠物相关</view>
-        </view>
-        <view class='cate-detail' bindtap='showList' data-cate='11'>
-        <image src='/images/icon_logo_jiaocai.png' />
-        <view>二手教材</view>
-        </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='12'>
         <image src='/images/icon_logo_fangchan.png' />
         <view>房产信息</view>
         </view>
-         <!-- <view class='cate-detail' bindtap='showList' data-cate='13'>
-        <image src='/images/icon_logo_jiaoyou.png' />
-        <view>同城交友</view>
-        </view>  -->
-        <view class='cate-detail' bindtap='showList' data-cate='14'>
-        <image src='/images/icon_logo_jiaju.png' />
-        <view>家居家居</view>
-        </view>
-        <view class='cate-detail' bindtap='showList' data-cate='15'>
-        <image src='/images/icon_logo_shuma.png' />
-        <view>数码电子</view>
-        </view>
-      </view>
-      <view class='cate'>
       </view>
     </swiper-item>
   </swiper>
-  <view class='cate-menu'>
+  <!--<view class='cate-menu'>
     <block wx:if="{{cateSelected==1}}">
       <view class='cate-menu1'><view></view></view>
       <view class='cate-menu2'><view class='cate-select'></view></view>
@@ -123,7 +97,7 @@
       <view class='cate-menu1'><view class='cate-select'></view></view>
       <view class='cate-menu2'><view></view></view>
     </block>
-  </view>
+  </view>-->
   <swiper class='banner' autoplay="true" interval="5000" duration="500">  
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
         <swiper-item> 

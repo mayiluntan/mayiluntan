@@ -127,6 +127,7 @@ page{
 .all-cate{
   width: 100%;
   background: #fff;
+  padding-bottom: 10rpx;
 }
 .cate{
   background: #fff;
@@ -276,6 +277,8 @@ page{
   color: #4188d2;
   padding: 0 10rpx;
   margin-right: 30rpx;
+  overflow:hidden;
+  max-width:200rpx;
 }
 .list .list-left{
    flex:1;

@@ -90,6 +90,10 @@ App({
               that.globalData.userInfo = res.data.uinfo
               if (res.data.uinfo.city != '') {
                 that.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
+              }else{
+                wx.navigateTo({
+                  url: '/pages/select/select',
+                })
               }
               if (that.wxLoginCallback) {
                 that.wxLoginCallback()
@@ -149,7 +153,7 @@ App({
       },
       '北美': {
         '美国': ['洛杉矶', '纽约', '旧金山', '圣地亚哥', '圣何塞', '伯克利', '芝加哥', '华盛顿', '西雅图', '休斯顿', '达拉斯', '费城', '波士顿', '夏威夷', '奥兰多', '拉斯维加斯', '波特兰', '丹佛', '亚特兰大', '佛罗里达'],
-        '加拿大': ['多伦多', '温哥华', '蒙特利尔', '卡尔加里', '渥太华', '伦敦', '滑铁卢', '温尼伯'],
+        '加拿大': ['多伦多', '温哥华', '蒙特利尔', '卡尔加里', '渥太华', 'CA伦敦', '滑铁卢', '温尼伯','汉密尔顿'],
         '墨西哥': ['墨西哥城']
       },
       '大洋洲': {

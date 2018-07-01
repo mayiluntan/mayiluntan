@@ -14,7 +14,7 @@ Page({
     orderIndex: 0,
     areaArray: ['区域', '地区1', '地区2'],
     areaIndex: 0,
-    cateArray: ['全部分类', '餐饮美食', '外卖送餐', '专业服务', '汽车服务', '便民家政', '礼品商店', '移民教育', '旅游机票', '超市商店', '医疗保健', '房产经济', '换汇汇款', '快递货运', '美容美发', '休闲娱乐', '酒店旅馆', '宠物服务', '家政保洁', '微商部落'],
+    cateArray: ['全部分类'],
     cateIndex: 0,
     data: {},
     area: '',
@@ -28,10 +28,35 @@ Page({
     cate = options.cate ? options.cate : 0;
     var keyword = options.keyword ? options.keyword : '';
     this.setData({
-      keyword: keyword,
-      cateIndex: cate
+      keyword: keyword
     })
     this.getBusinessList()
+    var v = cate - 1;
+    var cateArray = ['全部分类']
+    switch (v) {
+      case 0: cateArray = ['全部分类','私房小厨', '排挡快餐', '烧烤麻辣', '火锅香锅', '西餐', '面包糕点', '甜品饮料', '海鲜肉类', '早点早餐', '粥铺面馆', '自助餐厅', '咖啡汉堡', '日本料理', '韩国烧烤', '其他美食']; break;
+      case 1: cateArray = ['全部分类','外卖送餐']; break;
+      case 2: cateArray = ['全部分类','房产经济', '金融贷款', '理财保险', '翻译服务', '律师公正', '会计税务', '风水命理', '', '网站软件', '摄影婚庆', '医疗诊所', '其他']; break;
+      case 3: cateArray = ['全部分类','机场接送', '搬家物流', '汽车维修', '驾校教练', '车行4S店', '租车服务', '运车回国']; break;
+      case 4: cateArray = ['全部分类','宠物服务', '家政保洁', '行李寄存', '开锁配匙', '网络缴费', '花园除草', '除虫清洁', '保姆月嫂', '水暖电工', '数码电子', '二手回收', '防盗报警', '建材装修', '其他']; break;
+      case 5: cateArray = ['全部分类','礼品商店']; break;
+      case 6: cateArray = ['全部分类','留学移民', '辅导家教', '语言培训', '技能培训', '艺术培训', '幼儿教育', '院校招生']; break;
+      case 7: cateArray = ['全部分类','旅行社', '机票', '私人旅游']; break;
+      case 8: cateArray = ['全部分类','礼品商店', '华人超市', '西人超市', '快递货运', '花店', '其他商店']; break;
+      case 9: cateArray = ['全部分类','医疗保健']; break;
+      case 10: cateArray = ['全部分类','房产经济']; break;
+      case 11: cateArray = ['全部分类','换汇汇款']; break;
+      case 12: cateArray = ['全部分类','快递货运']; break;
+      case 13: cateArray = ['全部分类','健美瘦身', '美发服务', '美甲护肤', '纹身服务', '其他']; break;
+      case 14: cateArray = ['全部分类','足疗按摩', '洗浴温泉', '运动健身', '桌游棋牌', '酒吧/ktv', '', '网吧', '户外运动', '活动讲座']; break;
+      case 15: cateArray = ['全部分类','酒店旅馆']; break;
+      case 16: cateArray = ['全部分类','宠物服务']; break;
+      case 17: cateArray = ['全部分类','家政保洁']; break;
+      case 18: cateArray = ['全部分类','代购', '服饰', '包包', '妆品', '鞋子', '其他']; break;
+    }
+    this.setData({
+      cateArray: cateArray
+    })
   },
   onShow() {
     if (app.globalData.areaChange) {
@@ -48,8 +73,9 @@ Page({
     this.getBusinessList();
   },
   getBusinessList() {
+    var cate2 = this.data.cateIndex - 1;
     wx.request({
-      url: app.globalData.apiUrl + 'get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
+      url: app.globalData.apiUrl + 'v3/get_business.php?cate=' + cate +'&cate2='+cate2 + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           data: res.data.data
@@ -62,7 +88,7 @@ Page({
     })
   },
   cateChange(e) {
-    cate = e.detail.value
+    //cate = e.detail.value
     this.setData({
       cateIndex: e.detail.value
     })

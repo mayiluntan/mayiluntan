@@ -34,6 +34,7 @@ Page({
       complete:res=>{
         wx.hideLoading()
         app.globalData.cityArray = city
+        app.globalData.userInfo.city = city[2]
         app.globalData.cityChange = true
         app.globalData.pageChange = true
         wx.navigateBack({
