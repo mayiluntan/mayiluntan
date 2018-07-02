@@ -308,3 +308,31 @@ page{
   color: #7f7f7f;
   text-align: right;
 }
+.tip-top1{
+  position: absolute;
+  right: 15vw;
+  top: 0;
+}
+.tip-top2{
+  position: absolute;
+  right: 34vw;
+  bottom: 0;
+}
+.tip-top .tip-img {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-right: 14rpx;
+}
+.tip-top .tip-img image{
+  width: 30rpx;
+  height: 20rpx;
+}
+.tip-top .tip-text{
+  background: #707070;
+  color: #fff;
+  padding: 10rpx 20rpx;
+  border-radius: 10rpx;
+}

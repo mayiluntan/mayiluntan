@@ -98,10 +98,18 @@ Page({
     exchangeRate:'',
     selectArray:['','',''],
     selectIndex: [0, 0, 0],
-    indexPic:''
+    indexPic:'',
+    showTips:1,
+    animation:''
   },
   
   onLoad: function (options) {
+    var that=this
+    setTimeout(function(){
+      that.setData({
+        showTips:0
+      })
+    }, 5000)
     postId = options.id ? options.id : 0;
     wx.request({
       url: app.globalData.apiUrl + 'get_banner.php',
@@ -120,7 +128,6 @@ Page({
     if (app.wxLoginCallback) {
       app.wxLoginCallback
     }else{
-      var that = this
       app.wxLoginCallback=function(){
         that.getIndexList();
         that.getOtherInfo()
@@ -174,6 +181,22 @@ Page({
     }
     if (postId > 0 && app.globalData.uid!=null) {
       app.globalData.cityChange=true;
+      var that=this
+      wx.request({
+        url: app.globalData.apiUrl + 'v3/update_city.php',
+        data: { uid: app.globalData.uid, postId: postId },
+        method: 'POST',
+        success: res => {
+          if(res.data.ret==1){
+            app.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
+            that.setData({
+              selectArray: app.globalData.cityArray
+            })
+          }
+        },
+        complete: res => {
+        }
+      })
       wx.navigateTo({
         url: '/pages/view/viewDetail/viewDetail?id=' + postId,
         complete: res => {
@@ -369,5 +392,24 @@ Page({
     wx.navigateTo({
       url: '/pages/areaSelect/areaSelect',
     })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '小蚂蚁丨海外生活',
+      path: '/pages/index/index',
+      imageUrl: "/images/default.jpg",
+      success: function (res) {
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success'
+        });
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      },
+      complete: res => {
+      }
+    }
   }
 })
