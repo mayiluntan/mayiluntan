@@ -318,6 +318,11 @@ page{
   right: 34vw;
   bottom: 0;
 }
+.tip-top3{
+  position: absolute;
+  right: 40vw;
+  top: 17vw;
+}
 .tip-top .tip-img {
   padding: 0;
   margin: 0;
