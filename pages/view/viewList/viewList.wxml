@@ -27,8 +27,8 @@
         <view class='screen-cate'>
           <view class='screen-title'>类别：</view>
           <view class='screen-select'>
+            <view class='{{screenCate==2?"on":""}}' bindtap='cateSelect' data-value='2'>求租</view>
             <view class='{{screenCate==1?"on":""}}' bindtap='cateSelect' data-value='1'>招租</view>
-            <view class='{{screenCate==2?"on":""}}' bindtap='cateSelect' data-value='2'>找房</view>
           </view>
         </view>
         <view class='screen-cate'>
