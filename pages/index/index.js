@@ -212,9 +212,11 @@ Page({
   onReachBottom: function () {
   },
   getIndexList(){
+    console.log(app.globalData.apiUrl + 'v3/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid)
     wx.request({
-      url: app.globalData.apiUrl + 'get_list_v2.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
+      url: app.globalData.apiUrl + 'v3/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
+        console.log(res)
         this.setData({
           listData:res.data.data
         })
