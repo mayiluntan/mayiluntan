@@ -29,7 +29,7 @@
             <view>
               <view class='list-title'>
                 <view class='list-cate'>{{item.cate}}</view>
-                <view class='list-nick'>{{item.name}}</view>
+                <view class='list-cate' wx:if="{{item.cate2!=''}}">{{item.cate2}}</view>
               </view>
               <view class='list-tag'>
                 <view wx:for="{{item.service}}" wx:for-item='tag' wx:key="index">{{tag}}</view>

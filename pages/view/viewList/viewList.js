@@ -45,7 +45,7 @@ Page({
     var cateArray = ['全部分类']
     switch (v) {
       case 0: cateArray = ['全部分类','求组', '招租']; break;
-      case 1: cateArray = ['全部分类','家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; break;
+      case 1: cateArray = ['全部分类','家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合','求购信息']; break;
       case 2: cateArray = ['全部分类','求职', '招聘']; break;
       case 3: cateArray = ['全部分类','求购', '出售']; break;
       case 4: cateArray = ['全部分类','求助问事']; break;
@@ -81,7 +81,7 @@ Page({
   getIndexList() {
     var cate2 = this.data.cateIndex-1;
     wx.request({
-      url: app.globalData.apiUrl + 'v3/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
+      url: app.globalData.apiUrl + 'v4/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
         this.setData({
           listData: res.data.data

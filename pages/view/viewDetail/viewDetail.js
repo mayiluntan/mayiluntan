@@ -17,6 +17,7 @@ Page({
    */
   onLoad: function (options) {
     id = options.id ? options.id:0
+    console.log(id)
     wx.request({
       url: app.globalData.apiUrl+'get_content.php',
       data: { id: id, uid: app.globalData.uid},
