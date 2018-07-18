@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class='title'>
-        <text>标题：</text><input placeholder="请输入标题" bindinput='titleInput' value='{{postData.title}}'></input>
+        <text>标题：</text><input placeholder="请用最多20个字描述关键信息" bindinput='titleInput' value='{{postData.title}}'></input>
     </view>
     <textarea bindinput='contentInput' placeholder='请输入想要发布的内容' placeholder-style='color:#afafaf;' maxlength='-1' value='{{postData.content}}'></textarea>
     <view class='pic'>

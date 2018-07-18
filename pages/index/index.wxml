@@ -174,5 +174,6 @@
     <view class='tip-img'><image src='/images/arrow_t.png'></image></view>
     <view class='tip-text'>点此按钮选择区域</view>
   </view>
+  <view class='publish' bindtap='goPublish'>发布</view>
 </view>
 
