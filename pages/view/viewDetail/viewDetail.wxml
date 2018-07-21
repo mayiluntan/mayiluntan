@@ -1,4 +1,6 @@
 <view class='main'>
+  
+  <canvas canvas-id='share' class='canvas'></canvas>
   <view class='att' bindtap='addCollect' wx:if="{{isCollect==0}}">+收藏</view>
   <view class='att grey' wx:else>已收藏</view>
   <view class='head'>

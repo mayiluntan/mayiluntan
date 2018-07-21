@@ -316,9 +316,11 @@ page{
 }
 .tip-top2{
   position: fixed;
-  right: 34vw;
-  bottom: 0;
+  right: 120rpx;
+  bottom: 40rpx;
   z-index: 999;
+  display: flex;
+  align-items: center;
 }
 .tip-top3{
   position: absolute;

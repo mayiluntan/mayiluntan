@@ -168,7 +168,7 @@
   </view>
   <view class='tip-top tip-top2' wx:if='{{showTips==1}}'>
     <view class='tip-text'>点此按钮发布内容哦~</view>
-    <view class='tip-img'><image src='/images/arrow_b.png'></image></view>
+    <view class='tip-img'><image src='/images/arrow_r.png'></image></view>
   </view>
   <view class='tip-top tip-top3' wx:if='{{showTips==1}}'>
     <view class='tip-img'><image src='/images/arrow_t.png'></image></view>

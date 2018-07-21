@@ -9,7 +9,8 @@ Page({
   data: {
     content:{},
     message:'',
-    isCollect:0
+    isCollect:0,
+    picTempPath:''
   },
 
   /**
@@ -26,6 +27,34 @@ Page({
           this.setData({
             content: res.data.data,
             isCollect: res.data.data.is_collect
+          })
+          var that = this
+          wx.downloadFile({
+            url: that.data.content.pics[0],
+            success: function (res) {
+              if (res.statusCode === 200) {
+                //that.data.picTempPath = res.tempFilePath
+                //that.data.codeLoaded = true
+                //console.log(that.data.picTempPath)
+               // that.renderCanvas()
+                const ctx = wx.createCanvasContext('share')
+                ctx.drawImage(res.tempFilePath, 0, 0, 300, 150)
+                ctx.draw(false,function(){
+                  wx.canvasToTempFilePath({
+                    canvasId: 'share',
+                    success:res=>{
+                      console.log(res.tempFilePath)
+                      that.setData({
+                        picTempPath: res.tempFilePath
+                      })
+                    },
+                    fail:res=>{
+                      console.log(res)
+                    }
+                  }, this)
+                })
+              }
+            }
           })
         }else{
           app.showTips(res.data.title, res.data.msg, false);
@@ -110,9 +139,12 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
+    var that=this;
+    console.log(that.data.picTempPath)
     return {
       title: this.data.content.title ? this.data.content.title:'小蚂蚁',
       path: '/pages/index/index?id=' + id,
+      imageUrl: that.data.picTempPath,
       success: function (res) {
         wx.showToast({
           title: '分享成功',
