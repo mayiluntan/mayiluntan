@@ -249,6 +249,3 @@
   height: 8vh;
   width: 100vw;
 }
-.canvas{
-  width: 600rpx;
-}

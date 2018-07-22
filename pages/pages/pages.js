@@ -192,5 +192,10 @@ Page({
     wx.navigateTo({
       url: '/pages/publish/business/business'
     })
+  },
+  goPublish() {
+    wx.navigateTo({
+      url: '/pages/publish/business/business',
+    })
   }
 })

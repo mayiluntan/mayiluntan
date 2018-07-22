@@ -85,6 +85,10 @@
         <image src='/images/icon_logo_fangchan.png' />
         <view>房产信息</view>
         </view>
+        <view class='cate-detail' bindtap='showList' data-cate='16'>
+        <image src='/images/icon_logo_back.png' />
+        <view>往返带物</view>
+        </view>
       </view>
     </swiper-item>
   </swiper>
@@ -140,7 +144,7 @@
             <view class='list-left'>
               <view class='list-title'>
                 <view class='list-cate'>{{item.cate}}</view>
-                <view class='list-cate' wx:if="{{item.cate2!=''}}">{{item.cate2}}</view>
+                <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
               </view>
               <view class='list-tag' >
                 <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
@@ -163,15 +167,15 @@
     </block>
   </view>
   <view class='tip-top tip-top1' wx:if='{{showTips==1}}'>
-    <view class='tip-img'><image src='/images/arrow_t.png'></image></view>
+    <view class='tip-img'><image src='/images/arrow_t2.png'></image></view>
     <view class='tip-text'>点此按钮分享给好友</view>
   </view>
   <view class='tip-top tip-top2' wx:if='{{showTips==1}}'>
     <view class='tip-text'>点此按钮发布内容哦~</view>
-    <view class='tip-img'><image src='/images/arrow_r.png'></image></view>
+    <view class='tip-img'><image src='/images/arrow_r2.png'></image></view>
   </view>
   <view class='tip-top tip-top3' wx:if='{{showTips==1}}'>
-    <view class='tip-img'><image src='/images/arrow_t.png'></image></view>
+    <view class='tip-img'><image src='/images/arrow_t2.png'></image></view>
     <view class='tip-text'>点此按钮选择区域</view>
   </view>
   <view class='publish' bindtap='goPublish'>发布</view>

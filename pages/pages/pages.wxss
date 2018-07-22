@@ -292,3 +292,17 @@ page{
   display:flex;
   justify-content: center;
 }
+
+.publish{
+  position: fixed;
+  bottom: 20rpx;
+  right: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background: #f0a323;
+  color: #fff;
+  border-radius: 50rpx;
+  text-align: center;
+  line-height: 100rpx;
+  opacity:0.9;
+}

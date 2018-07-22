@@ -11,8 +11,8 @@ Page({
     picIds:[],
     picCount:0,
     indexArray: [0, 0],
-    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '社区讨论', '拼车信息', '短租民宿', '生意转让','房产信息'], ['求租', '招租']],
-    cateId: [ 1, 2, 3, 4, 5, 6, 7, 8, 12],
+    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '社区讨论', '拼车信息', '短租民宿', '生意转让','房产信息','往返带物'], ['求租', '招租']],
+    cateId: [ 1, 2, 3, 4, 5, 6, 7, 8, 12,16],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
     houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
@@ -219,6 +219,7 @@ Page({
       case 12: cateArray[1] = ['同城交友']; break;
       case 13: cateArray[1] = ['家居家具']; break;
       case 14: cateArray[1] = ['数码电子']; break;
+      case 15: cateArray[1] = ['求带','帮带']; break;
     }
     this.setData({
       cateArray: cateArray

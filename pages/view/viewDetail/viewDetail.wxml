@@ -1,6 +1,4 @@
 <view class='main'>
-  
-  <canvas canvas-id='share' class='canvas'></canvas>
   <view class='att' bindtap='addCollect' wx:if="{{isCollect==0}}">+收藏</view>
   <view class='att grey' wx:else>已收藏</view>
   <view class='head'>
@@ -43,7 +41,13 @@
   <view class='bottom'></view>
   <view class="float-button">
       <view class='input'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
-      <view class='share'>
+      <view class='share' bindtap='goShare' wx:if="{{content.cate1==1 && content.cate2==1}}">
+        <button class='btn'>
+        <image src='/images/share.png'></image>
+        <view>分享</view>
+        </button>
+      </view>
+      <view class='share' wx:else>
         <button class='btn' open-type="share">
         <image src='/images/share.png'></image>
         <view>分享</view>
@@ -52,4 +56,5 @@
       <view class='tel' bindtap='callPhone' data-phone='{{content.mobile}}'>电话</view>
       <view class='wechat' bindtap='copyText' data-wechat='{{content.wechat}}'>微信</view>
   </view><!-- float-button -->
+  
 </view>

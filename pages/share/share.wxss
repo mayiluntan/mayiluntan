@@ -1,0 +1,33 @@
+.main{
+  width: 100vw;
+  height: 100vh;
+  background: rgb(223, 223, 223);
+}
+.canvas{
+  width: 100vw;
+  height: 80vw;
+  background: #fff;
+}
+.share{
+  padding: 20rpx;
+  font-size: 26rpx;
+}
+.share image{
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.share .btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #36ab60;
+  background: #fff;
+  font-size: 26rpx;
+  line-height: normal;
+  padding: 20rpx 0;
+}
+.share button::after{
+  border:none;
+}

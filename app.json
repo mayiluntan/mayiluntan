@@ -23,7 +23,8 @@
     "pages/user/managePost/managePost",
     "pages/error/error",
     "pages/view/businessDetail/businessDetail",
-    "pages/view/businessList/businessList"
+    "pages/view/businessList/businessList",
+    "pages/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",

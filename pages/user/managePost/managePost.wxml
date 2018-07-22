@@ -36,7 +36,12 @@
               <view class='list-tag' >
                 <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
                 <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
+                <block wx:if="{{item.cate1==1 && item.cate2==1}}">
+                <view class='refresh' wx:if='{{menuSelected==0}}'><button bindtap='goShare' data-id='{{item.id}}' data-title='{{item.content}}'>分享刷新</button></view>
+                </block>
+                <block wx:else>
                 <view class='refresh' wx:if='{{menuSelected==0}}'><button open-type="share" data-id='{{item.id}}' data-title='{{item.content}}'>分享刷新</button></view>
+                </block>
               </view>
             </view>
             

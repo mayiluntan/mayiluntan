@@ -191,7 +191,7 @@
               <view>
                 <view class='list-title'>
                   <view class='list-cate'>{{item.cate}}</view>
-                  <view class='list-cate' wx:if="{{item.cate2!=''}}">{{item.cate2}}</view>
+                  <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
                 </view>
                 <view class='list-tag'>
                   <view wx:for="{{item.service}}" wx:for-item='tag' wx:key="index">{{tag}}</view>
@@ -216,4 +216,5 @@
       </view>
     </block>
   </view>
+  <view class='publish' bindtap='goPublish'>发布</view>
 </view>
