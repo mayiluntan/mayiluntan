@@ -264,12 +264,18 @@ Page({
     })
   },
   postClick(){
+    if (lock) {
+      return
+    }
+    lock = true;
     if (this.data.postData.title == '') {
       app.showTips('提示', '请输入标题', false)
+      lock = false;
       return
     }
     if (this.data.postData.content == '') {
       app.showTips('提示', '请输入内容', false)
+      lock = false;
       return
     }
     // if (this.data.pics.length == 0) {
@@ -286,10 +292,12 @@ Page({
           }
         }
       })
+      lock = false;
       return
     }    
     if (this.data.postData.mobile=='') {
       app.showTips('提示', '请填写电话号码', false);
+      lock = false;
       return;
     }
     // var mobileReg = /^[1][0-9]{10}$/;
@@ -299,13 +307,12 @@ Page({
     // }
     if (/.*[\u4e00-\u9fa5]+.*$/.test(this.data.postData.wechat)) {
       app.showTips('提示', '请输入正确的微信号', false)
+      lock = false;
       return;
     }
     if (this.data.postData.area == '') {
       app.showTips('提示', '请选择区域', false)
-      return
-    }
-    if (lock) {
+      lock = false;
       return
     }
     var postData=this.data.postData
@@ -313,10 +320,12 @@ Page({
     if (this.data.indexArray[0] == 0) {
       if (this.data.houseIndex == 0) {
         app.showTips('提示', '请选择房型', false)
+        lock = false;
         return
       }
       if (this.data.typeIndex == 0) {
         app.showTips('提示', '请选择方式', false)
+        lock = false;
         return
       }
       postData.house = this.data.houseIndex;
@@ -346,7 +355,6 @@ Page({
         postData.school2 = this.data.schoolArr[this.data.schoolIndex2];
       }
     }
-    lock=true;
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
@@ -412,7 +420,7 @@ Page({
           app.showTips(res.data.title, res.data.msg, false);
         }
       },
-      complete:res=>{
+      fail:res=>{
         lock=false;
       }
     })

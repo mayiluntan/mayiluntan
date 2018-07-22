@@ -252,18 +252,25 @@ Page({
       postData: postData
     })
   },
-  businessPost(){
+  businessPost() {
+    if (lock) {
+      return
+    }
+    lock = true;
     var postData=this.data.postData
     if (postData.name == '') {
       app.showTips('提示', '请输入商家名称', false)
+      lock = false;
       return
     }
     if (postData.tel == '') {
       app.showTips('提示', '请输入商家手机号', false)
+      lock = false;
       return
     }
     if (postData.wechat == '') {
       app.showTips('提示', '请输入商家微信号', false)
+      lock = false;
       return
     }
     // if (postData.logo == '') {
@@ -276,20 +283,20 @@ Page({
     // }
     if (postData.intro == '') {
       app.showTips('提示', '请填写商户介绍', false)
+      lock = false;
       return
     }
     if (postData.area == '') {
       app.showTips('提示', '请选择区域', false)
+      lock = false;
       return
     }
     if (postData.address == '') {
       app.showTips('提示', '请输入商家地址', false)
+      lock = false;
       return
     }
-    if (lock){
-      return
-    }
-    lock=true;
+
     postData.uid = app.globalData.uid
     postData.pics = this.data.picIds
     //console.log(postData)
@@ -355,7 +362,7 @@ Page({
           app.showTips(res.data.title, res.data.msg, false);
         }
       },
-      complete: res => {
+      fail: res => {
         lock = false;
       }
     })
