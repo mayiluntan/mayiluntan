@@ -359,6 +359,7 @@ Page({
             }, 2000)
           }
         } else {
+          lock = false;
           app.showTips(res.data.title, res.data.msg, false);
         }
       },

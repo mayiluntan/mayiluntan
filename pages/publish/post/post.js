@@ -418,6 +418,7 @@ Page({
           }
         }else{
           app.showTips(res.data.title, res.data.msg, false);
+          lock = false;
         }
       },
       fail:res=>{
