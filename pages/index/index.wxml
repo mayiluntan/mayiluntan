@@ -65,7 +65,7 @@
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='5'>
         <image src='/images/icon_logo_ask_help.png' />
-        <view>求助问事</view>
+        <view>社区讨论</view>
         </view>
       </view>
       <view class='cate'>

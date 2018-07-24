@@ -70,7 +70,7 @@
             <view>
               <view class='list-title'>
                 <view class='list-cate'>{{item.cate}}</view>
-                <view class='list-cate' wx:if="{{item.cate2!=''}}">{{item.cate2}}</view>
+                <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
               </view>
               <view class='list-tag' >
                 <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
