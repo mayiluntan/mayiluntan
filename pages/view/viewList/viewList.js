@@ -48,7 +48,7 @@ Page({
       case 1: cateArray = ['全部分类','家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合','求购信息']; break;
       case 2: cateArray = ['全部分类','求职', '招聘']; break;
       case 3: cateArray = ['全部分类','求购', '出售']; break;
-      case 4: cateArray = ['全部分类','求助问事']; break;
+      case 4: cateArray = ['全部', '求助问事', '留学移民', '美食天地', '吐槽八卦', '校园联谊', '淘气宝宝', '汽车之家', '家有萌宠', '美妆服饰', '旅游踏青']; break;
       case 5: cateArray = ['全部分类','人找车', '车找人']; break;
       case 6: cateArray = ['全部分类','短租民宿']; break;
       case 7: cateArray = ['全部分类','生意转让']; break;
@@ -98,6 +98,12 @@ Page({
     //cate = e.detail.value
     this.setData({
       cateIndex: e.detail.value
+    })
+    this.getIndexList()
+  },
+  cateTap(e) {
+    this.setData({
+      cateIndex: e.currentTarget.dataset.cate
     })
     this.getIndexList()
   },

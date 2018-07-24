@@ -4,6 +4,27 @@
   background: #fff;
   font-size: 30rpx;
 }
+.content .scroll-view{
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+}
+.content .scroll-view view{
+  padding:0 20rpx;
+  display: inline-block;
+}
+.content .scroll-view view view{
+  padding: 30rpx 10rpx;
+  color: #7f7f7f;
+}
+.content .scroll-view .on{
+  background: #f0a323;
+}
+.content .scroll-view .on view{
+  border-bottom: 6rpx solid #000;
+  font-weight: bold;
+  color: #000;
+}
 .content .title{
   height: 40rpx;
   display: flex;

@@ -1,6 +1,13 @@
 <!--pages/user/managePost/managePost.wxml-->
 <view class='content'>
-    <view class='title' wx:if='{{keyword==""}}'>
+    <scroll-view scroll-x="true" class='scroll-view' wx:if='{{cate==5}}'>
+      <block wx:for="{{cateArray}}" wx:key='index'>
+      <view class="{{cateIndex==index?'on':''}}" bindtap='cateTap' data-cate='{{index}}'>
+        <view>{{item}}</view>
+      </view>
+      </block>
+    </scroll-view>
+    <view class='title' wx:if='{{keyword=="" && cate!=5}}'>
       <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}" wx:if='{{cate!=1}}'>
       <view class='title-border'>
         <view>{{cateArray[cateIndex]}}</view>
@@ -60,7 +67,7 @@
       </view>
       <view class='screen-bg' bindtap='showScreen'></view>
     </view>    
-    <view class='division'></view>
+    <view class='division' wx:if='{{keyword=="" && cate!=5}}'></view>
     <block wx:for="{{listData}}" wx:key="{{index}}">
     <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>
