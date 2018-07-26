@@ -95,6 +95,8 @@ page{
 .all-cate{
   width: 100%;
   background: #fff;
+  padding-bottom: 10rpx;
+  height: 40vw;
 }
 .cate{
   background: #fff;
@@ -106,7 +108,7 @@ page{
 .cate .cate-detail{
   width: 20%;
   text-align: center;
-  padding: 16rpx 0;
+  padding: 2vw 0;
 }
 .cate image{
   width: 80rpx;
