@@ -397,7 +397,7 @@ Page({
     return {
       title: '小蚂蚁丨海外生活',
       path: '/pages/index/index',
-      imageUrl: "/images/default.jpg",
+      imageUrl: "/images/share.jpg",
       success: function (res) {
         wx.showToast({
           title: '分享成功',

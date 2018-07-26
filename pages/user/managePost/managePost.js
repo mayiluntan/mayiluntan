@@ -223,7 +223,7 @@ Page({
     return {
       title: title,
       path: '/pages/index/index?id=' + id,
-      imageUrl:"/images/default.jpg",
+      imageUrl:"/images/share.jpg",
       success: function (res) {
         wx.request({
           url: app.globalData.apiUrl + 'post_share.php',

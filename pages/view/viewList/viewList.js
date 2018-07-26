@@ -45,7 +45,7 @@ Page({
     var cateArray = ['全部分类']
     switch (v) {
       case 0: cateArray = ['全部分类','求组', '招租']; break;
-      case 1: cateArray = ['全部分类','家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合','求购信息']; break;
+      case 1: cateArray = ['全部分类', '家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合', '求购信息','电器相关']; break;
       case 2: cateArray = ['全部分类','求职', '招聘']; break;
       case 3: cateArray = ['全部分类','求购', '出售']; break;
       case 4: cateArray = ['全部', '求助问事', '留学移民', '美食天地', '吐槽八卦', '校园联谊', '淘气宝宝', '汽车之家', '家有萌宠', '美妆服饰', '旅游踏青']; break;
@@ -55,7 +55,7 @@ Page({
       case 8: cateArray = ['全部分类','交友项目']; break;
       case 9: cateArray = ['全部分类','宠物相关']; break;
       case 10: cateArray = ['全部分类','二手教材']; break;
-      case 11: cateArray = ['全部分类','学生寄宿', 'Homestay', '行李寄存', '仓库', '车位']; break;
+      case 11: cateArray = ['全部分类']; break;
       case 12: cateArray = ['全部分类','同城交友']; break;
       case 13: cateArray = ['全部分类','家居家具']; break;
       case 14: cateArray = ['全部分类','数码电子']; break;
