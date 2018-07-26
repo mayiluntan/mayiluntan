@@ -55,7 +55,7 @@ Page({
       case 8: cateArray = ['全部分类','交友项目']; break;
       case 9: cateArray = ['全部分类','宠物相关']; break;
       case 10: cateArray = ['全部分类','二手教材']; break;
-      case 11: cateArray = ['全部分类']; break;
+      case 11: cateArray = ['全部分类','二手房','新房']; break;
       case 12: cateArray = ['全部分类','同城交友']; break;
       case 13: cateArray = ['全部分类','家居家具']; break;
       case 14: cateArray = ['全部分类','数码电子']; break;

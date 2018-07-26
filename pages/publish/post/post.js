@@ -215,7 +215,7 @@ Page({
       case 8: cateArray[1] = ['交友项目']; break;
       case 9: cateArray[1] = ['宠物相关']; break;
       case 10: cateArray[1] = ['二手教材']; break;
-      case 11: cateArray[1] = ['房产信息']; break;
+      case 11: cateArray[1] = ['二手房','新房']; break;
       case 12: cateArray[1] = ['同城交友']; break;
       case 13: cateArray[1] = ['家居家具']; break;
       case 14: cateArray[1] = ['数码电子']; break;
