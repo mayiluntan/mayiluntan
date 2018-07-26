@@ -252,9 +252,13 @@ Page({
     }
   },
   goShare(e) {
+    lock = true;
     var id = e.currentTarget.dataset.id
     wx.navigateTo({
       url: '/pages/share/share?id=' + id,
+      success: res => {
+        lock = false;
+      }
     })
   }
 })
