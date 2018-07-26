@@ -293,7 +293,6 @@ Page({
             title: '已复制',
             icon: 'success'
           })
-          lock = false;
         }
       })
     }
