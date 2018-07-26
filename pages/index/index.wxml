@@ -91,16 +91,8 @@
         </view>
       </view>
     </swiper-item>
-    <swiper-item>
-      <view class='cate'>
-        <view class='cate-detail'  bindtap='showList' data-cate='17'>
-        <image src='/images/icon_logo_jiaoyou.png' />
-        <view>缘分天地</view>
-        </view>
-      </view>
-    </swiper-item>
   </swiper>
-  <view class='cate-menu'>
+  <!--<view class='cate-menu'>
     <block wx:if="{{cateSelected==1}}">
       <view class='cate-menu1'><view></view></view>
       <view class='cate-menu2'><view class='cate-select'></view></view>
@@ -109,7 +101,7 @@
       <view class='cate-menu1'><view class='cate-select'></view></view>
       <view class='cate-menu2'><view></view></view>
     </block>
-  </view>
+  </view>-->
   <swiper class='banner' autoplay="true" interval="5000" duration="500">  
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
         <swiper-item> 

@@ -60,7 +60,6 @@ Page({
       case 13: cateArray = ['全部分类','家居家具']; break;
       case 14: cateArray = ['全部分类','数码电子']; break;
       case 15: cateArray = ['全部分类', '求带', '帮带']; break;
-      case 16: cateArray = ['全部分类']; break;
     }
     this.setData({
       cateArray: cateArray
