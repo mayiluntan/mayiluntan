@@ -17,7 +17,7 @@ Page({
    */
   onLoad: function (options) {
     id = options.id ? options.id:0
-    console.log(id)
+    //console.log(id)
     var that = this;
     wx.request({
       url: app.globalData.apiUrl+'v4/get_content.php',

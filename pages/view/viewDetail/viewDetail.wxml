@@ -19,8 +19,8 @@
     <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
   <view class='address' bindtap='openAddress' wx:if='{{content.address!=""}}' ><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
-  <view class='division'></view>
-  <view class='circle'>
+  <view class='division' wx:if='{{content.user_reply==1}}'></view>
+  <view class='circle' wx:if='{{content.user_reply==1}}'>
     <view class='circle-title'>留言</view>
     <view class='circle-list' wx:for="{{content.message}}" wx:key='index'>
       <view class='circle-head'><image src='{{item.avatar}}'></image></view>
@@ -40,7 +40,8 @@
   </view>
   <view class='bottom'></view>
   <view class="float-button">
-      <view class='input'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
+      <view class='input' wx:if='{{content.user_reply==1}}'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
+      <view class='input' wx:if='{{content.user_reply!=1}}'></view>
       <view class='share' bindtap='goShare' wx:if="{{content.cate1==1 && content.cate2==1}}">
         <button class='btn'>
         <image src='/images/share.png'></image>
