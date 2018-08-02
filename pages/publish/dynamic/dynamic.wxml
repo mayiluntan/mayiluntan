@@ -5,7 +5,7 @@
        <text>选择话题：{{topic_name}}</text>
       </view>
     </view>
-    <textarea bindinput='contentInput' placeholder='分享你的心情......' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
+    <textarea bindinput='contentInput' placeholder='' placeholder-style='color:#afafaf;' maxlength='-1'></textarea>
     <view class='pic'>
       <image wx:for="{{pics}}" wx:key='index' src="{{item}}"></image>
       <image wx:if="{{pics.length<9}}" src="/images/post/add.png"  bindtap='addPic'></image>
