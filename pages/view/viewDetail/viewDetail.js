@@ -139,6 +139,15 @@ Page({
       url: '/pages/share/share?id=' + id,
     })
   },
+  imageClicked: function (e) {
+    var section = e.currentTarget.dataset.index;
+    var urls = this.data.content.pics_org
+    if (section >= urls.length || section < 0 || !urls) return;
+    wx.previewImage({
+      urls: urls,
+      current: urls[section]
+    })
+  },
   openAddress(){
     var lon = parseFloat(this.data.content.lon)
     var lat = parseFloat(this.data.content.lat)
