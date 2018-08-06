@@ -242,7 +242,7 @@ Page({
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'v4/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
+      url: app.globalData.apiUrl + 'v5/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
         this.setData({
           listData:res.data.data
