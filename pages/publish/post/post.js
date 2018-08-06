@@ -54,6 +54,7 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id ? options.id:0
+    lock = false
     if(id){
       wx.request({
         url: app.globalData.apiUrl + 'get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
@@ -295,11 +296,11 @@ Page({
       lock = false;
       return
     }    
-    if (this.data.postData.mobile=='') {
-      app.showTips('提示', '请填写电话号码', false);
-      lock = false;
-      return;
-    }
+    // if (this.data.postData.mobile=='') {
+    //   app.showTips('提示', '请填写电话号码', false);
+    //   lock = false;
+    //   return;
+    // }
     // var mobileReg = /^[1][0-9]{10}$/;
     // if (!mobileReg.test(this.data.postData.mobile)) {
     //   app.showTips('提示', '手机号有误', false);
@@ -310,13 +311,15 @@ Page({
       lock = false;
       return;
     }
-    if (this.data.postData.area == '') {
+    
+    var cid = this.data.cateId[this.data.indexArray[0]]
+    if (this.data.postData.area == '' && cid != 5 && cid!=16) {
       app.showTips('提示', '请选择区域', false)
       lock = false;
       return
     }
-    var postData=this.data.postData
-
+    
+    var postData = this.data.postData
     if (this.data.indexArray[0] == 0) {
       if (this.data.houseIndex == 0) {
         app.showTips('提示', '请选择房型', false)

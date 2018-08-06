@@ -37,11 +37,11 @@
     </input>
     </view>
   </view>
+  <view class='detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
+    <view class='detail-list'><text>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
+  </view>
   <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
-  </view>
-  <view class='detail'>
-    <view class='detail-list'><text>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
   </view>
   <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>

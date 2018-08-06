@@ -6,6 +6,7 @@ var cate=0;
 var order=0;
 var area='';
 var postId=0;
+var businessId=0;
 var first=0;
 Page({
   data: {
@@ -111,6 +112,7 @@ Page({
       })
     }, 5000)
     postId = options.id ? options.id : 0;
+    businessId = options.business_id ? options.business_id : 0;
     wx.request({
       url: app.globalData.apiUrl + 'get_banner.php',
       success: res => {
@@ -179,15 +181,16 @@ Page({
       app.globalData.areaChange = false;
       this.getIndexList()
     }
-    if (postId > 0 && app.globalData.uid!=null) {
-      app.globalData.cityChange=true;
-      var that=this
+    if (postId > 0 && app.globalData.uid != null) {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
+      var that = this
       wx.request({
         url: app.globalData.apiUrl + 'v3/update_city.php',
         data: { uid: app.globalData.uid, postId: postId },
         method: 'POST',
         success: res => {
-          if(res.data.ret==1){
+          if (res.data.ret == 1) {
             app.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
             that.setData({
               selectArray: app.globalData.cityArray
@@ -201,6 +204,32 @@ Page({
         url: '/pages/view/viewDetail/viewDetail?id=' + postId,
         complete: res => {
           postId = 0;
+        }
+      })
+    }
+    if (businessId > 0 && app.globalData.uid != null) {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
+      var that = this
+      wx.request({
+        url: app.globalData.apiUrl + 'v5/update_city.php',
+        data: { uid: app.globalData.uid, businessId: businessId },
+        method: 'POST',
+        success: res => {
+          if (res.data.ret == 1) {
+            app.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
+            that.setData({
+              selectArray: app.globalData.cityArray
+            })
+          }
+        },
+        complete: res => {
+        }
+      })
+      wx.navigateTo({
+        url: '/pages/view/businessDetail/businessDetail?id=' + businessId,
+        complete: res => {
+          businessId = 0;
         }
       })
     }

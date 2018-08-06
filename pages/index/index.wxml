@@ -124,10 +124,10 @@
         <image src='/images/icon_arrow_down.png' />
       </view>
       </picker>
-      <view class='title-area title-border' bindtap='selectArea'>
+      <!--<view class='title-area title-border' bindtap='selectArea'>
         <view>{{area==''?'区域':area}}</view>
         <image src='/images/icon_arrow_down.png' />
-      </view>
+      </view>-->
       <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
       <view class='title-border2'>
       <view>{{orderArray[orderIndex]}}</view>

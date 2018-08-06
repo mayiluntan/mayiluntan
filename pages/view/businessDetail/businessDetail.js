@@ -118,5 +118,22 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function (res) {
+    var that = this;
+    console.log(id)
+    return {
+      title: this.data.content.name ? this.data.content.name : '小蚂蚁',
+      path: '/pages/index/index?business_id=' + id,
+      success: function (res) {
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success'
+        });
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })
