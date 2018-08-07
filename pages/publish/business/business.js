@@ -44,6 +44,7 @@ Page({
    */
   onLoad: function (options) {
     var id = options.id ? options.id : 0
+    lock = false;
     if (id) {
       wx.request({
         url: app.globalData.apiUrl + 'get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
