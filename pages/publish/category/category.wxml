@@ -1,0 +1,145 @@
+<view>
+  <view class='cate-title'>
+    <image src='/images/icon_image_recommend_l.png'></image>
+    <text>便民信息</text>
+    <image src='/images/icon_image_recommend_r.png'></image>
+  </view>
+  <view class='all-cate'>
+    <view class='cate'>
+      <view class='cate-detail'  bindtap='showList' data-cate='101'>
+      <image src='/images/icon_logo_chuzu.png' />
+      <view>房屋信息</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='102'>
+      <image src='/images/i1.png' />
+      <view>二手市场</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='103'>
+      <image src='/images/icon_logo_qiuzhi.png' />
+      <view>求职招聘</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='104'>
+      <image src='/images/icon_logo_buy_car.png' />
+      <view>汽车交易</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='105'>
+      <image src='/images/icon_logo_ask_help.png' />
+      <view>蚂蚁闲谈</view>
+      </view>
+    </view>
+    <view class='cate'>
+      <view class='cate-detail' bindtap='showList' data-cate='106'>
+      <image src='/images/icon_logo_share_car.png' />
+      <view>拼车信息</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='107'>
+      <image src='/images/icon_logo_minsu.png' />
+      <view>短租民宿</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='108'>
+      <image src='/images/icon_logo_zhuanrang.png' />
+      <view>生意转让</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='112'>
+      <image src='/images/icon_logo_fangchan.png' />
+      <view>房产信息</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='116'>
+      <image src='/images/icon_logo_back.png' />
+      <view>往返带物</view>
+      </view>
+    </view>
+  </view>
+  <view class='division'></view>
+  <view class='cate-title'>
+    <image src='/images/icon_image_recommend_l.png'></image>
+    <text>商家入驻</text>
+    <image src='/images/icon_image_recommend_r.png'></image>
+  </view>
+  <view class='all-cate'>
+    <view class='cate'>
+      <view class='cate-detail' bindtap='showList' data-cate='1'>
+        <image src='/images/icon_logo_food.png' />
+        <view>餐饮美食</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='2'>
+        <image src='/images/icon_logo_waimai.png' />
+        <view>外卖送餐</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='3'>
+        <image src='/images/icon_logo_service.png' />
+        <view>专业服务</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='4'>
+        <image src='/images/icon_logo_car_service.png' />
+        <view>汽车服务</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='5'>
+        <image src='/images/icon_logo_bianmin.png' />
+        <view>便民家政</view>
+      </view>
+    </view>
+    <view class='cate'>
+      <view class='cate-detail' bindtap='showList' data-cate='6'>
+        <image src='/images/icon_logo_gift.png' />
+        <view>礼品商店</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='7'>
+        <image src='/images/icon_logo_yimin.png' />
+        <view>移民教育</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='8'>
+        <image src='/images/icon_logo_lvyou.png' />
+        <view>旅游机票</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='9'>
+        <image src='/images/icon_logo_market.png' />
+        <view>超市商店</view>
+      </view>
+      <!--<view class='cate-detail' bindtap='showList' data-cate='10'>
+        <image src='/images/icon_logo_doctor.png' />
+        <view>医疗保健</view>
+      </view>-->
+      <view class='cate-detail' bindtap='showList' data-cate='11'>
+        <image src='/images/icon_logo_fcjj.png' />
+        <view>房产经济</view>
+      </view>
+    </view>
+    <view class='cate'>
+      <view class='cate-detail' bindtap='showList' data-cate='12'>
+        <image src='/images/icon_logo_change_money.png' />
+        <view>换汇汇款</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='13'>
+        <image src='/images/icon_logo_kuaidi.png' />
+        <view>快递货运</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='14'>
+        <image src='/images/icon_logo_meifa.png' />
+        <view>美容美发</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='15'>
+        <image src='/images/icon_logo_play.png' />
+        <view>休闲娱乐</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='16'>
+        <image src='/images/icon_logo_hotel.png' />
+        <view>酒店旅馆</view>
+      </view>
+    </view>
+    <view class='cate'>
+      <view class='cate-detail' bindtap='showList' data-cate='17'>
+        <image src='/images/icon_logo_chongwu_service.png' />
+        <view>宠物服务</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='18'>
+        <image src='/images/icon_logo_jiazheng.png' />
+        <view>家政保洁</view>
+      </view>
+      <view class='cate-detail' bindtap='showList' data-cate='19'>
+        <image src='/images/icon_logo_weishang.png' />
+        <view>微商部落</view>
+      </view>
+    </view>
+  </view>
+</view>

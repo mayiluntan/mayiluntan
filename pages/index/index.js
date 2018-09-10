@@ -441,8 +441,8 @@ Page({
     }
   },
   goPublish(){
-    wx.navigateTo({
-      url: '/pages/publish/post/post',
+    wx.switchTab({
+      url: '/pages/publish/category/category'
     })
   }
 })

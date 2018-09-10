@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/publish/category/category",
     "pages/select/select",
     "pages/publish/business/business",
     "pages/areaSelect/areaSelect",
@@ -51,7 +52,7 @@
         "selectedIconPath": "images/s2.png"
       },
       {
-        "pagePath": "pages/publish/publish",
+        "pagePath": "pages/publish/category/category",
         "text": "发布",
         "iconPath": "images/us3.png",
         "selectedIconPath": "images/s3.png"

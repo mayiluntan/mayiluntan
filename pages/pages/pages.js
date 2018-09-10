@@ -190,12 +190,12 @@ Page({
   },
   businessPost(){
     wx.navigateTo({
-      url: '/pages/publish/business/business'
+      url: '/pages/publish/category/category'
     })
   },
   goPublish() {
-    wx.navigateTo({
-      url: '/pages/publish/business/business',
+    wx.switchTab({
+      url: '/pages/publish/category/category',
     })
   }
 })
