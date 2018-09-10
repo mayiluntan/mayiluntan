@@ -562,5 +562,12 @@ Page({
     this.setData({
       postData: postData
     })
+  },
+  personalPick(e){
+    var postData = this.data.postData
+    postData.personal = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
   }
 })

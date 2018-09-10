@@ -95,11 +95,11 @@ page {
 .detail .tags view{
   height: 44rpx;
   line-height: 44rpx;
-  border-radius: 10rpx;
-  padding: 0 10rpx;
+  border-radius: 4rpx;
+  padding: 10rpx 20rpx;
   margin:20rpx 20rpx 0 0;
   color: #666;
-  border: 1px solid #ccc;
+  border:1px solid #F0A232;
 }
 .detail .tags .on{
   color: #4188d2;
@@ -168,4 +168,46 @@ page {
   line-height: 80rpx;
   color: #fff;
   border-radius: 10rpx;
+}
+.merge{
+  display: flex;
+  justify-content: center;
+  padding:0 2vw;
+}
+.merge .detail{
+  width: 44vw;
+  margin:20rpx 0;
+  padding-right: 0;
+}
+.merge .merge-mid{
+  flex: 1;
+}
+.detail-none{
+  border: 0;
+  margin: 0;
+}
+.detail-orgin{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f0a232;
+  padding:10rpx 0 10rpx 2vw;
+  margin: 0 2vw;
+}
+.detail-orgin .detail-orgin-title{
+  flex: 1;
+  color: #343434;
+}
+.detail-orgin .detail-pick-on{
+  padding: 10rpx 40rpx;
+  background: #f0a232;
+  color: #fff;
+  border-radius: 4rpx;
+  border:1px solid #f0a232;
+  margin-left: 20rpx;
+}
+.detail-orgin .detail-pick{
+  padding: 10rpx 40rpx;
+  border:1px solid #f0a232;
+  border-radius: 4rpx;
+  margin-left: 20rpx;
 }

@@ -47,23 +47,26 @@
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>
   </view>
   <block wx:if='{{indexArray[0]==0}}'>
-  <view class='detail'>
-   <view class='detail-list'><text></text>
-   <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
-      <view>
-       <text>房型：{{houseArray[houseIndex]}}</text>
-      </view>
-    </picker>
-   </view>
-  </view>
-  <view class='detail'>
-   <view class='detail-list'><text></text>
-   <picker bindchange="typeChange" value="{{typeIndex}}" range="{{houseType}}" class='house-picker'>
-      <view>
-       <text>方式：{{houseType[typeIndex]}}</text>
-      </view>
-    </picker>
-   </view>
+  <view class='merge'>
+    <view class='detail'>
+    <view class='detail-list'><text></text>
+    <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
+        <view>
+        <text>房型：{{houseArray[houseIndex]}}</text>
+        </view>
+      </picker>
+    </view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+    <view class='detail-list'><text></text>
+    <picker bindchange="typeChange" value="{{typeIndex}}" range="{{houseType}}" class='house-picker'>
+        <view>
+        <text>方式：{{houseType[typeIndex]}}</text>
+        </view>
+      </picker>
+    </view>
+    </view>
   </view>
   <view class='detail'>
    <view class='detail-list no-border'><text>附近学校：</text></view>
@@ -85,10 +88,15 @@
   </radio-group>
    </view>
   </view>
+  <view class='detail-orgin'>
+   <view class='detail-orgin-title'>来源：</view>
+   <view bindtap='personalPick' data-value='1' class="{{postData.personal==1?'detail-pick-on':'detail-pick'}}">个人</view>
+   <view bindtap='personalPick' data-value='2' class="{{postData.personal==2?'detail-pick-on':'detail-pick'}}">中介</view>
+  </view>
   <view class='detail'>
    <view class='detail-list'><text>租金：{{moneySign}}</text><input placeholder="100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
   </view>
-  <view class='detail' >
+  <view class='detail detail-none'>
     <view class='tags'>
       <block wx:for='{{tagArr}}' wx:key='index'>
       <view class="{{(tagIndex1==index || tagIndex2==index)?'on':''}}" bindtap='selectTag' data-index='{{index}}'>{{item}}</view>
@@ -96,11 +104,14 @@
     </view>
   </view>
   </block>
-  <view class='detail'>
-    <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入您的电话号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
-  </view>
-  <view class='detail'>
-    <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
+  <view class='merge'>
+    <view class='detail'>
+      <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+      <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
+    </view>
   </view>
   <view class='division'></view>
   <view class='top-list to-top'>
