@@ -38,7 +38,7 @@
     </view>
   </view>
   <view class='detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
-    <view class='detail-list'><text>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
+    <view class='detail-list'><text  class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
   </view>
   <view class='detail' wx:if='{{indexArray[0]>0}}'>
     <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
@@ -52,7 +52,7 @@
     <view class='detail-list'><text></text>
     <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
         <view>
-        <text>房型：{{houseArray[houseIndex]}}</text>
+        <text class='detail-font'>房型：</text>{{houseArray[houseIndex]}}
         </view>
       </picker>
     </view>
@@ -62,31 +62,19 @@
     <view class='detail-list'><text></text>
     <picker bindchange="typeChange" value="{{typeIndex}}" range="{{houseType}}" class='house-picker'>
         <view>
-        <text>方式：{{houseType[typeIndex]}}</text>
+        <text class='detail-font'>方式：</text>{{houseType[typeIndex]}}
         </view>
       </picker>
     </view>
     </view>
   </view>
   <view class='detail'>
-   <view class='detail-list no-border'><text>附近学校：</text></view>
+   <view class='detail-list no-border'><text class='detail-font'>附近学校：</text></view>
    <view class='tags'>
       <block wx:for='{{schoolArr}}' wx:key='index'>
       <view class="{{(schoolIndex1==index || schoolIndex2==index)?'on':''}}" bindtap='selectSchool' data-index='{{index}}'>{{item}}</view>
       </block>
     </view>
-  </view>
-  <view class='detail'>
-   <view class='detail-list'><text>来源：</text>
-   <radio-group class="radio-group" bindchange="radioChange">
-    <label class="radio">
-      <radio value="1" checked="{{postData.personal==1?true:fasle}}"/>个人
-    </label>
-    <label class="radio">
-      <radio value="2" checked="{{postData.personal==2?true:fasle}}"/>中介
-    </label>
-  </radio-group>
-   </view>
   </view>
   <view class='detail-orgin'>
    <view class='detail-orgin-title'>来源：</view>
@@ -94,7 +82,7 @@
    <view bindtap='personalPick' data-value='2' class="{{postData.personal==2?'detail-pick-on':'detail-pick'}}">中介</view>
   </view>
   <view class='detail'>
-   <view class='detail-list'><text>租金：{{moneySign}}</text><input placeholder="100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
+   <view class='detail-list'><text class='detail-font'>租金：{{moneySign}}</text><input placeholder="100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
   </view>
   <view class='detail detail-none'>
     <view class='tags'>
@@ -106,27 +94,26 @@
   </block>
   <view class='merge'>
     <view class='detail'>
-      <view class='detail-list'><image src='/images/post/tel.png'></image><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
+      <view class='detail-list'><text class='detail-font'>电话：</text><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
     </view>
     <view class='merge-mid'></view>
     <view class='detail'>
-      <view class='detail-list'><image src='/images/wechat2.png'></image><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
+      <view class='detail-list'><text class='detail-font'>微信：</text><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
     </view>
   </view>
-  <view class='division'></view>
   <view class='top-list to-top'>
-    <text>我要置顶</text>
+    <text class='detail-font'>我要置顶</text>
     <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>
   </view>
   <view class='top-list' wx:if='{{postData.top==1}}'>
-    <text>选择置顶时间</text>
+    <text class='detail-font'>选择置顶时间</text>
     <picker  class='day' bindchange="dayChange" value="{{dayIndex}}" range="{{dayArray}}">
       <text>{{dayArray[dayIndex]}}</text>
     </picker>
     <image src='/images/post/more.png'></image>
   </view>
   <view class='top-list' wx:if='{{postData.top==1}}'>
-    <text>价格</text>
+    <text class='detail-font'>价格</text>
     <text  class='price'>¥{{postData.topPrice}}</text>
   </view>
   <view class='button' bindtap='postClick'>

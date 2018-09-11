@@ -86,8 +86,6 @@ page {
 }
 .detail .tags{
   width: 95vw;
-  border-bottom: 1px solid #efefef;
-  padding-bottom:30rpx;
   display:flex;
   flex-wrap:wrap;
   overflow-wrap: break-word;
@@ -97,7 +95,7 @@ page {
   line-height: 44rpx;
   border-radius: 4rpx;
   padding: 10rpx 20rpx;
-  margin:20rpx 20rpx 0 0;
+  margin:0 20rpx 20rpx 0;
   color: #666;
   border:1px solid #F0A232;
 }
@@ -111,11 +109,12 @@ page {
   background: #f2f3f4;
 }
 .top-list{
-  width: 95vw;
-  padding:30rpx 0;
+  padding:30rpx 2vw;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #efefef;
+  border:1px solid #F0A232;
+  margin:20rpx 2vw;
+  border-radius:4rpx;
 }
 .top-list image{
   width: 14rpx;
@@ -156,7 +155,7 @@ page {
 .button{
   width: 100%;
   height: 100rpx;
-  background: #f2f3f4;
+  background: #fff;
   padding-top:100rpx;
 }
 .button view{
@@ -176,7 +175,7 @@ page {
 }
 .merge .detail{
   width: 44vw;
-  margin:20rpx 0;
+  margin:0;
   padding-right: 0;
 }
 .merge .merge-mid{
@@ -210,4 +209,7 @@ page {
   border:1px solid #f0a232;
   border-radius: 4rpx;
   margin-left: 20rpx;
+}
+.detail-font{
+  color:#343434;
 }
