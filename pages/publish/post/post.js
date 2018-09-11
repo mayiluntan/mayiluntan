@@ -19,6 +19,7 @@ Page({
     houseIndex:0,
     houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
     typeIndex:0,
+    startDate:'',
     postData:{
       id: 0,
       title:'',
@@ -38,7 +39,15 @@ Page({
       topDay:1,
       topPrice:10,
       personal:1,
-      school:''
+      school:'',
+      carType:1,
+      start:'',
+      end:'',
+      mid:'',
+      date:'',
+      time:'',
+      peopleNum:'',
+      linkman:''
     },
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
@@ -55,6 +64,17 @@ Page({
   onLoad: function (options) {
     var id = options.id ? options.id:0
     lock = false
+    var utils = require('../../../utils/util.js');
+    var postData = this.data.postData;
+    var date = new Date();
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    postData.date = utils.formatDate(new Date())
+    postData.time = hour + ':' + minute
+    this.setData({
+      postData: postData,
+      startDate: utils.formatDate(new Date())
+    })
     if(id){
       wx.request({
         url: app.globalData.apiUrl + 'get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
@@ -566,6 +586,27 @@ Page({
   personalPick(e){
     var postData = this.data.postData
     postData.personal = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  carTypePick(e){
+    var postData = this.data.postData
+    postData.carType = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  dateChange(e) {
+    var postData = this.data.postData
+    postData.date = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  timeChange(e) {
+    var postData = this.data.postData
+    postData.time = e.detail.value;
     this.setData({
       postData: postData
     })

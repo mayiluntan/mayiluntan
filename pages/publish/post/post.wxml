@@ -1,5 +1,9 @@
 <!--pages/publish/post/post.wxml-->
 <view class='main'>
+  <view class='tips'>
+    <view class='tips-dou'>“</view>
+    <view class='tips-content'><text>您发布的所有信息将第一时间分散到小蚂蚁群、小蚂蚁圈，没有限制、完全免费、万人关注、传播迅速。不花一分钱就能获得绝佳效果。</text><text class='tips-dou2'>”</text></view>
+  </view>
   <view class='content'>
     <view class='cate detail' wx:if='{{postData.id==0}}'>
      <picker mode="multiSelector" bindchange="cateChange" bindcolumnchange="columnChange" value="{{indexArray}}" range="{{cateArray}}">
@@ -16,6 +20,42 @@
     <view class='title detail'>
         <text>标题：</text><input placeholder="请用最多20个字描述关键信息" bindinput='titleInput' value='{{postData.title}}'></input>
     </view>
+    <view class='detail-orgin'>
+      <view class='detail-orgin-title'>拼车类型：</view>
+      <view bindtap='carTypePick' data-value='1' class="{{postData.carType==1?'detail-pick-on':'detail-pick'}}">临时</view>
+      <view bindtap='carTypePick' data-value='2' class="{{postData.carType==2?'detail-pick-on':'detail-pick'}}">长期</view>
+    </view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>出发地：</text><input placeholder="请输入出发地" bindinput='startInput' value='{{postData.start}}'></input></view>
+    </view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>目的地：</text><input placeholder="请输入目的地" bindinput='endInput' value='{{postData.end}}'></input></view>
+    </view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>途径地：</text><input placeholder="请输入途径地" bindinput='midInput' value='{{postData.mid}}'></input></view>
+    </view>
+    <view class='merge'>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>出发日期：</text>
+      <picker mode='date' bindchange='dateChange' value='{{postData.date}}' start='{{startDate}}'>{{postData.date}}</picker>
+      </view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>出发时间：</text>
+      <picker mode='time' bindchange='timeChange' value='{{postData.time}}'>{{postData.time}}</picker>
+      </view>
+    </view>
+  </view>
+  <view class='merge'>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>可乘人数：</text><input   bindinput='peopleNumInput' value='{{postData.peopleNum}}'></input></view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>联系人：</text><input  bindinput='linkmanInput' value='{{postData.linkman}}'></input></view>
+    </view>
+  </view>
     <view class='pic detail'>
       <textarea bindinput='contentInput' placeholder='内容详情（请详细、多方面描述您发布的信息内容）'  maxlength='-1' value='{{postData.content}}'></textarea>
       <view wx:for="{{pics}}" wx:key='index'>
@@ -27,24 +67,26 @@
     </view>
   </view>
   <view class='detail'>
-    <view class='detail-list' bindtap='chooseLocation'><image src='/images/post/local.png'></image><input placeholder="江苏省无锡市" disabled='true' value='{{postData.address}}'></input><image class='more' src='/images/post/more.png'></image></view>
+    <view class='detail-list' bindtap='chooseLocation'><text class='detail-font'>定位：</text><input placeholder="江苏省无锡市" disabled='true' value='{{postData.address}}'></input><image class='more' src='/images/post/more.png'></image></view>
   </view>
   <view class='detail' wx:if='{{indexArray[0]!=4 && indexArray[0]!=0}}'>
     <view class='detail-list detail-money'>
-    <image src='/images/post/price.png'></image>
-    <text class='detail-sign'>{{moneySign}}</text>
+    <text class='detail-font'>价格：{{moneySign}}</text>
     <input placeholder="请输入价格，不填为⾯议" bindinput='priceInput' value='{{postData.price}}'>
     </input>
     </view>
   </view>
   <view class='detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
-    <view class='detail-list'><text  class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
+    <view class='detail-list'><text class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
   </view>
-  <view class='detail' wx:if='{{indexArray[0]>0}}'>
-    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签1" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
-  </view>
-  <view class='detail' wx:if='{{indexArray[0]>0}}'>
-    <view class='detail-list'><image src='/images/post/tag.png'></image><input placeholder="标签2" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>
+  <view class='merge'>
+    <view class='detail' wx:if='{{indexArray[0]>0}}'>
+      <view class='detail-list'><text class='detail-font'>标签1：</text><input placeholder="请填写标签" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail' wx:if='{{indexArray[0]>0}}'>
+      <view class='detail-list'><text class='detail-font'>标签2：</text><input placeholder="请填写标签" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>
+    </view>
   </view>
   <block wx:if='{{indexArray[0]==0}}'>
   <view class='merge'>
