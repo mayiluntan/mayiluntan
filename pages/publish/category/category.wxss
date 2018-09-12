@@ -1,4 +1,41 @@
 /* pages/publish/category/category.wxss */
+.top{
+  width: 95vw;
+  height: 34vw;
+  background: #F0A232;
+  text-align: right;
+  padding-right: 5vw;
+}
+.top .title{
+  padding-top:10px;
+  font-size: 25px;
+  color: #432901;
+  font-weight: bold;
+}
+.top .content{
+  margin-top: 16rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.top .content .c1{
+  color: #432901;
+  font-size:26rpx;
+}
+.top .content .c2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left:20rpx;
+}
+.top .c3{
+  margin-top: 12rpx;
+  color: #aa7000;
+  font-size: 22rpx;
+}
+.top .content image{
+  width: 50rpx;
+  height: 50rpx;
+}
 .division{
   height: 20rpx;
   background: #F2F3F4;

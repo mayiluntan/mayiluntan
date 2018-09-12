@@ -1,4 +1,16 @@
 <view>
+  <view class='top'>
+    <view class='title'>小蚂蚁传媒</view>
+    <view class='content'>
+      <view class='c1'>
+        <view>专为广大留学生/移民海外</view>
+        <view>华人搭建为帅哥美女们提供便民服务</view>
+      </view>
+      <view class='c2'><image src='/images/publish_dot.png'></image></view>
+    </view>
+    <view class='c3'>招聘求职　|　二手买卖　|　房屋租赁　|　吃喝玩乐</view>
+  </view>
+  <view class='division'></view>
   <view class='cate-title'>
     <image src='/images/icon_image_recommend_l.png'></image>
     <text>便民信息</text>

@@ -11,14 +11,27 @@
     </swiper>
   </view><!-- head -->
   <view class='content'>
-    <view class='c'>{{content.content}}</view>
     <view class='nick'>{{content.nickname}}</view>
     <view>发布时间：{{content.dated}}</view>
   </view>
+  <view class='division'></view>
   <view class='tag'>
     <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
-  <view class='address' bindtap='openAddress' wx:if='{{content.address!=""}}' ><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
+  <view class='all-tips'>
+    <view class='tips' bindtap='openAddress' wx:if='{{content.address!=""}}'>
+      <image src='/images/view/location.png'></image><text>{{content.address}}</text>
+      <image src='/images/more.png' class='more'></image>
+    </view>
+    <view class='tips' bindtap=''>
+      <image class='warning' src='/images/view/warning.png'></image><text>若此信息虚假或有误，请点击此处举报</text>
+      <image src='/images/more.png' class='more'></image>
+    </view>
+  </view>
+  <view class='all-content'>
+    <view class='t'>详情介绍</view>
+    <view class='c'>{{content.content}}</view>
+  </view>
   <view class='division' wx:if='{{content.user_reply==1}}'></view>
   <view class='circle' wx:if='{{content.user_reply==1}}'>
     <view class='circle-title'>留言</view>

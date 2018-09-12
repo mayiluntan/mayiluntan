@@ -1,8 +1,8 @@
 <!--pages/publish/post/post.wxml-->
 <view class='main'>
   <view class='tips'>
-    <view class='tips-dou'>“</view>
-    <view class='tips-content'><text>您发布的所有信息将第一时间分散到小蚂蚁群、小蚂蚁圈，没有限制、完全免费、万人关注、传播迅速。不花一分钱就能获得绝佳效果。</text><text class='tips-dou2'>”</text></view>
+    <view class='tips-dou'><image src='/images/dot1.png'></image></view>
+    <view class='tips-content'><text>您发布的所有信息将第一时间分散到小蚂蚁群、小蚂蚁圈，没有限制、完全免费、万人关注、传播迅速。不花一分钱就能获得绝佳效果。</text><image class='tips-dou2' src='/images/dot2.png'></image></view>
   </view>
   <view class='content'>
     <view class='cate detail' wx:if='{{postData.id==0}}'>
@@ -20,42 +20,44 @@
     <view class='title detail'>
         <text>标题：</text><input placeholder="请用最多20个字描述关键信息" bindinput='titleInput' value='{{postData.title}}'></input>
     </view>
-    <view class='detail-orgin'>
-      <view class='detail-orgin-title'>拼车类型：</view>
-      <view bindtap='carTypePick' data-value='1' class="{{postData.carType==1?'detail-pick-on':'detail-pick'}}">临时</view>
-      <view bindtap='carTypePick' data-value='2' class="{{postData.carType==2?'detail-pick-on':'detail-pick'}}">长期</view>
-    </view>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>出发地：</text><input placeholder="请输入出发地" bindinput='startInput' value='{{postData.start}}'></input></view>
-    </view>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>目的地：</text><input placeholder="请输入目的地" bindinput='endInput' value='{{postData.end}}'></input></view>
-    </view>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>途径地：</text><input placeholder="请输入途径地" bindinput='midInput' value='{{postData.mid}}'></input></view>
-    </view>
-    <view class='merge'>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>出发日期：</text>
-      <picker mode='date' bindchange='dateChange' value='{{postData.date}}' start='{{startDate}}'>{{postData.date}}</picker>
+    <block wx:if='{{indexArray[0]==5}}'>
+      <view class='detail-orgin'>
+        <view class='detail-orgin-title'>拼车类型：</view>
+        <view bindtap='carTypePick' data-value='1' class="{{postData.carType==1?'detail-pick-on':'detail-pick'}}">临时</view>
+        <view bindtap='carTypePick' data-value='2' class="{{postData.carType==2?'detail-pick-on':'detail-pick'}}">长期</view>
       </view>
-    </view>
-    <view class='merge-mid'></view>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>出发时间：</text>
-      <picker mode='time' bindchange='timeChange' value='{{postData.time}}'>{{postData.time}}</picker>
+      <view class='detail'>
+        <view class='detail-list'><text class='detail-font'>出发地：</text><input placeholder="请输入出发地" bindinput='startInput' value='{{postData.start}}'></input></view>
       </view>
-    </view>
-  </view>
-  <view class='merge'>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>可乘人数：</text><input   bindinput='peopleNumInput' value='{{postData.peopleNum}}'></input></view>
-    </view>
-    <view class='merge-mid'></view>
-    <view class='detail'>
-      <view class='detail-list'><text class='detail-font'>联系人：</text><input  bindinput='linkmanInput' value='{{postData.linkman}}'></input></view>
-    </view>
-  </view>
+      <view class='detail'>
+        <view class='detail-list'><text class='detail-font'>目的地：</text><input placeholder="请输入目的地" bindinput='endInput' value='{{postData.end}}'></input></view>
+      </view>
+      <view class='detail'>
+        <view class='detail-list'><text class='detail-font'>途径地：</text><input placeholder="请输入途径地" bindinput='midInput' value='{{postData.mid}}'></input></view>
+        </view>
+        <view class='merge'>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>出发日期：</text>
+          <picker mode='date' bindchange='dateChange' value='{{postData.date}}' start='{{startDate}}'>{{postData.date}}</picker>
+          </view>
+        </view>
+        <view class='merge-mid'></view>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>出发时间：</text>
+          <picker mode='time' bindchange='timeChange' value='{{postData.time}}'>{{postData.time}}</picker>
+          </view>
+        </view>
+      </view>
+      <view class='merge'>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>可乘人数：</text><input   bindinput='peopleNumInput' value='{{postData.peopleNum}}'></input></view>
+        </view>
+        <view class='merge-mid'></view>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>联系人：</text><input  bindinput='linkmanInput' value='{{postData.linkman}}'></input></view>
+        </view>
+      </view>
+    </block>
     <view class='pic detail'>
       <textarea bindinput='contentInput' placeholder='内容详情（请详细、多方面描述您发布的信息内容）'  maxlength='-1' value='{{postData.content}}'></textarea>
       <view wx:for="{{pics}}" wx:key='index'>

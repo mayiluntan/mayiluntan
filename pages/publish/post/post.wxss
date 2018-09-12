@@ -19,9 +19,16 @@ page {
 .tips-dou{
   font-size: 60rpx;
   color: #F0A232;
+  display:flex;
+  width:120rpx;
+}
+.tips-dou image{
+  width: 37rpx;
+  height: 35rpx;
 }
 .tips-dou2{
-  color: #F0A232;
+  width: 23rpx;
+  height: 21rpx;
 }
 .content {
   position: relative;
