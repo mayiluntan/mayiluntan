@@ -10,11 +10,32 @@
       </block>  
     </swiper>
   </view><!-- head -->
+  <view class='title'>{{content.title}}</view>
   <view class='content'>
     <view class='nick'>{{content.nickname}}</view>
     <view>发布时间：{{content.dated}}</view>
   </view>
   <view class='division'></view>
+  <view class='detail' wx:if='{{content.cate1==1}}'>
+    <view class='detail-list'><text class='detail-title'>租金：</text><text class='detail-price'>{{content.price==0?'面议':content.money_sign+content.price+'/周'}}</text></view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>房型：</text><text class='detail-content'>{{content.other_info.house}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>来源：</text><text class='detail-content'>{{content.other_info.source}}</text>
+      </view>
+    </view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>方式：</text><text class='detail-content'>{{content.other_info.house_type}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+      </view>
+    </view>
+    <view class='detail-list detail-list3'><text class='detail-title'>附近学校：</text><text class='detail-content'>{{content.other_info.school}}</text></view>
+  </view>
+  <view class='division' wx:if='{{content.cate1==1}}'></view>
   <view class='tag'>
     <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
@@ -23,7 +44,7 @@
       <image src='/images/view/location.png'></image><text>{{content.address}}</text>
       <image src='/images/more.png' class='more'></image>
     </view>
-    <view class='tips' bindtap=''>
+    <view class='tips' bindtap='goReport'>
       <image class='warning' src='/images/view/warning.png'></image><text>若此信息虚假或有误，请点击此处举报</text>
       <image src='/images/more.png' class='more'></image>
     </view>
@@ -52,23 +73,25 @@
     </view>
   </view>
   <view class='bottom'></view>
-  <view class="float-button">
+  <view class="float-button" wx:if='{{showMessage==1}}'>
       <view class='input' wx:if='{{content.user_reply==1}}'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
       <view class='input' wx:if='{{content.user_reply!=1}}'></view>
+      <view class='cancel' bindtap='showMessage'><view>取消</view></view>
+      <view class='send' bindtap='replySubmit'><view>发送</view></view>
+  </view><!-- float-button -->
+  <view class="float-button2" wx:else>
+      <view bindtap='showMessage'><image src='/images/view/message.png'></image></view>
       <view class='share' bindtap='goShare' wx:if="{{content.cate1==1 && content.cate2==1}}">
         <button class='btn'>
-        <image src='/images/share.png'></image>
-        <view>分享</view>
+        <image src='/images/view/share.png'></image>
         </button>
       </view>
       <view class='share' wx:else>
         <button class='btn' open-type="share">
-        <image src='/images/share.png'></image>
-        <view>分享</view>
+        <image src='/images/view/share.png'></image>
         </button>
       </view>
-      <view class='tel' bindtap='callPhone' data-phone='{{content.mobile}}'>电话</view>
-      <view class='wechat' bindtap='copyText' data-wechat='{{content.wechat}}'>微信</view>
+      <view bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
+      <view bindtap='callPhone' data-phone='{{content.mobile}}'><image src='/images/view/tel.png'></image></view>
   </view><!-- float-button -->
-  
 </view>

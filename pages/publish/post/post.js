@@ -62,6 +62,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var cate = options.cate ? options.cate : 0;
+    if(cate>0){
+      this.setData({
+        indexArray: [cate-1,0]
+      })
+    }
     var id = options.id ? options.id:0
     lock = false
     var utils = require('../../../utils/util.js');
@@ -173,6 +179,7 @@ Page({
     });
   },
   cateChange(e) {
+    console.log(e)
     var v = e.detail.value;
     if (this.data.indexArray != v) {
       this.setData({
@@ -607,6 +614,62 @@ Page({
   timeChange(e) {
     var postData = this.data.postData
     postData.time = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  midInput(e) {
+    var postData = this.data.postData
+    postData.mid = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  startInput(e) {
+    var postData = this.data.postData
+    postData.start = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  endInput(e) {
+    var postData = this.data.postData
+    postData.end = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  carTypePick(e){
+    var postData = this.data.postData
+    postData.carType = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  dateChange(e){
+    var postData = this.data.postData
+    postData.date = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  timeChange(e){
+    var postData = this.data.postData
+    postData.time = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  peopleNumInput(e) {
+    var postData = this.data.postData
+    postData.peopleNum = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  linkmanInput(e) {
+    var postData = this.data.postData
+    postData.linkman = e.detail.value;
     this.setData({
       postData: postData
     })

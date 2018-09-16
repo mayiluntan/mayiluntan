@@ -52,17 +52,52 @@
   height: 40rpx;
   line-height: 40rpx;
 }
+.title{
+    padding:10rpx 20rpx;
+    font-weight: bold;
+    font-size: 32rpx;
+}
 .content view{
   text-align: right;
   color: #A0A0A0;
   word-break:break-all;
 }
+.detail-list{
+  display: flex;
+  padding: 10rpx 20rpx;
+  border-bottom: 1rpx solid #cfcfcf;
+}
+.detail-list2{
+  padding: 0 20rpx;
+}
+.detail-list3{
+  border:0;
+}
+.detail-merge{
+  display: flex;
+  width: 50%;
+  padding: 10rpx 0;
+}
+.detail-merge2{
+  border-left: 1rpx solid #cfcfcf;
+  padding-left: 20rpx;
+}
+.detail-title{
+  color: #a3a3a3;
+  width: 25vw;
+}
+.detail-price{
+  color: #ffae58;
+}
+.detail-content{
+  flex: 1;
+}
 .tag{
   display: flex;
-  padding: 20rpx 40rpx;
+  padding: 0 40rpx;
   align-items: center;
   flex-wrap: wrap;
-  background: #F2F3F4;
+  background: #fff;
 }
 .tag view{
   height: 44rpx;
@@ -98,7 +133,6 @@
 }
 .tips text{
   flex: 1;
-  padding-left:20rpx;
 }
 
 /************ float-button **********/
@@ -168,7 +202,56 @@
   color:#fff;
   height: 100%;
 }
-
+.float-button .cancel view{
+  background:#ccc;
+  padding:10rpx 20rpx;
+  border-radius:10rpx;
+  color:#fff;
+}
+.float-button .send view{
+  background:#EEA240;
+  padding:10rpx 20rpx;
+  border-radius:10rpx;
+  color:#fff;
+  margin:0 10px;
+}
+.float-button2{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: 8vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, .1);
+}
+.float-button2 view{
+  display: flex;
+  width: 25%;
+  justify-content: center;
+}
+.float-button2 image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.float-button2 .share .btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #36ab60;
+  background: #fff;
+  font-size: 26rpx;
+  line-height: normal;
+  padding: 0;
+}
+.float-button2 .share button::after{
+  border:none;
+}
 .circle .circle-title{
   padding: 20rpx 0 20rpx 20rpx;
   font-size: 32rpx;

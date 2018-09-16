@@ -9,7 +9,8 @@ Page({
   data: {
     content:{},
     message:'',
-    isCollect:0
+    isCollect:0,
+    showMessage:0
   },
 
   /**
@@ -20,9 +21,10 @@ Page({
     //console.log(id)
     var that = this;
     wx.request({
-      url: app.globalData.apiUrl+'v4/get_content.php',
+      url: app.globalData.apiUrl+'v6/get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
+        console.log(res.data)
         if(res.data.ret==1){
           this.setData({
             content: res.data.data,
@@ -163,6 +165,18 @@ Page({
           }
         })
       }
+    })
+  },
+  showMessage(){
+    var v = this.data.showMessage
+    v = v==1?0:1;
+    this.setData({
+      showMessage: v
+    })
+  },
+  goReport(){
+    wx.navigateTo({
+      url: '/pages/view/report/report?source=1&source_id='+id,
     })
   }
 })

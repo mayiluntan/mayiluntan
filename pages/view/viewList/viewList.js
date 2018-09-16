@@ -82,7 +82,7 @@ Page({
   getIndexList() {
     var cate2 = this.data.cateIndex-1;
     wx.request({
-      url: app.globalData.apiUrl + 'v5/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
+      url: app.globalData.apiUrl + 'v6/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
         this.setData({
           listData: res.data.data

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/view/report/report",
     "pages/publish/category/category",
     "pages/select/select",
     "pages/publish/business/business",

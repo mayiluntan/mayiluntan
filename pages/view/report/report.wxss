@@ -1,0 +1,38 @@
+/* pages/view/report/report.wxss */
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.content{
+  padding-bottom: 40rpx;
+}
+.content textarea{
+  border:1px solid #ff9800;
+  border-radius: 10rpx;
+  margin:0 auto;
+  width: 90vw;
+  height: 60vw;
+}
+.btn{
+  display: flex;
+  justify-content: center;
+}
+.btn view{
+  padding: 20rpx;
+  color: #fff;
+  background: #ff9800;
+  width: 200rpx;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 10rpx;
+}
+.btn .cancel{
+  background: #ccc;
+}
+.none{
+  text-align: center;
+  color: #ccc;
+  height: 200rpx;
+  line-height: 200rpx;
+}

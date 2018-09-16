@@ -1,0 +1,7 @@
+<view class='main'>
+  <view class='content' wx:if="{{isShow==1}}">
+    <textarea placeholder='请输入举报原因' bindinput='contentInout' value='{{content}}'></textarea>
+  </view>
+  <view class='btn' wx:if="{{isShow==1}}"><view class='cancel' bindtap='cancelClick'>取消</view><view bindtap='sendClick'>提交</view></view>
+  <view wx:if="{{isShow==0}}" class='none'>您已经提交过举报了哦~</view>
+</view>

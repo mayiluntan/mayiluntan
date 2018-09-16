@@ -33,7 +33,7 @@
         <view class='detail-list'><text class='detail-font'>目的地：</text><input placeholder="请输入目的地" bindinput='endInput' value='{{postData.end}}'></input></view>
       </view>
       <view class='detail'>
-        <view class='detail-list'><text class='detail-font'>途径地：</text><input placeholder="请输入途径地" bindinput='midInput' value='{{postData.mid}}'></input></view>
+        <view class='detail-list'><text class='detail-font'>途径地：</text><input placeholder="请输入途径地（没有可不填）" bindinput='midInput' value='{{postData.mid}}'></input></view>
         </view>
         <view class='merge'>
         <view class='detail'>
