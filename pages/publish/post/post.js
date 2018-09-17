@@ -83,7 +83,7 @@ Page({
     })
     if(id){
       wx.request({
-        url: app.globalData.apiUrl + 'get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v6/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -179,7 +179,6 @@ Page({
     });
   },
   cateChange(e) {
-    console.log(e)
     var v = e.detail.value;
     if (this.data.indexArray != v) {
       this.setData({
@@ -347,6 +346,7 @@ Page({
     }
     
     var postData = this.data.postData
+    console.log(this.data.indexArray)
     if (this.data.indexArray[0] == 0) {
       if (this.data.houseIndex == 0) {
         app.showTips('提示', '请选择房型', false)
@@ -385,13 +385,35 @@ Page({
         postData.school2 = this.data.schoolArr[this.data.schoolIndex2];
       }
     }
+    if (this.data.indexArray[0] == 5) {
+      if (postData.start == '') {
+        app.showTips('提示', '请输入出发地', false)
+        lock = false;
+        return
+      }
+      if (postData.end == '') {
+        app.showTips('提示', '请输入目的地', false)
+        lock = false;
+        return
+      }
+      if (postData.peopleNum == '' || postData.peopleNum <= 0) {
+        app.showTips('提示', '请输入人数', false)
+        lock = false;
+        return
+      }
+      if (postData.linkman == '') {
+        app.showTips('提示', '请输入联系人', false)
+        lock = false;
+        return
+      }
+    }
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
     postData.cate[0] = this.data.cateId[postData.cate[0]]
     postData.moneySign = this.data.moneySign
     wx.request({
-      url: app.globalData.apiUrl+'post.php',
+      url: app.globalData.apiUrl+'v6/post.php',
       data: postData,
       method:'POST',
       success:res=>{
@@ -597,27 +619,6 @@ Page({
       postData: postData
     })
   },
-  carTypePick(e){
-    var postData = this.data.postData
-    postData.carType = e.currentTarget.dataset.value
-    this.setData({
-      postData: postData
-    })
-  },
-  dateChange(e) {
-    var postData = this.data.postData
-    postData.date = e.detail.value;
-    this.setData({
-      postData: postData
-    })
-  },
-  timeChange(e) {
-    var postData = this.data.postData
-    postData.time = e.detail.value;
-    this.setData({
-      postData: postData
-    })
-  },
   midInput(e) {
     var postData = this.data.postData
     postData.mid = e.detail.value;
@@ -648,14 +649,14 @@ Page({
   },
   dateChange(e){
     var postData = this.data.postData
-    postData.date = e.currentTarget.dataset.value
+    postData.date = e.detail.value
     this.setData({
       postData: postData
     })
   },
   timeChange(e){
     var postData = this.data.postData
-    postData.time = e.currentTarget.dataset.value
+    postData.time = e.detail.value
     this.setData({
       postData: postData
     })

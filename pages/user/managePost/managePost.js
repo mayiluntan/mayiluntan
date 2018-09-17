@@ -217,17 +217,23 @@ Page({
   },
   onShareAppMessage: function (res) {
     lock = true;
+    var selectType = this.data.menuSelected
     var id = res.target.dataset.id;
     var title = res.target.dataset.title;
     title = title == '' ? '小蚂蚁' : title;
+    if (selectType == 2) {
+      var page = '/pages/index/index?business_id=' + id
+    } else {
+      var page = '/pages/index/index?id=' + id
+    }
     return {
       title: title,
-      path: '/pages/index/index?id=' + id,
+      path: page,
       imageUrl:"/images/share.jpg",
       success: function (res) {
         wx.request({
-          url: app.globalData.apiUrl + 'post_share.php',
-          data: { id: id, uid: app.globalData.uid },
+          url: app.globalData.apiUrl + 'v6/post_share.php',
+          data: { id: id, uid: app.globalData.uid, selectType:selectType },
           method: 'POST',
           success: res => {
             if(res.data.ret==0){
