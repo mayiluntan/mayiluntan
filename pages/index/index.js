@@ -8,6 +8,7 @@ var area='';
 var postId=0;
 var businessId=0;
 var first=0;
+var page='';
 Page({
   data: {
     cateSelected:0,
@@ -105,14 +106,29 @@ Page({
   },
   
   onLoad: function (options) {
+    options.scene ='b899e3051d1ec22b13f725b882631ed7'
+    if (options.scene) {
+      var scene = decodeURIComponent(options.scene)
+      wx.request({
+        url: app.globalData.apiUrl + 'v6/get_scene.php',
+        method: 'POST',
+        data: { scene: scene },
+        success: res => {
+          if (res.data.ret == 1) {
+            page = res.data.data
+          }
+        }
+      })
+    }else{
+      postId = options.id ? options.id : 0;
+      businessId = options.business_id ? options.business_id : 0;
+    }
     var that=this
     setTimeout(function(){
       that.setData({
         showTips:0
       })
     }, 5000)
-    postId = options.id ? options.id : 0;
-    businessId = options.business_id ? options.business_id : 0;
     wx.request({
       url: app.globalData.apiUrl + 'get_banner.php',
       success: res => {
@@ -132,10 +148,11 @@ Page({
     }else{
       app.wxLoginCallback=function(){
         that.getIndexList();
-        that.getOtherInfo()
+        that.getOtherInfo();
         that.setData({
           selectArray: app.globalData.cityArray
         })
+        that.getGlobalData()
       }
     }
   },
@@ -279,6 +296,16 @@ Page({
         }
       }
     })
+  },
+  getGlobalData() {
+    if (page!='') {
+      wx.navigateTo({
+        url: page,
+        success: res => {
+          page = '';
+        }
+      })
+    }
   },
   swiperChange(e){
     this.setData({
