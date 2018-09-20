@@ -81,7 +81,7 @@
   </view><!-- float-button -->
   <view class="float-button2" wx:else>
       <view bindtap='showMessage'><image src='/images/view/message.png'></image></view>
-      <view class='share' bindtap='goShare' wx:if="{{content.cate1==1 && content.cate2==1}}">
+      <!--<view class='share' bindtap='goShare' wx:if="{{content.cate1==1 && content.cate2==1}}">
         <button class='btn'>
         <image src='/images/view/share.png'></image>
         </button>
@@ -90,8 +90,26 @@
         <button class='btn' open-type="share">
         <image src='/images/view/share.png'></image>
         </button>
+      </view>-->
+      <view class='share' bindtap='showShare'>
+        <button class='btn'>
+        <image src='/images/view/share.png'></image>
+        </button>
       </view>
       <view bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
       <view bindtap='callPhone' data-phone='{{content.mobile}}'><image src='/images/view/tel.png'></image></view>
   </view><!-- float-button -->
+  <view class='share-option' wx:if='{{showShare==1}}'>
+    <view class='share-bg'></view>
+    <view class='share-btn'>
+      <view class='share-border' bindtap='showImage'>图片</view>
+      <view><button class='btn' open-type="share">小程序</button></view>
+      <view class='division'></view>
+      <view bindtap='showShare'>取消</view>
+    </view>
+  </view>
+  <view class='share-img' wx:if='{{showImage==1}}'>
+    <image src='{{pic}}' bindlongtap='saveImage'></image>
+    <view>长按保存，分享到朋友圈</view>
+  </view>
 </view>

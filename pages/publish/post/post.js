@@ -51,11 +51,12 @@ Page({
     },
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
+    tagOption: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
     tagIndex1: -1,
     tagIndex2: -1,
     schoolArr:[],
     schoolIndex1: -1,
-    schoolIndex2: -1,
+    schoolIndex2: -1
   },
 
   /**
@@ -344,9 +345,23 @@ Page({
       lock = false;
       return
     }
-    
+    //标签结合
+    var tagOption = this.data.tagOption
+    var tagArr = this.data.tagArr
+    var tag_str='';
+    for (var i = 0; i < tagOption.length;i++){
+      var jugle = tagOption[i];
+      if (jugle==true){
+        if (tag_str==''){
+          tag_str = tagArr[i]
+        }else{
+          tag_str += tagArr[i]
+        }
+      }
+    }
+    console.log(tag_str)
     var postData = this.data.postData
-    console.log(this.data.indexArray)
+    //console.log(this.data.indexArray)
     if (this.data.indexArray[0] == 0) {
       if (this.data.houseIndex == 0) {
         app.showTips('提示', '请选择房型', false)
@@ -563,25 +578,13 @@ Page({
   },
   selectTag(e) {
     var v = e.currentTarget.dataset.index
-    if (this.data.tagIndex1 == v) {
-      this.setData({
-        tagIndex1: -1
-      })
-    } else if (this.data.tagIndex2 == v) {
-      this.setData({
-        tagIndex2: -1
-      })
-    } else if (this.data.tagIndex1 == -1) {
-      this.setData({
-        tagIndex1: v
-      })
-    } else if (this.data.tagIndex2 == -1) {
-      this.setData({
-        tagIndex2: v
-      })
-    } else {
-      app.showTips('提示', '最多选择2个标签', false);
-    }
+    var tagOption = this.data.tagOption;
+    var choose = tagOption[v]
+    choose = choose==true?false:true;
+    tagOption[v]=choose;
+    this.setData({
+      tagOption: tagOption
+    })
   },
   selectSchool(e) {
     var v = e.currentTarget.dataset.index

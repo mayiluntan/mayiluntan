@@ -359,3 +359,69 @@
   height: 8vh;
   width: 100vw;
 }
+.share-option{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.share-option .share-bg{
+  flex: 1;
+  background: rgba(0, 0, 0, 0.6);
+}
+.share-option .share-btn{
+  background: #fff;
+  text-align: center;
+}
+.share-option .share-btn view{
+  padding: 20rpx 0;
+  font-size: 30rpx;
+}
+.share-option .share-border{
+  border-bottom: 1rpx solid #cfcfcf;
+}
+.share-option .share-btn .division{
+  padding: 0;
+  height: 14rpx;
+}
+.share-option .btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  font-size: 30rpx;
+  line-height: normal;
+  padding: 0;
+}
+.share-option button::after{
+  border:none;
+}
+.share-img{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.share-img image{
+  width: 600rpx;
+  height: 880rpx;
+}
+.share-img view{
+  width: 600rpx;
+  padding: 20rpx 0;
+  border-top: 1rpx dashed #ccc;
+  background: #fff;
+  text-align: center;
+}

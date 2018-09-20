@@ -10,7 +10,11 @@ Page({
     content:{},
     message:'',
     isCollect:0,
-    showMessage:0
+    showMessage:0,
+    showShare:0,
+    showImage:0,
+    pic:'https://www.haiwaixiaomayi.com/upload/2018/9/20/16/1648121004.jpg',
+    tempPath:''
   },
 
   /**
@@ -24,7 +28,6 @@ Page({
       url: app.globalData.apiUrl+'v6/get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
-        console.log(res.data)
         if(res.data.ret==1){
           this.setData({
             content: res.data.data,
@@ -113,6 +116,9 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
+    this.setData({
+      showShare:0
+    })
     var that = this;
     return {
       title: this.data.content.title ? this.data.content.title : '小蚂蚁',
@@ -177,6 +183,49 @@ Page({
   goReport(){
     wx.navigateTo({
       url: '/pages/view/report/report?source=1&source_id='+id,
+    })
+  },
+  showShare(){
+    var v = this.data.showShare
+    v = v == 1 ? 0 : 1;
+    this.setData({
+      showShare: v
+    })
+  },
+  showImage(){
+    var v = this.data.showImage
+    v = v == 1 ? 0 : 1;
+    this.setData({
+      showImage: v,
+      showShare: 0
+    })
+    if (this.data.tempPath==''){
+      var that = this;
+      wx.downloadFile({
+        url: that.data.pic,
+        success: function (res) {
+          //console.log(res)
+          if (res.statusCode === 200) {
+            that.data.tempPath = res.tempFilePath
+          }
+        }
+      })
+    }
+  },
+  saveImage(){
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.tempPath,
+      success:function(res){
+        wx.showToast({
+          title: '已保存到相册',
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '保存失败',
+          icon:"none"
+        })
+      }
     })
   }
 })

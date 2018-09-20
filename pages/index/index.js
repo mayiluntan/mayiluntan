@@ -106,7 +106,6 @@ Page({
   },
   
   onLoad: function (options) {
-    options.scene ='b899e3051d1ec22b13f725b882631ed7'
     if (options.scene) {
       var scene = decodeURIComponent(options.scene)
       wx.request({

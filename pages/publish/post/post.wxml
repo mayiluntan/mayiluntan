@@ -131,7 +131,7 @@
   <view class='detail detail-none'>
     <view class='tags'>
       <block wx:for='{{tagArr}}' wx:key='index'>
-      <view class="{{(tagIndex1==index || tagIndex2==index)?'on':''}}" bindtap='selectTag' data-index='{{index}}'>{{item}}</view>
+      <view class="{{(tagOption[index]==true)?'on':''}}" bindtap='selectTag' data-index='{{index}}'>{{item}}</view>
       </block>
     </view>
   </view>
