@@ -102,14 +102,14 @@
   <view class='share-option' wx:if='{{showShare==1}}'>
     <view class='share-bg'></view>
     <view class='share-btn'>
-      <view class='share-border' bindtap='showImage'>图片</view>
-      <view><button class='btn' open-type="share">小程序</button></view>
+      <view class='share-border' bindtap='showImage'>保存图片分享</view>
+      <view><button class='btn' open-type="share">小程序分享</button></view>
       <view class='division'></view>
       <view bindtap='showShare'>取消</view>
     </view>
   </view>
   <view class='share-img' wx:if='{{showImage==1}}'>
-    <image src='{{pic}}' bindlongtap='saveImage'></image>
+    <image src='{{content.share_pic}}' bindlongtap='saveImage'></image>
     <view>长按保存，分享到朋友圈</view>
   </view>
 </view>
