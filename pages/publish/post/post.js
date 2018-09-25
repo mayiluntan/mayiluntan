@@ -11,7 +11,7 @@ Page({
     picIds:[],
     picCount:0,
     indexArray: [0, 0],
-    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '蚂蚁闲谈', '拼车信息', '短租民宿', '生意转让','房产信息','往返带物'], ['求租', '招租']],
+    cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '蚂蚁交友', '拼车信息', '短租民宿', '生意转让','房产信息','往返带物'], ['求租', '招租']],
     cateId: [ 1, 2, 3, 4, 5, 6, 7, 8, 12,16],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
@@ -65,6 +65,7 @@ Page({
   onLoad: function (options) {
     var cate = options.cate ? options.cate : 0;
     if(cate>0){
+      this.allCateChange(cate - 1)
       this.setData({
         indexArray: [cate-1,0]
       })
@@ -98,6 +99,8 @@ Page({
               tagIndex2: res.data.data.tagIndex2,
               houseIndex: res.data.data.houseIndex,
               typeIndex: res.data.data.typeIndex,
+              tagArr: res.data.data.tagArr,
+              tagOption: res.data.data.tagOption,
             })
             this.allCateChange(res.data.data.indexArray[0])
           } else {
@@ -355,11 +358,10 @@ Page({
         if (tag_str==''){
           tag_str = tagArr[i]
         }else{
-          tag_str += tagArr[i]
+          tag_str += ','+ tagArr[i]
         }
       }
     }
-    console.log(tag_str)
     var postData = this.data.postData
     //console.log(this.data.indexArray)
     if (this.data.indexArray[0] == 0) {
@@ -373,6 +375,7 @@ Page({
         lock = false;
         return
       }
+      postData.tag_str = tag_str;
       postData.house = this.data.houseIndex;
       postData.type = this.data.typeIndex;
       postData.tag1 = '';

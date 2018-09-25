@@ -9,10 +9,10 @@
       <view>商家电话<text>*</text></view>
       <input placeholder='请输入商家手机号' value='{{postData.tel}}' bindinput='telInput'></input>
     </view>
-    <view class='list'>
+    <!--<view class='list'>
       <view>商家QQ</view>
       <input placeholder='请输入商家QQ号' value='{{postData.qq}}' bindinput='qqInput'></input>
-    </view>
+    </view>-->
     <view class='list'>
       <view>商家微信<text>*</text></view>
       <input placeholder='请输入商家微信号' value='{{postData.wechat}}' bindinput='wechatInput'></input>
@@ -49,6 +49,10 @@
       <view>商户介绍<text>*</text></view>
       <textarea placeholder='请简单介绍下商户' bindinput='introInput' value='{{postData.intro}}'></textarea>
     </view>
+    <view class='discount'>
+      <view>平台优惠</view>
+      <textarea placeholder='请填写平台优惠' bindinput='discountInput' value='{{postData.discount}}'></textarea>
+    </view>
   </view>
   <view class='division'></view>
   <view class='detail'>
@@ -57,8 +61,12 @@
       <input placeholder='请输入商家所在区域' value='{{postData.area}}' bindtap='selectArea' disabled='true'></input>
     </view>
     <view class='list'>
-      <view>商家地址<text>*</text></view>
+      <view>商家地址</view>
       <input placeholder='请输入商家地址' value='{{postData.address}}' bindinput='addressInput'></input>
+    </view>
+    <view class='list' bindtap='chooseLocation'>
+      <view>商家定位</view>
+      <input placeholder='请选择定位' value='{{postData.location}}'  disabled='true'></input>
     </view>
     <view class='list'>
       <view>营业时间<text>*</text></view>
@@ -70,14 +78,14 @@
         <view class='time'>{{postData.endTime}}</view>
       </picker>
     </view>
-    <view class='pic'>
+    <!--<view class='pic'>
       <view>资质证书</view>
       <view class='pic-one'>
         <image src="{{cert==''?'/images/post/add.png':cert}}" bindtap='addPic' data-type='2'></image>
         <image wx:if='{{cert!=""}}' src="/images/del.png" bindtap='delPic' data-type='2' class='del'></image>
       </view>
       
-    </view>
+    </view>-->
     <view class='list'>
       <view>提供服务</view>
       <input placeholder='空格分割,如:WiFi 停车' value='{{postData.service}}' bindinput='serviceInput'></input>

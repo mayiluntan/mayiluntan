@@ -29,6 +29,7 @@ Page({
       address: '',
       lon:'',
       lat:'',
+      location:'',
       stratTime: '00:00',
       endTime: '23:59',
       cert: '',
@@ -43,11 +44,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var cate = options.cate ? options.cate : 0;
+    if (cate > 0) {
+      this.setData({
+        cateIndex: [cate-1, 0]
+      })
+      this.allCateChange(cate - 1)
+    }
     var id = options.id ? options.id : 0
     lock = false;
     if (id) {
       wx.request({
-        url: app.globalData.apiUrl + 'get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v6/get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -292,17 +300,17 @@ Page({
       lock = false;
       return
     }
-    if (postData.address == '') {
-      app.showTips('提示', '请输入商家地址', false)
-      lock = false;
-      return
-    }
+    // if (postData.address == '') {
+    //   app.showTips('提示', '请输入商家地址', false)
+    //   lock = false;
+    //   return
+    // }
 
     postData.uid = app.globalData.uid
     postData.pics = this.data.picIds
     //console.log(postData)
     wx.request({
-      url: app.globalData.apiUrl + 'business_post.php',
+      url: app.globalData.apiUrl + 'v6/business_post.php',
       data: postData,
       method: 'POST',
       success: res => {
@@ -436,6 +444,28 @@ Page({
     }
     this.setData({
       cateArray: cateArray
+    })
+  },
+  chooseLocation() {
+    wx.chooseLocation({
+      success: res => {
+        var postData = this.data.postData
+        postData.location = res.address
+        postData.lon = res.longitude
+        postData.lat = res.latitude
+        this.setData({
+          postData: postData
+        })
+      },
+      fail: res => {
+        wx.getSetting({
+          success: res => {
+            if (!res.authSetting['scope.userLocation'] || res.authSetting['scope.userLocation'] == undefined) {
+              app.showAuthTips('请先授权获取位置');
+            }
+          }
+        })
+      }
     })
   }
 })

@@ -36,7 +36,7 @@
       </view>
       <view class='cate-detail' bindtap='showList' data-cate='105'>
       <image src='/images/icon_logo_ask_help.png' />
-      <view>蚂蚁闲谈</view>
+      <view>蚂蚁交友</view>
       </view>
     </view>
     <view class='cate'>

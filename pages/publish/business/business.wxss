@@ -105,6 +105,20 @@ page{
   height: 150rpx;
   overflow: auto;
 }
+.discount{
+  margin-left: 5vw;
+  width: 95vw;
+  padding: 20rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.discount text{
+  color: #f00;
+}
+.discount textarea{
+  width: 90%;
+  height: 150rpx;
+  overflow: auto;
+}
 .top-list{
   width: 95vw;
   padding:30rpx 0;

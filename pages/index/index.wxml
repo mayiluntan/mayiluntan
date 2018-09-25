@@ -1,34 +1,28 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="top">
-    <block wx:if="{{indexPic==''}}">
-    <image src='/images/top.png'></image>
-    </block>
-    <block wx:else>
-    <image src='{{indexPic}}'></image>
-    </block>
-    <view class='title-top'>
-      <view class='weather'>{{temperature}}</view>
-      <view class='exrate'>{{exchangeRate}}</view>
-    </view>
-    <view class='city'>
+  <view class='top-banner'>
+    <view class='city'  bindtap='selectCity'>
       <view class='logo'>
-        <image src='/images/ants.png'/>
+        <image src='/images/local-white.png'/>
       </view>
-      <view class='city-picker' bindtap='selectCity'>
+      <view class='city-picker'>
         <view>{{selectArray[2]}}</view>
-        <view class='arrow'>
-          <image src='/images/icon_area_arrow.png'/>
-        </view>
       </view>
     </view>
-    <view class='search'>
-      <input type='text' placeholder='搜索' placeholder-style='text-align:center;' bindconfirm='searchClick' />
-      <!-- <view class='search_tip'>
-        <image src='/images/icon_search.png'/>
-        <view>搜索</view>
-      </view> -->
-    </view>
+    <swiper class='banner-swiper' autoplay="true" interval="5000" duration="500" indicator-dots="true" indicator-color='#b5bdc0' indicator-active-color="#ff9800">  
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
+        <swiper-item> 
+           <block wx:if="{{item.link==''}}">
+            <image src="{{item.url}}"/> 
+           </block> 
+           <block wx:else>
+            <navigator url="{{item.link}}" hover-class="navigator-hover">  
+              <image src="{{item.url}}"/> 
+            </navigator>  
+           </block> 
+        </swiper-item>  
+      </block>  
+    </swiper>
   </view>
   <swiper class='broadcast' autoplay="true" interval="3000" duration="500" vertical='true'>
     <block wx:for='{{broadcast}}' wx:key='index'>
@@ -65,7 +59,7 @@
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='5'>
         <image src='/images/icon_logo_ask_help.png' />
-        <view>蚂蚁闲谈</view>
+        <view>蚂蚁交友</view>
         </view>
       </view>
       <view class='cate'>
@@ -102,39 +96,25 @@
       <view class='cate-menu2'><view></view></view>
     </block>
   </view>-->
-  <swiper class='banner' autoplay="true" interval="5000" duration="500">  
-      <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
-        <swiper-item> 
-           <block wx:if="{{item.link==''}}">
-            <image src="{{item.url}}"/> 
-           </block> 
-           <block wx:else>
-            <navigator url="{{item.link}}" hover-class="navigator-hover">  
-              <image src="{{item.url}}"/> 
-            </navigator>  
-           </block> 
-        </swiper-item>  
-      </block>  
-  </swiper> 
-  <view class='content'>
-    <view class='title'>
-      <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}">
-      <view class='title-border'>
-        <view>{{cateArray[cateIndex]}}</view>
-        <image src='/images/icon_arrow_down.png' />
-      </view>
-      </picker>
-      <!--<view class='title-area title-border' bindtap='selectArea'>
-        <view>{{area==''?'区域':area}}</view>
-        <image src='/images/icon_arrow_down.png' />
-      </view>-->
-      <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
-      <view class='title-border2'>
-      <view>{{orderArray[orderIndex]}}</view>
+  <view class='title'>
+    <picker class='title-picker' bindchange="cateChange" value="{{cateIndex}}" range="{{cateArray}}">
+    <view class='title-border'>
+      <view>{{cateArray[cateIndex]}}</view>
       <image src='/images/icon_arrow_down.png' />
-      </view>
-      </picker>
     </view>
+    </picker>
+    <!--<view class='title-area title-border' bindtap='selectArea'>
+      <view>{{area==''?'区域':area}}</view>
+      <image src='/images/icon_arrow_down.png' />
+    </view>-->
+    <picker class='title-picker' bindchange="orderChange" value="{{orderIndex}}" range="{{orderArray}}">
+    <view class='title-border2'>
+    <view>{{orderArray[orderIndex]}}</view>
+    <image src='/images/icon_arrow_down.png' />
+    </view>
+    </picker>
+  </view>
+  <view class='content'>
     <block wx:for="{{listData}}" wx:key="{{index}}">
     <view class='list' bindtap='viewDetail' data-id='{{item.id}}'>
       <view class='list-main'>
@@ -143,26 +123,29 @@
           <view class='list-top'>
             <view class='list-left'>
               <view class='list-title'>
-                <view class='list-cate'>{{item.cate}}</view>
                 <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
+                <view class='list-tname'>{{item.title}}</view>
               </view>
-              <view class='list-tag' >
-                <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
-                <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
+              <view class='list-attribute'>
+                <view wx:for='{{item.attribute}}' wx:for-item="attribute" wx:key="attribute-index">{{attribute}}</view>
+              </view>
+              <view class='list-third'>
+                <view class='list-tag'>
+                  <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
+                  <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
+                </view>
+                <view class='list-contact'>
+                  <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
+                  <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
+                </view>
               </view>
             </view>
-            <view class='list-contact'>
-              <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
-              <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
-              <view class='money'>{{item.money}}</view>
-            </view>
-          </view>
-          <view class='list-intro'>
-          {{item.content}}
           </view>
         </view>
       </view>
+      <view class='list-intro'>{{item.content}}</view>
       <view class='list-time'>发布时间：{{item.dated}}</view>
+      <view class='to-top' wx:if='{{item.is_top==1}}'>置顶</view>
     </view>
     </block>
   </view>
@@ -175,8 +158,8 @@
     <view class='tip-img'><image src='/images/arrow_r2.png'></image></view>
   </view>
   <view class='tip-top tip-top3' wx:if='{{showTips==1}}'>
-    <view class='tip-img'><image src='/images/arrow_t2.png'></image></view>
-    <view class='tip-text'>点此按钮选择区域</view>
+    <view class='tip-img tip-img2'><image src='/images/arrow_t2.png'></image></view>
+    <view class='tip-text'>点此按钮选择城市</view>
   </view>
   <view class='publish' bindtap='goPublish'>发布</view>
 </view>

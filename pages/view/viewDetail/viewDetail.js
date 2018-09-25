@@ -1,6 +1,7 @@
 // pages/view/viewDetail/viewDetail.js
 var id=0;
 const app=getApp();
+var countTime=0;
 Page({
 
   /**
@@ -13,6 +14,7 @@ Page({
     showMessage:0,
     showShare:0,
     showImage:0,
+    isDownload:0,
     tempPath:''
   },
 
@@ -27,7 +29,6 @@ Page({
       url: app.globalData.apiUrl+'v6/get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
-        console.log(res.data.data)
         if(res.data.ret==1){
           this.setData({
             content: res.data.data,
@@ -196,17 +197,29 @@ Page({
     var v = this.data.showImage
     v = v == 1 ? 0 : 1;
     this.setData({
-      showImage: v,
       showShare: 0
     })
+    if (this.data.content.share_pic=='') {
+      wx.showToast({
+        title: '图片尚未生成',
+        icon:'none'
+      })
+      return;
+    }
     if (this.data.tempPath==''){
+      wx.showLoading({
+        title: '加载中',
+      })
       var that = this;
       wx.downloadFile({
         url: that.data.content.share_pic,
         success: function (res) {
-          console.log(res)
           if (res.statusCode === 200) {
             that.data.tempPath = res.tempFilePath
+            wx.hideLoading()
+            that.setData({
+              showImage: v
+            })
           }
         }
       })
