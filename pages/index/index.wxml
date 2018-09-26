@@ -151,7 +151,7 @@
   </view>
   <view class='tip-top tip-top1' wx:if='{{showTips==1}}'>
     <view class='tip-img'><image src='/images/arrow_t2.png'></image></view>
-    <view class='tip-text'>点此按钮分享给好友</view>
+    <view class='tip-text'>添加到我的小程序</view>
   </view>
   <view class='tip-top tip-top2' wx:if='{{showTips==1}}'>
     <view class='tip-text'>点此按钮发布内容哦~</view>

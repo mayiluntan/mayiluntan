@@ -20,6 +20,8 @@ Page({
     houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
     typeIndex:0,
     startDate:'',
+    speedArray: ['请选择','自动', '手动'],
+    brandArray: ['请选择品牌','Alfa Romeo 阿尔法罗密欧 ','Audi 奥迪','BMW 宝马','Chrysler 克莱斯勒','Chverolet 雪佛兰','Citroen 雪铁龙','Dodge 道奇','Ford 福特','Holden 霍尔顿','Honda 本田','Hyundai 现代','Kia 起亚','Land Rover 路虎','Lexus 雷克萨斯','Mazda 马自达','Mercedes Benz 奔驰','Mitsubishi 三菱','Nissan 东风日产','Peugeot 标志','Porsche 保时捷','Renault 雷诺','Subaru 斯巴鲁','Suzuki 铃木','Toyota 丰田','Volkswagen 大众','Volvo 沃尔沃','Other 其它品牌'],
     postData:{
       id: 0,
       title:'',
@@ -47,7 +49,13 @@ Page({
       date:'',
       time:'',
       peopleNum:'',
-      linkman:''
+      linkman:'',
+      transType:1,
+      transBrand:0,
+      transYear:'',
+      transPrice:'',
+      transSpeed:0,
+      transKm:'',
     },
     moneySign: '$',
     tagArr: ['近火车站', '近电车站', '近公车站', '近超市', '近学校', '带车位', '包家具', '包水电', '可议价', '主卧', '房子新', '房间大', '富人区', '限女生', '限男生', '可养宠物', '风水好', '高层公寓', '环境优', '网速好'],
@@ -77,8 +85,10 @@ Page({
     var date = new Date();
     var hour = date.getHours()
     var minute = date.getMinutes()
+    var year = date.getFullYear()
     postData.date = utils.formatDate(new Date())
     postData.time = hour + ':' + minute
+    postData.transYear = year
     this.setData({
       postData: postData,
       startDate: utils.formatDate(new Date())
@@ -102,6 +112,7 @@ Page({
               tagArr: res.data.data.tagArr,
               tagOption: res.data.data.tagOption,
             })
+            console.log(res.data.data)
             this.allCateChange(res.data.data.indexArray[0])
           } else {
             app.showTips(res.data.title, res.data.msg, false);
@@ -425,6 +436,28 @@ Page({
         return
       }
     }
+    if (this.data.indexArray[0] == 3 && this.data.indexArray[1] == 1) {
+      if (postData.transBrand == 0) {
+        app.showTips('提示', '请选择品牌', false)
+        lock = false;
+        return
+      }
+      if (postData.transPrice == '' || postData.transPrice <=0) {
+        app.showTips('提示', '请输入价格', false)
+        lock = false;
+        return
+      }
+      if (postData.transSpeed == 0) {
+        app.showTips('提示', '请选择变速箱', false)
+        lock = false;
+        return
+      }
+      if (postData.transKm === '') {
+        app.showTips('提示', '请输入公里数', false)
+        lock = false;
+        return
+      }
+    }
     postData.uid=app.globalData.uid
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
@@ -677,6 +710,48 @@ Page({
   linkmanInput(e) {
     var postData = this.data.postData
     postData.linkman = e.detail.value;
+    this.setData({
+      postData: postData
+    })
+  },
+  transYearChange(e){
+    var postData = this.data.postData
+    postData.transYear = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
+  transTypePick(e) {
+    var postData = this.data.postData
+    postData.transType = e.currentTarget.dataset.value
+    this.setData({
+      postData: postData
+    })
+  },
+  transSpeedChange(e){
+    var postData = this.data.postData
+    postData.transSpeed = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
+  transPriceInput(e){
+    var postData = this.data.postData
+    postData.transPrice = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
+  transKmInput(e){
+    var postData = this.data.postData
+    postData.transKm = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
+  transBrandChange(e){
+    var postData = this.data.postData
+    postData.transBrand = e.detail.value
     this.setData({
       postData: postData
     })

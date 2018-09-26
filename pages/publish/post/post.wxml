@@ -58,6 +58,42 @@
         </view>
       </view>
     </block>
+    <block wx:elif='{{indexArray[0]==3&&indexArray[1]==1}}'>
+      <view class='detail-orgin'>
+        <view class='detail-orgin-title'>卖车类型：</view>
+        <view bindtap='transTypePick' data-value='1' class="{{postData.transType==1?'detail-pick-on':'detail-pick'}}">个人</view>
+        <view bindtap='transTypePick' data-value='2' class="{{postData.transType==2?'detail-pick-on':'detail-pick'}}">车行</view>
+      </view>
+      <view class='detail'>
+        <view class='detail-list'><text class='detail-font'>品牌：</text>
+        <picker range='{{brandArray}}' bindchange='transBrandChange' value='{{postData.transBrand}}'>{{brandArray[postData.transBrand]}}</picker>
+        </view>
+      </view>
+        <view class='merge'>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>年份：</text>
+          <picker mode='date' bindchange='transYearChange' value='{{postData.transYear}}' fields='year'>{{postData.transYear}}</picker>
+          </view>
+        </view>
+        <view class='merge-mid'></view>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>价格：</text>
+          <input placeholder='请输入价格' bindinput='transPriceInput' value='{{postData.transPrice}}'></input><text class='detail-font2'>{{moneySign}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='merge'>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>变速箱：</text>
+          <picker range='{{speedArray}}' bindchange='transSpeedChange' value='{{postData.transSpeed}}'>{{speedArray[postData.transSpeed]}}</picker>
+          </view>
+        </view>
+        <view class='merge-mid'></view>
+        <view class='detail'>
+          <view class='detail-list'><text class='detail-font'>公里数：</text><input  bindinput='transKmInput' value='{{postData.transKm}}'></input><text class='detail-font2'>KM</text></view>
+        </view>
+      </view>
+    </block>
     <view class='pic detail'>
       <textarea bindinput='contentInput' placeholder='内容详情（请详细、多方面描述您发布的信息内容）'  maxlength='-1' value='{{postData.content}}'></textarea>
       <view wx:for="{{pics}}" wx:key='index'>
@@ -94,7 +130,7 @@
   <view class='merge'>
     <view class='detail'>
     <view class='detail-list'><text></text>
-    <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
+    <picker bindchange="houseChange" value="{{houseIndex}}" range="{{hxouseArray}}" class='house-picker'>
         <view>
         <text class='detail-font'>房型：</text>{{houseArray[houseIndex]}}
         </view>
