@@ -234,10 +234,23 @@ Page({
         })
       },
       fail: function (res) {
-        wx.showToast({
-          title: '保存失败',
-          icon:"none"
-        })
+        if(res.errMsg =='saveImageToPhotosAlbum:fail auth deny'){
+          wx.showModal({
+            title: '请打开授权',
+            content: '您已拒绝保存到相册，点击确定前往打开',
+            success:res=>{
+              if (res.confirm==true){
+                app.wxOpneSetting();
+              }
+            }
+          })
+        }else{
+          wx.showToast({
+            title: '保存失败',
+            icon: "none"
+          })
+        }
+        
       }
     })
   }
