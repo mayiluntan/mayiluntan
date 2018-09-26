@@ -112,7 +112,6 @@ Page({
               tagArr: res.data.data.tagArr,
               tagOption: res.data.data.tagOption,
             })
-            console.log(res.data.data)
             this.allCateChange(res.data.data.indexArray[0])
           } else {
             app.showTips(res.data.title, res.data.msg, false);

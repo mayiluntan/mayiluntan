@@ -15,7 +15,7 @@ Page({
     imgUrls: [
       {
         link: '',
-        url: '/images/banner.png'
+        url: '/images/banner2.jpg'
       }
     ],
     // cateArray: [{ 'id': 0, 'name': '全部分类' }, { 'id': 1, 'name': '房屋信息' }, { 'id': 2, 'name': '二手市场' }, { 'id': 3, 'name': '求职招聘' }, { 'id': 4, 'name': '汽车交易' }, { 'id': 5, 'name': '求助问事' }, { 'id': 6, 'name': '拼车信息' }, { 'id': 7, 'name':'短租民宿'}, { 'id': 8, 'name': '生意转让' }, { 'id': 12, 'name': '房产信息' }],
@@ -128,14 +128,6 @@ Page({
         showTips:0
       })
     }, 5000)
-    wx.request({
-      url: app.globalData.apiUrl + 'get_banner.php',
-      success: res => {
-        this.setData({
-          imgUrls: res.data.data
-        })
-      }
-    })
     //this.getIndexList()
     var cityArray = this.data.cityArray
     this.setData({
@@ -257,6 +249,14 @@ Page({
   onReachBottom: function () {
   },
   getIndexList(){
+    wx.request({
+      url: app.globalData.apiUrl + 'v6/get_banner.php?uid=' + app.globalData.uid,
+      success: res => {
+        this.setData({
+          imgUrls: res.data.data
+        })
+      }
+    })
     wx.request({
       url: app.globalData.apiUrl + 'v6/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
