@@ -244,3 +244,6 @@ page {
 .detail-font{
   color:#343434;
 }
+.top-tips{
+  padding: 0 2vw;
+}

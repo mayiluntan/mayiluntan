@@ -90,21 +90,22 @@
       <view>提供服务</view>
       <input placeholder='空格分割,如:WiFi 停车' value='{{postData.service}}' bindinput='serviceInput'></input>
     </view>
-    <view class='top-list to-top'>
-    <text>我要置顶</text>
-    <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>
-  </view>
-  <view class='top-list' wx:if='{{postData.top==1}}'>
-    <text>选择置顶时间</text>
-    <picker  class='day' bindchange="dayChange" value="{{dayIndex}}" range="{{dayArray}}">
-      <text>{{dayArray[dayIndex]}}</text>
-    </picker>
-    <image src='/images/post/more.png'></image>
-  </view>
-  <view class='top-list' wx:if='{{postData.top==1}}'>
-    <text>价格</text>
-    <text  class='price'>¥{{postData.topPrice}}</text>
-  </view>
+    <!--<view class='top-list to-top'>
+      <text>已关闭</text>
+      <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>
+    </view>
+    <view class='top-list' wx:if='{{postData.top==1}}'>
+      <text>选择时间</text>
+      <picker  class='day' bindchange="dayChange" value="{{dayIndex}}" range="{{dayArray}}">
+        <text>{{dayArray[dayIndex]}}</text>
+      </picker>
+      <image src='/images/post/more.png'></image>
+    </view>
+    <view class='top-list' wx:if='{{postData.top==1}}'>
+      <text>价格</text>
+      <text  class='price'>¥{{postData.topPrice}}</text>
+    </view>-->
+    <view class='top-tips'>如需置顶，请联系客服微信：AntMediaAu</view>
   </view>
   <view class='button'>
     <view bindtap='businessPost'>确认</view>

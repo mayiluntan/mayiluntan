@@ -145,12 +145,12 @@
       <view class='detail-list'><text class='detail-font'>微信：</text><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
     </view>
   </view>
-  <view class='top-list to-top'>
-    <text class='detail-font'>我要置顶</text>
+  <!--<view class='top-list to-top'>
+    <text class='detail-font'>已关闭</text>
     <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>
   </view>
   <view class='top-list' wx:if='{{postData.top==1}}'>
-    <text class='detail-font'>选择置顶时间</text>
+    <text class='detail-font'>选择时间</text>
     <picker  class='day' bindchange="dayChange" value="{{dayIndex}}" range="{{dayArray}}">
       <text>{{dayArray[dayIndex]}}</text>
     </picker>
@@ -159,7 +159,8 @@
   <view class='top-list' wx:if='{{postData.top==1}}'>
     <text class='detail-font'>价格</text>
     <text  class='price'>¥{{postData.topPrice}}</text>
-  </view>
+  </view>-->
+  <view class='top-tips'>如需置顶，请联系客服微信：AntMediaAu</view>
   <view class='button' bindtap='postClick'>
     <view>立即发布</view>
   </view>

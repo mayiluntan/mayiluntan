@@ -178,3 +178,6 @@ page{
   color: #fff;
   border-radius: 10rpx;
 }
+.top-tips{
+  padding:20rpx 0 0 5vw;
+}
