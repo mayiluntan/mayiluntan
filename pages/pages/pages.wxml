@@ -103,7 +103,7 @@
       <view class='cate'>
         <view class='cate-detail' bindtap='showList' data-cate='12'>
           <image src='/images/icon_logo_change_money.png' />
-          <view>换汇汇款</view>
+          <view>以物易物</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='13'>
           <image src='/images/icon_logo_kuaidi.png' />

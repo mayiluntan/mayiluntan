@@ -253,11 +253,11 @@ Page({
       case 5: cateArray[1] = ['人找车', '车找人']; break;
       case 6: cateArray[1] = ['短租民宿']; break;
       case 7: cateArray[1] = ['生意转让']; break;
-      case 8: cateArray[1] = ['交友项目']; break;
+      case 8: cateArray[1] = ['**项目']; break;
       case 9: cateArray[1] = ['宠物相关']; break;
       case 10: cateArray[1] = ['二手教材']; break;
       case 11: cateArray[1] = ['二手房','新房']; break;
-      case 12: cateArray[1] = ['同城交友']; break;
+      case 12: cateArray[1] = ['同城**']; break;
       case 13: cateArray[1] = ['家居家具']; break;
       case 14: cateArray[1] = ['数码电子']; break;
       case 15: cateArray[1] = ['求带', '帮带']; break;
