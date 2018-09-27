@@ -89,6 +89,9 @@ page {
   border-bottom: 1px solid #efefef;
   padding:30rpx 0;
 }
+.detail .detail-list picker{
+  flex: 1;
+}
 .detail .no-border{
   border: 0;
 }

@@ -84,7 +84,7 @@
 }
 .detail-title{
   color: #a3a3a3;
-  width: 25vw;
+  width: 20vw;
 }
 .detail-price{
   color: #ffae58;

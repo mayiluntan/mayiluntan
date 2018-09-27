@@ -441,11 +441,11 @@ Page({
         lock = false;
         return
       }
-      if (postData.transPrice == '' || postData.transPrice <=0) {
-        app.showTips('提示', '请输入价格', false)
-        lock = false;
-        return
-      }
+      // if (postData.transPrice == '' || postData.transPrice <=0) {
+      //   app.showTips('提示', '请输入价格', false)
+      //   lock = false;
+      //   return
+      // }
       if (postData.transSpeed == 0) {
         app.showTips('提示', '请选择变速箱', false)
         lock = false;

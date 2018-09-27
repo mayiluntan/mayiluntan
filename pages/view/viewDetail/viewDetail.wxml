@@ -35,7 +35,55 @@
     </view>
     <view class='detail-list detail-list3'><text class='detail-title'>附近学校：</text><text class='detail-content'>{{content.other_info.school}}</text></view>
   </view>
-  <view class='division' wx:if='{{content.cate1==1}}'></view>
+  <view class='detail' wx:if='{{content.cate1==4 && content.cate2==1 && content.other_info.trans_show==1}}'>
+    <view class='detail-list'><text class='detail-title'>价格：</text><text class='detail-price'>{{content.other_info.price>0?content.money_sign+content.other_info.price:'面议'}}</text></view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>年份：</text><text class='detail-content'>{{content.other_info.year}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>类型：</text><text class='detail-content'>{{content.other_info.trans_type}}</text>
+      </view>
+    </view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>变速箱：</text><text class='detail-content'>{{content.other_info.speed_type}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>公里数：</text><text class='detail-content'>{{content.other_info.km}}</text>
+      </view>
+    </view>
+    <view class='detail-list detail-list3'><text class='detail-title'>品牌：</text><text class='detail-content'>{{content.other_info.brand}}</text></view>
+  </view>
+  <view class='detail' wx:if='{{content.cate1==6 && content.other_info.car_show==1}}'>
+    <view class='detail-list'><text class='detail-title'>出发地：</text><text class='detail-content'>{{content.other_info.start_place}}</text></view>
+    <view class='detail-list'><text class='detail-title'>目的地：</text><text class='detail-content'>{{content.other_info.end_place}}</text></view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>途径地：</text><text class='detail-content'>{{content.other_info.mid_place}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>类型：</text><text class='detail-content'>{{content.other_info.car_type}}</text>
+      </view>
+    </view>
+    <view class='detail-list detail-list2'>
+      <view class='detail-merge'>
+        <text class='detail-title'>出发日期：</text><text class='detail-content'>{{content.other_info.start_date}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>出发时间：</text><text class='detail-content'>{{content.other_info.start_time}}</text>
+      </view>
+    </view>
+    <view class='detail-list detail-list2 detail-list3'>
+      <view class='detail-merge'>
+        <text class='detail-title'>可乘人数：</text><text class='detail-content'>{{content.other_info.people_num}}</text>
+      </view>
+      <view class='detail-merge detail-merge2'>
+        <text class='detail-title'>联系人：</text><text class='detail-content'>{{content.other_info.link_man}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='division' wx:if='{{content.cate1==1 || (content.cate1==4&&content.cate2==1) || content.cate1==6}}'></view>
   <view class='tag'>
     <view wx:for="{{content.tag}}" wx:key='index'>{{item}}</view>
   </view>
