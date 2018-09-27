@@ -196,7 +196,7 @@
     <text class='detail-font'>价格</text>
     <text  class='price'>¥{{postData.topPrice}}</text>
   </view>-->
-  <view class='top-tips'>如需置顶，请联系客服微信：AntMediaAu</view>
+  <view class='top-tips'>如需置顶，请联系客服微信：xiaomayikefu0</view>
   <view class='button' bindtap='postClick'>
     <view>立即发布</view>
   </view>
