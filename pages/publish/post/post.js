@@ -12,7 +12,8 @@ Page({
     picCount:0,
     indexArray: [0, 0],
     cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '蚂蚁闲谈', '拼车信息', '短租民宿', '生意转让','房产信息','往返带物'], ['求租', '招租']],
-    cateId: [ 1, 2, 3, 4, 5, 6, 7, 8, 12,16],
+    cateId: [1, 2, 3, 4, 5, 6, 7, 8, 12, 16],
+    cateSecondId: [0,1],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
     houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
@@ -71,11 +72,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var cate = options.cate ? options.cate : 0;
-    if(cate>0){
-      this.allCateChange(cate - 1)
+    var cateIndex = options.cate ? options.cate : 0;
+    if (cateIndex>0){
+      this.allCateChange(cateIndex - 1)
       this.setData({
-        indexArray: [cate-1,0]
+        indexArray: [cateIndex - 1, 0]
       })
     }
     var id = options.id ? options.id:0
@@ -242,28 +243,30 @@ Page({
   },
   allCateChange(v){
     var cateArray = this.data.cateArray
+    var cateSecondId = this.data.cateSecondId
     v = this.data.cateId[v]
     v=v-1;
     switch (v) {
-      case 0: cateArray[1] = ['求租','招租']; break;
-      case 1: cateArray[1] = ['家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合', '求购信息','电器相关']; break;
-      case 2: cateArray[1] = ['求职','招聘']; break;
-      case 3: cateArray[1] = ['求购','出售']; break;
-      case 4: cateArray[1] = ['求助问事', '留学移民', '美食天地', '吐槽八卦', '校园联谊', '淘气宝宝', '汽车之家', '家有萌宠', '美妆服饰', '旅游踏青']; break;
-      case 5: cateArray[1] = ['人找车', '车找人']; break;
-      case 6: cateArray[1] = ['短租民宿']; break;
-      case 7: cateArray[1] = ['生意转让']; break;
-      case 8: cateArray[1] = ['**项目']; break;
-      case 9: cateArray[1] = ['宠物相关']; break;
-      case 10: cateArray[1] = ['二手教材']; break;
-      case 11: cateArray[1] = ['二手房','新房']; break;
-      case 12: cateArray[1] = ['同城**']; break;
-      case 13: cateArray[1] = ['家居家具']; break;
-      case 14: cateArray[1] = ['数码电子']; break;
-      case 15: cateArray[1] = ['求带', '帮带']; break;
+    case 0: cateArray[1] = ['求租', '招租']; cateSecondId=[0,1];break;
+      case 1: cateArray[1] = ['求购信息', '家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合', '电器相关']; cateSecondId = [10,0,1,2,3,4,5,6,7,8,9,11]; break;
+      case 2: cateArray[1] = ['求职', '招聘']; cateSecondId = [0, 1];break;
+      case 3: cateArray[1] = ['求购', '出售']; cateSecondId = [0, 1]; break;
+      case 4: cateArray[1] = ['求助问事', '留学移民', '美食天地', '吐槽八卦', '校园联谊', '淘气宝宝', '汽车之家', '家有萌宠', '美妆服饰', '旅游踏青']; cateSecondId = [0, 1,2,3,4,5,6,7,8,9];break;
+      case 5: cateArray[1] = ['人找车', '车找人']; cateSecondId = [0, 1]; break;
+      case 6: cateArray[1] = ['短租民宿']; cateSecondId = [0];break;
+      case 7: cateArray[1] = ['生意转让']; cateSecondId = [0];break;
+      case 8: cateArray[1] = ['**项目']; cateSecondId = [0]; break;
+      case 9: cateArray[1] = ['宠物相关']; cateSecondId = [0]; break;
+      case 10: cateArray[1] = ['二手教材']; cateSecondId = [0];break;
+      case 11: cateArray[1] = ['二手房', '新房']; cateSecondId = [0, 1]; break;
+      case 12: cateArray[1] = ['同城**']; cateSecondId = [0];break;
+      case 13: cateArray[1] = ['家居家具']; cateSecondId = [0]; break;
+      case 14: cateArray[1] = ['数码电子']; cateSecondId = [0];break;
+      case 15: cateArray[1] = ['求带', '帮带']; cateSecondId = [0, 1]; break;
     }
     this.setData({
-      cateArray: cateArray
+      cateArray: cateArray,
+      cateSecondId: cateSecondId
     })
   },
   clickSwitch(e) {
@@ -461,6 +464,7 @@ Page({
     postData.pics = this.data.picIds
     postData.cate = this.data.indexArray
     postData.cate[0] = this.data.cateId[postData.cate[0]]
+    postData.cate[1] = this.data.cateSecondId[postData.cate[1]]
     postData.moneySign = this.data.moneySign
     wx.request({
       url: app.globalData.apiUrl+'v6/post.php',

@@ -52,11 +52,11 @@
       <image src='/images/icon_logo_zhuanrang.png' />
       <view>生意转让</view>
       </view>
-      <view class='cate-detail' bindtap='showList' data-cate='112'>
+      <view class='cate-detail' bindtap='showList' data-cate='109'>
       <image src='/images/icon_logo_fangchan.png' />
       <view>房产信息</view>
       </view>
-      <view class='cate-detail' bindtap='showList' data-cate='116'>
+      <view class='cate-detail' bindtap='showList' data-cate='110'>
       <image src='/images/icon_logo_back.png' />
       <view>往返带物</view>
       </view>
