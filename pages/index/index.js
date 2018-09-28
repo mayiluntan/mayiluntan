@@ -140,10 +140,10 @@ Page({
       app.wxLoginCallback=function(){
         that.getIndexList();
         that.getOtherInfo();
+        that.getGlobalData();
         that.setData({
           selectArray: app.globalData.cityArray
         })
-        that.getGlobalData()
       }
     }
   },
@@ -179,6 +179,7 @@ Page({
       if (first > 1){
         this.getIndexList()
         this.getOtherInfo()
+        this.getGlobalData()
       }
     }
     if (app.globalData.areaChange) {
