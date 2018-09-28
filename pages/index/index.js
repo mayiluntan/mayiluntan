@@ -179,6 +179,8 @@ Page({
         this.getIndexList()
         this.getOtherInfo()
       }
+    }else{
+      this.pageNavigate()
     }
     if (app.globalData.areaChange) {
       this.setData({
@@ -310,32 +312,35 @@ Page({
         }
       },
       complete: res => {
-        if (page != '') {
-          wx.navigateTo({
-            url: page,
-            success: res => {
-              page = '';
-            }
-          })
-        }
-        if (postId > 0) {
-          wx.navigateTo({
-            url: '/pages/view/viewDetail/viewDetail?id=' + postId,
-            complete: res => {
-              postId = 0;
-            }
-          })
-        }
-        if (businessId > 0) {
-          wx.navigateTo({
-            url: '/pages/view/businessDetail/businessDetail?id=' + businessId,
-            complete: res => {
-              businessId = 0;
-            }
-          })
-        }
+        this.pageNavigate();
       }
     })
+  },
+  pageNavigate(){
+    if (page != '') {
+      wx.navigateTo({
+        url: page,
+        success: res => {
+          page = '';
+        }
+      })
+    }
+    if (postId > 0) {
+      wx.navigateTo({
+        url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+        complete: res => {
+          postId = 0;
+        }
+      })
+    }
+    if (businessId > 0) {
+      wx.navigateTo({
+        url: '/pages/view/businessDetail/businessDetail?id=' + businessId,
+        complete: res => {
+          businessId = 0;
+        }
+      })
+    }
   },
   swiperChange(e){
     this.setData({
