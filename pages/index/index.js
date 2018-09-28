@@ -189,6 +189,32 @@ Page({
       app.globalData.areaChange = false;
       this.getIndexList()
     }
+    if (page!='' && app.globalData.uid != null) {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
+      // var that = this
+      // wx.request({
+      //   url: app.globalData.apiUrl + 'v3/update_city.php',
+      //   data: { uid: app.globalData.uid, postId: postId },
+      //   method: 'POST',
+      //   success: res => {
+      //     if (res.data.ret == 1) {
+      //       app.globalData.cityArray = [res.data.uinfo.state, res.data.uinfo.country, res.data.uinfo.city]
+      //       that.setData({
+      //         selectArray: app.globalData.cityArray
+      //       })
+      //     }
+      //   },
+      //   complete: res => {
+      //   }
+      // })
+      wx.navigateTo({
+        url: page,
+        complete: res => {
+          page = '';
+        }
+      })
+    }
     if (postId > 0 && app.globalData.uid != null) {
       app.globalData.cityChange = true;
       app.globalData.pageChange = true;
@@ -285,14 +311,6 @@ Page({
         }
       },
       complete: res => {
-        if (postId > 0) {
-          wx.navigateTo({
-            url: '/pages/view/viewDetail/viewDetail?id=' + postId,
-            complete: res => {
-              postId = 0;
-            }
-          })
-        }
       }
     })
   },
@@ -302,6 +320,22 @@ Page({
         url: page,
         success: res => {
           page = '';
+        }
+      })
+    }
+    if (postId > 0) {
+      wx.navigateTo({
+        url: '/pages/view/viewDetail/viewDetail?id=' + postId,
+        complete: res => {
+          postId = 0;
+        }
+      })
+    }
+    if (businessId > 0) {
+      wx.navigateTo({
+        url: '/pages/view/businessDetail/businessDetail?id=' + businessId,
+        complete: res => {
+          businessId = 0;
         }
       })
     }

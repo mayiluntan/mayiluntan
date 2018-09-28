@@ -130,7 +130,7 @@
   <view class='merge'>
     <view class='detail'>
     <view class='detail-list'><text></text>
-    <picker bindchange="houseChange" value="{{houseIndex}}" range="{{hxouseArray}}" class='house-picker'>
+    <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
         <view>
         <text class='detail-font'>房型：</text>{{houseArray[houseIndex]}}
         </view>
