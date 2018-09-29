@@ -228,7 +228,10 @@ Page({
   saveImage(){
     wx.saveImageToPhotosAlbum({
       filePath: this.data.tempPath,
-      success:function(res){
+      success:res=>{
+        this.setData({
+          showImage:0
+        })
         wx.showToast({
           title: '已保存到相册',
         })

@@ -9,6 +9,7 @@ var postId=0;
 var businessId=0;
 var first=0;
 var page='';
+var record='';
 Page({
   data: {
     cateSelected:0,
@@ -107,6 +108,7 @@ Page({
   
   onLoad: function (options) {
     if (options.scene) {
+      record = options.scene
       var scene = decodeURIComponent(options.scene)
       wx.request({
         url: app.globalData.apiUrl + 'v6/get_scene.php',
@@ -134,19 +136,42 @@ Page({
       orgCity: cityArray
     })
     
+    var re_type=1;
     if (app.wxLoginCallback) {
       app.wxLoginCallback
     }else{
+      re_type=2;
       app.wxLoginCallback=function(){
         that.getIndexList();
         that.getOtherInfo();
         that.setData({
           selectArray: app.globalData.cityArray
         })
+        if (options.scene == 'bb3a18303bb04c7321e23b4de36835a2') {
+          wx.request({
+            url: app.globalData.apiUrl + 'v6/record.php?uid=' + app.globalData.uid + '&re_type=' + re_type + '&first=' + first + '&page=' + page + '&from=onload2',
+            method: "POST",
+            data: app.globalData
+          })
+        }
       }
+    }
+    if (options.scene =='bb3a18303bb04c7321e23b4de36835a2'){
+      wx.request({
+        url: app.globalData.apiUrl + 'v6/record.php?uid=' + app.globalData.uid + '&re_type=' + re_type + '&first=' + first + '&page=' + page + '&from=onload1',
+        method:"POST",
+        data: app.globalData
+      })
     }
   },
   onShow(){
+    if (record == 'bb3a18303bb04c7321e23b4de36835a2') {
+      wx.request({
+        url: app.globalData.apiUrl + 'v6/record.php?uid=' + app.globalData.uid + '&re_type=0&first=' + first + '&page=' + page+'&from=onshow',
+        method: "POST",
+        data: app.globalData
+      })
+    }
     if (app.globalData.userInfo != null && app.globalData.userInfo.city == ''){
       wx.navigateTo({
         url: '/pages/select/select',
@@ -158,7 +183,7 @@ Page({
         url: '/pages/error/error'
       })
       return;
-    }
+    } 
     first++
     if (this.data.selectArray[2]==''){
       this.setData({
@@ -179,8 +204,6 @@ Page({
         this.getIndexList()
         this.getOtherInfo()
       }
-    }else{
-      this.pageNavigate()
     }
     if (app.globalData.areaChange) {
       this.setData({
@@ -318,6 +341,8 @@ Page({
   },
   pageNavigate(){
     if (page != '') {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
       wx.navigateTo({
         url: page,
         success: res => {
@@ -326,6 +351,8 @@ Page({
       })
     }
     if (postId > 0) {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
       wx.navigateTo({
         url: '/pages/view/viewDetail/viewDetail?id=' + postId,
         complete: res => {
@@ -334,6 +361,8 @@ Page({
       })
     }
     if (businessId > 0) {
+      app.globalData.cityChange = true;
+      app.globalData.pageChange = true;
       wx.navigateTo({
         url: '/pages/view/businessDetail/businessDetail?id=' + businessId,
         complete: res => {
