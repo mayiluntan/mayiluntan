@@ -20,7 +20,7 @@ Page({
       }
     ],
     // cateArray: [{ 'id': 0, 'name': '全部分类' }, { 'id': 1, 'name': '房屋信息' }, { 'id': 2, 'name': '二手市场' }, { 'id': 3, 'name': '求职招聘' }, { 'id': 4, 'name': '汽车交易' }, { 'id': 5, 'name': '求助问事' }, { 'id': 6, 'name': '拼车信息' }, { 'id': 7, 'name':'短租民宿'}, { 'id': 8, 'name': '生意转让' }, { 'id': 12, 'name': '房产信息' }],
-    cateArray: ['全部分类', '房屋信息', '二手市场', '求职招聘', '汽车交易','蚂蚁闲谈','拼车信息' ,'短租民宿','生意转让' ,'房产信息','往返带物'],
+    cateArray: ['全部分类', '房屋信息', '二手市场', '求职招聘', '汽车交易','蚂蚁生活','拼车信息' ,'短租民宿','生意转让' ,'房产信息','往返带物'],
     cateId:[0,1,2,3,4,5,6,7,8,12,16],
     cateIndex:0,
     orderArray: ['排序', '发布时间', '刷新时间'],
@@ -124,6 +124,7 @@ Page({
       postId = options.id ? options.id : 0;
       businessId = options.business_id ? options.business_id : 0;
     }
+    this.chekcUpdate();
     var that=this
     setTimeout(function(){
       that.setData({
@@ -535,5 +536,40 @@ Page({
     wx.switchTab({
       url: '/pages/publish/category/category'
     })
+  },
+  chekcUpdate(){
+    if (wx.canIUse('getUpdateManager')) {
+      const updateManager = wx.getUpdateManager()
+      updateManager.onCheckForUpdate(function (res) {
+        // 请求完新版本信息的回调
+        if (res.hasUpdate) {
+          updateManager.onUpdateReady(function () {
+            wx.showModal({
+              title: '更新提示',
+              content: '新版本已经准备好，是否重启应用？',
+              success: function (res) {
+                if (res.confirm) {
+                  // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                  updateManager.applyUpdate()
+                }
+              }
+            })
+          })
+          updateManager.onUpdateFailed(function () {
+            // 新的版本下载失败
+            wx.showModal({
+              title: '已经有新版本了哟~',
+              content: '新版本已经上线啦~，请您删除当前小程序，重新搜索打开哟~',
+            })
+          })
+        }
+      })
+    } else {
+      // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+      wx.showModal({
+        title: '提示',
+        content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
+      })
+    }
   }
 })
