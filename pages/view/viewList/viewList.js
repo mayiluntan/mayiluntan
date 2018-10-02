@@ -85,11 +85,13 @@ Page({
   getIndexList() {
     var cate2 = this.data.secondId[this.data.cateIndex]-1;
     wx.request({
-      url: app.globalData.apiUrl + 'v6/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
+      url: app.globalData.apiUrl + 'v7/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
-        this.setData({
-          listData: res.data.data
-        })
+        if(res.data.ret==1){
+          this.setData({
+            listData: res.data.data
+          })
+        }
       },
       complete: res => {
         wx.hideNavigationBarLoading() //完成停止加载

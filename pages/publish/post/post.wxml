@@ -72,7 +72,7 @@
         <view class='merge'>
         <view class='detail'>
           <view class='detail-list'><text class='detail-font'>年份：</text>
-          <picker mode='date' bindchange='transYearChange' value='{{postData.transYear}}' fields='year'>{{postData.transYear}}</picker>
+          <picker mode='date' bindchange='transYearChange' value='{{postData.transYear}}' start='1980' end='2050' fields='year'>{{postData.transYear}}</picker>
           </view>
         </view>
         <view class='merge-mid'></view>
@@ -148,14 +148,14 @@
     </view>
     </view>
   </view>
-  <view class='detail'>
+  <!--<view class='detail'>
    <view class='detail-list no-border'><text class='detail-font'>附近学校：</text></view>
    <view class='tags'>
       <block wx:for='{{schoolArr}}' wx:key='index'>
       <view class="{{(schoolIndex1==index || schoolIndex2==index)?'on':''}}" bindtap='selectSchool' data-index='{{index}}'>{{item}}</view>
       </block>
     </view>
-  </view>
+  </view>-->
   <view class='detail-orgin'>
    <view class='detail-orgin-title'>来源：</view>
    <view bindtap='personalPick' data-value='1' class="{{postData.personal==1?'detail-pick-on':'detail-pick'}}">个人</view>

@@ -123,7 +123,7 @@
           <view class='list-top'>
             <view class='list-left'>
               <view class='list-title'>
-                <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
+                <view class='list-cate'>{{item.cate}}</view>
                 <view class='list-tname'>{{item.title}}</view>
               </view>
               <view class='list-attribute'>
@@ -131,8 +131,7 @@
               </view>
               <view class='list-third'>
                 <view class='list-tag'>
-                  <view wx:if="{{item.tag1!=''}}">{{item.tag1}}</view>
-                  <view wx:if="{{item.tag2!=''}}">{{item.tag2}}</view>
+                  <view wx:for="{{item.tag_arr}}" wx:for-item='tag' wx:key='t'>{{tag}}</view>
                 </view>
                 <view class='list-contact'>
                   <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>

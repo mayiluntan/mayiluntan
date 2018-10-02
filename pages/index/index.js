@@ -117,6 +117,9 @@ Page({
         success: res => {
           if (res.data.ret == 1) {
             page = res.data.data
+            if (app.globalData.uid != null) {
+              this.pageNavigate()
+            }
           }
         }
       })
@@ -155,6 +158,7 @@ Page({
             data: app.globalData
           })
         }
+        app.wxLoginCallback=null;
       }
     }
     if (options.scene =='bb3a18303bb04c7321e23b4de36835a2'){
@@ -292,6 +296,10 @@ Page({
         }
       })
     }
+    if (this.data.listData.length == 0 && app.globalData.uid != null){
+      this.getIndexList()
+      this.getOtherInfo()
+    }
   },
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -309,11 +317,13 @@ Page({
       }
     })
     wx.request({
-      url: app.globalData.apiUrl + 'v6/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
+      url: app.globalData.apiUrl + 'v7/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
-        this.setData({
-          listData:res.data.data
-        })
+        if (res.data.ret==1){
+          this.setData({
+            listData: res.data.data
+          })
+        }
       },
       complete: res => {
         wx.hideNavigationBarLoading() //完成停止加载
