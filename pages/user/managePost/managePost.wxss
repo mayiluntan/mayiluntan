@@ -110,6 +110,15 @@ page {
   color: #7f7f7f;
   text-align: right;
 }
+.list .list-attribute{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16rpx 0 20rpx;
+  min-height:50rpx;
+}
+.list .list-attribute view{
+  margin-right: 10rpx;
+}
 /**content**/
 .content{
   width: 100%;  

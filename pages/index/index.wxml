@@ -1,14 +1,27 @@
 <!--index.wxml-->
 <view class="container">
+  <view class="top">
+    <view class='city'>
+      <view class='city-picker' bindtap='selectCity'>
+        <view>{{selectArray[2]}}</view>
+        <view class='arrow'>
+          <image src='/images/icon_area_arrow.png'/>
+        </view>
+      </view>
+    </view>
+    <view class='search'>
+      <input type='text' placeholder='搜索' placeholder-style='text-align:center;' bindconfirm='searchClick' />
+    </view>
+  </view>
   <view class='top-banner'>
-    <view class='city'  bindtap='selectCity'>
+    <!--<view class='city'  bindtap='selectCity'>
       <view class='logo'>
         <image src='/images/local-white.png'/>
       </view>
       <view class='city-picker'>
         <view>{{selectArray[2]}}</view>
       </view>
-    </view>
+    </view>-->
     <swiper class='banner-swiper' autoplay="true" interval="5000" duration="500" indicator-dots="true" indicator-color='#b5bdc0' indicator-active-color="#ff9800">  
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">  
         <swiper-item> 
@@ -135,7 +148,7 @@
                 </view>
                 <view class='list-contact'>
                   <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
-                  <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src='/images/tel1.png'></image>
+                  <image class='list-tel' bindtap='callPhone' data-phone='{{item.mobile}}' src="{{item.mobile==''?'/images/tel2.png':'/images/tel1.png'}}"></image>
                 </view>
               </view>
             </view>

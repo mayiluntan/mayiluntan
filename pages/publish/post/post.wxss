@@ -39,7 +39,7 @@ page {
   overflow: auto;
 }
 .cate{
-  padding: 20rpx 0;
+  padding: 26rpx 0;
 }
 .title{
   padding:20rpx 0;

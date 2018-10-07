@@ -69,7 +69,12 @@
         <picker range='{{brandArray}}' bindchange='transBrandChange' value='{{postData.transBrand}}'>{{brandArray[postData.transBrand]}}</picker>
         </view>
       </view>
-        <view class='merge'>
+      <view class='detail'>
+        <view class='detail-list'><text class='detail-font'>型号：</text>
+        <picker range='{{modelArray}}' bindchange='transModelChange' value='{{postData.transModel}}'>{{modelArray[postData.transModel]}}</picker>
+        </view>
+      </view>
+      <view class='merge'>
         <view class='detail'>
           <view class='detail-list'><text class='detail-font'>年份：</text>
           <picker mode='date' bindchange='transYearChange' value='{{postData.transYear}}' start='1980' end='2050' fields='year'>{{postData.transYear}}</picker>
@@ -114,8 +119,22 @@
     </input>
     </view>
   </view>
-  <view class='detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
-    <view class='detail-list'><text class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>
+  <view class='cate detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
+    <!--<view class='detail-list'><text class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>-->
+    <picker mode="multiSelector" bindchange="areaChange" bindcolumnchange="areaColumnChange" value="{{areaIndex}}" range="{{areaArray}}">
+      <view>
+       <text class='detail-font'>区域：</text><text>{{postData.area}}</text>
+      </view>
+     </picker>
+  </view>
+  <view class='merge'>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>电话：</text><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>微信：</text><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
+    </view>
   </view>
   <view class='merge'>
     <view class='detail' wx:if='{{indexArray[0]>0}}'>
@@ -161,17 +180,21 @@
    <view bindtap='personalPick' data-value='1' class="{{postData.personal==1?'detail-pick-on':'detail-pick'}}">个人</view>
    <view bindtap='personalPick' data-value='2' class="{{postData.personal==2?'detail-pick-on':'detail-pick'}}">中介</view>
   </view>
-  <view class='detail'>
-   <view class='detail-list'><text class='detail-font'>租金：{{moneySign}}</text><input placeholder="100/周" bindinput='priceInput' value='{{postData.price}}'></input></view>
-  </view>
-  <view class='detail detail-none'>
-    <view class='tags'>
-      <block wx:for='{{tagArr}}' wx:key='index'>
-      <view class="{{(tagOption[index]==true)?'on':''}}" bindtap='selectTag' data-index='{{index}}'>{{item}}</view>
-      </block>
+  <view class='merge'>
+    <view class='detail'>
+      <view class='detail-list'><text class='detail-font'>租金：{{moneySign}}</text><input placeholder="100/{{weekArray[postData.week]}}" bindinput='priceInput' value='{{postData.price}}'></input></view>
+    </view>
+    <view class='merge-mid'></view>
+    <view class='detail'>
+      <view class='detail-list'>
+        <picker bindchange="weekChange" value="{{postData.week}}" range="{{weekArray}}" class='house-picker'>
+        <view>
+        <text class='detail-font'>周期：</text>{{weekArray[postData.week]}}
+        </view>
+        </picker>
+      </view>
     </view>
   </view>
-  </block>
   <view class='merge'>
     <view class='detail'>
       <view class='detail-list'><text class='detail-font'>电话：</text><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
@@ -181,6 +204,15 @@
       <view class='detail-list'><text class='detail-font'>微信：</text><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
     </view>
   </view>
+  <view class='detail detail-none'>
+    <view class='tags'>
+      <block wx:for='{{tagArr}}' wx:key='index'>
+      <view class="{{(tagOption[index]==true)?'on':''}}" bindtap='selectTag' data-index='{{index}}'>{{item}}</view>
+      </block>
+    </view>
+  </view>
+  </block>
+  
   <!--<view class='top-list to-top'>
     <text class='detail-font'>已关闭</text>
     <view class="switch {{postData.top==1?'':' off'}}" bindtap='clickSwitch' data-on='{{postData.top}}'><view></view></view>

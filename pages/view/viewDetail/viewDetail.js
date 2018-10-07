@@ -15,7 +15,8 @@ Page({
     showShare:0,
     showImage:0,
     isDownload:0,
-    tempPath:''
+    tempPath:'',
+    weekArray: ['周', '月', '日']
   },
 
   /**
@@ -26,7 +27,7 @@ Page({
     //console.log(id)
     var that = this;
     wx.request({
-      url: app.globalData.apiUrl+'v6/get_content.php',
+      url: app.globalData.apiUrl+'v7/get_content.php',
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
         if(res.data.ret==1){

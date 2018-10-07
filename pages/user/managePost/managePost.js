@@ -23,12 +23,13 @@ Page({
     if (this.data.menuSelected==2){
       var url = app.globalData.apiUrl + 'get_my_business.php?uid=' + app.globalData.uid;
     }else{
-      var url = app.globalData.apiUrl + 'v4/get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected;
+      var url = app.globalData.apiUrl + 'v7/get_list.php?uid=' + app.globalData.uid + '&mine=1&mineType=' + this.data.menuSelected;
     }
     wx.request({
       url: url,
       success: res => {
         if (res.data.ret == 1) {
+          console.log(res.data.data)
           this.setData({
             listData: res.data.data
           })

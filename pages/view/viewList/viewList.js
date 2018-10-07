@@ -151,13 +151,20 @@ Page({
   },
   callPhone(e) {
     lock = true;
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone,
-      complete: res => {
-        lock = false;
-      }
-    })
-
+    var v = e.currentTarget.dataset.phone
+    if (v == '') {
+      wx.showToast({
+        title: '未填写手机号',
+        icon: 'none'
+      })
+    } else {
+      wx.makePhoneCall({
+        phoneNumber: v,
+        complete: res => {
+          lock = false;
+        }
+      })
+    }
   },
   viewDetail(e) {
     if (lock) {

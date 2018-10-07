@@ -12,6 +12,9 @@ Page({
     picCount:0,
     indexArray: [0, 0],
     cateArray: [['房屋信息', '二手市场', '求职招聘', '汽车交易', '蚂蚁生活', '拼车信息', '短租民宿', '生意转让','房产信息','往返带物'], ['求租', '招租']],
+    areaArray:[],
+    areaIndex:[0,0],
+    areaOrgin:[],
     cateId: [1, 2, 3, 4, 5, 6, 7, 8, 12, 16],
     cateSecondId: [0,1],
     dayArray:['1天','7天','30天'],
@@ -20,9 +23,40 @@ Page({
     houseIndex:0,
     houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
     typeIndex:0,
+    weekArray:['周','月','日'],
     startDate:'',
     speedArray: ['请选择','自动', '手动'],
-    brandArray: ['请选择品牌','Alfa Romeo 阿尔法罗密欧 ','Audi 奥迪','BMW 宝马','Chrysler 克莱斯勒','Chverolet 雪佛兰','Citroen 雪铁龙','Dodge 道奇','Ford 福特','Holden 霍尔顿','Honda 本田','Hyundai 现代','Kia 起亚','Land Rover 路虎','Lexus 雷克萨斯','Mazda 马自达','Mercedes Benz 奔驰','Mitsubishi 三菱','Nissan 东风日产','Peugeot 标志','Porsche 保时捷','Renault 雷诺','Subaru 斯巴鲁','Suzuki 铃木','Toyota 丰田','Volkswagen 大众','Volvo 沃尔沃','Other 其它品牌'],
+    brandArray: ['请选择品牌','Alfa Romeo 阿尔法罗密欧','Audi 奥迪','BMW 宝马','Chrysler 克莱斯勒','Chverolet 雪佛兰','Citroen 雪铁龙','Dodge 道奇','Ford 福特','Holden 霍尔顿','Honda 本田','Hyundai 现代','Kia 起亚','Land Rover 路虎','Lexus 雷克萨斯','Mazda 马自达','Mercedes Benz 奔驰','Mitsubishi 三菱','Nissan 东风日产','Peugeot 标志','Porsche 保时捷','Renault 雷诺','Subaru 斯巴鲁','Suzuki 铃木','Toyota 丰田','Volkswagen 大众','Volvo 沃尔沃','Other 其它品牌'],
+    allModelArray:{
+      '1': ['请选择型号','146', '147', '155', '156', '159', '166', '33', '4C', '75', 'Giulia', 'Giulietta', 'GT', 'GTV', 'MiTo', 'Spider','Sprint'],
+      '2': ['请选择型号','100', '80', '90', '90E', 'A1', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'Allroad', 'Avant', 'Q2', 'Q3', 'Q5', 'Q7', 'R8', 'RS Q3', 'RS3', 'RS4', 'RS5', 'RS6', 'RS7', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'SQ5', 'SQ7', 'TT', 'TTRS','TTS'],
+      '3': ['请选择型号','Any model', '116i', '118d', '118i', '120d', '120i', '123d', '125i', '130i', '135i', '218d', '218i', '220i', '235i', '3', '316', '316i', '316ti', '318', '318ci', '318d', '318i', '318is', '318ti', '320ci', '320d', '320i', '323', '323i', '325ci', '325d', '325i', '328', '328ci', '328i', '330', '330ci', '330d', '330e', '330i', '335ci', '335d', '335i', '340i', '420d', '428i', '435d', '440i', '520d', '520i', '523', '523i', '525', '525d', '525i', '528i', '530', '530d', '530i', '535', '535d', '535i', '540', '540i', '545i', '550i', '630i', '640d', '640i', '645ci', '650ci', '650i', '728i', '730D', '730i', '730LD', '735', '735i', '740', '740d', '740e', '740i', '740iL', '745i', '745iL', '745Li', '750i', '750Li', '760Li', 'Compact', 'M', 'M1', 'M135i', 'M140i', 'M2', 'M235i', 'M3', 'M4', 'M5', 'M6', 'Mini', 'Mini Cooper', 'X1', 'X2', 'X3', 'X4', 'X5', 'X6', 'Z3', 'Z4','Other'],
+      '4': ['请选择型号','300', '300 SRT', '300C', '52', '62', 'Avenger', 'Crossfire', 'FURY COUPE', 'G70', 'Grand Voyager', 'Hillman', 'Jeep', 'Jeep Grand Cherokee', 'Neon', 'New Yorker', 'PT Cruiser', 'Sebring', 'Valiant', 'Voyager','Windsor'],
+      '5': ['请选择型号','210', '56', 'Belair', 'Blazer', 'C1500', 'C20', 'Camaro', 'Caprice', 'Cheyenne', 'Corvette', 'Coupe', 'Cruze', 'El camino', 'Electra', 'Flatback', 'Fleetmaster', 'Impala', 'Master', 'MW', 'MWG', 'Oladsmobile', 'Optra', 'Pickup', 'Roadster', 'Silverado', 'Sonic', 'SS', 'Starcft', 'Suburban', 'Superior','Tahoe'],
+      '6': ['请选择型号','Aircross', 'Berlingo', 'BX', 'C2', 'C3', 'C4', 'C5', 'CX', 'CX2200', 'DS23', 'DS3', 'DS4', 'DS5', 'Evasion', 'Light15', 'Saxo', 'Xantia', 'Xsara','ZX'],
+      '7': ['请选择型号','Any model', 'Aspen', 'Avenger', 'Cailber', 'Challenger', 'Charger', 'DU', 'Journey', 'Nitro', 'Pioneer', 'Ram', 'RAM 1500', 'Viper','Other'],
+      '8': ['请选择型号','Any model', 'Anglia', 'Bronco', 'Capri', 'Cortina', 'Courier', 'Deluxe', 'Econovan', 'Ecosport', 'Escape', 'Escort', 'Everest', 'Explorer', 'F150', 'F250', 'F350', 'Fairlane', 'Fairmont', 'Falcon', 'Festival', 'Fiesta', 'Focus', 'FPV', 'Ixion', 'Ka', 'Kuga', 'Laser', 'LTD', 'Mercury', 'Mondeo', 'Mustang', 'Probe', 'Ranger', 'Roadster', 'Sierra', 'Spectron', 'Taurus', 'Telstar', 'Terroitory', 'Thunderbird', 'Tourneo', 'Transit', 'Typhoon','XLT'],
+      '9': ['请选择型号','Astra', 'Barina', 'Berlina', 'Calais', 'Caprice', 'Captiva', 'Cascada', 'Colorado', 'Combo', 'Commodore', 'Crewman', 'Cruze', 'Epica', 'Equinox', 'Frontera', 'Gemini', 'HSV Avalanche', 'HSV Clubsport', 'HSV Coupe', 'HSV Grange', 'HSV GTO', 'HSV GTS', 'HSV Maloo', 'HSV R8 Clubsport', 'HSV Senator', 'HSV Tourer R8', 'Insignia', 'Jackaroo', 'Kingswood', 'Malibu', 'Monaro', 'Monterey', 'Rodeo', 'Spark', 'SS', 'SS-V', 'Statesman', 'Torana', 'Trailblazer', 'Trax', 'Ute', 'Vectra', 'Viva', 'Volt','Zafire'],
+      '10': ['请选择型号','Accord', 'Air', 'Airwave', 'Ascot', 'Avancier', 'Beat', 'Capa', 'City', 'Civic', 'Concerto', 'Crossroad', 'CR-V', 'CRX', 'CR-Z', 'Domani', 'EDIX', 'Elysion', 'Euro Civic', 'Fit', 'Freed', 'Horizon', 'HR-V', 'Insight', 'Inspire', 'Integra', 'Jazz', 'Lagreat', 'Legend', 'Logo', 'MDX', 'Mobilio', 'NSX', 'Odyssey', 'Orthia', 'Prelude', 'Rafaga', 'S2000', 'Saber', 'SMX', 'Spike', 'Step Wagon', 'Stream', 'Torneo', 'V6 Accord','Other'],
+      '11': ['请选择型号','Hyundai'],
+      '12': ['请选择型号','Carens', 'Carnival', 'Cerato', 'Koup', 'Magentis', 'Mentor', 'Niro', 'Optima', 'Picanto', 'Pregio', 'Proceed', 'Rio', 'Sorento', 'Soul', 'Soul EV', 'Spectra','Sportage'],
+      '13': ['请选择型号','Defender', 'Discovery', 'Discovery Sport', 'Freelander', 'Range Rover', 'Range Rover Evoque', 'Range Rover Sport', 'Range Rover Velar', 'Series 3', 'TDV8','Other'],
+      '14': ['请选择型号','Any model', 'CT 200h', 'ES 300', 'ES 300h', 'GS 250', 'GS 300', 'GS 300h', 'GS 350', 'GS 430', 'GS 450h', 'GS 460', 'GS F', 'IS 200', 'IS 200t', 'IS 220', 'IS 250', 'IS 300', 'IS 300h', 'IS F', 'L300', ' LS 400', 'LS 430', 'LS 460', 'LS 600', 'LX 450d', 'LX 470', 'LX 570', 'NX 200', 'NX 200t', 'NX 2300t', 'NX 300', 'NX 300h', 'RC 200t', 'RC 350', 'RC F', 'RX 300', 'RX 330', 'RX 350', 'RX 400h', 'RX 450h', 'SC 430','Other'],
+      '15': ['请选择型号','121', '2', '3', '323', '6', '626', 'Astina', 'Atenza', 'Autozam', 'Axela', 'AZ 3', 'B1600', 'B2000', 'B2200', 'B2500', 'B2600', 'Biante', 'Bongo', 'Bounty', 'Brawny', 'BT-50', 'Capella', 'Cosmo', 'CX-3', 'CX-5', 'CX-7', 'CX-9', 'Demio', 'E1800', 'E2000', 'E2500', 'Etude', 'Eunos', 'Familia', 'Lantis', 'Luce', 'MPV', 'MS6', 'MS8', 'MS9', 'MX-5', 'MX6', 'Premacy', 'Proceed', 'Roadster', 'RX3', 'RX7', 'RX-8', 'Sentia', 'SP20', 'SP23', 'SP25', 'Titan', 'Tributte', 'Verisa','Other'],
+      '16': ['请选择型号','Any model', '190E', '220', '230E', '260E', '280', '300', '300 E', '300 SE', '300 SL', '320', '350', '500', '500 SL', 'A 160', 'A 170', 'A 180', 'A 190', 'A 200', 'A 250', 'A 45', 'B 170', 'B 180', 'B 200', 'B 250', 'C 180', 'C 200', 'C 220', 'C 230', 'C 240', 'C 250', 'C 270', 'C 280', ' C 300', 'C 32', 'C 320', 'C 350', 'C 36', 'C 43', 'C 55', 'C 63', 'C Class Coach', 'CL 200', 'CL 500', 'CL 55', 'CL 550', 'CL 63', 'CLA 200', 'CLA', '250', 'CLA 45', ' CLC', 'CLC 200', 'CLK 240', 'CLK 280', 'CLK 320', 'CLK 350', 'CLK 500', 'CLK 55', 'CLK 63', 'CLS 250', 'CLS 320', 'CLS 350', 'CLS 400', 'CLS 500', 'CLS 55', 'CLS 550', 'CLS 63', 'E 200', 'E 220', 'E 240', 'E 250', 'E 280', 'E 300', 'E 320', 'E 350', 'E400', 'E 43', 'E 430', 'E 500', 'E 55', 'E 550', 'E 63', 'E-Class', 'G 330', 'G 350', 'G 63', 'GL 320', 'GL 350', 'GL 420', 'GL 500', 'GL 63', 'GLA 180', 'GLA 200', 'GLA 220d', 'GLA 250', 'GLA 45', 'GLC 220', 'GLC 250', 'GLE 250d', 'GLE 350', 'GLE 350d', 'GLE 63S', 'GLS 350d', 'GLS 63', 'GT', 'MB140', 'ML250', 'ML300', 'ML320', 'ML350', 'ML400', 'ML430', 'ML500', 'ML55', 'ML63', 'R320', 'R350', 'S280', 'S320', 'S350', 'S400', 'S430', 'S500', 'S550', 'S600', 'S63', 'S65', 'SL', 'SL 350', 'SL 400', 'SL 500', 'SL 63', 'SLC 180', 'SLC 200', 'SLC 300', 'SLC 43', 'SLK', 'SLK 200', 'SLK 230', 'SLK 250', 'SLK 280', 'SLK 300', 'SLK 320', 'SLK 350', 'SLK 500', 'SLK 55', 'SLK 600', 'SLK 63', 'SLK 65', 'SLS', 'Smart Car', 'Sprnter', 'V230', 'V250', 'V350', 'Valente', 'Vaneo', 'Viano', 'Vito','Other'],
+      '17': ['请选择型号','Any model', '380', 'Airtrek', 'ASX', 'Canter', 'Carisma', 'Cedia', 'Challenger', 'Chariot', 'Colt', 'Cordia', 'Delica', 'Diamante', 'Dingo', 'Dion', 'Eclipse Cross', 'Emeraude', 'Eterna', 'FTO', 'Galant', 'Grandis', 'GTO', 'i-car', 'i-MIEV', 'Jeep', 'L200', 'L300', 'L400', 'Lancer', 'Legnum', 'Libero', 'Magna', 'Mini Cab', 'Mirage', 'Nimbus', 'Outlander', 'Pajero', 'RVR', 'Sigma', 'Starion', 'Strada', 'Town Box', 'Triton', 'V3000','Other'],
+      '18': ['请选择型号','200SX', '300ZX', '350', '350Z', '370Z', 'AD', 'Altima', 'Atlas', 'Avenir', 'Basssara', 'Bluebird', 'Caravan', 'Cedric', 'Cefiro', 'Cima', 'Cube', 'Datsun', 'Dualis', 'Elgrand', 'e-NV200', 'Exa', 'Expert', 'Fairlady', 'Figaro', 'Fuga', 'Gloria', 'GTR', 'Homy', 'Infiniti', 'Juke', 'Kingcab', 'Lafesta', 'Largo', 'Laurel', 'Leaf', 'Leopard', 'Liberty', 'Lucino', 'March', 'Maxima', 'Micra', 'Mistral', 'Murano', 'Navara', 'Note', 'NV200', 'NV350', 'NX', 'PAO', 'Passage', 'Pathfinder', 'Patrol', 'Prairie', 'Presage', 'Presea', 'Primaster', 'Primera', 'Pulsar', 'Qashqai', 'Rasheen', 'Regulus', 'Rnessa', 'Safari', 'S-Cargo', 'Sentra', 'Serena', 'Sivia', 'Skyline', 'Stegea', 'Sunny', 'Sylphy', 'Teana', 'Terrano', 'Tida', 'Tino', 'Titan', 'Urvan', 'Ute', 'Vanette', 'Wingroad', 'X-Trail','Other'],
+      '19': ['请选择型号','Peugeot'],
+      '20': ['请选择型号','Porsche'],
+      '21': ['请选择型号','Captur', 'Clio', 'Espace', 'Kangoo', 'Koleos', 'Laguna', 'Lutecia', 'Master', 'Megane', 'Scenic', 'Trafic', 'Twingo','Other'],
+      '22': ['请选择型号','Any model', 'Ace', 'B4', 'Brumby', 'BRZ', 'Exiga', 'Forester', 'Impreza', 'Justy', 'Lancaster', 'Legacy', 'Levorg', 'Omega', 'Outback', 'Sambar', 'SVX', 'Traviq', 'Trezia', 'Tribeca', 'WRX', 'WRX STI', 'XV','Other'],
+      '23': ['请选择型号','Any model', 'Aerio', 'Alto', 'APV', 'Baleno', 'Carry', 'Celerio', 'Escudo', 'Farm Worker', 'Grand Escudo', 'Grand Vitara', 'Ignis', 'Jimny', 'Kizashi', 'Landy', 'Liana', 'Samurai', 'S-Cross', 'SFV650', 'SJ410', 'SJ413', 'Solio', 'Splash', 'Swift', 'SX4', 'Vitara', 'Wagon', 'X90','Other'],
+      '24': ['请选择型号','Any model', '86', 'Allex', 'Alphard', 'Altezza', 'Altise', 'Aqua', 'Aristo', 'Auris', 'Avalon', 'Avensis', 'Axio', 'BB', 'Belta', 'Blade', 'Bilzzard', 'Brevis', 'Caldina', 'Camry', 'Carib', 'Carina', 'Cavalier', 'Celica', 'Celsior', 'Century', 'Ceres', 'Chaser', 'C-HR', 'Corolla', 'Corona', 'Corsa', 'Cressida', 'Cresta', 'Crown', 'Curren', 'Cynos', 'Duet', 'Dyna', 'Echo', 'Estima', 'Exiv', 'Fieldor', 'FJ Cruiser', 'Fortuner', 'FunCargo', 'Gaia', 'Grand Hiace', 'Granvia', 'GT', 'Harrier', 'Hiace', 'Highlander', 'Hilux', 'Ipsum', 'IQ', 'Isis', 'Lst', 'Kluger', 'Lancer', 'Land Cruiser', 'Land Cruiser Pradpo', 'Levin', 'Liteace', 'Lucida', 'Luxel', 'Mark', 'Mark 2', 'Mark-X', 'MR2', 'MR-S', 'Nadia', 'Noah', 'Opa', 'Paseo', 'Passo', 'Platz', 'Porte', 'Premio', 'Previa', 'Prius', 'Probox', 'Progress', 'Qualis', 'Ractis', 'Raum', 'RAV4', 'Regius', 'Rumion', 'Runx', 'Rush', 'Sai', 'Scepter', 'Sera', 'Slienta', 'Soarer', 'Spacio', 'Sprinter', 'Starlet', 'Succeed', 'Supra', 'Surf', 'Tercel', 'Townace', 'Toyoace', 'Trueno', 'Vanguard', 'Vellfire', 'Verossa', 'Vista', 'Vitz', 'Voltz', 'Voxy', 'Will', 'Windom', 'Wish', 'Yaris','Other'],
+      '25': ['请选择型号','Amarok', 'Beetle', 'Bora', 'Caddy', 'Caravelle', 'CC', 'Crafter', 'Cross Polo', 'e-Golf', 'Eos', 'Golf', 'Jetta', 'Kombi', 'LT46 MWB', 'Multivan', 'Passat', 'Phaeton', 'Polo', 'Scirocco', 'Sharan', 'T5', 'Tiguan', 'Touareg', 'Touran', 'Transporter', 'Vento','Other'], 
+      '26': ['请选择型号','360', '440', '740', '760', '850', '960', 'C30', 'C70', 'S40', 'S60', 'S70', 'S80', 'V30', 'V40', 'V50', 'V60', 'V70', 'V90', 'XC60', 'XC70', 'XC90','Other'],
+      '27': ['请选择型号','Other']
+    },
+    modelArray:['请选择型号'],
     postData:{
       id: 0,
       title:'',
@@ -32,12 +66,13 @@ Page({
       lat:'',
       mobile:'',
       price:'',
+      week:0,
       tag1:'',
       tag2:'',
       school1:'',
       school2:'',
       wechat:'',
-      area:'',
+      area:'请选择区域',
       top:0,
       topDay:1,
       topPrice:10,
@@ -53,6 +88,7 @@ Page({
       linkman:'',
       transType:1,
       transBrand:0,
+      transModel:0,
       transYear:'',
       transPrice:'',
       transSpeed:0,
@@ -73,10 +109,11 @@ Page({
    */
   onLoad: function (options) {
     var cateIndex = options.cate ? options.cate : 0;
+    var cateIndex2 = options.cate2 ? options.cate2 : 0;
     if (cateIndex>0){
       this.allCateChange(cateIndex - 1)
       this.setData({
-        indexArray: [cateIndex - 1, 0]
+        indexArray: [cateIndex - 1, cateIndex2]
       })
     }
     var id = options.id ? options.id:0
@@ -96,7 +133,7 @@ Page({
     })
     if(id){
       wx.request({
-        url: app.globalData.apiUrl + 'v6/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v7/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -110,6 +147,7 @@ Page({
               tagIndex2: res.data.data.tagIndex2,
               houseIndex: res.data.data.houseIndex,
               typeIndex: res.data.data.typeIndex,
+              modelArray: res.data.data.modelArray,
               tagArr: res.data.data.tagArr,
               tagOption: res.data.data.tagOption,
             })
@@ -130,7 +168,22 @@ Page({
       moneySign: sign,
       schoolArr: arr
     })
-    
+    //区域
+    var arr = app.globalArray.areaArray[app.globalData.cityArray[2]]
+    if (arr === undefined) {
+      arr = { '全部地区': [] }
+    }
+    var keyArray = Object.keys(arr); 
+    for (var i = 0; i < keyArray.length;i++){
+      var key = keyArray[i];
+      if (arr[key].length==0){
+        arr[key]=[key];
+      }
+    }
+    this.setData({
+      areaOrgin: arr,
+      areaArray: [keyArray, arr[keyArray[0]]]
+    })
   },
   onShow() {
     if (app.globalData.areaChange) {
@@ -356,7 +409,7 @@ Page({
     }
     
     var cid = this.data.cateId[this.data.indexArray[0]]
-    if (this.data.postData.area == '' && cid != 5 && cid!=16) {
+    if ((this.data.postData.area == '' || this.data.postData.area == '请选择区域') && cid != 5 && cid!=16) {
       app.showTips('提示', '请选择区域', false)
       lock = false;
       return
@@ -444,6 +497,11 @@ Page({
         lock = false;
         return
       }
+      if (postData.transModel == 0) {
+        app.showTips('提示', '请选择型号', false)
+        lock = false;
+        return
+      }
       // if (postData.transPrice == '' || postData.transPrice <=0) {
       //   app.showTips('提示', '请输入价格', false)
       //   lock = false;
@@ -467,7 +525,7 @@ Page({
     postData.cate[1] = this.data.cateSecondId[postData.cate[1]]
     postData.moneySign = this.data.moneySign
     wx.request({
-      url: app.globalData.apiUrl+'v6/post.php',
+      url: app.globalData.apiUrl+'v7/post.php',
       data: postData,
       method:'POST',
       success:res=>{
@@ -752,9 +810,51 @@ Page({
       postData: postData
     })
   },
-  transBrandChange(e){
+  transBrandChange(e) {
     var postData = this.data.postData
+    var allModelArray = this.data.allModelArray
+    var modelArray = allModelArray[e.detail.value]
     postData.transBrand = e.detail.value
+    postData.transModel= 0
+    this.setData({
+      postData: postData,
+      modelArray: modelArray
+    })
+  },
+  transModelChange(e) {
+    var postData = this.data.postData
+    postData.transModel = e.detail.value
+    this.setData({
+      postData: postData
+    })
+  },
+  areaChange(e) {
+    var v=e.detail.value;
+    var arr = this.data.areaOrgin;
+    var keyArray = Object.keys(arr);
+    var area=arr[keyArray[v[0]]][v[1]];
+    var postData = this.data.postData
+    postData.area = area
+    this.setData({
+      postData: postData,
+      areaIndex:v
+    })
+  },
+  areaColumnChange(e) {
+    if (e.detail.column == 1) {
+      return;
+    }
+    var v=e.detail.value;
+    var arr = this.data.areaOrgin;
+    var keyArray = Object.keys(arr);
+    this.setData({
+      areaArray: [keyArray, arr[keyArray[v]]]
+    })
+  },
+  weekChange(e){
+    var v = e.detail.value;
+    var postData = this.data.postData
+    postData.week = v
     this.setData({
       postData: postData
     })

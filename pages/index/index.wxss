@@ -36,8 +36,11 @@ page{
 }
 .top{
   width: 100%;
-  height:38vw;
+  height:100rpx;
   position:relative;
+  background: #f0a323;
+  display: flex;
+  align-items: center;
 }
 .top image{
   width: 100%;
@@ -60,15 +63,11 @@ page{
   padding:10rpx 15rpx 0 0 ;
 }
 .top .city{
-  width: 100%;
-  position:absolute;
-  top: 13vw;
-  left: 0;
   display: flex;
-  line-height: 30rpx;
   color: #fff;
   justify-content: center;
   font-size: 16px;
+  padding:0 40rpx;
 }
 .top .city .city-picker{
   display: flex;
@@ -87,18 +86,16 @@ page{
   padding-left: 10rpx;
 }
 .top .search{
-  position:absolute;
-  top: 27vw;
-  left: 0;
-  width: 100%;
-  display: flex
+  display: flex;
+  width: 90%;
+  flex: 1;
 }
 .top .search input{
-  width: 90%;
   background: #fff;
   border-radius:10rpx;
   margin: 0 auto;
   height:2em;
+  width:90%;
 }
 
 /* .top.search.search_tip{
@@ -388,7 +385,7 @@ page{
 .tip-top3{
   position: absolute;
   left: 30rpx;
-  top: 60rpx;
+  top: 70rpx;
   z-index: 999;
 }
 .tip-top .tip-img {

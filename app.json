@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/view/report/report",
     "pages/publish/category/category",
+    "pages/view/report/report",
     "pages/select/select",
     "pages/publish/business/business",
     "pages/areaSelect/areaSelect",
@@ -26,11 +26,12 @@
     "pages/error/error",
     "pages/view/businessDetail/businessDetail",
     "pages/view/businessList/businessList",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/webView/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f0a323",
     "navigationBarTitleText": "小蚂蚁丨海外生活",
     "navigationBarTextStyle": "black"
   },

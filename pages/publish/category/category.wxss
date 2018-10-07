@@ -69,12 +69,43 @@
   font-size: 12px;
   color: #808080;
 }
+.cate picker{
+  width: 20%;
+  text-align: center;
+  padding: 2vw 0;
+}
 .cate .cate-detail{
   width: 20%;
   text-align: center;
   padding: 2vw 0;
 }
+.cate picker .cate-detail{
+  width: 100%;
+  text-align: center;
+  padding:0;
+}
 .cate image{
   width: 80rpx;
   height: 80rpx;
+}
+.cate-select{
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  background:rgba(10,10,10,0.5);
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cate-select view{
+  width:300rpx;
+  height:100rpx;
+  background:#fff;
+  border-radius:10rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20rpx 40rpx;
 }

@@ -309,7 +309,7 @@ Page({
   },
   getIndexList(){
     wx.request({
-      url: app.globalData.apiUrl + 'v6/get_banner.php?uid=' + app.globalData.uid,
+      url: app.globalData.apiUrl + 'v7/get_banner.php?uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           imgUrls: res.data.data
@@ -433,13 +433,20 @@ Page({
   },
   callPhone(e){
     lock=true;
-    wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone,
-      complete:res=>{
-        lock = false;
-      }
-    })
-    
+    var v = e.currentTarget.dataset.phone
+    if (v == '') {
+      wx.showToast({
+        title: '未填写手机号',
+        icon: 'none'
+      })
+    }else{
+      wx.makePhoneCall({
+        phoneNumber: v,
+        complete: res => {
+          lock = false;
+        }
+      })
+    }
   },
   cityChange(e){
     var v = e.detail.value;
