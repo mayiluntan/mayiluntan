@@ -26,7 +26,7 @@
         <text class='detail-title'>来源：</text><text class='detail-content'>{{content.other_info.source}}</text>
       </view>
     </view>
-    <view class='detail-list detail-list2 detail-list3'>
+    <view class='detail-list detail-list3'>
       <view class='detail-merge'>
         <text class='detail-title'>方式：</text><text class='detail-content'>{{content.other_info.house_type}}</text>
       </view>
@@ -36,7 +36,7 @@
     <!--<view class='detail-list detail-list3'><text class='detail-title'>附近学校：</text><text class='detail-content'>{{content.other_info.school}}</text></view>-->
   </view>
   <view class='detail' wx:if='{{content.cate1==4 && content.cate2==1 && content.other_info.trans_show==1}}'>
-    <view class='detail-list'><text class='detail-title'>价格：</text><text class='detail-price'>{{content.other_info.price>0?content.money_sign+content.other_info.price:'面议'}}</text></view>
+    <view class='detail-list'><text class='detail-title'>价格：</text><text class='detail-price'>{{content.price>0?content.money_sign+content.price:'面议'}}</text></view>
     <view class='detail-list detail-list2'>
       <view class='detail-merge'>
         <text class='detail-title'>年份：</text><text class='detail-content'>{{content.other_info.year}}</text>
@@ -45,20 +45,20 @@
         <text class='detail-title'>类型：</text><text class='detail-content'>{{content.other_info.trans_type}}</text>
       </view>
     </view>
-    <view class='detail-list detail-list2'>
+    <view class='detail-list'>
+      <text class='detail-title'>品牌：</text><text class='detail-content'>{{content.other_info.brand}}</text>
+    </view>
+    <!--<view class='detail-list detail-list2'>
       <view class='detail-merge'>
         <text class='detail-title'>变速箱：</text><text class='detail-content'>{{content.other_info.speed_type}}</text>
+      </view>      
+    </view>-->
+    <view class='detail-list detail-list3'>
+      <view class='detail-merge'>
+        <text class='detail-title'>型号：</text><text class='detail-content'>{{content.other_info.model}}</text>
       </view>
       <view class='detail-merge detail-merge2'>
         <text class='detail-title'>公里数：</text><text class='detail-content'>{{content.other_info.km}}</text>
-      </view>
-    </view>
-    <view class='detail-list detail-list3'>
-      <view class='detail-merge'>
-        <text class='detail-title'>品牌：</text><text class='detail-content'>{{content.other_info.brand}}</text>
-      </view>
-      <view class='detail-merge detail-merge2'>
-        <text class='detail-title'>型号：</text><text class='detail-content'>{{content.other_info.model}}</text>
       </view>
     </view>
   </view>

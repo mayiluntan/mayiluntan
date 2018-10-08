@@ -31,6 +31,7 @@ Page({
       data: { id: id, uid: app.globalData.uid},
       success:res=>{
         if(res.data.ret==1){
+          //console.log(res.data.data)
           this.setData({
             content: res.data.data,
             isCollect: res.data.data.is_collect

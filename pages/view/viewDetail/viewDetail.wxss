@@ -72,6 +72,7 @@
 }
 .detail-list3{
   border:0;
+  padding:0 20rpx;
 }
 .detail-merge{
   display: flex;

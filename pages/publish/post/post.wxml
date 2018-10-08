@@ -82,12 +82,10 @@
         </view>
         <view class='merge-mid'></view>
         <view class='detail'>
-          <view class='detail-list'><text class='detail-font'>价格：</text>
-          <input placeholder='请输入价格' bindinput='transPriceInput' value='{{postData.transPrice}}'></input><text class='detail-font2'>{{moneySign}}</text>
-          </view>
+          <view class='detail-list'><text class='detail-font'>公里数：</text><input  bindinput='transKmInput' value='{{postData.transKm}}'></input><text class='detail-font2'>KM</text></view>
         </view>
       </view>
-      <view class='merge'>
+      <!--<view class='merge'>
         <view class='detail'>
           <view class='detail-list'><text class='detail-font'>变速箱：</text>
           <picker range='{{speedArray}}' bindchange='transSpeedChange' value='{{postData.transSpeed}}'>{{speedArray[postData.transSpeed]}}</picker>
@@ -95,9 +93,11 @@
         </view>
         <view class='merge-mid'></view>
         <view class='detail'>
-          <view class='detail-list'><text class='detail-font'>公里数：</text><input  bindinput='transKmInput' value='{{postData.transKm}}'></input><text class='detail-font2'>KM</text></view>
+          <view class='detail-list'><text class='detail-font'>价格：</text>
+          <input placeholder='请输入价格' bindinput='transPriceInput' value='{{postData.transPrice}}'></input><text class='detail-font2'>{{moneySign}}</text>
+          </view>
         </view>
-      </view>
+      </view>-->
     </block>
     <view class='pic detail'>
       <textarea bindinput='contentInput' placeholder='内容详情（请详细、多方面描述您发布的信息内容）'  maxlength='-1' value='{{postData.content}}'></textarea>

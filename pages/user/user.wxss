@@ -89,6 +89,10 @@ page{
   flex-wrap: wrap;
   align-items: center;
 }
+.list .right-text{
+  color: #666;
+  padding-right: 20rpx;
+}
 .list .right image{
   width: 17rpx;
   height: 30rpx;

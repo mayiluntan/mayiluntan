@@ -25,9 +25,14 @@
   <view class='division'></view>
   <view class='list'>
     <view class='list-detail' wx:for="{{list}}" wx:key="index" bindtap='listClick' data-page='{{item.page}}'>
-      <view class='left'><image src='/images/user_l{{index+1}}.png'></image></view>
+      <view class='left'><image src='/images/user_ln{{index+1}}.png'></image></view>
       <view class='middle'>{{item.name}}</view>
+      <block wx:if='{{item.text!=""}}'>
+      <view class='right-text'><text bindtap='copyText' data-content='{{item.copy}}' >{{item.text}}</text></view>
+      </block>
+      <block wx:else>
       <view class='right'><image src='/images/more.png'></image></view>
+      </block>
     </view>
   </view>
 </view>
