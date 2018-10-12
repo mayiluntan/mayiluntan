@@ -127,7 +127,7 @@
       </view>
      </picker>
   </view>
-  <view class='merge'>
+  <view class='merge' wx:if='{{indexArray[0]>0}}'>
     <view class='detail'>
       <view class='detail-list'><text class='detail-font'>电话：</text><input placeholder="请输入号码"  bindinput='mobileInput' value='{{postData.mobile}}'></input></view>
     </view>
@@ -136,12 +136,12 @@
       <view class='detail-list'><text class='detail-font'>微信：</text><input placeholder="请输入微信号" bindinput='wechatInput' value='{{postData.wechat}}'></input></view>
     </view>
   </view>
-  <view class='merge'>
-    <view class='detail' wx:if='{{indexArray[0]>0}}'>
+  <view class='merge' wx:if='{{indexArray[0]>0}}'>
+    <view class='detail' >
       <view class='detail-list'><text class='detail-font'>标签1：</text><input placeholder="请填写标签" bindinput='tag1Input' value='{{postData.tag1}}'></input></view>
     </view>
     <view class='merge-mid'></view>
-    <view class='detail' wx:if='{{indexArray[0]>0}}'>
+    <view class='detail'>
       <view class='detail-list'><text class='detail-font'>标签2：</text><input placeholder="请填写标签" bindinput='tag2Input' value='{{postData.tag2}}'></input></view>
     </view>
   </view>
