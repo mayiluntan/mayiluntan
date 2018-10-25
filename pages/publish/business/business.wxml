@@ -1,5 +1,8 @@
 <view class='main'>
-  <view class='division'></view>
+  <view class='tips'>
+    <view class='tips-dou'><image src='/images/dot1.png'></image></view>
+    <view class='tips-content'><text>您发布的所有信息将第一时间分散到小蚂蚁群、小蚂蚁圈，没有限制、完全免费、万人关注、传播迅速。不花一分钱就能获得绝佳效果。</text><image class='tips-dou2' src='/images/dot2.png'></image></view>
+  </view>
   <view class='info'>
     <view class='list'>
       <view>商家名称<text>*</text></view>
@@ -21,7 +24,7 @@
       <view>商家分类<text>*</text></view>
       <block wx:if='{{postData.id==0}}'>
       <picker value='{{cateIndex}}' range='{{cateArray}}' bindchange='cateChange' mode="multiSelector" bindcolumnchange="columnChange" >
-        <view>{{cateArray[0][cateIndex[0]]}},{{cateArray[1][cateIndex[1]]}}</view>
+        <view>{{cateArray[0][cateIndex[0]]}}，{{cateArray[1][cateIndex[1]]}}</view>
       </picker>
       </block>
       <block wx:else>
@@ -54,7 +57,6 @@
       <textarea placeholder='请填写平台优惠' bindinput='discountInput' value='{{postData.discount}}'></textarea>
     </view>
   </view>
-  <view class='division'></view>
   <view class='detail'>
     <view class='list'>
       <view>所在区域<text>*</text></view>

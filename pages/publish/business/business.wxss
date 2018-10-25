@@ -2,6 +2,32 @@
 page{
   font-size: 30rpx;
 }
+.tips{
+  padding: 10rpx 4vw 10rpx 2vw;
+  display: flex;
+}
+.tips .tips-content{
+  font-size: 24rpx;
+  color: #585858;
+  border-top: 4rpx solid #F0A232;
+  border-bottom: 4rpx solid #F0A232;
+  padding: 10rpx 0;
+  margin-top: 20rpx;
+}
+.tips-dou{
+  font-size: 60rpx;
+  color: #F0A232;
+  display:flex;
+  width:120rpx;
+}
+.tips-dou image{
+  width: 37rpx;
+  height: 35rpx;
+}
+.tips-dou2{
+  width: 23rpx;
+  height: 21rpx;
+}
 .division{
   background: #F2F3F4;
   height: 20rpx;
@@ -9,11 +35,10 @@ page{
 }
 .list{
   display: flex;
-  margin-left: 5vw;
-  width: 95vw;
+  margin:20rpx 2vw;
   align-items: center;
-  padding: 20rpx 0;
-  border-bottom: 2rpx solid #efefef;
+  padding: 20rpx 2vw;
+  border:1px solid #F0A232;
 }
 .list .list-cate{
   width: 100%;
@@ -52,11 +77,11 @@ page{
   padding-right: 20rpx;
 }
 .pic{
-  margin-left: 5vw;
-  width: 95vw;
-  padding: 20rpx 0;
-  border-bottom: 2rpx solid #efefef;
+  padding: 20rpx 2vw;
+  border:1px solid #F0A232;
   flex-wrap: wrap;
+  margin:20rpx 2vw;
+
 }
 .pic text{
   color: #f00;
@@ -92,10 +117,9 @@ page{
   margin-right: 20rpx;
 }
 .intro{
-  margin-left: 5vw;
-  width: 95vw;
-  padding: 20rpx 0;
-  border-bottom: 2rpx solid #efefef;
+  margin:20rpx 2vw;
+  padding:20rpx 2vw;
+  border:1px solid #F0A232;
 }
 .intro text{
   color: #f00;
@@ -106,10 +130,9 @@ page{
   overflow: auto;
 }
 .discount{
-  margin-left: 5vw;
-  width: 95vw;
-  padding: 20rpx 0;
-  border-bottom: 2rpx solid #efefef;
+  margin:20rpx 2vw;
+  padding:20rpx 2vw;
+  border:1px solid #F0A232;
 }
 .discount text{
   color: #f00;
