@@ -16,6 +16,8 @@ Page({
     cert:'',
     dayArray: ['1天', '7天', '30天'],
     dayIndex: 0,
+    serviceArr:['免费WIFI','刷卡支付','沙发休闲','免费停车','提供包间','禁止吸烟'],
+    serviceOption: [false, false, false, false, false, false],
     postData:{
       id:0,
       name:'',
@@ -23,6 +25,7 @@ Page({
       qq: '',
       wechat: '',
       intro:'',
+      discount:'',
       cate: '',
       logo: '',
       area: '',
@@ -55,7 +58,7 @@ Page({
     lock = false;
     if (id) {
       wx.request({
-        url: app.globalData.apiUrl + 'v6/get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v8/get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -65,7 +68,9 @@ Page({
               cateIndex: res.data.data.cateIndex,
               postData: res.data.data.postData,
               logo: res.data.data.logo,
-              cert: res.data.data.cert
+              cert: res.data.data.cert,
+              serviceArr: res.data.data.serviceArr,
+              serviceOption: res.data.data.serviceOption
             })
             this.allCateChange(res.data.data.cateIndex[0])
           } else {
@@ -305,12 +310,26 @@ Page({
     //   lock = false;
     //   return
     // }
-
+    //服务结合
+    var serviceOption = this.data.serviceOption
+    var serviceArr = this.data.serviceArr
+    var service_str = '';
+    for (var i = 0; i < serviceOption.length; i++) {
+      var jugle = serviceOption[i];
+      if (jugle == true) {
+        if (service_str == '') {
+          service_str = serviceArr[i]
+        } else {
+          service_str += ',' + serviceArr[i]
+        }
+      }
+    }
+    postData.service = service_str
     postData.uid = app.globalData.uid
     postData.pics = this.data.picIds
     //console.log(postData)
     wx.request({
-      url: app.globalData.apiUrl + 'v6/business_post.php',
+      url: app.globalData.apiUrl + 'v8/business_post.php',
       data: postData,
       method: 'POST',
       success: res => {
@@ -466,6 +485,23 @@ Page({
           }
         })
       }
+    })
+  },
+  selectService(e) {
+    var v = e.currentTarget.dataset.index
+    var serviceOption = this.data.serviceOption;
+    var choose = serviceOption[v]
+    choose = choose == true ? false : true;
+    serviceOption[v] = choose;
+    this.setData({
+      serviceOption: serviceOption
+    })
+  },
+  discountInput(e){
+    var postData = this.data.postData
+    postData.discount = e.detail.value
+    this.setData({
+      postData: postData
     })
   }
 })

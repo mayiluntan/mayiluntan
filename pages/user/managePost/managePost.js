@@ -29,7 +29,7 @@ Page({
       url: url,
       success: res => {
         if (res.data.ret == 1) {
-          console.log(res.data.data)
+          //console.log(res.data.data)
           this.setData({
             listData: res.data.data
           })

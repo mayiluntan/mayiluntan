@@ -76,6 +76,34 @@ page{
   height: 24rpx;
   padding-right: 20rpx;
 }
+.list-service{
+  padding:0 4vw;
+}
+.list-service-all{
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  flex-wrap: wrap;
+}
+.list-service-all view{
+  margin-top: 20rpx;
+  width: 30%;
+  border:1px solid #F0A232;
+  color: #808080;
+  text-align: center;
+  padding: 10rpx 0;
+  border-radius: 5rpx;
+}
+.list-service-all .on{
+  color: #4188d2;
+  border: 1px solid #4188d2;
+}
+.list-time{
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom:1px solid #F0A232;
+}
 .pic{
   padding: 20rpx 2vw;
   border:1px solid #F0A232;

@@ -127,6 +127,56 @@
   color:#fff;
   height: 100%;
 }
+.float-button .cancel view{
+  background:#ccc;
+  padding:10rpx 20rpx;
+  border-radius:10rpx;
+  color:#fff;
+}
+.float-button .send view{
+  background:#EEA240;
+  padding:10rpx 20rpx;
+  border-radius:10rpx;
+  color:#fff;
+  margin:0 10px;
+}
+.float-button2{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  height: 8vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 -4rpx 10rpx rgba(0, 0, 0, .1);
+}
+.float-button2 view{
+  display: flex;
+  width: 25%;
+  justify-content: center;
+}
+.float-button2 image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.float-button2 .share .btn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #36ab60;
+  background: #fff;
+  font-size: 26rpx;
+  line-height: normal;
+  padding: 0;
+}
+.float-button2 .share button::after{
+  border:none;
+}
 
 .circle .circle-title{
   padding: 20rpx 0 20rpx 20rpx;
@@ -176,6 +226,29 @@
 }
 .circle .circle-content{
   line-height: 60rpx;
+}
+.circle .circle-intro{
+  color: #737373;
+  padding:0 0 20rpx 20rpx;
+  line-height:50rpx;
+}
+.circle .circle-service{
+  display: flex;
+  flex-wrap: wrap;
+}
+.circle .circle-service image{
+  width: 32rpx;
+  height: 22rpx;
+}
+.circle .circle-service text{
+  padding-left: 20rpx;
+}
+.circle .circle-service view{
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20rpx;
 }
 .circle .circle-pics image{
   width: 24vw;
@@ -233,4 +306,44 @@
 .bottom{
   height: 8vh;
   width: 100vw;
+}
+.detail{
+  padding: 20rpx 0 20rpx 20rpx;
+}
+.detail-top{
+  display: flex;
+}
+.detail-top .detail-pic{
+  margin-right: 20rpx;
+}
+.detail-top .detail-pic image{
+  width: 176rpx;
+  height: 176rpx;
+}
+.detail-info{
+  flex: 1;
+}
+.detail-info .detail-attribute{
+  display: flex;
+  flex-wrap: wrap;
+  padding:16rpx 0 20rpx;
+  min-height:50rpx;
+}
+.detail-info .detail-attribute view{
+  margin-right:10rpx;
+}
+.detail-address image{
+  width: 20rpx;
+  height: 24rpx;
+}
+.detail-share{
+  display: flex;
+}
+.detail-share view{
+  width: 50%;
+  color: #a3a3a3;
+}
+.detail-time image{
+  width: 20rpx;
+  height: 24rpx;
 }

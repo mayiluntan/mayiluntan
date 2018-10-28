@@ -8,7 +8,9 @@ Page({
    */
   data: {
     content: {},
-    message: ''
+    message: '',
+    showMessage: 0,
+    showShare: 0
   },
 
   /**
@@ -17,10 +19,11 @@ Page({
   onLoad: function (options) {
     id = options.id ? options.id : 0
     wx.request({
-      url: app.globalData.apiUrl + 'v4/get_business_content.php',
+      url: app.globalData.apiUrl + 'v8/get_business_content.php',
       data: { id: id, uid: app.globalData.uid },
       success: res => {
         if (res.data.ret == 1) {
+          console.log(res.data.data)
           this.setData({
             content: res.data.data
           })
@@ -135,5 +138,19 @@ Page({
         // 转发失败
       }
     }
+  },
+  showMessage() {
+    var v = this.data.showMessage
+    v = v == 1 ? 0 : 1;
+    this.setData({
+      showMessage: v
+    })
+  },
+  showShare() {
+    var v = this.data.showShare
+    v = v == 1 ? 0 : 1;
+    this.setData({
+      showShare: v
+    })
   }
 })

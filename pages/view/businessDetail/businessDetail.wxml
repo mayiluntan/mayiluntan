@@ -8,14 +8,72 @@
       </block>  
     </swiper>
   </view><!-- head -->
-  <view class='content'>
-    <view class='c'>{{content.intro}}</view>
-    <view>营业时间：{{content.start_time}}-{{content.end_time}}</view>
+  <view class='detail'>
+    <view class='detail-top'>
+      <view class='detail-pic'>
+        <image src='/images/head.png'></image>
+      </view>
+      <view class='detail-info'>
+        <view class='detail-title'>工作室</view>
+        <view class='detail-attribute'>
+          <view>微商部落</view>
+          <view>代购</view>
+        </view>
+        <view class='detail-share'>
+          <view>分享：1000</view>
+          <view>浏览：1000</view>
+        </view>
+      </view>
+    </view>
+    <view class='detail-address'>
+      <image src='/images/business/local.png'></image>
+      <text>{{content.address}}</text>
+    </view>
+    <view class='detail-time'>
+      <image src='/images/business/time.png'></image>
+      <text>营业时间：{{content.start_time+' - '+content.end_time}}</text>
+    </view>
   </view>
-  <view class='tag'>
-    <view wx:for="{{content.service}}" wx:for-item='tag' wx:key='index'>{{tag}}</view>
+  <view class='division' wx:if='{{content.service!=""}}'></view>
+  <view class='circle' wx:if='{{content.service!=""}}'>
+    <view class='circle-title'>店内设施</view>
+    <view class='circle-service'>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+      <view>
+        <image src='/images/business/service1.png'></image>
+        <text>免费WIFI</text>
+      </view>
+    </view>
   </view>
-  <view class='address' wx:if='{{content.address!=""}}'><image src='/images/post/local.png'></image><text>{{content.address}}</text></view>
+  <view class='division' wx:if='{{content.intro!=""}}'></view>
+  <view class='circle' wx:if='{{content.intro!=""}}'>
+    <view class='circle-title'>商家介绍</view>
+    <view class='circle-intro'>{{content.intro}}</view>
+  </view>
+  <view class='division' wx:if='{{content.discount!=""}}'></view>
+  <view class='circle' wx:if='{{content.discount!=""}}'>
+    <view class='circle-title'>商家优惠</view>
+    <view class='circle-intro'>{{content.discount}}</view>
+  </view>
   <view class='division' wx:if='{{content.user_reply==1}}'></view>
   <view class='circle' wx:if='{{content.user_reply==1}}'>
     <view class='circle-title'>留言</view>
@@ -35,17 +93,28 @@
       </view>
     </view>
   </view>
+  <view class='division' wx:if='{{content.pics.length>0}}'></view>
+  <view class='circle' wx:if='{{content.pics.length>0}}'>
+    <view class='circle-title'>产品图片</view>
+    <view class='circle-all-pics'>
+      <view wx:for='{{content.pics}}' wx:key='index'><image src='{{item}}'></image></view>
+    </view>
+  </view>
   <view class='bottom'></view>
-  <view class="float-button">
+  <view class="float-button" wx:if='{{showMessage==1}}'>
       <view class='input' wx:if='{{content.user_reply==1}}'><input placeholder='问题可以在这里留言' bindinput='messageInput' bindconfirm='replySubmit' value='{{message}}'></input></view>
-      <view class='input' wx:if='{{content.user_reply!==1}}'></view>
+      <view class='input' wx:if='{{content.user_reply!=1}}'></view>
+      <view class='cancel' bindtap='showMessage'><view>取消</view></view>
+      <view class='send' bindtap='replySubmit'><view>发送</view></view>
+  </view><!-- float-button -->
+  <view class="float-button2" wx:else>
+      <view bindtap='showMessage'><image src='/images/view/message.png'></image></view>
       <view class='share'>
         <button class='btn' open-type="share">
-        <image src='/images/share.png'></image>
-        <view>分享</view>
+        <image src='/images/view/share.png'></image>
         </button>
       </view>
-      <view class='tel' bindtap='callPhone' data-phone='{{content.tel}}'>电话</view>
-      <view class='wechat' bindtap='copyText' data-wechat='{{content.wechat}}'>微信</view>
+      <view bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
+      <view bindtap='callPhone' data-phone='{{content.tel}}'><image src='/images/view/tel.png'></image></view>
   </view><!-- float-button -->
 </view>

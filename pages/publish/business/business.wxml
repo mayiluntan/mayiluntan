@@ -28,7 +28,7 @@
       </picker>
       </block>
       <block wx:else>
-      <view class='list-cate'>{{cateArray[0][cateIndex[0]]}},{{cateArray[1][cateIndex[1]]}}</view>
+      <view class='list-cate'>{{cateArray[0][cateIndex[0]]}}，{{cateArray[1][cateIndex[1]]}}</view>
       </block>
     </view>
     <view class='pic'>
@@ -70,7 +70,7 @@
       <view>商家定位</view>
       <input placeholder='请选择定位' value='{{postData.location}}'  disabled='true'></input>
     </view>
-    <view class='list'>
+    <view class='list list-time'>
       <view>营业时间<text>*</text></view>
       <picker mode='time' bindchange="timeChange" data-type='1' value='{{postData.stratTime}}'>
         <view class='time'>{{postData.stratTime}}</view>
@@ -88,9 +88,13 @@
       </view>
       
     </view>-->
-    <view class='list'>
-      <view>提供服务</view>
-      <input placeholder='空格分割,如:WiFi 停车' value='{{postData.service}}' bindinput='serviceInput'></input>
+    <view class='list-service'>
+      <view>店内设施</view>
+      <view class='list-service-all'>
+        <block wx:for='{{serviceArr}}' wx:key='index'>
+          <view class="{{(serviceOption[index]==true)?'on':''}}" bindtap='selectService' data-index='{{index}}'>{{item}}</view>
+        </block>
+      </view>
     </view>
     <!--<view class='top-list to-top'>
       <text>已关闭</text>
