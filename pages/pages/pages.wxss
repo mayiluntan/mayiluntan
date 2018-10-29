@@ -226,7 +226,7 @@ page{
   width: 100%;
 }
 .list .list-top{
-  display: flex;
+  /* display: flex; */
 }
 .list .list-title{
   display: flex;
@@ -234,6 +234,7 @@ page{
 .list .list-title view{
   height: 44rpx;
   line-height: 44rpx;
+  overflow:hidden;
 }
 .list .list-title .list-cate{
   background: #f0a323;
@@ -241,6 +242,18 @@ page{
   border-radius: 10rpx;
   color: #fff;
   margin-right: 30rpx;
+}
+.list .list-title .list-tname{
+  flex: 1;
+}
+.list .list-attribute{
+  display: flex;
+  min-height:54rpx;
+  padding-top:20rpx;
+}
+.list .list-tc{
+  display: flex;
+  align-items: flex-end;
 }
 .list .list-tag{
   margin-top: 10rpx;
@@ -257,7 +270,8 @@ page{
 }
 .list .list-contact{
   flex:1;
-  text-align: right;
+  display:flex;
+  justify-content:flex-end;
 }
 .list .list-contact .list-tel{
   margin-left:30rpx;
@@ -271,7 +285,6 @@ page{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: #4c4c4c;
 }
 .list .list-time{
   height: 40rpx;
@@ -286,7 +299,6 @@ page{
   width: 50%;
   display:flex;
   border-right: 1px solid #f0f2f2;
-  justify-content: center;
 }
 
 .list .list-time .hot{

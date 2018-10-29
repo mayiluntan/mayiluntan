@@ -188,23 +188,27 @@
           </view>
           <view  class='list-detail'>
             <view class='list-top'>
-              <view>
-                <view class='list-title'>
-                  <view class='list-cate'>{{item.cate}}</view>
-                  <view class='list-cate' wx:if="{{item.cate_low!=''}}">{{item.cate_low}}</view>
-                </view>
+              <view class='list-title'>
+                <view class='list-cate'>{{item.cate}}</view>
+                <view class='list-tname'>{{item.name}}</view>
+              </view>
+              <view class='list-attribute'>
+                <view>{{'【'+item.cate+'】'}}</view>
+                <view wx:if='{{item.cate_low!=""}}'>{{'【'+item.cate_low+'】'}}</view>
+              </view>
+              <view class='list-tc'>
                 <view class='list-tag'>
                   <view wx:for="{{item.service}}" wx:for-item='tag' wx:key="index">{{tag}}</view>
                 </view>
-              </view>
-              <view class='list-contact'>
-                <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
-              <image class='list-tel' bindtap='callPhone' data-phone='{{item.tel}}' src="{{item.tel==''?'/images/tel2.png':'/images/tel1.png'}}"></image>
+                <view class='list-contact'>
+                  <image src="{{item.wechat==''?'/images/wechat2.png':'/images/wechat1.png'}}" bindtap='copyText' data-wechat='{{item.wechat}}'></image>
+                <image class='list-tel' bindtap='callPhone' data-phone='{{item.tel}}' src="{{item.tel==''?'/images/tel2.png':'/images/tel1.png'}}"></image>
+                </view>
               </view>
             </view>
-            <view class='list-intro'>{{item.intro}}</view>
           </view>
         </view>
+        <view class='list-intro'>{{item.intro}}</view>
         <view class='list-time'>
           <view class='time'>
             <view>营业时间：{{item.start_time}}-{{item.end_time}}</view>

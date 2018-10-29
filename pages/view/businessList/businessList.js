@@ -75,7 +75,7 @@ Page({
   getBusinessList() {
     var cate2 = this.data.cateIndex - 1;
     wx.request({
-      url: app.globalData.apiUrl + 'v6/get_business.php?cate=' + cate +'&cate2='+cate2 + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
+      url: app.globalData.apiUrl + 'v8/get_business.php?cate=' + cate +'&cate2='+cate2 + '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid,
       success: res => {
         this.setData({
           data: res.data.data

@@ -18,6 +18,9 @@ Page({
     dayIndex: 0,
     serviceArr:['免费WIFI','刷卡支付','沙发休闲','免费停车','提供包间','禁止吸烟'],
     serviceOption: [false, false, false, false, false, false],
+    areaArray: [],
+    areaIndex: [0, 0],
+    areaOrgin: [],
     postData:{
       id:0,
       name:'',
@@ -28,7 +31,7 @@ Page({
       discount:'',
       cate: '',
       logo: '',
-      area: '',
+      area: '请选择区域',
       address: '',
       lon:'',
       lat:'',
@@ -79,6 +82,22 @@ Page({
         }
       })
     }
+    //区域
+    var arr = app.globalArray.areaArray[app.globalData.cityArray[2]]
+    if (arr === undefined) {
+      arr = { '全部地区': [] }
+    }
+    var keyArray = Object.keys(arr);
+    for (var i = 0; i < keyArray.length; i++) {
+      var key = keyArray[i];
+      if (arr[key].length == 0) {
+        arr[key] = [key];
+      }
+    }
+    this.setData({
+      areaOrgin: arr,
+      areaArray: [keyArray, arr[keyArray[0]]]
+    })
   },
   onShow(){
     if (app.globalData.areaChange){
@@ -300,7 +319,7 @@ Page({
       lock = false;
       return
     }
-    if (postData.area == '') {
+    if (postData.area == '' || postData.area == '请选择区域') {
       app.showTips('提示', '请选择区域', false)
       lock = false;
       return
@@ -502,6 +521,29 @@ Page({
     postData.discount = e.detail.value
     this.setData({
       postData: postData
+    })
+  },
+  areaChange(e) {
+    var v = e.detail.value;
+    var arr = this.data.areaOrgin;
+    var keyArray = Object.keys(arr);
+    var area = arr[keyArray[v[0]]][v[1]];
+    var postData = this.data.postData
+    postData.area = area
+    this.setData({
+      postData: postData,
+      areaIndex: v
+    })
+  },
+  areaColumnChange(e) {
+    if (e.detail.column == 1) {
+      return;
+    }
+    var v = e.detail.value;
+    var arr = this.data.areaOrgin;
+    var keyArray = Object.keys(arr);
+    this.setData({
+      areaArray: [keyArray, arr[keyArray[v]]]
     })
   }
 })

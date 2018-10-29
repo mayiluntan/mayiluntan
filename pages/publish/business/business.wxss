@@ -232,3 +232,6 @@ page{
 .top-tips{
   padding:20rpx 0 0 5vw;
 }
+.list-area{
+  color: #838383;
+}

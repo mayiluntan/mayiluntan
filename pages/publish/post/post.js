@@ -409,7 +409,7 @@ Page({
     }
     
     var cid = this.data.cateId[this.data.indexArray[0]]
-    if ((this.data.postData.area == '' || this.data.postData.area == '请选择区域') && cid != 5 && cid!=16) {
+    if ((this.data.postData.area == '' || this.data.postData.area == '请选择区域') && cid != 5 && cid != 6 && cid!=16) {
       app.showTips('提示', '请选择区域', false)
       lock = false;
       return
@@ -497,11 +497,11 @@ Page({
         lock = false;
         return
       }
-      if (postData.transModel == 0) {
-        app.showTips('提示', '请选择型号', false)
-        lock = false;
-        return
-      }
+      // if (postData.transModel == 0) {
+      //   app.showTips('提示', '请选择型号', false)
+      //   lock = false;
+      //   return
+      // }
       // if (postData.transPrice == '' || postData.transPrice <=0) {
       //   app.showTips('提示', '请输入价格', false)
       //   lock = false;

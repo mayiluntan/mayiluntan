@@ -11,21 +11,21 @@
   <view class='detail'>
     <view class='detail-top'>
       <view class='detail-pic'>
-        <image src='/images/head.png'></image>
+        <image src='{{content.logo}}'></image>
       </view>
       <view class='detail-info'>
-        <view class='detail-title'>工作室</view>
+        <view class='detail-title'>{{content.name}}</view>
         <view class='detail-attribute'>
-          <view>微商部落</view>
-          <view>代购</view>
+          <view>{{content.cate}}</view>
+          <view>{{content.cate2}}</view>
         </view>
         <view class='detail-share'>
-          <view>分享：1000</view>
-          <view>浏览：1000</view>
+          <view>分享：{{content.share_num}}</view>
+          <view class='detail-view'>浏览：{{content.popularity}}</view>
         </view>
       </view>
     </view>
-    <view class='detail-address'>
+    <view class='detail-address' wx:if='{{content.address!=""}}'>
       <image src='/images/business/local.png'></image>
       <text>{{content.address}}</text>
     </view>
@@ -34,33 +34,13 @@
       <text>营业时间：{{content.start_time+' - '+content.end_time}}</text>
     </view>
   </view>
-  <view class='division' wx:if='{{content.service!=""}}'></view>
-  <view class='circle' wx:if='{{content.service!=""}}'>
+  <view class='division' wx:if='{{content.service.length!=0}}'></view>
+  <view class='circle' wx:if='{{content.service.length!=0}}'>
     <view class='circle-title'>店内设施</view>
     <view class='circle-service'>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
-      </view>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
-      </view>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
-      </view>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
-      </view>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
-      </view>
-      <view>
-        <image src='/images/business/service1.png'></image>
-        <text>免费WIFI</text>
+      <view wx:for='{{content.service}}' wx:key='index'>
+        <image src='{{servicePic[item]["pic"]}}'></image>
+        <text>{{item}}</text>
       </view>
     </view>
   </view>

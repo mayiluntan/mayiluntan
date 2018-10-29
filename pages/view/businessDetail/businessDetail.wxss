@@ -308,7 +308,7 @@
   width: 100vw;
 }
 .detail{
-  padding: 20rpx 0 20rpx 20rpx;
+  padding: 20rpx;
 }
 .detail-top{
   display: flex;
@@ -323,6 +323,13 @@
 .detail-info{
   flex: 1;
 }
+.detail-info .detail-title{
+  font-size:18px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  max-width:500rpx;
+}
 .detail-info .detail-attribute{
   display: flex;
   flex-wrap: wrap;
@@ -332,9 +339,19 @@
 .detail-info .detail-attribute view{
   margin-right:10rpx;
 }
+.detail-time{
+  padding-top: 10rpx;
+}
 .detail-address image{
-  width: 20rpx;
-  height: 24rpx;
+  width: 25rpx;
+  height: 30rpx;
+  margin-right:20rpx;
+}
+.detail-address text{
+  color: #585858;
+}
+.detail-time text{
+  color: #585858;
 }
 .detail-share{
   display: flex;
@@ -343,7 +360,22 @@
   width: 50%;
   color: #a3a3a3;
 }
+.detail-share .detail-view{
+  text-align: right;
+}
 .detail-time image{
-  width: 20rpx;
-  height: 24rpx;
+  width: 27rpx;
+  height: 29rpx;
+  margin-right: 20rpx;
+}
+.circle-all-pics{
+  display:  flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+.circle-all-pics image{
+  width: 30vw;
+  height: 15vw;
+  margin-bottom: 10rpx;
 }

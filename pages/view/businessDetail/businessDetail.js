@@ -10,7 +10,15 @@ Page({
     content: {},
     message: '',
     showMessage: 0,
-    showShare: 0
+    showShare: 0,
+    servicePic:{
+      '免费WIFI': { 'pic': '/images/business/service1.png' },
+      '刷卡支付': { 'pic': '/images/business/service2.png' },
+      '免费停车': { 'pic': '/images/business/service3.png' },
+      '沙发休闲': { 'pic': '/images/business/service4.png' },
+      '提供包间': { 'pic': '/images/business/service5.png' },
+      '禁止吸烟': { 'pic': '/images/business/service6.png' }
+    }
   },
 
   /**
@@ -23,7 +31,6 @@ Page({
       data: { id: id, uid: app.globalData.uid },
       success: res => {
         if (res.data.ret == 1) {
-          console.log(res.data.data)
           this.setData({
             content: res.data.data
           })
@@ -124,7 +131,6 @@ Page({
   },
   onShareAppMessage: function (res) {
     var that = this;
-    console.log(id)
     return {
       title: this.data.content.name ? this.data.content.name : '小蚂蚁',
       path: '/pages/index/index?business_id=' + id,
@@ -133,6 +139,13 @@ Page({
           title: '分享成功',
           icon: 'success'
         });
+        wx.request({
+          url: app.globalData.apiUrl + 'business_share.php',
+          data: { id: id, uid: app.globalData.uid },
+          method: 'POST',
+          complete: res => {
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

@@ -18,7 +18,7 @@
       </view>
     </view>
     <view class='title detail'>
-        <text>标题：</text><input placeholder="请用最多20个字描述关键信息" bindinput='titleInput' value='{{postData.title}}'></input>
+        <text>标题：</text><input placeholder="请用最多30个字描述关键信息" bindinput='titleInput' value='{{postData.title}}'></input>
     </view>
     <block wx:if='{{indexArray[0]==5}}'>
       <view class='detail-orgin'>
@@ -119,7 +119,7 @@
     </input>
     </view>
   </view>
-  <view class='cate detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=16}}'>
+  <view class='cate detail' wx:if='{{cateId[indexArray[0]]!=5 && cateId[indexArray[0]]!=6 && cateId[indexArray[0]]!=16}}'>
     <!--<view class='detail-list'><text class='detail-font'>区域：</text><input placeholder="请选择区域" disabled='true'bindtap='selectArea' value='{{postData.area}}'></input></view>-->
     <picker mode="multiSelector" bindchange="areaChange" bindcolumnchange="areaColumnChange" value="{{areaIndex}}" range="{{areaArray}}">
       <view>
