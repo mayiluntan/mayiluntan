@@ -150,7 +150,7 @@
     <view class='detail'>
     <view class='detail-list'><text></text>
     <picker bindchange="houseChange" value="{{houseIndex}}" range="{{houseArray}}" class='house-picker'>
-        <view>
+        <view class='detail-house'>
         <text class='detail-font'>房型：</text>{{houseArray[houseIndex]}}
         </view>
       </picker>

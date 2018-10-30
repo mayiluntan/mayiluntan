@@ -94,7 +94,9 @@
         <image src='/images/view/share.png'></image>
         </button>
       </view>
-      <view bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
-      <view bindtap='callPhone' data-phone='{{content.tel}}'><image src='/images/view/tel.png'></image></view>
+      <view wx:if="{{content.wechat!=''}}" bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
+      <view wx:else class='none'><image src='/images/view/wechat2.png'></image></view>
+      <view wx:if="{{content.tel!=''}}" bindtap='callPhone' data-phone='{{content.tel}}'><image src='/images/view/tel.png'></image></view>
+      <view wx:else class='none'><image src='/images/view/tel2.png'></image></view>
   </view><!-- float-button -->
 </view>

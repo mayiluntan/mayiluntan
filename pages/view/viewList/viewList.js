@@ -85,7 +85,7 @@ Page({
   getIndexList() {
     var cate2 = this.data.secondId[this.data.cateIndex]-1;
     wx.request({
-      url: app.globalData.apiUrl + 'v7/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
+      url: app.globalData.apiUrl + 'v8/get_list.php?cate=' + cate + '&cate2=' + cate2+ '&order=' + order + '&area=' + this.data.area + '&keyword=' + this.data.keyword + '&uid=' + app.globalData.uid + '&screenCate=' + this.data.screenCate + '&personal=' + this.data.screenPersonal + '&house=' + this.data.screenHouse + '&type=' + this.data.screenType,
       success: res => {
         if(res.data.ret==1){
           this.setData({

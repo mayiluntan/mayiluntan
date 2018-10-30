@@ -151,8 +151,10 @@
         <image src='/images/view/share.png'></image>
         </button>
       </view>
-      <view bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
-      <view bindtap='callPhone' data-phone='{{content.mobile}}'><image src='/images/view/tel.png'></image></view>
+      <view wx:if="{{content.wechat!=''}}" bindtap='copyText' data-wechat='{{content.wechat}}'><image src='/images/view/wechat.png'></image></view>
+      <view wx:else class='none'><image src='/images/view/wechat2.png'></image></view>
+      <view  wx:if="{{content.mobile!=''}}" bindtap='callPhone' data-phone='{{content.mobile}}'><image src='/images/view/tel.png'></image></view>
+      <view wx:else' class='none'><image src='/images/view/tel2.png'></image></view>
   </view><!-- float-button -->
   <view class='share-option' wx:if='{{showShare==1}}'>
     <view class='share-bg'></view>

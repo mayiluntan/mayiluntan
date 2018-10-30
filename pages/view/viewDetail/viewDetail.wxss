@@ -426,3 +426,7 @@
   background: #fff;
   text-align: center;
 }
+.none image{
+ width:58rpx;
+ height:58rpx;
+}

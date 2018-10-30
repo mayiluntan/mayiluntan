@@ -19,8 +19,9 @@ Page({
     cateSecondId: [0,1],
     dayArray:['1天','7天','30天'],
     dayIndex:0,
-    houseArray:['请选择','公寓','别墅','联排别墅','小区','办公室','商铺','车库','其他'],
+    houseArray: ['请选择', '单人床丨Singlebed', '单人间丨Singleroom', '双人床丨Doublebed', '双人间丨Doubleroom', '车库丨Garage', '公寓丨Apartment', '小区丨Unit', '办公室丨Office', '商铺丨Commercial', '联排别墅丨Townhouse', '别墅丨House', '其它丨Other'],
     houseIndex:0,
+    houseVlaue: [0, 9, 10, 11, 12, 7, 1, 4, 5, 6, 3, 2, 8],
     houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
     typeIndex:0,
     weekArray:['周','月','日'],
@@ -133,7 +134,7 @@ Page({
     })
     if(id){
       wx.request({
-        url: app.globalData.apiUrl + 'v7/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v8/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -442,7 +443,7 @@ Page({
         return
       }
       postData.tag_str = tag_str;
-      postData.house = this.data.houseIndex;
+      postData.house = this.data.houseVlaue[this.data.houseIndex];
       postData.type = this.data.typeIndex;
       postData.tag1 = '';
       postData.tag2 = '';
@@ -525,11 +526,12 @@ Page({
     postData.cate[1] = this.data.cateSecondId[postData.cate[1]]
     postData.moneySign = this.data.moneySign
     wx.request({
-      url: app.globalData.apiUrl+'v7/post.php',
+      url: app.globalData.apiUrl+'v8/post.php',
       data: postData,
       method:'POST',
       success:res=>{
         if(res.data.ret==1){
+          var post_id = res.data.data
           if (res.data.top==1){
             wx.requestPayment({
               'timeStamp': res.data.pay_info.timeStamp,
@@ -559,8 +561,11 @@ Page({
                 setTimeout(function () {
                   wx.hideToast()
                   app.globalData.cityChange = true
-                  wx.reLaunch({
-                    url: '/pages/index/index',
+                  // wx.reLaunch({
+                  //   url: '/pages/index/index',
+                  // })
+                  wx.redirectTo({
+                    url: '/pages/postShare/postShare?id=' + post_id,
                   })
                 }, 2000)
                },
@@ -575,8 +580,11 @@ Page({
             setTimeout(function () {
               wx.hideToast()
               app.globalData.cityChange = true
-              wx.reLaunch({
-                url: '/pages/index/index',
+              // wx.reLaunch({
+              //   url: '/pages/index/index',
+              // })
+              wx.redirectTo({
+                url: '/pages/postShare/postShare?id=' + post_id,
               })
             }, 2000)
           }

@@ -92,6 +92,11 @@ page {
 .detail .detail-list picker{
   flex: 1;
 }
+.detail .detail-house{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow: ellipsis;
+}
 .detail .no-border{
   border: 0;
 }

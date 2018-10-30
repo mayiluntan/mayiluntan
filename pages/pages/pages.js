@@ -74,7 +74,7 @@ Page({
       url: app.globalData.apiUrl + 'v8/get_business.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid=' + app.globalData.uid,
       success: res => {
         if(res.data.ret==1){
-          console.log(res.data)
+          //console.log(res.data)
           this.setData({
             data: res.data.data
           })

@@ -27,7 +27,8 @@
     "pages/view/businessDetail/businessDetail",
     "pages/view/businessList/businessList",
     "pages/share/share",
-    "pages/webView/webView"
+    "pages/webView/webView",
+    "pages/postShare/postShare"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -379,3 +379,7 @@
   height: 15vw;
   margin-bottom: 10rpx;
 }
+.none image{
+ width:58rpx;
+ height:58rpx;
+}

@@ -317,7 +317,7 @@ Page({
       }
     })
     wx.request({
-      url: app.globalData.apiUrl + 'v7/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
+      url: app.globalData.apiUrl + 'v8/get_list.php?cate=' + cate + '&order=' + order + '&area=' + this.data.area + '&uid='+app.globalData.uid,
       success: res => {
         if (res.data.ret==1){
           this.setData({
