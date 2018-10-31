@@ -3,7 +3,7 @@
   <view class='share'>
     <button class='btn' open-type="share">
     <image src='/images/share.png'></image>
-    <view>立即分享</view>
+    <view>转发</view>
     </button>
   </view>
 </view>

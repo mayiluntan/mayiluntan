@@ -4,8 +4,7 @@
     <view bindtap='goDetail'>查看详情</view>
     <view bindtap='goHome'>返回首页</view>
   </view>
-  <view class='tips'>把帖子分享给好友 才能获得更多关注哦</view>
-  <view class='share' bindtap='showShare'>立即分享</view>
+  <view class='share' bindtap='showShare'>立即转发</view>
   <view class='share-option' wx:if='{{showShare==1}}'>
     <view class='share-bg'></view>
     <view class='share-btn'>
@@ -17,6 +16,6 @@
   </view>
   <view class='share-img' wx:if='{{showImage==1}}'>
     <image src='{{content.share_pic}}' bindlongpress='saveImage'></image>
-    <view>长按保存，分享到朋友圈</view>
+    <view>长按保存分享</view>
   </view>
 </view>
