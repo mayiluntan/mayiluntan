@@ -54,6 +54,13 @@
     <view class='circle-title'>商家优惠</view>
     <view class='circle-intro'>{{content.discount}}</view>
   </view>
+  <view class='division' wx:if='{{content.pic_num>0}}'></view>
+  <view class='circle' wx:if='{{content.pic_num>0}}'>
+    <view class='circle-title'>产品图片</view>
+    <view class='circle-all-pics'>
+      <view wx:for='{{content.pics}}' wx:key='index'><image src='{{item}}'></image></view>
+    </view>
+  </view>
   <view class='division' wx:if='{{content.user_reply==1}}'></view>
   <view class='circle' wx:if='{{content.user_reply==1}}'>
     <view class='circle-title'>留言</view>
@@ -71,13 +78,6 @@
           </view>
         </view>
       </view>
-    </view>
-  </view>
-  <view class='division' wx:if='{{content.pics.length>0}}'></view>
-  <view class='circle' wx:if='{{content.pics.length>0}}'>
-    <view class='circle-title'>产品图片</view>
-    <view class='circle-all-pics'>
-      <view wx:for='{{content.pics}}' wx:key='index'><image src='{{item}}'></image></view>
     </view>
   </view>
   <view class='bottom'></view>

@@ -10,8 +10,10 @@ Page({
     pics: [],
     picIds: [],
     picCount: 0,
-    cateArray: [['餐饮美食', '外卖送餐', '专业服务', '汽车服务', '便民家政', '礼品商店', '移民教育', '旅游机票', '超市商店', '医疗保健', '房产经济', '以物易物', '快递货运', '美容美发', '休闲娱乐', '酒店旅馆', '宠物服务', '家政保洁', '微商部落'], ['私房小厨', '排挡快餐', '烧烤麻辣', '火锅香锅', '西餐', '面包糕点', '甜品饮料', '海鲜肉类', '早点早餐', '粥铺面馆', '自助餐厅', '咖啡汉堡', '日本料理', '韩国烧烤', '其他美食']],
+    cateArray: [['餐饮美食', '外卖送餐', '专业服务', '汽车服务', '便民家政', '移民教育', '宠物服务', '超市商店', '房产经济', '快递货运', '美容美发', '休闲娱乐', '酒店旅馆', '旅游机票', '微商部落'], ['私房小厨', '排挡快餐', '烧烤麻辣', '火锅香锅', '西餐', '面包糕点', '甜品饮料', '海鲜肉类', '早点早餐', '粥铺面馆', '自助餐厅', '咖啡汉堡', '日本料理', '韩国烧烤', '其他美食']],
     cateIndex:[0,0],
+    cateId: [1, 2, 3, 4, 5, 7, 17, 9, 11, 13, 14, 15, 16, 8,19],
+    cateSecondId: [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14],
     logo:'',
     cert:'',
     dayArray: ['1天', '7天', '30天'],
@@ -51,9 +53,13 @@ Page({
    */
   onLoad: function (options) {
     var cate = options.cate ? options.cate : 0;
+    var cate2 = options.cate2 ? options.cate2 : 0;
     if (cate > 0) {
+      // var postData = this.data.postData;
+      // postData.cate = [cate - 1, cate2]
       this.setData({
-        cateIndex: [cate-1, 0]
+        cateIndex: [cate - 1, cate2]
+        // postData: postData,
       })
       this.allCateChange(cate - 1)
     }
@@ -61,7 +67,7 @@ Page({
     lock = false;
     if (id) {
       wx.request({
-        url: app.globalData.apiUrl + 'v8/get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v9/get_business_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -225,10 +231,10 @@ Page({
   },
   cateChange(e){
     var postData = this.data.postData
-    postData.cate = e.detail.value
+    //postData.cate = e.detail.value
     this.setData({
-      postData: postData,
-      cateIndex: e.detail.value
+      postData: postData
+      //cateIndex: e.detail.value
     })
   },
   nameInput(e) {
@@ -346,9 +352,12 @@ Page({
     postData.service = service_str
     postData.uid = app.globalData.uid
     postData.pics = this.data.picIds
+    postData.cate = this.data.cateIndex
+    postData.cate[0] = this.data.cateId[postData.cate[0]]
+    postData.cate[1] = this.data.cateSecondId[postData.cate[1]]
     //console.log(postData)
     wx.request({
-      url: app.globalData.apiUrl + 'v8/business_post.php',
+      url: app.globalData.apiUrl + 'v9/business_post.php',
       data: postData,
       method: 'POST',
       success: res => {
@@ -459,29 +468,33 @@ Page({
   },
   allCateChange(v) {
     var cateArray = this.data.cateArray
+    var cateSecondId = this.data.cateSecondId
+    v = this.data.cateId[v]
+    v = v - 1;
     switch (v) {
-      case 0: cateArray[1] = ['私房小厨', '排挡快餐', '烧烤麻辣', '火锅香锅', '西餐', '面包糕点', '甜品饮料', '海鲜肉类', '早点早餐', '粥铺面馆', '自助餐厅', '咖啡汉堡', '日本料理', '韩国烧烤','其他美食']; break;
-      case 1: cateArray[1] = ['外卖送餐']; break;
-      case 2: cateArray[1] = ['房产经济', '金融贷款', '理财保险', '翻译服务', '律师公正', '会计税务', '风水命理', '网站软件', '摄影婚庆', '医疗诊所','其他']; break;
-      case 3: cateArray[1] = ['机场接送', '搬家物流', '汽车维修', '驾校教练', '车行4S店', '租车服务', '运车回国']; break;
-      case 4: cateArray[1] = ['宠物服务', '家政保洁', '行李寄存', '开锁配匙', '网络缴费', '花园除草', '除虫清洁', '保姆月嫂', '水暖电工', '数码电子', '二手回收', '防盗报警', '建材装修','其他']; break;
-      case 5: cateArray[1] = ['礼品商店']; break;
-      case 6: cateArray[1] = ['留学移民', '辅导家教', '语言培训', '技能培训', '艺术培训', '幼儿教育','院校招生']; break;
-      case 7: cateArray[1] = ['旅行社','机票','私人旅游']; break;
-      case 8: cateArray[1] = ['礼品商店', '华人超市', '西人超市', '快递货运', '花店', '其他商店']; break;
-      case 9: cateArray[1] = ['医疗保健']; break;
-      case 10: cateArray[1] = ['房产经济']; break;
-      case 11: cateArray[1] = ['以物易物']; break;
-      case 12: cateArray[1] = ['快递货运']; break;
-      case 13: cateArray[1] = ['健美瘦身', '美发服务', '美甲护肤', '纹身服务','其他']; break;
-      case 14: cateArray[1] = ['足疗按摩', '洗浴温泉', '运动健身', '桌游棋牌', '酒吧/ktv', '', '网吧', '户外运动', '活动讲座']; break;
-      case 15: cateArray[1] = ['酒店旅馆']; break;
-      case 16: cateArray[1] = ['宠物服务']; break;
-      case 17: cateArray[1] = ['家政保洁']; break;
-      case 18: cateArray[1] = ['代购', '服饰', '包包', '妆品', '鞋子','其他']; break;
+      case 0: cateArray[1] = ['私房小厨', '排挡快餐', '烧烤麻辣', '火锅香锅', '西餐', '面包糕点', '甜品饮料', '海鲜肉类', '早点早餐', '粥铺面馆', '自助餐厅', '咖啡汉堡', '日本料理', '韩国烧烤', '其他美食']; cateSecondId = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]; break;
+      case 1: cateArray[1] = ['外卖送餐']; cateSecondId = [0]; break;
+      case 2: cateArray[1] = [ '金融贷款', '理财保险', '翻译服务', '律师公正', '会计税务', '风水命理', '网站软件', '摄影婚庆', '医疗诊所', '其他']; cateSecondId = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; break;
+      case 3: cateArray[1] = ['机场接送', '搬家物流', '汽车维修', '驾校教练', '车行4S店', '租车服务', '运车回国']; cateSecondId = [0, 1, 2, 3, 4, 5, 6]; break;
+      case 4: cateArray[1] = ['家政保洁', '行李寄存', '开锁配匙', '网络缴费', '花园除草', '除虫清洁', '保姆月嫂', '水暖电工', '数码电子', '二手回收', '防盗报警', '建材装修', '其他']; cateSecondId = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]; break;
+      case 5: cateArray[1] = ['礼品商店']; cateSecondId = [0]; break;
+      case 6: cateArray[1] = ['留学移民', '辅导家教', '语言培训', '技能培训', '艺术培训', '幼儿教育', '院校招生']; cateSecondId = [0, 1, 2, 3, 4, 5, 6]; break;
+      case 7: cateArray[1] = ['旅行社', '机票', '私人旅游']; cateSecondId = [0, 1, 2];break;
+      case 8: cateArray[1] = ['礼品商店', '华人超市', '西人超市', '快递货运', '花店', '其他商店']; cateSecondId = [0, 1, 2, 3, 4, 5];break;
+      case 9: cateArray[1] = ['医疗保健']; cateSecondId = [0]; break;
+      case 10: cateArray[1] = ['房产经济']; cateSecondId = [0]; break;
+      case 11: cateArray[1] = ['以物易物']; cateSecondId = [0]; break;
+      case 12: cateArray[1] = ['快递货运']; cateSecondId = [0]; break;
+      case 13: cateArray[1] = ['健美瘦身', '美发服务', '美甲护肤', '纹身服务', '其他']; cateSecondId = [0, 1, 2, 3, 4]; break;
+      case 14: cateArray[1] = ['足疗按摩', '洗浴温泉', '运动健身', '桌游棋牌', '酒吧/ktv', '网吧', '户外运动', '活动讲座']; cateSecondId = [0, 1, 2, 3, 4, 5,6,7]; break;
+      case 15: cateArray[1] = ['酒店旅馆']; cateSecondId = [0]; break;
+      case 16: cateArray[1] = ['宠物服务']; cateSecondId = [0]; break;
+      case 17: cateArray[1] = ['家政保洁']; cateSecondId = [0];break;
+      case 18: cateArray[1] = ['代购', '服饰', '包包', '妆品', '鞋子', '其他']; cateSecondId = [0, 1, 2, 3, 4, 5]; break;
     }
     this.setData({
-      cateArray: cateArray
+      cateArray: cateArray,
+      cateSecondId: cateSecondId
     })
   },
   chooseLocation() {

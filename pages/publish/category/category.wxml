@@ -116,23 +116,21 @@
       </picker>
     </view>
     <view class='cate'>
-      <view class='cate-detail' bindtap='showList' data-cate='6'>
+      <!--<view class='cate-detail' bindtap='showList' data-cate='6'>
         <image src='/images/icon_logo_gift.png' />
         <view>礼品商店</view>
-      </view>
-      <picker range='{{selectArray[7]}}' bindchange='cateChange' data-cate='7'>
+      </view>-->
+      <picker range='{{selectArray[7]}}' bindchange='cateChange' data-cate='6'>
         <view class='cate-detail' data-cate='7'>
           <image src='/images/icon_logo_yimin.png' />
           <view>移民教育</view>
         </view>
-      </picker>
-      <picker range='{{selectArray[8]}}' bindchange='cateChange' data-cate='8'>
-        <view class='cate-detail' data-cate='8'>
-          <image src='/images/icon_logo_lvyou.png' />
-          <view>旅游机票</view>
-        </view>
-      </picker>
-      <picker range='{{selectArray[9]}}' bindchange='cateChange' data-cate='9'>
+      </picker>      
+      <view class='cate-detail' bindtap='showList' data-cate='7'>
+        <image src='/images/icon_logo_chongwu_service.png' />
+        <view>宠物服务</view>
+      </view>
+      <picker range='{{selectArray[9]}}' bindchange='cateChange' data-cate='8'>
         <view class='cate-detail' data-cate='9'>
           <image src='/images/icon_logo_market.png' />
           <view>超市商店</view>
@@ -142,52 +140,55 @@
         <image src='/images/icon_logo_doctor.png' />
         <view>医疗保健</view>
       </view>-->
-      <view class='cate-detail' bindtap='showList' data-cate='11'>
+      <view class='cate-detail' bindtap='showList' data-cate='9'>
         <image src='/images/icon_logo_fcjj.png' />
         <view>房产经济</view>
       </view>
-    </view>
-    <view class='cate'>
-      <view class='cate-detail' bindtap='showList' data-cate='12'>
-        <image src='/images/icon_logo_change_money.png' />
-        <view>以物易物</view>
-      </view>
-      <view class='cate-detail' bindtap='showList' data-cate='13'>
+      <view class='cate-detail' bindtap='showList' data-cate='10'>
         <image src='/images/icon_logo_kuaidi.png' />
         <view>快递货运</view>
       </view>
-      <picker range='{{selectArray[14]}}' bindchange='cateChange' data-cate='14'>
+    </view>
+    <view class='cate'>
+      <!--<view class='cate-detail' bindtap='showList' data-cate='12'>
+        <image src='/images/icon_logo_change_money.png' />
+        <view>以物易物</view>
+      </view>-->
+      <picker range='{{selectArray[14]}}' bindchange='cateChange' data-cate='11'>
         <view class='cate-detail' data-cate='14'>
           <image src='/images/icon_logo_meifa.png' />
           <view>美容美发</view>
         </view>
       </picker>
-      <picker range='{{selectArray[15]}}' bindchange='cateChange' data-cate='15'>
+      <picker range='{{selectArray[15]}}' bindchange='cateChange' data-cate='12'>
         <view class='cate-detail' data-cate='15'>
           <image src='/images/icon_logo_play.png' />
           <view>休闲娱乐</view>
         </view>
       </picker>
-      <view class='cate-detail' bindtap='showList' data-cate='16'>
+      <view class='cate-detail' bindtap='showList' data-cate='13'>
         <image src='/images/icon_logo_hotel.png' />
         <view>酒店旅馆</view>
       </view>
-    </view>
-    <view class='cate'>
-      <view class='cate-detail' bindtap='showList' data-cate='17'>
-        <image src='/images/icon_logo_chongwu_service.png' />
-        <view>宠物服务</view>
-      </view>
-      <view class='cate-detail' bindtap='showList' data-cate='18'>
+      <picker range='{{selectArray[8]}}' bindchange='cateChange' data-cate='14'>
+        <view class='cate-detail' data-cate='8'>
+          <image src='/images/icon_logo_lvyou.png' />
+          <view>旅游机票</view>
+        </view>
+      </picker>
+      <!--<view class='cate-detail' bindtap='showList' data-cate='18'>
         <image src='/images/icon_logo_jiazheng.png' />
         <view>家政保洁</view>
-      </view>
-      <picker range='{{selectArray[19]}}' bindchange='cateChange' data-cate='19'>
+      </view>-->
+      <picker range='{{selectArray[19]}}' bindchange='cateChange' data-cate='15'>
         <view class='cate-detail' data-cate='19'>
           <image src='/images/icon_logo_weishang.png' />
           <view>微商部落</view>
         </view>
       </picker>
+    </view>
+    <view class='cate'>
+      
     </view>
   </view>
   <view class='cate-select' wx:if='{{selectShow==1}}'>

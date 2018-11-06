@@ -218,6 +218,7 @@ Page({
   },
   onShareAppMessage: function (res) {
     lock = true;
+    var that=this;
     var selectType = this.data.menuSelected
     var id = res.target.dataset.id;
     var title = res.target.dataset.title;
@@ -244,7 +245,7 @@ Page({
                 title: '刷新成功',
                 icon: 'success'
               });
-              this.getIndexList();
+              that.getIndexList();
             }
           }
         })

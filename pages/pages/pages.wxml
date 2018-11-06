@@ -73,17 +73,17 @@
         </view>
       </view>
       <view class='cate'>
-        <view class='cate-detail' bindtap='showList' data-cate='6'>
+        <!--<view class='cate-detail' bindtap='showList' data-cate='6'>
           <image src='/images/icon_logo_gift.png' />
           <view>礼品商店</view>
-        </view>
+        </view>-->
         <view class='cate-detail' bindtap='showList' data-cate='7'>
           <image src='/images/icon_logo_yimin.png' />
           <view>移民教育</view>
         </view>
-        <view class='cate-detail' bindtap='showList' data-cate='8'>
-          <image src='/images/icon_logo_lvyou.png' />
-          <view>旅游机票</view>
+        <view class='cate-detail' bindtap='showList' data-cate='17'>
+          <image src='/images/icon_logo_chongwu_service.png' />
+          <view>宠物服务</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='9'>
           <image src='/images/icon_logo_market.png' />
@@ -97,18 +97,18 @@
           <image src='/images/icon_logo_fcjj.png' />
           <view>房产经济</view>
         </view>
-      </view>
-    </swiper-item>
-    <swiper-item>
-      <view class='cate'>
-        <view class='cate-detail' bindtap='showList' data-cate='12'>
-          <image src='/images/icon_logo_change_money.png' />
-          <view>以物易物</view>
-        </view>
         <view class='cate-detail' bindtap='showList' data-cate='13'>
           <image src='/images/icon_logo_kuaidi.png' />
           <view>快递货运</view>
         </view>
+      </view>
+    </swiper-item>
+    <swiper-item>
+      <view class='cate'>
+        <!--<view class='cate-detail' bindtap='showList' data-cate='12'>
+          <image src='/images/icon_logo_change_money.png' />
+          <view>以物易物</view>
+        </view>-->
         <view class='cate-detail' bindtap='showList' data-cate='14'>
           <image src='/images/icon_logo_meifa.png' />
           <view>美容美发</view>
@@ -121,20 +121,20 @@
           <image src='/images/icon_logo_hotel.png' />
           <view>酒店旅馆</view>
         </view>
-      </view>
-      <view class='cate'>
-        <view class='cate-detail' bindtap='showList' data-cate='17'>
-          <image src='/images/icon_logo_chongwu_service.png' />
-          <view>宠物服务</view>
-        </view>
-        <view class='cate-detail' bindtap='showList' data-cate='18'>
-          <image src='/images/icon_logo_jiazheng.png' />
-          <view>家政保洁</view>
+        <view class='cate-detail' bindtap='showList' data-cate='8'>
+          <image src='/images/icon_logo_lvyou.png' />
+          <view>旅游机票</view>
         </view>
         <view class='cate-detail' bindtap='showList' data-cate='19'>
           <image src='/images/icon_logo_weishang.png' />
           <view>微商部落</view>
         </view>
+      </view>
+      <view class='cate'>
+        <!--<view class='cate-detail' bindtap='showList' data-cate='18'>
+          <image src='/images/icon_logo_jiazheng.png' />
+          <view>家政保洁</view>
+        </view>-->
       </view>
     </swiper-item>
   </swiper>

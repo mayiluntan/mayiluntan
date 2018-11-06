@@ -339,7 +339,7 @@
 .detail-info .detail-attribute view{
   margin-right:10rpx;
 }
-.detail-time{
+.detail-address,.detail-time{
   padding-top: 10rpx;
 }
 .detail-address image{
@@ -371,7 +371,7 @@
 .circle-all-pics{
   display:  flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content:space-between;
   padding: 0 20rpx;
 }
 .circle-all-pics image{

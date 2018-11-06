@@ -41,7 +41,7 @@ page{
   border:1px solid #F0A232;
 }
 .list .list-cate{
-  width: 100%;
+  flex:1;
 }
 .list picker{
   flex: 1;

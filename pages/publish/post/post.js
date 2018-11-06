@@ -22,7 +22,8 @@ Page({
     houseArray: ['请选择', '单人床丨Singlebed', '单人间丨Singleroom', '双人床丨Doublebed', '双人间丨Doubleroom', '车库丨Garage', '公寓丨Apartment', '小区丨Unit', '办公室丨Office', '商铺丨Commercial', '联排别墅丨Townhouse', '别墅丨House', '其它丨Other'],
     houseIndex:0,
     houseVlaue: [0, 9, 10, 11, 12, 7, 1, 4, 5, 6, 3, 2, 8],
-    houseType:['请选择','床位','客厅','双人床','主卧','单间','整租'],
+    houseType: ['请选择', '主卧', '双人床', '单间', '床位', '客厅', '整租'],
+    houseTypeVlaue: [0,4,3,5,1,2,6],
     typeIndex:0,
     weekArray:['周','月','日'],
     startDate:'',
@@ -134,7 +135,7 @@ Page({
     })
     if(id){
       wx.request({
-        url: app.globalData.apiUrl + 'v8/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
+        url: app.globalData.apiUrl + 'v9/get_post_edit.php?uid=' + app.globalData.uid + '&id=' + id,
         success: res => {
           if (res.data.ret == 1) {
             this.setData({
@@ -302,7 +303,7 @@ Page({
     v=v-1;
     switch (v) {
     case 0: cateArray[1] = ['求租', '招租']; cateSecondId=[0,1];break;
-      case 1: cateArray[1] = ['求购信息', '家居家具', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合', '电器相关']; cateSecondId = [10,0,1,2,3,4,5,6,7,8,9,11]; break;
+      case 1: cateArray[1] = ['求购信息', '家居家具', '电器相关', '数码电子', '二手教材', '宠物相关', '服装饰品', '游戏娱乐', '美容护肤', '食品饮料', '宝宝用品', '其它综合']; cateSecondId = [10, 0, 11,1,2,3,4,5,6,7,8,9]; break;
       case 2: cateArray[1] = ['求职', '招聘']; cateSecondId = [0, 1];break;
       case 3: cateArray[1] = ['求购', '出售']; cateSecondId = [0, 1]; break;
       case 4: cateArray[1] = ['求助问事', '留学移民', '美食天地', '吐槽八卦', '校园联谊', '淘气宝宝', '汽车之家', '家有萌宠', '美妆服饰', '旅游踏青']; cateSecondId = [0, 1,2,3,4,5,6,7,8,9];break;
@@ -444,7 +445,7 @@ Page({
       }
       postData.tag_str = tag_str;
       postData.house = this.data.houseVlaue[this.data.houseIndex];
-      postData.type = this.data.typeIndex;
+      postData.type = this.data.houseTypeVlaue[this.data.typeIndex];
       postData.tag1 = '';
       postData.tag2 = '';
       var tagIndex1 = this.data.tagIndex1;
