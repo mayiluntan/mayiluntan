@@ -64,10 +64,10 @@
       <view class='list-area'>{{postData.area}}</view>
      </picker>
     </view>
-    <view class='list'>
+    <!--<view class='list'>
       <view>商家地址</view>
       <input placeholder='请输入商家地址' value='{{postData.address}}' bindinput='addressInput'></input>
-    </view>
+    </view>-->
     <view class='list' bindtap='chooseLocation'>
       <view>商家定位</view>
       <input placeholder='请选择定位' value='{{postData.location}}'  disabled='true'></input>

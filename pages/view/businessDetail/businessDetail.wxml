@@ -25,9 +25,9 @@
         </view>
       </view>
     </view>
-    <view class='detail-address' wx:if='{{content.address!=""}}'>
+    <view class='detail-address' bindtap='openAddress' wx:if='{{content.location!=""}}'>
       <image src='/images/business/local.png'></image>
-      <text>{{content.address}}</text>
+      <text>{{content.location}}</text>
     </view>
     <view class='detail-time'>
       <image src='/images/business/time.png'></image>
